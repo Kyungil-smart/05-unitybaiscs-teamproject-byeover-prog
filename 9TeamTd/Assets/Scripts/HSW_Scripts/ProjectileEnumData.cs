@@ -26,7 +26,7 @@ public class ProjectileEnumData : MonoBehaviour
     }
 
     // 투사체의 공격 속성
-    public enum ProjectileAttackType
+    public enum ProjectileDamageCategory
     {
         Default,
         Physical,   // 무 속성 용 물리 속성
@@ -36,15 +36,17 @@ public class ProjectileEnumData : MonoBehaviour
         Earth,  // 땅 속성
         Lightning,  // 번개 속성
         Light,  // 빛 속성
-        Darkness, DarknessHoming,// 어둠 속성
+        Darkness,   // 어둠 속성
     }
 
     // 투사체의 특별한 능력이 있을 경우
-    public enum ProjectileSpacialType
+    public enum ProjectileSpacialAbility
     {
         Default,
         None,   // 기믹 없는 일반 투사체
-        Penetration,    // 관통 투사체
-        Explosion
+        Piercing,    // 적을 관통하는 투사체
+        Explosive,   // 폭발하여 광역 피해를 주는 투사체
+        Chain,  // 체인 피해를 주는 투사체 ex) 워크래프트 3 체인 라이트닝 등
+        GroundDoT,  // 장판 지속 피해를 주는 투사체    
     }
 }
