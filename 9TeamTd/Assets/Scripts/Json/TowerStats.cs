@@ -16,7 +16,7 @@ public class TowerStats : MonoBehaviour
     public float attackSpeed;
 
 
-    // 호출 받으면 TowerData.cs 참고하여 모두 설정해줌
+    // 호출 받으면 TowerDatas.cs 참고하여 모두 설정해줌
     public void SetupValue(TowerDatas data)
     {
         if (data == null) return;
