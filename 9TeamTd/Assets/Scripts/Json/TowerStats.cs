@@ -12,6 +12,8 @@ public class TowerStats : MonoBehaviour
     public int level;
     public int maxHP;
     public int attackValue;
+    public float attackRange;
+    public float attackSpeed;
 
 
     // 호출 받으면 TowerData.cs 참고하여 모두 설정해줌
@@ -25,6 +27,9 @@ public class TowerStats : MonoBehaviour
         level = data.level;
         maxHP = data.maxHP;
         attackValue = data.attackValue;
+        attackRange = data.attackRange;
+        attackSpeed = data.attackSpeed;
+
 
         Debug.Log($"{towerName}의 능력치 설정 완료");
     }
