@@ -7,7 +7,7 @@ public class TowerStats : MonoBehaviour
 {
     // TowerData.cs 참고하여 모두 설정해줌
     [Header("Tower Status")]
-    public int towerID;  // 식별자
+    public int id;  // 식별자
     public string towerName;
     public int level;
     public int maxHP;
@@ -22,7 +22,7 @@ public class TowerStats : MonoBehaviour
         if (data == null) return;
 
         // json과 동일해야 함
-        towerID = data.towerID;
+        id = data.id;
         towerName = data.towerName;
         level = data.level;
         maxHP = data.maxHP;

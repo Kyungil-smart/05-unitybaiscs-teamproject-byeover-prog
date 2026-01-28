@@ -62,7 +62,7 @@ public class JsonManager : MonoBehaviour
         if (_towerData == null) return; // 타워 데이터에 없으면 리턴
 
         // TowerDataList에서 해당 레벨의 ID값의 캐릭터 찾기
-        TowerDatas foundData = _towerData.towers.Find(t => t.towerID == id && t.level == level);
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id && t.level == level);
 
         if (foundData != null)
         {
