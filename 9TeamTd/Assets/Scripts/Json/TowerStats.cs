@@ -7,25 +7,30 @@ public class TowerStats : MonoBehaviour
 {
     // TowerData.cs 참고하여 모두 설정해줌
     [Header("Tower Status")]
-    public int towerID;  // 식별자
-    public string towerName;
+    public int id;  // 식별자
+    public string name;
     public int level;
     public int maxHP;
     public int attackValue;
+    public float attackRange;
+    public float attackSpeed;
 
 
-    // 호출 받으면 TowerData.cs 참고하여 모두 설정해줌
+    // 호출 받으면 TowerDatas.cs 참고하여 모두 설정해줌
     public void SetupValue(TowerDatas data)
     {
         if (data == null) return;
 
         // json과 동일해야 함
-        towerID = data.towerID;
-        towerName = data.towerName;
+        id = data.id;
+        name = data.name;
         level = data.level;
         maxHP = data.maxHP;
         attackValue = data.attackValue;
+        attackRange = data.attackRange;
+        attackSpeed = data.attackSpeed;
 
-        Debug.Log($"{towerName}의 능력치 설정 완료");
+
+        Debug.Log($"{name}의 능력치 설정 완료");
     }
 }
