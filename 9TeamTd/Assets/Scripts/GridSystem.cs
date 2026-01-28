@@ -412,9 +412,9 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // BFS distance field (Pathfinding)
     // -----------------------
-    private int GetDistance(int[] distanceField, Cell cell) => distanceField[ToIndex(cell)];
+    public int GetDistance(int[] distanceField, Cell cell) => distanceField[ToIndex(cell)];
 
-    private void RebuildDistanceField(int[] outDistanceField, Cell? assumedBlockedCell)
+    public void RebuildDistanceField(int[] outDistanceField, Cell? assumedBlockedCell)
     {
         for (int i = 0; i < outDistanceField.Length; i++)
             outDistanceField[i] = -1;
@@ -545,7 +545,7 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Tower visuals
     // -----------------------
-    private void SpawnTowerVisual(Cell cell)
+    public void SpawnTowerVisual(Cell cell)
     {
         int index = ToIndex(cell);
 
@@ -575,7 +575,7 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Gizmos
     // -----------------------
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (!drawGridGizmos)
             return;
