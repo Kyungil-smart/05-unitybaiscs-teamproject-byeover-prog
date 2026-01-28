@@ -19,10 +19,21 @@ public class ProjectileEnumData : MonoBehaviour
     public enum DamageTargetTeamType
     {
         Default,
-        All,    // 팀에 상관 없이 모두 피해를 줌
+        ForAll,    // 팀에 상관 없이 모두 피해를 줌
         Neutral,    // 중립이면 피해를 줌, ex) 생명력이 있는 맵 상 장애물 같은게 있으면 부수기 용
         Ally,   // 아군이면 피해를 줌, ex) 힐, 버프 등
         Enemy,   // 적군이면 피해를 줌, ex) 피해, 디버프 등
+    }
+
+    // 투사체의 특별한 능력이 있을 경우
+    public enum ProjectileSpacialAbility
+    {
+        Default,
+        None,   // 기믹 없는 일반 투사체
+        Piercing,    // 적을 관통하는 투사체
+        Explosive,   // 폭발하여 광역 피해를 주는 투사체
+        Chain,  // 체인 피해를 주는 투사체 ex) 워크래프트 3 체인 라이트닝 등
+        GroundDoT,  // 장판 지속 피해를 주는 투사체    
     }
 
     // 투사체의 공격 속성
@@ -37,16 +48,5 @@ public class ProjectileEnumData : MonoBehaviour
         Lightning,  // 번개 속성
         Light,  // 빛 속성
         Darkness,   // 어둠 속성
-    }
-
-    // 투사체의 특별한 능력이 있을 경우
-    public enum ProjectileSpacialAbility
-    {
-        Default,
-        None,   // 기믹 없는 일반 투사체
-        Piercing,    // 적을 관통하는 투사체
-        Explosive,   // 폭발하여 광역 피해를 주는 투사체
-        Chain,  // 체인 피해를 주는 투사체 ex) 워크래프트 3 체인 라이트닝 등
-        GroundDoT,  // 장판 지속 피해를 주는 투사체    
     }
 }

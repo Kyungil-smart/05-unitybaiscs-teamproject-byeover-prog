@@ -1,0 +1,34 @@
+﻿{
+  "projectiles" : [
+  {
+    "id": 11001,
+    "name": "Arrow01",
+    "moveSpeed": 6,
+    "lifeTime": 6,
+    "projectileSpwanType": "AttackerToTarget",
+    "damageTargetTeamType": "Enemy",
+    "projectileSpacialAbility": null,
+    "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11002,
+    "name": "Arrow02",
+    "moveSpeed": 12,
+    "lifeTime": 6,
+    "projectileSpwanType": "AttackerToTarget",
+    "damageTargetTeamType": "Enemy",
+    "projectileSpacialAbility": null,
+    "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11003,
+    "name": "Arrow03",
+    "moveSpeed": 24,
+    "lifeTime": 6,
+    "projectileSpwanType": "AttackerToTarget",
+    "damageTargetTeamType": "Enemy",
+    "projectileSpacialAbility": null,
+    "projectileDamageCategory": "Physical"
+  }
+]
+}
