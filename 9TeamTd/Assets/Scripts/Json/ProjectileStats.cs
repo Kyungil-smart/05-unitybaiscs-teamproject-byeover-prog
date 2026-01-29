@@ -12,7 +12,7 @@ public class ProjectileStats : MonoBehaviour
     public int id;
     public string name;
     public float moveSpeed;
-    public float LifeTime;
+    public float lifeTime;
     public ProjectileSpwanType projectileSpwanType;
     public DamageTargetTeamType damageTargetTeamType;
     public ProjectileSpacialAbility projectileSpacialAbility;
@@ -28,7 +28,7 @@ public class ProjectileStats : MonoBehaviour
         id = data.id;
         name = data.name;
         moveSpeed = data.moveSpeed;
-        LifeTime = data.LifeTime;
+        lifeTime = data.lifeTime;
         projectileSpwanType = data.projectileSpwanType;
         damageTargetTeamType = data.damageTargetTeamType;
         projectileSpacialAbility = data.projectileSpacialAbility;

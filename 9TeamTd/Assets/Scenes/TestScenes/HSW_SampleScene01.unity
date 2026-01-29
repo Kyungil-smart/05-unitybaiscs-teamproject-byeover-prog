@@ -204,11 +204,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacker: {fileID: 1215300352}
   target: {fileID: 650882297}
-  firstTargetPos: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 4
+  attackValue: 10
+  damageRatio: 1
+  moveSpeed: 0
   lifeTime: 0
-  projectileSpwanType: 1
+  projectileSpwanType: 0
 --- !u!135 &398480665
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -289,8 +290,8 @@ Transform:
   m_GameObject: {fileID: 398480663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.1, y: 0, z: 18.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 20}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -309,9 +310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: 
-  moveSpeed: 0
-  LifeTime: 0
-  projectileSpwanType: 0
+  moveSpeed: 16
+  lifeTime: 10
+  projectileSpwanType: 1
   damageTargetTeamType: 0
   projectileSpacialAbility: 0
   projectileDamageCategory: 0
@@ -667,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 60, z: 0}
+  m_LocalPosition: {x: 0, y: 75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -792,11 +793,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacker: {fileID: 1215300352}
   target: {fileID: 650882297}
-  firstTargetPos: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 4
+  attackValue: 20
+  damageRatio: 1.5
+  moveSpeed: 0
   lifeTime: 0
-  projectileSpwanType: 2
+  projectileSpwanType: 0
 --- !u!114 &2136510970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,9 +813,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: 
-  moveSpeed: 0
-  LifeTime: 0
-  projectileSpwanType: 0
+  moveSpeed: 12
+  lifeTime: 5
+  projectileSpwanType: 2
   damageTargetTeamType: 0
   projectileSpacialAbility: 0
   projectileDamageCategory: 0
@@ -832,7 +834,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -898,7 +900,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.1, y: 0, z: -15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
