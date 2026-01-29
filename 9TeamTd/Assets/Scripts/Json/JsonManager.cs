@@ -5,6 +5,8 @@ using UnityEngine;
 using static TowerStats;
 using static UnityEngine.GraphicsBuffer;
 
+// 작성자 : 한성우
+
 // https://3dperson1.tistory.com/117 스크립트 기반 -> 추후 수정 예정
 public class JsonManager : MonoBehaviour
 {
