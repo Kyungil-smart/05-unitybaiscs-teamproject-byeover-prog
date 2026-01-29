@@ -80,13 +80,16 @@ public sealed class GridSystem : MonoBehaviour
     };
 
     private CellState[] cellStates;
-    private int[] distanceToBase;         // Real distance field used by monsters
-    private int[] previewDistanceToBase;  // Scratch distance field used by placement preview
+    private int[] distanceToBase;         // (몬스터가 사용하는 실제 필드)
+                                          // Real distance field used by monsters
+                                          
+    private int[] previewDistanceToBase;  // (배치 미리보기에 사용되는 거리 필드)
+                                          // Scratch distance field used by placement preview
 
     private Cell baseCell;
 
     private readonly Dictionary<int, GameObject> towerVisualByIndex = new Dictionary<int, GameObject>(256);
-    private readonly List<Cell> edgeSpawnBuffer = new List<Cell>(128);
+    private readonly List<Cell> edgeSpawnBuffer = new List<Cell>(128); // 엣지 스폰 버퍼
     private readonly Collider[] monsterOverlapBuffer = new Collider[8];
 
     private void Awake()
@@ -102,6 +105,9 @@ public sealed class GridSystem : MonoBehaviour
         SnapBaseTransformToCellCenter();
     }
 
+    /// <summary>
+    /// 인스펙터에서 스크립트의 속성이 수정될 때마다 호출되는 함수
+    /// </summary>
     private void OnValidate()
     {
         if (Application.isPlaying)
@@ -118,6 +124,15 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Coordinate conversion
     // -----------------------
+    /// <summary>
+    /// 월드 공간의 3D 위치를 그리드 상의 2D 셀 좌표로 변환하는 코드
+    /// </summary>
+    /// <remarks>
+    /// 월드 좌표의 X축은 그리드의 X(열), Z축은 그리드의 Y(행)
+    /// 소수점 좌표는 FloorToInt로 인해 내림으로 처리되어 칸의 인덱스를 반환
+    /// </remarks>
+    /// <param name="worldPosition">변환할 월드 좌표(Vector3)</param>
+    /// <returns>해당 위치가 포함된 그리드 셀(Cell)</returns>
     public Cell WorldToCell(Vector3 worldPosition)
     {
         int x = Mathf.FloorToInt(worldPosition.x / cellSize);
@@ -125,13 +140,25 @@ public sealed class GridSystem : MonoBehaviour
         return new Cell(x, y);
     }
 
+    /// <summary>
+    /// 그리드 좌표를 실제 유니티 좌표로 변환해주는 계산기 코드
+    /// </summary>
+    /// <param name="cell">변환할 그리드 셀 좌표</param>
+    /// <param name="y">반환할 월드 좌표의 높이 값</param>
+    /// <returns></returns>
     public Vector3 CellToWorld(Cell cell, float y = 0f)
     {
+        // 좌표 계산시 0.5를 더해 그리드 칸의 정중앙을 구함
         float worldX = (cell.X + 0.5f) * cellSize;
         float worldZ = (cell.Y + 0.5f) * cellSize;
         return new Vector3(worldX, y, worldZ);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     public bool IsInside(Cell cell)
     {
         return cell.X >= 0 && cell.X < gridWidth && cell.Y >= 0 && cell.Y < gridHeight;
