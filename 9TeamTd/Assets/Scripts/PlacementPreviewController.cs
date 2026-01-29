@@ -110,8 +110,11 @@ public sealed class PlacementPreviewController : MonoBehaviour
         {
             if (cachedCanPlace)
             {
-                gridSystem.TryPlaceTower(cell);
-                hasLastCell = false;
+                if (gridSystem.TryPlaceTower(cell))
+                {
+                    gridSystem.SpawnTowerVisual(cell);
+                    hasLastCell = false;
+                }
             }
             else
             {

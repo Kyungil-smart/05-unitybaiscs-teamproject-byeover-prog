@@ -16,16 +16,6 @@ public sealed class MonsterAgent : MonoBehaviour
 
     [SerializeField, Min(0f)] private float turnSpeed = 12f;
 
-    [Header("Test Spawn")]
-    [FormerlySerializedAs("use_fixed_spawn_cell")]
-    [SerializeField] private bool useFixedSpawnCell = false;
-
-    [FormerlySerializedAs("fixed_spawn_x")]
-    [SerializeField] private int fixedSpawnX = 1;
-
-    [FormerlySerializedAs("fixed_spawn_y")]
-    [SerializeField] private int fixedSpawnY = 1;
-
     private Cell currentCell;
     private Cell targetCell;
     private Vector3 targetWorld;
@@ -90,19 +80,6 @@ public sealed class MonsterAgent : MonoBehaviour
 
     private bool TryGetSpawnCell(out Cell spawnCell)
     {
-        if (useFixedSpawnCell)
-        {
-            spawnCell = new Cell(fixedSpawnX, fixedSpawnY);
-
-            if (!gridSystem.IsInside(spawnCell))
-            {
-                Debug.LogWarning($"[MonsterAgent] Fixed spawn cell is outside grid: {spawnCell}");
-                return false;
-            }
-
-            return true;
-        }
-
         if (!gridSystem.TryGetRandomSpawnCell(out spawnCell))
         {
             Debug.LogWarning("[MonsterAgent] No reachable edge spawn cell.");

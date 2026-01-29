@@ -23,7 +23,7 @@ public sealed class TopDownCameraController : MonoBehaviour
 
     [FormerlySerializedAs("world_padding")]
     [Tooltip("Extra padding so the grid is not clipped by screen edges.")]
-    [SerializeField, Min(0f)] private float worldPadding = 2f;
+    [SerializeField] private float worldPadding = -30f; // 값을 낮출수록 화면이 확대됨
 
     private void Awake()
     {

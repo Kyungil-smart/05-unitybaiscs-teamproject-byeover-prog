@@ -85,7 +85,7 @@ public sealed class GridSystem : MonoBehaviour
 
     private Cell baseCell;
 
-    private readonly Dictionary<int, GameObject> towerVisualByIndex = new Dictionary<int, GameObject>(256);
+    private readonly Dictionary<int, GameObject> towerVisualByIndex = new Dictionary<int, GameObject>();
     private readonly List<Cell> edgeSpawnBuffer = new List<Cell>(128);
     private readonly Collider[] monsterOverlapBuffer = new Collider[8];
 
@@ -98,6 +98,8 @@ public sealed class GridSystem : MonoBehaviour
         ResolveBaseCell();
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
+
+        RegisterObstacles(); // 장애물 등록 추가함
 
         SnapBaseTransformToCellCenter();
     }
@@ -144,10 +146,10 @@ public sealed class GridSystem : MonoBehaviour
     {
         // 1) Basic bounds / static rules first
         if (!IsInside(cell))
-        return false;
+            return false;
 
         if (cell == baseCell)
-        return false;
+            return false;
 
         if (GetCellState(cell) != CellState.Empty)
             return false;
@@ -172,7 +174,9 @@ public sealed class GridSystem : MonoBehaviour
     {
         if (!IsBuildable(cell))
         {
+#if UNITY_EDITOR
             Debug.Log($"[GridSystem] TryPlaceTower failed (NotBuildable) cell={cell}");
+#endif
             return false;
         }
 
@@ -184,13 +188,16 @@ public sealed class GridSystem : MonoBehaviour
             // Rollback
             SetCellState(cell, CellState.Empty);
             RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
-
+#if UNITY_EDITOR
             Debug.Log($"[GridSystem] TryPlaceTower failed (WouldBlockAllSpawns) cell={cell}");
+#endif
             return false;
         }
 
         //SpawnTowerVisual(cell);
+#if UNITY_EDITOR
         Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
+#endif
         return true;
     }
 
@@ -205,14 +212,17 @@ public sealed class GridSystem : MonoBehaviour
         int index = ToIndex(cell);
 
         if (towerVisualByIndex.TryGetValue(index, out GameObject visual) && visual != null)
+        {
             Destroy(visual);
-
-        towerVisualByIndex.Remove(index);
+            towerVisualByIndex.Remove(index);
+        }
 
         SetCellState(cell, CellState.Empty);
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
+#if UNITY_EDITOR
         Debug.Log($"[GridSystem] RemoveTower success cell={cell}");
+#endif
         return true;
     }
 
@@ -412,9 +422,9 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // BFS distance field (Pathfinding)
     // -----------------------
-    private int GetDistance(int[] distanceField, Cell cell) => distanceField[ToIndex(cell)];
+    public int GetDistance(int[] distanceField, Cell cell) => distanceField[ToIndex(cell)];
 
-    private void RebuildDistanceField(int[] outDistanceField, Cell? assumedBlockedCell)
+    public void RebuildDistanceField(int[] outDistanceField, Cell? assumedBlockedCell)
     {
         for (int i = 0; i < outDistanceField.Length; i++)
             outDistanceField[i] = -1;
@@ -545,7 +555,7 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Tower visuals
     // -----------------------
-    private void SpawnTowerVisual(Cell cell)
+    public void SpawnTowerVisual(Cell cell)
     {
         int index = ToIndex(cell);
 
@@ -572,10 +582,37 @@ public sealed class GridSystem : MonoBehaviour
         towerVisualByIndex[index] = towerObj;
     }
 
+    // ---
+    // 장애물
+    // ---
+    /// <summary>
+    /// 씬에 있는 모든 GridObstacle을 찾아서 그리드에 등록
+    /// </summary>
+    private void RegisterObstacles()
+    {
+        GridObstacle[] obstacles = FindObjectsOfType<GridObstacle>();
+
+        foreach (GridObstacle obstacle in obstacles)
+        {
+            obstacle.Initialize(this);
+
+            // 차지하는 셀들을 Blocked 상태로 설정
+            foreach (Cell cell in obstacle.occupiedCells)
+            {
+                if (!IsInside(cell))
+                {
+                    Debug.Log($"[GridSystem] Obstacle cell {cell} is outside grid! Skipping.");
+                    continue;
+                }
+                SetCellState(cell, CellState.Blocked);
+            }
+        }
+    }
+
     // -----------------------
     // Gizmos
     // -----------------------
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (!drawGridGizmos)
             return;
