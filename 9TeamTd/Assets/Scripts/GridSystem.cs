@@ -20,13 +20,13 @@ public sealed class GridSystem : MonoBehaviour
     [FormerlySerializedAs("base_transform")]
     [SerializeField] private Transform baseTransform;
 
-    // Used only when baseTransform is missing
+    // baseTransform이 비어있을 때 사용할 대체 기지 셀
     [FormerlySerializedAs("base_cell")]
     [SerializeField] private Cell fallbackBaseCell = new Cell(15, 10);
 
     [Header("Towers")]
     [FormerlySerializedAs("tower_prefab")]
-    [Tooltip("If null, a default Cube will be created.")]
+    [Tooltip("타워 프리팹이 없으면 기본 Cube로 생성.")]
     [SerializeField] private GameObject towerPrefab;
 
     [FormerlySerializedAs("tower_height")]
@@ -34,7 +34,7 @@ public sealed class GridSystem : MonoBehaviour
 
     [Header("Placement Rules")]
     [FormerlySerializedAs("no_build_border_thickness")]
-    [Tooltip("Cells within this border thickness from the edge cannot be built on.")]
+    [Tooltip("맵 가장자리에서 2만큼은 설치 금지 구역으로 만든다.")] // 2칸이 몬스터 나오는 곳이라서 타워 설치하면 오류남
     [SerializeField, Min(0)] private int noBuildBorderThickness = 2;
 
     [FormerlySerializedAs("prevent_build_on_monster")]
