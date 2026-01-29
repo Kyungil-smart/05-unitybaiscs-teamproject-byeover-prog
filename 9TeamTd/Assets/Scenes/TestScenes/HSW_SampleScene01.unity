@@ -1050,11 +1050,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3755944093790279855, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
       propertyPath: m_Name
-      value: Project_IceField_GroundDoT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3755944093790279855, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: Projectile_IceField_GroundDoT
       objectReference: {fileID: 0}
     - target: {fileID: 5567989987671955205, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
       propertyPath: target
@@ -1316,6 +1312,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6eb81e051835ce4784fa1f24ed0dc3c, type: 3}
+--- !u!1001 &4855793516367044563
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1953261585209352226, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 650882297}
+    - target: {fileID: 1953261585209352226, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: attacker
+      value: 
+      objectReference: {fileID: 1215300352}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039529637245250281, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803240884950955449, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_Name
+      value: Projectile_Flame_GroundDoT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803240884950955449, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
 --- !u!4 &6953934013818357164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1709756812396523833, guid: 835bb011e2ea28844bfb872f38087ba4, type: 3}
@@ -1479,5 +1544,6 @@ SceneRoots:
   - {fileID: 2485817373899961674}
   - {fileID: 4300467551027201}
   - {fileID: 4261252756799288407}
+  - {fileID: 4855793516367044563}
   - {fileID: 3186819578023805426}
   - {fileID: 1496498481610815773}

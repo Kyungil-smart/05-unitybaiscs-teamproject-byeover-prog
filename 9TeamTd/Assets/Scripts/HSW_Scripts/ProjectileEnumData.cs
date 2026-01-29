@@ -6,7 +6,16 @@ using UnityEngine;
 
 public class ProjectileEnumData : MonoBehaviour
 {
-    // * 는 구현됨 표시
+    // * 는 구현, (*) 기능 추가 없이 자동 구현 표시
+    /*
+    테스트 한 기능
+        AttackerToTarget -> Single / Piercing
+        AttackerToTargetHoming -> Single / Piercing
+        AttackerPosition -> Piercing / GroundDoT, 가능하나 어색함 : Single
+        AttackerPositionTargetDirection -> Piercing / GroundDoT, 가능하나 어색함 : Single
+        
+
+     */
 
     // 투사체가 어떻게 스폰되는지에 대한 속성
     public enum ProjectileSpwanType
@@ -16,7 +25,7 @@ public class ProjectileEnumData : MonoBehaviour
         AttackerToTargetHoming, // * 공격자 위치에서 생성되어 피격자 위치로 유도로 날아가는 투사체 
         AttackerToTargetArc,   // 공격자 위치에서 생성되어 피격자 에게 곡사로 피해를 주는 투사체
         AttackerToTargetInstance,   // 공격자 위치에서 생성되어 피격자 에게 즉각 피해를 주는 투사체, ex) 레이저빔 등
-        AttackerPosition,   // 방향 없이 공격자의 위치에서 생성되는 투사체, ex) 원형 불 장판 등
+        AttackerPosition,   // * 방향 없이 공격자의 위치에서 생성되는 투사체, ex) 원형 불 장판 등
         AttackerPositionTargetDirection, // * 공격자의 위치에서 타겟의 방향으로 생성되는 투사체, 투사체 이동 X, ex) 파이어벳 화염 방사 등
         TargetPosition, // 방향 없이 피격자의 위치에서 생성되는 투사체, ex) 낙뢰 등
         TargetPositionAtkToTrgDirection, // 피격자의 위치에서 공격자 -> 피격자의 방향으로 생성되는 투사체
@@ -27,20 +36,20 @@ public class ProjectileEnumData : MonoBehaviour
     {
         Default,
         Single,   // * 기믹 없이 1번만 피해를 주고 사라지는 투사체
-        Piercing,    // (*) 적을 관통하는 투사체(구현 안해도 자동으로 구현된 상태)
+        Piercing,    // (*) 적을 관통하는 투사체
         Explosive,   // 충돌 시 폭발하여 광역 피해를 주는 투사체
         Chain,  // 체인 피해를 주는 투사체 ex) 워크래프트 3 체인 라이트닝 등
-        GroundDoT,  // 장판 지속 피해를 주는 투사체    
+        GroundDoT,  // * 장판 지속 피해를 주는 투사체    
     }
 
     // 투사체가 어느 팀에 피해를 주는지에 대한 속성 (폭발 등 광역 피해가 있을 수 있어서 필요)
     public enum DamageTargetTeamType
     {
         Default,
-        ForAll,    // 팀에 상관 없이 모두 피해를 줌
+        ForAll,    // * 팀에 상관 없이 모두 피해를 줌
         Neutral,    // 중립이면 피해를 줌, ex) 생명력이 있는 맵 상 장애물 같은게 있으면 부수기 용
         Ally,   // 아군이면 피해를 줌, ex) 힐, 버프 등
-        Enemy,   // 적군이면 피해를 줌, ex) 피해, 디버프 등
+        Enemy,   // * 적군이면 피해를 줌, ex) 피해, 디버프 등
     }
 
     // 투사체의 공격 속성
