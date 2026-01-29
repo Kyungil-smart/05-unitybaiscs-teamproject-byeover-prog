@@ -41,7 +41,7 @@ public sealed class GridSystem : MonoBehaviour
     [SerializeField] private bool preventBuildOnMonster = true;
 
     [FormerlySerializedAs("monster_layer_mask")]
-    [SerializeField] private LayerMask monsterLayerMask;
+    [SerializeField] private LayerMask monsterLayerMask;    
 
     [FormerlySerializedAs("monster_check_y")]
     [SerializeField, Min(0f)] private float monsterCheckY = 0.5f;
@@ -167,8 +167,8 @@ public sealed class GridSystem : MonoBehaviour
     /// <summary>
     /// 타워 설치가 가능한지 검사하는 메서드
     /// </summary>
-    /// <param name="cell">검사할 때 사용하는 셀 좌표</param>
-    /// <returns></returns>
+    /// <param name="cell">건설을 시도할 때 사용할 셀 좌표</param>
+    /// <returns>건설 가능하면 true, 불가능하면 false</returns>
     public bool IsBuildable(Cell cell)
     {
         // 1) Basic bounds / static rules first
@@ -181,13 +181,22 @@ public sealed class GridSystem : MonoBehaviour
         if (GetCellState(cell) != CellState.Empty)
             return false;
 
-        // 2) Dynamic rule: prevent building on a monster
+        // 2) Dynamic rule: 몬스터 위/근처 설치 금지(필요할 때 주석 해제)
         //if (IsCellOccupiedByMonster(cell))
         //    return false;
 
         return true;
     }
 
+    /// <summary>
+    /// 타워 건설 시, 게임 진행에 문제가 없는지 검사하는 메서드
+    /// </summary>
+    /// <remarks>
+    /// assumedBlockedCell이라는 가상벽을 세워
+    /// 몬스터가 기지까지 도달할 수 있는지 시뮬레이션 돌리는 메서드
+    /// </remarks>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <returns>건설 가능하고 길도 막히지 않았으면 true</returns>
     public bool CanPlaceTower(Cell cell)
     {
         if (!IsBuildable(cell))
@@ -197,6 +206,11 @@ public sealed class GridSystem : MonoBehaviour
         return HasAnyReachableEdgeSpawn(previewDistanceToBase, assumedBlockedCell: cell);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     public bool TryPlaceTower(Cell cell)
     {
         if (!IsBuildable(cell))
@@ -204,7 +218,7 @@ public sealed class GridSystem : MonoBehaviour
             Debug.Log($"[GridSystem] TryPlaceTower failed (NotBuildable) cell={cell}");
             return false;
         }
-
+        
         SetCellState(cell, CellState.Blocked);
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
@@ -223,6 +237,11 @@ public sealed class GridSystem : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     public bool RemoveTower(Cell cell)
     {
         if (!IsInside(cell))
