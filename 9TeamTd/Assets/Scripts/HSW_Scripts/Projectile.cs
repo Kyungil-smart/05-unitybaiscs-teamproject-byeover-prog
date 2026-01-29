@@ -17,8 +17,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float damageRatio; // 생성한 타워로부터 공격력 받아오기
     [SerializeField] private float moveSpeed;   // ProjectileStats 에서 받아오기
     [SerializeField] private float lifeTime;    // ProjectileStats 에서 받아오기
+    [SerializeField] private float damageInterval;  // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
+    [SerializeField] private DamageTargetTeamType damageTargetTeamType;
 
 
     DamageCalculator damageCalculator = new DamageCalculator();
@@ -32,10 +34,12 @@ public class Projectile : MonoBehaviour
         // 자신에게 붙은 ProjectileStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
         moveSpeed = this.GetComponent<ProjectileStats>().moveSpeed;
         lifeTime = this.GetComponent<ProjectileStats>().lifeTime;
+        damageInterval = this.GetComponent<ProjectileStats>().damageInterval;
         projectileSpwanType = this.GetComponent<ProjectileStats>().projectileSpwanType;
         projectileSpacialAbility = this.GetComponent<ProjectileStats>().projectileSpacialAbility;
+        damageTargetTeamType = this.GetComponent<ProjectileStats>().damageTargetTeamType;
 
-        // 오브젝트의 방향을 적 방향으로 초기화
+        // 방향 초기화
         SetRotation();
     }
 
@@ -46,24 +50,30 @@ public class Projectile : MonoBehaviour
     }
 
 
-    // 임시용 이동
     private void Update()
     {
         // 이동하기, 이동이 있을 경우에만 사용
         if (projectileSpwanType == ProjectileSpwanType.AttackerToTarget) Move();
         else if (projectileSpwanType == ProjectileSpwanType.AttackerToTargetHoming) MoveHoming();
-        // else if (projectileSpwanType == ProjectileSpwanType.AttackerPosition) MoveHoming(); // 수정 필요
-        // else if (projectileSpwanType == ProjectileSpwanType.AttackerPositionTargetDirection) MoveHoming(); // 수정 필요
     }
 
     // 방향 받기 함수들
 
     private void SetRotation()
     {
-        if (target.transform.position != null)
+        // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
+        if (projectileSpwanType != ProjectileSpwanType.AttackerPosition)
         {
-            moveDirection = (target.transform.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+            if (target.transform.position != null)
+            {
+                moveDirection = (target.transform.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+            }
+        }
+        // 방향이 필요없는 공격 방식은 벡터 앞 방향으로
+        else
+        {
+            moveDirection = Vector3.forward;
         }
     }
 
@@ -85,22 +95,32 @@ public class Projectile : MonoBehaviour
     }
 
 
-    // 충돌 관련 함수들
+    // 충돌 및 피해 관련 함수들
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        // 데미지를 주는 대상인지 판단
+        if ((damageTargetTeamType == DamageTargetTeamType.Enemy ||
+            damageTargetTeamType == DamageTargetTeamType.ForAll) && 
+            other.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
-            // 데미지 계산
-            int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
-
-            // 실제로 데미지 주는 처리
-            // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
-            Debug.Log($"{gameObject.name} -> {other.gameObject.layer}, {finalDMG} 데미지를 주었습니다.");
+            GiveDamageChance(other);
         }
+    }
+
+    // 유형에 따라 데미지를 몇 번 줄지 분리하는 함수
+    private void GiveDamageChance(Collider other)
+    {
+        // 데미지 계산
+        int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
+
+        // 실제로 데미지 주는 처리
+        // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
+        Debug.Log($"{gameObject.name} -> {other.gameObject.layer}, {finalDMG} 데미지를 주었습니다.");
 
         if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
     }
+
 
 
     // 생명 주기 관련 함수들
@@ -108,9 +128,8 @@ public class Projectile : MonoBehaviour
     // 투사체가 지속 시간 이후에도 남아있다면 비활성화 시켜주는 코루틴, 오브젝트 풀링을 위해 사용
     IEnumerator LifeTimeCoroutine()
     {
-        if (this.gameObject.activeSelf == true)
-            yield return new WaitForSeconds(lifeTime);
-        SetEnableObject();        
+        if (this.gameObject.activeSelf == true) yield return new WaitForSeconds(lifeTime);
+        SetEnableObject();
     }
 
 

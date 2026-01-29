@@ -13,9 +13,10 @@ public class ProjectileStats : MonoBehaviour
     public string name;
     public float moveSpeed;
     public float lifeTime;
+    public float damageInterval;
     public ProjectileSpwanType projectileSpwanType;
-    public DamageTargetTeamType damageTargetTeamType;
     public ProjectileSpacialAbility projectileSpacialAbility;
+    public DamageTargetTeamType damageTargetTeamType;
     public ProjectileDamageCategory projectileDamageCategory;
 
 
@@ -29,9 +30,10 @@ public class ProjectileStats : MonoBehaviour
         name = data.name;
         moveSpeed = data.moveSpeed;
         lifeTime = data.lifeTime;
+        damageInterval = data.damageInterval;
         projectileSpwanType = data.projectileSpwanType;
-        damageTargetTeamType = data.damageTargetTeamType;
         projectileSpacialAbility = data.projectileSpacialAbility;
+        damageTargetTeamType = data.damageTargetTeamType;
         projectileDamageCategory = data.projectileDamageCategory;
 
 
