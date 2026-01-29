@@ -1,23 +1,67 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static ProjectileEnumData;
+
+// ì‘ì„±ì : í•œì„±ìš°
 
 public class Projectile : MonoBehaviour
 {
-    // ProjectileStats º¯¼ö´Â ¿©±â ³ÖÀ» ÇÊ¿ä ¾øÀ½
-    // [Header("Json °ü¸® º¯¼ö")]
+    // ProjectileStats ë³€ìˆ˜ëŠ” ì—¬ê¸° ë„£ì„ í•„ìš” ì—†ìŒ
+    [Header("í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ ì ì‹œ ë³´ì´ê²Œ í•œ ë³€ìˆ˜")]
+    [SerializeField] private GameObject attacker; 
+    [SerializeField] private GameObject target;
+    [SerializeField] private Vector3 moveDirection;
+    [SerializeField] private float moveSpeed;   // ProjectileStats ë™ê¸°í™”ëœ ì´í›„ ì‚­ì œ ì˜ˆì •
+    [SerializeField] private float lifeTime;    // ProjectileStats ë™ê¸°í™”ëœ ì´í›„ ì‚­ì œ ì˜ˆì •
+    [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats ë™ê¸°í™”ëœ ì´í›„ ì‚­ì œ ì˜ˆì •
 
-    // setActive false »óÅÂÀÎ ¿ÀºêÁ§Æ®ÇÏ³ª¸¦ ¹Ş¾Æ¿È
 
-    // ProjectileStats µ¥ÀÌÅÍµé + Å¸¿ö À§Ä¡ ÇÊµå¶û, ´ë»ó Àû À§Ä¡ ÇÊµå ¹Ş¾Æ µ¥ÀÌÅÍ ÃÊ±âÈ­
+    private void Start()
+    {
+        // ì‹œì‘ì‹œ ë°©í–¥ë²¡í„° ë…¸ë©€ë¼ì´ì¦ˆ í•´ì„œ ë°›ì•„ì˜¤ê¸°
+        moveDirection = (target.transform.position - transform.position).normalized;
+    }
 
-    // µ¥ÀÌÅÍ ÃÊ±âÈ­ ÀÌÈÄ ProjectileSpwanType ¿¡ ¸ÂÃç¼­ ½ºÆù(setActive true) Ã³¸®
+
+    // ì„ì‹œìš© ì´ë™
+    private void Update()
+    {
+        if (projectileSpwanType == ProjectileSpwanType.AttackerToTarget) Move();
+        else if (projectileSpwanType == ProjectileSpwanType.AttackerToTargetHoming) MoveHoming();
+    }
+
+    private void Move()
+    {
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    private void MoveHoming()
+    {
+        // íƒ€ê²Ÿì´ ìˆë‹¤ë©´ íƒ€ê²Ÿì˜ ë°©í–¥ì„ ì‹¤ì‹œê°„ìœ¼ë¡œ ë°›ì•„ì˜´ (íƒ€ê²Ÿì´ ì—†ë‹¤ë©´(ë¹„í™œì„±í™” ë˜ì—ˆë‹¤ë©´) ë§ˆì§€ë§‰ìœ¼ë¡œ ë°›ì€ íƒ€ê²Ÿ ë°©í–¥ì—ì„œ ë©ˆì¶¤)
+        if (target != null)
+        {
+            moveDirection = (target.transform.position - transform.position).normalized;       
+        }
+        Move(); // ê¸°ëŠ¥ í†µì¼ì„ ìœ„í•´ MoveTowards ì‚¬ìš© ì•ˆí•˜ê³  Move() ì—ì„œ ì²˜ë¦¬
+
+    }
+
+
+
+
+    // setActive false ìƒíƒœì¸ ì˜¤ë¸Œì íŠ¸í•˜ë‚˜ë¥¼ ë°›ì•„ì˜´
+
+    // ProjectileStats ë°ì´í„°ë“¤ + íƒ€ì›Œ ìœ„ì¹˜ í•„ë“œë‘, ëŒ€ìƒ ì  ìœ„ì¹˜ í•„ë“œ ë°›ì•„ ë°ì´í„° ì´ˆê¸°í™”
+
+    // ë°ì´í„° ì´ˆê¸°í™” ì´í›„ ProjectileSpwanType ì— ë§ì¶°ì„œ ìŠ¤í°(setActive true) ì²˜ë¦¬
 
     // 
 
 
-    // Ãæµ¹ µÇ¾úÀ» ¶§ µ¥¹ÌÁö ÁÖ´Â Ã³¸®
+    // ì¶©ëŒ ë˜ì—ˆì„ ë•Œ ë°ë¯¸ì§€ ì£¼ëŠ” ì²˜ë¦¬
 
 
-    // »ı¸í·Â ´Ù µÇ¾úÀ» ¶§, setActive false ¹× µ¥ÀÌÅÍ ÃÊ±âÈ­(¿ÀºêÁ§Æ® Ç®¸µ)
+    // ìƒëª…ë ¥ ë‹¤ ë˜ì—ˆì„ ë•Œ, setActive false ë° ë°ì´í„° ì´ˆê¸°í™”(ì˜¤ë¸Œì íŠ¸ í’€ë§)
 }

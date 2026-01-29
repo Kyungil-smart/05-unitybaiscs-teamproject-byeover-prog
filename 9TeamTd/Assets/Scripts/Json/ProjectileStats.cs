@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static ProjectileEnumData;
 
+// 작성자 : 한성우
+
 public class ProjectileStats : MonoBehaviour
 {
     // TowerData.cs 참고하여 모두 설정해줌

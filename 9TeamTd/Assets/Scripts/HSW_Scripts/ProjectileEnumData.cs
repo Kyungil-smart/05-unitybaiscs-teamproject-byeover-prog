@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 한성우
+
 public class ProjectileEnumData : MonoBehaviour
 {
     // 투사체가 어떻게 스폰되는지
