@@ -207,10 +207,15 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 실제로 타워를 설치할 수 있는지 시도하는 메서드
     /// </summary>
-    /// <param name="cell"></param>
-    /// <returns></returns>
+    /// <remarks>
+    /// 먼저, 셀을 Blocked로 설정해놓고,
+    /// 몬스터가 Base로 지나갈 셀이 끊겼다면 Cell을
+    /// Bloked에서 Empty로 롤백
+    /// </remarks>
+    /// <param name="cell">타워 건설을 시도할 셀 좌표</param>
+    /// <returns>건설에 성공했다면 true, 길을 막거나 건설이 불가능하면 false</returns>
     public bool TryPlaceTower(Cell cell)
     {
         if (!IsBuildable(cell))
@@ -238,12 +243,13 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 설치된 타워를 제거하고 베이스까지의 경로를 재계산하는 메서드
     /// </summary>
-    /// <param name="cell"></param>
-    /// <returns></returns>
+    /// <param name="cell">철거할 타워가 있는 셀 좌표</param>
+    /// <returns>철거에 성공했으면 true, 타워가 없거나 맵 밖이면 false</returns>
     public bool RemoveTower(Cell cell)
     {
+        // 유효성 검사
         if (!IsInside(cell))
             return false;
 
@@ -287,7 +293,7 @@ public sealed class GridSystem : MonoBehaviour
 
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
-            halfExtents,
+            halfExtents,ㄴ
             monsterOverlapBuffer,
             Quaternion.identity,
             monsterLayerMask,
