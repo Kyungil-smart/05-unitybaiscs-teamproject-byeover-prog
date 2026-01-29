@@ -274,15 +274,19 @@ public sealed class GridSystem : MonoBehaviour
     // Monster occupancy (dynamic rule)
     // -----------------------
     /// <summary>
-    /// 
+    /// 해당 셀 위치에 몬스터가 존재하는지 검사하는 메서드 (Physic 사용)
     /// </summary>
-    /// <param name="cell"></param>
-    /// <returns></returns>
+    /// <remarks>
+    /// 타워를 건설할 때 몬스터 바로 위에 짓는 것을 막기 위해 사용
+    /// </remarks>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <returns>몬스터가 있으면 true, 없으면 false</returns>
     public bool IsCellOccupiedByMonster(Cell cell)
     {
         if (!preventBuildOnMonster)
             return false;
         
+        // 물리 연산은 게임 실행중에만
         if (!Application.isPlaying)
             return false;
         
