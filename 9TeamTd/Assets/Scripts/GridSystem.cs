@@ -273,24 +273,28 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Monster occupancy (dynamic rule)
     // -----------------------
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     public bool IsCellOccupiedByMonster(Cell cell)
     {
         if (!preventBuildOnMonster)
             return false;
-
-        // Only check physics while playing
+        
         if (!Application.isPlaying)
             return false;
-
-        // Defensive check (in case called elsewhere)
+        
         if (!IsInside(cell))
             return false;
 
         Vector3 center = CellToWorld(cell, y: monsterCheckY);
-
-        // IMPORTANT: use cellSize (NOT cell_size)
+        
+        // 중요!! : 수정할 때 cellSize 변수 사용 (cell_size 절대 금지)
         Vector3 halfExtents = new Vector3(cellSize * 0.45f, monsterCheckHalfHeight, cellSize * 0.45f);
 
+        
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
             halfExtents,
