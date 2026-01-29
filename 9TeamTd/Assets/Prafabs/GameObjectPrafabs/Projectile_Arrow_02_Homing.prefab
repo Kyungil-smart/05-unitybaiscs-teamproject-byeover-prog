@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 1505202377459535677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 21.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -106,10 +106,11 @@ MonoBehaviour:
   name: 
   moveSpeed: 8
   lifeTime: 10
+  damageInterval: 0
   projectileSpwanType: 2
-  damageTargetTeamType: 0
-  projectileSpacialAbility: 0
-  projectileDamageCategory: 0
+  projectileSpacialAbility: 1
+  damageTargetTeamType: 4
+  projectileDamageCategory: 1
 --- !u!114 &4861731805130451481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +130,10 @@ MonoBehaviour:
   damageRatio: 1
   moveSpeed: 0
   lifeTime: 0
+  damageInterval: 0
   projectileSpwanType: 0
+  projectileSpacialAbility: 0
+  damageTargetTeamType: 0
 --- !u!1001 &4504090557135740101
 PrefabInstance:
   m_ObjectHideFlags: 0
