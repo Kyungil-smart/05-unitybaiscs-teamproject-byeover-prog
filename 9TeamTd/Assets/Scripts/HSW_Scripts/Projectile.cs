@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using static ProjectileEnumData;
@@ -13,6 +14,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject attacker;
     [SerializeField] private GameObject target;
     [SerializeField] private Vector3 moveDirection;
+    [SerializeField] private float IntervalTimer;
     [SerializeField] private int attackValue; // 생성한 타워로부터 공격력 받아오기
     [SerializeField] private float damageRatio; // 생성한 타워로부터 공격력 받아오기
     [SerializeField] private float moveSpeed;   // ProjectileStats 에서 받아오기
@@ -21,7 +23,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
     [SerializeField] private DamageTargetTeamType damageTargetTeamType;
-
+    
+    
 
     DamageCalculator damageCalculator = new DamageCalculator();
 
@@ -30,6 +33,8 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         //damageCalculator = new DamageCalculator();  // 이거 여기 넣어도 오브젝트 풀링에서 객체 여러번 생성되는지 확인 필요
+
+        IntervalTimer = 0;
 
         // 자신에게 붙은 ProjectileStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
         moveSpeed = this.GetComponent<ProjectileStats>().moveSpeed;
@@ -55,6 +60,13 @@ public class Projectile : MonoBehaviour
         // 이동하기, 이동이 있을 경우에만 사용
         if (projectileSpwanType == ProjectileSpwanType.AttackerToTarget) Move();
         else if (projectileSpwanType == ProjectileSpwanType.AttackerToTargetHoming) MoveHoming();
+
+        // 주기에 따라 여러 번 데미지를 주는 경우 타이머 실행
+        if(projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT)
+        {
+            if (IntervalTimer >= lifeTime) IntervalTimer = 0;
+            else IntervalTimer += Time.deltaTime;
+        }
     }
 
     // 방향 받기 함수들
@@ -71,7 +83,7 @@ public class Projectile : MonoBehaviour
             }
         }
         // 방향이 필요없는 공격 방식은 벡터 앞 방향으로
-        else
+        else if ((projectileSpwanType == ProjectileSpwanType.AttackerPosition))
         {
             moveDirection = Vector3.forward;
         }
@@ -99,6 +111,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT) return;
+
         // 데미지를 주는 대상인지 판단
         if ((damageTargetTeamType == DamageTargetTeamType.Enemy ||
             damageTargetTeamType == DamageTargetTeamType.ForAll) && 
@@ -108,19 +122,34 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    // 유형에 따라 데미지를 몇 번 줄지 분리하는 함수
+    private void OnTriggerStay(Collider other)
+    {
+        if (projectileSpacialAbility != ProjectileSpacialAbility.GroundDoT
+            || IntervalTimer != 0) return;
+
+        // 데미지를 주는 대상인지 판단
+        if ((damageTargetTeamType == DamageTargetTeamType.Enemy ||
+            damageTargetTeamType == DamageTargetTeamType.ForAll) &&
+            other.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        {
+            GiveDamageChance(other);
+        }
+    }
+
+
+    // 데미지 및 후처리 함수
     private void GiveDamageChance(Collider other)
     {
         // 데미지 계산
         int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
 
-        // 실제로 데미지 주는 처리
+        // 실제로 데미지 주는 처리 (추가 필요)
         // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
-        Debug.Log($"{gameObject.name} -> {other.gameObject.layer}, {finalDMG} 데미지를 주었습니다.");
+        Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
 
+        // 단일 피해면 오브젝트 비활성화
         if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
     }
-
 
 
     // 생명 주기 관련 함수들

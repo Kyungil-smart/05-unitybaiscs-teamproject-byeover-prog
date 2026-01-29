@@ -103,10 +103,10 @@ MonoBehaviour:
   id: 0
   name: 
   moveSpeed: 0
-  lifeTime: 20
-  damageInterval: 0
+  lifeTime: 30
+  damageInterval: 2
   projectileSpwanType: 5
-  projectileSpacialAbility: 2
+  projectileSpacialAbility: 5
   damageTargetTeamType: 4
   projectileDamageCategory: 3
 --- !u!114 &5567989987671955205
@@ -128,7 +128,7 @@ MonoBehaviour:
   damageRatio: 1
   moveSpeed: 0
   lifeTime: 0
-  damageInterval: 0.5
+  damageInterval: 2
   projectileSpwanType: 0
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
