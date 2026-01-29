@@ -18,6 +18,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float moveSpeed;   // ProjectileStats 에서 받아오기
     [SerializeField] private float lifeTime;    // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats 에서 받아오기
+    [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
+
 
     DamageCalculator damageCalculator = new DamageCalculator();
 
@@ -31,6 +33,7 @@ public class Projectile : MonoBehaviour
         moveSpeed = this.GetComponent<ProjectileStats>().moveSpeed;
         lifeTime = this.GetComponent<ProjectileStats>().lifeTime;
         projectileSpwanType = this.GetComponent<ProjectileStats>().projectileSpwanType;
+        projectileSpacialAbility = this.GetComponent<ProjectileStats>().projectileSpacialAbility;
 
         // 오브젝트의 방향을 적 방향으로 초기화
         SetRotation();
@@ -46,11 +49,14 @@ public class Projectile : MonoBehaviour
     // 임시용 이동
     private void Update()
     {
-        // 이동하기
+        // 이동하기, 이동이 있을 경우에만 사용
         if (projectileSpwanType == ProjectileSpwanType.AttackerToTarget) Move();
         else if (projectileSpwanType == ProjectileSpwanType.AttackerToTargetHoming) MoveHoming();
-
+        // else if (projectileSpwanType == ProjectileSpwanType.AttackerPosition) MoveHoming(); // 수정 필요
+        // else if (projectileSpwanType == ProjectileSpwanType.AttackerPositionTargetDirection) MoveHoming(); // 수정 필요
     }
+
+    // 방향 받기 함수들
 
     private void SetRotation()
     {
@@ -61,6 +67,8 @@ public class Projectile : MonoBehaviour
         }
     }
 
+
+    // 이동 관련 함수들
 
     private void Move()
     {
@@ -77,6 +85,8 @@ public class Projectile : MonoBehaviour
     }
 
 
+    // 충돌 관련 함수들
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Monster"))
@@ -86,13 +96,14 @@ public class Projectile : MonoBehaviour
 
             // 실제로 데미지 주는 처리
             // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
-            Debug.Log($"{other.gameObject.layer} 충돌 확인! {finalDMG} 데미지를 주었습니다.");
+            Debug.Log($"{gameObject.name} -> {other.gameObject.layer}, {finalDMG} 데미지를 주었습니다.");
         }
 
-        SetEnableObject();
+        if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
     }
 
 
+    // 생명 주기 관련 함수들
 
     // 투사체가 지속 시간 이후에도 남아있다면 비활성화 시켜주는 코루틴, 오브젝트 풀링을 위해 사용
     IEnumerator LifeTimeCoroutine()
@@ -103,6 +114,7 @@ public class Projectile : MonoBehaviour
     }
 
 
+    // 비활성화 관련 함수들
 
     // 충돌이나 지속 시간 등으로 비활성화시 리셋해야 하는 요소 모음
     private void SetEnableObject()

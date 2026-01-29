@@ -32,9 +32,9 @@ public class ProjectileEnumData : MonoBehaviour
     public enum ProjectileSpacialAbility
     {
         Default,
-        None,   // 기믹 없는 일반 투사체
+        Single,   // 기믹 없이 1번만 피해를 주고 사라지는 투사체
         Piercing,    // 적을 관통하는 투사체
-        Explosive,   // 폭발하여 광역 피해를 주는 투사체
+        Explosive,   // 충돌 시 폭발하여 광역 피해를 주는 투사체
         Chain,  // 체인 피해를 주는 투사체 ex) 워크래프트 3 체인 라이트닝 등
         GroundDoT,  // 장판 지속 피해를 주는 투사체    
     }
