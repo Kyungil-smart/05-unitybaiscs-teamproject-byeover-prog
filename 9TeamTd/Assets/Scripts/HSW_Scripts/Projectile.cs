@@ -32,8 +32,8 @@ public class Projectile : MonoBehaviour
         lifeTime = this.GetComponent<ProjectileStats>().lifeTime;
         projectileSpwanType = this.GetComponent<ProjectileStats>().projectileSpwanType;
 
-        // 활성화 최초에 방향벡터 노멀라이즈 해서 받아오기
-        moveDirection = (target.transform.position - transform.position).normalized;
+        // 오브젝트의 방향을 적 방향으로 초기화
+        SetRotation();
     }
 
     private void Start()
@@ -46,24 +46,34 @@ public class Projectile : MonoBehaviour
     // 임시용 이동
     private void Update()
     {
+        // 이동하기
         if (projectileSpwanType == ProjectileSpwanType.AttackerToTarget) Move();
         else if (projectileSpwanType == ProjectileSpwanType.AttackerToTargetHoming) MoveHoming();
+
     }
+
+    private void SetRotation()
+    {
+        if (target.transform.position != null)
+        {
+            moveDirection = (target.transform.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
+            transform.rotation = Quaternion.LookRotation(moveDirection);
+        }
+    }
+
 
     private void Move()
     {
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        // 직진 이동, 이동 전에 타겟 방향으로 회전을 해줘야 함
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     private void MoveHoming()
     {
         // 타겟이 있다면 타겟의 방향을 실시간으로 받아옴 (타겟이 없다면(비활성화 되었다면) 마지막으로 받은 타겟 방향에서 멈춤)
-        if (target != null)
-        {
-            moveDirection = (target.transform.position - transform.position).normalized;
-        }
-        Move(); // 기능 통일을 위해 MoveTowards 사용 안하고 Move() 에서 처리
+        if (target != null) SetRotation();  // 이동식 계속 회전
 
+        Move(); // 기능 통일을 위해 MoveTowards 사용 안하고 Move() 에서 처리
     }
 
 
@@ -71,10 +81,14 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
-            // 데미지 주는 식은 따로 빼서 계산하고 takedamage 처리해야함
+            // 데미지 계산
+            int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
+
+            // 실제로 데미지 주는 처리
             // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
-            Debug.Log($"{other.gameObject.layer} 충돌 확인! {damageCalculator.CalculatingDamage(attackValue, damageRatio, 0)} 데미지를 주었습니다.");
+            Debug.Log($"{other.gameObject.layer} 충돌 확인! {finalDMG} 데미지를 주었습니다.");
         }
+
         SetEnableObject();
     }
 
@@ -108,9 +122,6 @@ public class Projectile : MonoBehaviour
 
 
     // 데이터 초기화 이후 ProjectileSpwanType 에 맞춰서 스폰(setActive true) 처리
-
-
-    // 충돌 되었을 때 데미지 주는 처리
 
 
 }
