@@ -5,6 +5,8 @@ using UnityEngine;
 using static TowerStats;
 using static UnityEngine.GraphicsBuffer;
 
+// 작성자 : 한성우
+
 // https://3dperson1.tistory.com/117 스크립트 기반 -> 추후 수정 예정
 public class JsonManager : MonoBehaviour
 {
@@ -55,14 +57,16 @@ public class JsonManager : MonoBehaviour
         }
     }
 
-    // 원하는 ID를 타워에 전달하는 역할
-    // 추후 오버로딩 해서 다양한 케이스에서 사용할 수 있도록 수정할 필요 있음
+    /* 아래 ChangeID 기능은 현재 TowerDatas 만 읽을 수 있어서 수정 필요 */
+
+    // 원하는 ID와 레벨을 받아서 불러오는 용도
+    // 타워, 몬스터, 기지 등에서 사용할 예정
     public void ChangeID(int id, int level)
     {
         if (_towerData == null) return; // 타워 데이터에 없으면 리턴
 
         // TowerDataList에서 해당 레벨의 ID값의 캐릭터 찾기
-        TowerDatas foundData = _towerData.towers.Find(t => t.towerID == id && t.level == level);
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id && t.level == level);
 
         if (foundData != null)
         {
@@ -75,6 +79,29 @@ public class JsonManager : MonoBehaviour
         else
         {
             Debug.LogWarning($"ID {id}나 {level} 레벨에 해당하는 데이터 없음");
+        }
+    }
+
+    // 오버로딩을 통해 원하는 ID를 받아서 불러오는 용도
+    // 시나리오, 투사체 등에서 사용할 예정
+    public void ChangeID(int id)
+    {
+        if (_towerData == null) return; // 타워 데이터에 없으면 리턴
+
+        // TowerDataList에서 해당 레벨의 ID값의 캐릭터 찾기
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id);
+
+        if (foundData != null)
+        {
+            TowerStats tower = FindFirstObjectByType<TowerStats>(); // 현재 씬에서 배치된 오브젝트중 TowerStats 붙은 오브젝트 1개만 찾기
+            if (tower != null)
+            {
+                tower.SetupValue(foundData); // TowerStats 에서 받은 능력치로 설정
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"ID {id}에 해당하는 데이터 없음");
         }
     }
 }
