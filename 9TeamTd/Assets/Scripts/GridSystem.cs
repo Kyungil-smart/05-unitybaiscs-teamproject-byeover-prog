@@ -106,7 +106,7 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 인스펙터에서 스크립트의 속성이 수정될 때마다 호출되는 함수
+    /// 인스펙터에서 스크립트의 속성이 수정될 때마다 호출되는 메서드
     /// </summary>
     private void OnValidate()
     {
@@ -125,7 +125,7 @@ public sealed class GridSystem : MonoBehaviour
     // Coordinate conversion
     // -----------------------
     /// <summary>
-    /// 월드 공간의 3D 위치를 그리드 상의 2D 셀 좌표로 변환하는 코드
+    /// 월드 공간의 3D 위치를 그리드 상의 2D 셀 좌표로 변환하는 메서드
     /// </summary>
     /// <remarks>
     /// 월드 좌표의 X축은 그리드의 X(열), Z축은 그리드의 Y(행)
@@ -141,7 +141,7 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 그리드 좌표를 실제 유니티 좌표로 변환해주는 계산기 코드
+    /// 그리드 좌표를 실제 유니티 좌표로 변환해주는 계산기 메서드
     /// </summary>
     /// <param name="cell">변환할 그리드 셀 좌표</param>
     /// <param name="y">반환할 월드 좌표의 높이 값</param>
@@ -155,18 +155,20 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 입력된 셀 좌표가 그리드 경계 내부에 있는지 검사하는 메서드
     /// </summary>
-    /// <param name="cell"></param>
-    /// <returns></returns>
+    /// <param name="cell">검사할 때 사용하는 셀 좌표</param>
+    /// <returns>좌표가 그리드 안에 있으면 true, 벗어나 있으면 false 반환</returns>
     public bool IsInside(Cell cell)
     {
         return cell.X >= 0 && cell.X < gridWidth && cell.Y >= 0 && cell.Y < gridHeight;
     }
 
-    // -----------------------
-    // Placement queries
-    // -----------------------
+    /// <summary>
+    /// 타워 설치가 가능한지 검사하는 메서드
+    /// </summary>
+    /// <param name="cell">검사할 때 사용하는 셀 좌표</param>
+    /// <returns></returns>
     public bool IsBuildable(Cell cell)
     {
         // 1) Basic bounds / static rules first
