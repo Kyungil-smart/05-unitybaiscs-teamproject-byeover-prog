@@ -12,7 +12,7 @@ public class ProjectileDatas // .json 파일과 이름과 겹치면 안 됨
     public int id;
     public string name;
     public float moveSpeed;
-    public float LifeTime;
+    public float lifeTime;
     public ProjectileSpwanType projectileSpwanType;
     public DamageTargetTeamType damageTargetTeamType;
     public ProjectileSpacialAbility projectileSpacialAbility;

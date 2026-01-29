@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ProjectileEnumData : MonoBehaviour
 {
-    // 투사체가 어떻게 스폰되는지
+    // 투사체가 어떻게 스폰되는지에 대한 속성
     public enum ProjectileSpwanType
     {
         Default,   // 사용 안하는 디폴트 값 (버그 확인용)
@@ -18,7 +18,7 @@ public class ProjectileEnumData : MonoBehaviour
         AttackerPositionTargetDirection, // 공격자의 위치에서 타겟의 방향으로 생성되는 투사체, 투사체 이동 X, ex) 파이어벳 화염 방사 등
     }
 
-    // 투사체가 어느 팀에 피해를 주는지 (폭발 등 광역 피해가 있을 수 있어서 필요)
+    // 투사체가 어느 팀에 피해를 주는지에 대한 속성 (폭발 등 광역 피해가 있을 수 있어서 필요)
     public enum DamageTargetTeamType
     {
         Default,
@@ -28,7 +28,7 @@ public class ProjectileEnumData : MonoBehaviour
         Enemy,   // 적군이면 피해를 줌, ex) 피해, 디버프 등
     }
 
-    // 투사체의 특별한 능력이 있을 경우
+    // 투사체의 특별한 능력
     public enum ProjectileSpacialAbility
     {
         Default,
