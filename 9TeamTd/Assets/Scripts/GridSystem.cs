@@ -293,7 +293,7 @@ public sealed class GridSystem : MonoBehaviour
 
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
-            halfExtents,ㄴ
+            halfExtents,
             monsterOverlapBuffer,
             Quaternion.identity,
             monsterLayerMask,
