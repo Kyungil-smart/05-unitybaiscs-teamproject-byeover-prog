@@ -1,4 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
+
+// 작성자 : 한성우
 
 public interface IDamagable
 {

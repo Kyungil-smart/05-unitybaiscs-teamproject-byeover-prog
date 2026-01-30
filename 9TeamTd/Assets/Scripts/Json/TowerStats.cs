@@ -1,13 +1,15 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ì‘ì„±ì : í•œì„±ìš°
+
 public class TowerStats : MonoBehaviour
 {
-    // TowerData.cs Âü°íÇÏ¿© ¸ğµÎ ¼³Á¤ÇØÁÜ
+    // TowerData.cs ì°¸ê³ í•˜ì—¬ ëª¨ë‘ ì„¤ì •í•´ì¤Œ
     [Header("Tower Status")]
-    public int id;  // ½Äº°ÀÚ
+    public int id;  // ì‹ë³„ì
     public string name;
     public int level;
     public int maxHP;
@@ -16,12 +18,12 @@ public class TowerStats : MonoBehaviour
     public float attackSpeed;
 
 
-    // È£Ãâ ¹ŞÀ¸¸é TowerDatas.cs Âü°íÇÏ¿© ¸ğµÎ ¼³Á¤ÇØÁÜ
+    // í˜¸ì¶œ ë°›ìœ¼ë©´ TowerDatas.cs ì°¸ê³ í•˜ì—¬ ëª¨ë‘ ì„¤ì •í•´ì¤Œ
     public void SetupValue(TowerDatas data)
     {
         if (data == null) return;
 
-        // json°ú µ¿ÀÏÇØ¾ß ÇÔ
+        // jsonê³¼ ë™ì¼í•´ì•¼ í•¨
         id = data.id;
         name = data.name;
         level = data.level;
@@ -31,6 +33,6 @@ public class TowerStats : MonoBehaviour
         attackSpeed = data.attackSpeed;
 
 
-        Debug.Log($"{name}ÀÇ ´É·ÂÄ¡ ¼³Á¤ ¿Ï·á");
+        Debug.Log($"{name}ì˜ ëŠ¥ë ¥ì¹˜ ì„¤ì • ì™„ë£Œ");
     }
 }

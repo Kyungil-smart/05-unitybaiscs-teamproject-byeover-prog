@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 한성우
+
+
 public class DamageCalculator : MonoBehaviour
 {
     public int CalculatingDamage(int atkValue, float dmgRatio, int dfnValue)
