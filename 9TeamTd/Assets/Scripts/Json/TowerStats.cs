@@ -16,6 +16,7 @@ public class TowerStats : MonoBehaviour
     public int attackValue;
     public float attackRange;
     public float attackSpeed;
+    public int towerCost;
 
 
     // 호출 받으면 TowerDatas.cs 참고하여 모두 설정해줌
@@ -31,6 +32,7 @@ public class TowerStats : MonoBehaviour
         attackValue = data.attackValue;
         attackRange = data.attackRange;
         attackSpeed = data.attackSpeed;
+        towerCost = data.towerCost;
 
 
         Debug.Log($"{name}의 능력치 설정 완료");

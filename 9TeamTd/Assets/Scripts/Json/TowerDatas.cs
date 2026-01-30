@@ -15,6 +15,7 @@ public class TowerDatas // .json 파일과 이름과 겹치면 안 됨
     public int attackValue;
     public float attackRange;
     public float attackSpeed;
+    public int towerCost;
 
 
 }
