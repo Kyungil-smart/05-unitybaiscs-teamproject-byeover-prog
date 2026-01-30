@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 문형근
 public class Bullet : MonoBehaviour
 {
     // 테스트용 총알 함수 
