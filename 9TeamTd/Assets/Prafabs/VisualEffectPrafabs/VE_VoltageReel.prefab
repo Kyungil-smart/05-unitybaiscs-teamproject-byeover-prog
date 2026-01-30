@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332165995073722416}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -4842,7 +4842,7 @@ Transform:
   m_GameObject: {fileID: 711127315533883590}
   serializedVersion: 2
   m_LocalRotation: {x: 0.719206, y: 0, z: 0, w: 0.694797}
-  m_LocalPosition: {x: 0, y: 10, z: 3}
+  m_LocalPosition: {x: 0, y: 7, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9655,7 +9655,7 @@ Transform:
   m_GameObject: {fileID: 1089669345047894553}
   serializedVersion: 2
   m_LocalRotation: {x: 0.719206, y: 0, z: 0, w: 0.694797}
-  m_LocalPosition: {x: 0, y: 10, z: 7}
+  m_LocalPosition: {x: 0, y: 7, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14448,7 +14448,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499548608990645225}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -19191,7 +19191,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539220793668377404}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -23934,7 +23934,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633330292642781907}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -28677,7 +28677,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2599129592999571721}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -33420,7 +33420,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2604695131163967906}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -38235,7 +38235,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2699763653495822735}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -42998,7 +42998,7 @@ Transform:
   m_GameObject: {fileID: 2779914340306567701}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43012,7 +43012,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2779914340306567701}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -47741,7 +47741,7 @@ Transform:
   m_GameObject: {fileID: 2779914340306567703}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47755,7 +47755,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2779914340306567703}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -52556,7 +52556,7 @@ Transform:
   m_GameObject: {fileID: 2779914340306567707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52570,7 +52570,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2779914340306567707}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -57333,7 +57333,7 @@ Transform:
   m_GameObject: {fileID: 4392140701028191446}
   serializedVersion: 2
   m_LocalRotation: {x: 0.719206, y: 0, z: 0, w: 0.694797}
-  m_LocalPosition: {x: 0, y: 10, z: 1}
+  m_LocalPosition: {x: 0, y: 7, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62160,7 +62160,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5117803653837093703}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -66961,7 +66961,7 @@ Transform:
   m_GameObject: {fileID: 5338200990339570344}
   serializedVersion: 2
   m_LocalRotation: {x: 0.719206, y: 0, z: 0, w: 0.694797}
-  m_LocalPosition: {x: 0, y: 10, z: 9}
+  m_LocalPosition: {x: 0, y: 7, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71788,7 +71788,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6706452837985388500}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -76603,7 +76603,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7452276588890601853}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -81346,7 +81346,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7531202987397300784}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -86089,7 +86089,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7977916666382524038}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.4
   simulationSpeed: 4
   stopAction: 0
   cullingMode: 1
@@ -90818,7 +90818,7 @@ Transform:
   m_GameObject: {fileID: 8014421365338516659}
   serializedVersion: 2
   m_LocalRotation: {x: 0.719206, y: 0, z: 0, w: 0.694797}
-  m_LocalPosition: {x: 0, y: 10, z: 5}
+  m_LocalPosition: {x: 0, y: 7, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
