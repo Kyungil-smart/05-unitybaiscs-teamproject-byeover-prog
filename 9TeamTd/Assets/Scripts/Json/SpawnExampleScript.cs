@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 한성우
+
 public class SpawnExampleScript : MonoBehaviour
 {
     [Header("대상의 정보")]
