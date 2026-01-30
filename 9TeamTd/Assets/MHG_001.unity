@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerPrefab: {fileID: 8693039113468479471, guid: 17c9f5da1e067194dbcb75a1022a1d1e, type: 3}
   _gold: 100
-  _towerCost: 50
+  _towerCost: 10
 --- !u!4 &282665570
 Transform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &310570645
+--- !u!1 &543864888
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,41 +177,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 310570647}
-  - component: {fileID: 310570646}
+  - component: {fileID: 543864890}
+  - component: {fileID: 543864889}
   m_Layer: 0
-  m_Name: TowerManager
+  m_Name: TowerSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &310570646
+--- !u!114 &543864889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310570645}
+  m_GameObject: {fileID: 543864888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff241c50f4003048a500a298993e8a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 051d6496c5b8d9442b04c347e4c933ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _placedTowers: []
-  _towerPrefab: {fileID: 0}
-  _gold: 100
-  _towerCost: 50
---- !u!4 &310570647
+  _towerManager: {fileID: 0}
+--- !u!4 &543864890
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310570645}
+  m_GameObject: {fileID: 543864888}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1547978, y: -0.67403567, z: 1.0676631}
+  m_LocalPosition: {x: 1.0890625, y: 0.74610233, z: -0.659977}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -546,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 1722358610}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2167984, y: -0, z: -0, w: 0.97621644}
-  m_LocalPosition: {x: 0, y: 5.32, z: -9.48}
+  m_LocalPosition: {x: 0, y: 5.91, z: -10.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -654,5 +651,5 @@ SceneRoots:
   - {fileID: 2017805204}
   - {fileID: 1243505452}
   - {fileID: 611256686}
-  - {fileID: 310570647}
   - {fileID: 282665570}
+  - {fileID: 543864890}
