@@ -86,8 +86,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 6, z: 20}
-  m_Center: {x: 0, y: 0, z: 10}
+  m_Size: {x: 2, y: 2, z: 8}
+  m_Center: {x: 0, y: 0, z: 4}
 --- !u!114 &3034964720141761245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   attackValue: 5
   damageRatio: 1
@@ -132,6 +132,7 @@ MonoBehaviour:
   projectileSpwanType: 0
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
+  projectileDamageCategory: 0
 --- !u!1001 &2280293665849289470
 PrefabInstance:
   m_ObjectHideFlags: 0

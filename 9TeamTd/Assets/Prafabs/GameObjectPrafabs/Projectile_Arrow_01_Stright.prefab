@@ -54,8 +54,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 2
+  m_Radius: 0.1
+  m_Height: 1.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9127578416529872460
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   attackValue: 10
   damageRatio: 1
@@ -102,6 +102,7 @@ MonoBehaviour:
   projectileSpwanType: 0
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
+  projectileDamageCategory: 0
 --- !u!1 &8588553140684015885
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5068933642004674964}
@@ -145,18 +146,6 @@ PrefabInstance:
     - target: {fileID: 2865880938984369139, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
       propertyPath: m_Name
       value: Body_Arrow_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6880869093490263431, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6880869093490263431, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6880869093490263431, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6880869093490263431, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
       propertyPath: m_LocalPosition.x
