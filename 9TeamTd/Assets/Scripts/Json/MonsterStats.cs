@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// 작성자 : 김영빈
+
+public class MonsterStats : MonoBehaviour
+{
+    // MonsterDatas 스크립트 일치시키기
+    [Header("Monster Status")]
+    public int id;
+    public string name;
+    public int level;
+    public int maxHp;
+    public int attackValue;
+    public int defenceValue;
+    
+    public void SetupValue(MonsterDatas data)
+    {
+        if (data == null) return;
+
+        id = data.id;
+        name = data.name;
+        level = data.level;
+        maxHp = data.maxHp;
+        attackValue = data.attackValue;
+        defenceValue = data.defenceValue;
+    }
+}
