@@ -4,15 +4,16 @@ using UnityEngine;
 // 타워 구매 정보를 보여주는 UI // 작성자 : PEY
 public class TowerToBuyUI : MonoBehaviour
 {
+    Canvas canvas;
     [Header("UI")]
     [SerializeField] GameObject TowerToBuyPanel;
-    [SerializeField] Canvas canvas;
     [SerializeField] float offsetYRatio = 0.32f;  // Canvas 높이 대비 비율 
     [SerializeField] TextMeshProUGUI nameText;
     //[SerializeField] TextMeshProUGUI hpText;
     [SerializeField] TextMeshProUGUI attackValueText;
     [SerializeField] TextMeshProUGUI attackRangeText;
     [SerializeField] TextMeshProUGUI attackSpeedText;
+    [SerializeField] TextMeshProUGUI costText;
 
     [Header("대상의 정보")]
     [SerializeField] string towerName;
@@ -20,6 +21,7 @@ public class TowerToBuyUI : MonoBehaviour
     [SerializeField] int attackValue;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
+    [SerializeField] float cost;
 
     private void Awake()
     {
@@ -38,9 +40,22 @@ public class TowerToBuyUI : MonoBehaviour
         attackValueText.text = $"파워: {attackValue}";
         attackSpeedText.text = $"속도: {attackSpeed}";
         attackRangeText.text = $"범위: {attackRange}";
+        costText.text = cost.ToString();
 
         SetPanelPosition(buttonRect);
         TowerToBuyPanel.SetActive(true);
+    }
+
+    public void SetupValue(TowerDatas data)
+    {
+        if (data == null) return;
+
+        towerName = data.name;
+        maxHP = data.maxHP;
+        attackValue = data.attackValue;
+        attackRange = data.attackRange;
+        attackSpeed = data.attackSpeed;
+        cost = data.towerCost;
     }
 
     // 패널 위치를 버튼 위로 설정
@@ -68,16 +83,5 @@ public class TowerToBuyUI : MonoBehaviour
     public void HideTowerInfo()
     {
         TowerToBuyPanel.SetActive(false);
-    }
-
-    public void SetupValue(TowerDatas data)
-    {
-        if (data == null) return;
-
-        towerName = data.name;
-        maxHP = data.maxHP;
-        attackValue = data.attackValue;
-        attackRange = data.attackRange;
-        attackSpeed = data.attackSpeed;
     }
 }
