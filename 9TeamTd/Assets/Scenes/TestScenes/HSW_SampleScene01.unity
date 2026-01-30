@@ -224,6 +224,7 @@ MonoBehaviour:
   attackValue: 0
   attackRange: 0
   attackSpeed: 0
+  towerCost: 0
 --- !u!65 &650882300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -742,6 +743,7 @@ MonoBehaviour:
   attackValue: 0
   attackRange: 0
   attackSpeed: 0
+  towerCost: 0
 --- !u!4 &1545986495
 Transform:
   m_ObjectHideFlags: 0
@@ -954,6 +956,7 @@ MonoBehaviour:
   attackValue: 0
   attackRange: 0
   attackSpeed: 0
+  towerCost: 0
 --- !u!4 &2126422700
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,7 +1119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &2485817373899961674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1331,6 +1334,7 @@ MonoBehaviour:
   attackValue: 6
   attackRange: 30
   attackSpeed: 1
+  towerCost: 0
 --- !u!1001 &4855793516367044563
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,36 +2,69 @@
   "projectiles" : [
   {
     "id": 11001,
-    "name": "Arrow01",
-    "moveSpeed": 6,
-    "lifeTime": 6,
+    "name": "Projectile_Arrow_01_Stright",
+    "moveSpeed": 8,
+    "lifeTime": 10,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical"
   },
   {
-    "id": 11002,
-    "name": "Arrow02",
+    "id": 11011,
+    "name": "Projectile_Arrow_02_Homing",
     "moveSpeed": 12,
-    "lifeTime": 6,
+    "lifeTime": 10,
     "damageInterval": -1,
-    "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "projectileSpwanType": "AttackerToTargetHoming",
+    "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical"
   },
   {
-    "id": 11003,
-    "name": "Arrow03",
-    "moveSpeed": 24,
-    "lifeTime": 6,
+    "id": 11021,
+    "name": "Projectile_Arrow_03_Stright_Percing",
+    "moveSpeed": 16,
+    "lifeTime": 10,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "projectileSpacialAbility": "Piercing",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11031,
+    "name": "Projectile_Flame_GroundDoT",
+    "moveSpeed": -1,
+    "lifeTime": 3,
+    "damageInterval": 1,
+    "projectileSpwanType": "AttackerPositionTargetDirection",
+    "projectileSpacialAbility": "GroundDoT",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Fire"
+  },
+  {
+    "id": 11041,
+    "name": "Projectile_Flame_Short",
+    "moveSpeed": -1,
+    "lifeTime": 0.6,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerPositionTargetDirection",
+    "projectileSpacialAbility": "Piercing",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Fire"
+  },
+  {
+    "id": 11051,
+    "name": "Projectile_IceField_GroundDoT",
+    "moveSpeed": -1,
+    "lifeTime": 12,
+    "damageInterval": 2,
+    "projectileSpwanType": "AttackerPosition",
+    "projectileSpacialAbility": "GroundDoT",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Water"
   }
 ]
 }
