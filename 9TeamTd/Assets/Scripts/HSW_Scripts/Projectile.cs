@@ -68,7 +68,6 @@ public class Projectile : MonoBehaviour
 
 
 
-        Debug.Log(transform.rotation);
 
         // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어
         StartCoroutine(LifeTimeCoroutine());
