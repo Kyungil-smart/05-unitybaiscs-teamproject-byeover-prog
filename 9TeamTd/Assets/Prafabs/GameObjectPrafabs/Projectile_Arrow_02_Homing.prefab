@@ -104,8 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: 
-  moveSpeed: 8
-  lifeTime: 10
+  moveSpeed: 24
+  lifeTime: 1
   damageInterval: 0
   projectileSpwanType: 2
   projectileSpacialAbility: 1
