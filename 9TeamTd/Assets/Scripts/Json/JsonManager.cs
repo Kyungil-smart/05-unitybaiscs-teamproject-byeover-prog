@@ -15,6 +15,7 @@ public enum JsonType
     SceneData,  // 현재 테이블 없음
     BaseData,   // 현재 테이블 없음
     TowerData,
+    PlayerData, // 현재 테이블 없음
     MonsterData,    // 현재 테이블 없음
     ProjectileData,
     StatusEffectData,   // 현재 테이블 없음
@@ -96,6 +97,7 @@ public class JsonManager : MonoBehaviour
             case JsonType.TowerData:
                 ChangeTowerID(targetID, targetLevel);
                 break;
+            case JsonType.PlayerData: break;
             case JsonType.MonsterData: break;
             case JsonType.StatusEffectData: break;
             default: break;
