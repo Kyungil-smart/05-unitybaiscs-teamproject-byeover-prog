@@ -1,0 +1,28 @@
+﻿{
+  "monsters" : [
+  {
+    "id": 2000,
+    "name": "골렘",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 1
+  },
+  {
+    "id": 2001,
+    "name": "가고일",
+    "level": 1,
+    "maxHP": 10,
+    "attackValue": 1,
+    "defenceValue": 1
+  },
+  {
+    "id": 2002,
+    "name": "폭탄광",
+    "level": 1,
+    "maxHP": 20,
+    "attackValue": 1,
+    "defenceValue": 1
+  }
+]
+}
