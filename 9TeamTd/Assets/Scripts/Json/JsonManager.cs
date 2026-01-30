@@ -33,7 +33,7 @@ public class JsonManager : MonoBehaviour
     [SerializeField] private JsonType jsonType = JsonType.None;
     [SerializeField] string dataFilePath = "";  // Json 파일 경로
 
-
+    // 테이블 추가될 때마다 업데이트 필요
     private TowerDataList _towerData;   // TowerStats 의 데이터를 불러오면 됨
     private ProjectileDataList _projectileData;   // TowerStats 의 데이터를 불러오면 됨
 
