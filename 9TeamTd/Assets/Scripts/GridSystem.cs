@@ -614,6 +614,10 @@ public sealed class GridSystem : MonoBehaviour
         return GetDistance(distanceField, cell) != -1;
     }
 
+    /// <summary>
+    /// 맵의 가장자리에 있는 셀들 중, 스폰 가능한 곳을 모두 찾아서 리스트에 저장하는 메서드
+    /// </summary>
+    /// <param name="buffer">찾아낸 스폰 지점들을 저장할 리스트</param>
     private void CollectReachableEdgeCells(List<Cell> buffer)
     {
         buffer.Clear();
@@ -641,6 +645,11 @@ public sealed class GridSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 해당 셀이 스폰 조건을 만족하면 버퍼에 추가하는 메서드
+    /// </summary>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <param name="buffer">조건 만족 시 추가할 리스트</param>
     private void AddIfReachableSpawnCell(Cell cell, List<Cell> buffer)
     {
         if (!IsReachableSpawnCell(cell, distanceToBase, assumedBlockedCell: null))
