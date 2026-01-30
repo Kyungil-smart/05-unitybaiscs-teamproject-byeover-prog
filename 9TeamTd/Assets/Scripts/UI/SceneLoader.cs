@@ -10,4 +10,13 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(1); // ∞‘¿” æ¿
     }
+
+    public void OnClickExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
