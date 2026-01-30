@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveData
 {
     public int nowStage = 1;
-    public OP<int> gold = new();
+    public int gold = 0;
     public List<string> ownedItems = new List<string>();
 }
 
@@ -47,19 +47,8 @@ public class SaveManager : MonoBehaviour
 
     public void LoadData()
     {
-        if (File.Exists(GetPath(nowSlot)))
-        {
-            string json = File.ReadAllText(GetPath(nowSlot));
-            
-            JsonUtility.FromJsonOverwrite(json, nowPlayer);
-            
-            nowPlayer.gold ??= new OP<int>();
-        }
-        else
-        {
-            nowPlayer = new SaveData();
-            SaveData();
-        }
+        string json = File.ReadAllText(GetPath(nowSlot));
+        JsonUtility.FromJsonOverwrite(json, nowPlayer);
     }
 
     public bool LoadDataForPreview(int slotNum)

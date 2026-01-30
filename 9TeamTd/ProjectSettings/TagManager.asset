@@ -11,6 +11,12 @@ TagManager:
   - 
   - Water
   - UI
+  - TileMap_Terrain
+  - TileMap_Feature
+  - 
+  - 
+  - Base
+  - Tower
   - 
   - 
   - 
@@ -19,13 +25,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Monster
   - 
   - 
   - 

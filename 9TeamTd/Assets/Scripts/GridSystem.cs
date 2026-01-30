@@ -88,8 +88,8 @@ public sealed class GridSystem : MonoBehaviour
 
     private Cell baseCell;
 
-    private readonly Dictionary<int, GameObject> towerVisualByIndex = new Dictionary<int, GameObject>(256);
-    private readonly List<Cell> edgeSpawnBuffer = new List<Cell>(128); // 엣지 스폰 버퍼
+    private readonly Dictionary<int, GameObject> towerVisualByIndex = new Dictionary<int, GameObject>();
+    private readonly List<Cell> edgeSpawnBuffer = new List<Cell>(128);
     private readonly Collider[] monsterOverlapBuffer = new Collider[8];
 
     private void Awake()
@@ -101,6 +101,8 @@ public sealed class GridSystem : MonoBehaviour
         ResolveBaseCell();
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
+
+        RegisterObstacles(); // ��ֹ� ��� �߰���
 
         SnapBaseTransformToCellCenter();
     }
@@ -173,10 +175,10 @@ public sealed class GridSystem : MonoBehaviour
     {
         // 1) Basic bounds / static rules first
         if (!IsInside(cell))
-        return false;
+            return false;
 
         if (cell == baseCell)
-        return false;
+            return false;
 
         if (GetCellState(cell) != CellState.Empty)
             return false;
@@ -220,7 +222,9 @@ public sealed class GridSystem : MonoBehaviour
     {
         if (!IsBuildable(cell))
         {
+#if UNITY_EDITOR
             Debug.Log($"[GridSystem] TryPlaceTower failed (NotBuildable) cell={cell}");
+#endif
             return false;
         }
         
@@ -232,13 +236,16 @@ public sealed class GridSystem : MonoBehaviour
             // Rollback
             SetCellState(cell, CellState.Empty);
             RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
-
+#if UNITY_EDITOR
             Debug.Log($"[GridSystem] TryPlaceTower failed (WouldBlockAllSpawns) cell={cell}");
+#endif
             return false;
         }
 
         //SpawnTowerVisual(cell);
+#if UNITY_EDITOR
         Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
+#endif
         return true;
     }
 
@@ -259,14 +266,17 @@ public sealed class GridSystem : MonoBehaviour
         int index = ToIndex(cell);
 
         if (towerVisualByIndex.TryGetValue(index, out GameObject visual) && visual != null)
+        {
             Destroy(visual);
-
-        towerVisualByIndex.Remove(index);
+            towerVisualByIndex.Remove(index);
+        }
 
         SetCellState(cell, CellState.Empty);
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
+#if UNITY_EDITOR
         Debug.Log($"[GridSystem] RemoveTower success cell={cell}");
+#endif
         return true;
     }
 
@@ -689,6 +699,33 @@ public sealed class GridSystem : MonoBehaviour
 
         towerObj.name = $"Tower_{cell.X}_{cell.Y}";
         towerVisualByIndex[index] = towerObj;
+    }
+
+    // ---
+    // ��ֹ�
+    // ---
+    /// <summary>
+    /// ���� �ִ� ��� GridObstacle�� ã�Ƽ� �׸��忡 ���
+    /// </summary>
+    private void RegisterObstacles()
+    {
+        GridObstacle[] obstacles = FindObjectsOfType<GridObstacle>();
+
+        foreach (GridObstacle obstacle in obstacles)
+        {
+            obstacle.Initialize(this);
+
+            // �����ϴ� ������ Blocked ���·� ����
+            foreach (Cell cell in obstacle.occupiedCells)
+            {
+                if (!IsInside(cell))
+                {
+                    Debug.Log($"[GridSystem] Obstacle cell {cell} is outside grid! Skipping.");
+                    continue;
+                }
+                SetCellState(cell, CellState.Blocked);
+            }
+        }
     }
 
     // -----------------------

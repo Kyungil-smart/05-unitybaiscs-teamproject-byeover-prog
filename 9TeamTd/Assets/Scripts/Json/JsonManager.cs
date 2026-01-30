@@ -1,34 +1,52 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using static TowerStats;
 using static UnityEngine.GraphicsBuffer;
 
-// https://3dperson1.tistory.com/117 ½ºÅ©¸³Æ® ±â¹İ -> ÃßÈÄ ¼öÁ¤ ¿¹Á¤
+// ì‘ì„±ì : í•œì„±ìš°
+
+public enum JsonType
+{
+    Default,
+    None,
+    SceneData,  // í˜„ì¬ í…Œì´ë¸” ì—†ìŒ
+    BaseData,   // í˜„ì¬ í…Œì´ë¸” ì—†ìŒ
+    TowerData,
+    PlayerData, // í˜„ì¬ í…Œì´ë¸” ì—†ìŒ
+    MonsterData,    // í˜„ì¬ í…Œì´ë¸” ì—†ìŒ
+    ProjectileData,
+    StatusEffectData,   // í˜„ì¬ í…Œì´ë¸” ì—†ìŒ
+}
+
+// https://3dperson1.tistory.com/117 ìŠ¤í¬ë¦½íŠ¸ ê¸°ë°˜ -> ì¶”í›„ ìˆ˜ì • ì˜ˆì •
 public class JsonManager : MonoBehaviour
 {
     public static JsonManager instanceJsonManger { get; private set; }
 
-    [Header("´ë»óÀÇ Á¤º¸")]
+    [Header("ëŒ€ìƒì˜ ì •ë³´")]
     [SerializeField] private int targetID = 0;
-    [SerializeField] private int targetLevel = 0;
+    [SerializeField] private int targetLevel = -1;
 
-    [Header("Json ÆÄÀÏ °æ·Î")]
-    [SerializeField] private string dataFilePath = "";  // Json ÆÄÀÏ °æ·Î
+    [Header("íŒŒì¼ ìœ í˜• ë° ê²½ë¡œ")]
+    [SerializeField] private JsonType jsonType = JsonType.None;
+    [SerializeField] string dataFilePath = "";  // Json íŒŒì¼ ê²½ë¡œ
 
-
-    private TowerDataList _towerData;   // TowerStats ÀÇ µ¥ÀÌÅÍ¸¦ ºÒ·¯¿À¸é µÊ
+    // í…Œì´ë¸” ì¶”ê°€ë  ë•Œë§ˆë‹¤ ì—…ë°ì´íŠ¸ í•„ìš”
+    private TowerDataList _towerData;   // TowerStats ì˜ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¤ë©´ ë¨
+    private ProjectileDataList _projectileData;   // TowerStats ì˜ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¤ë©´ ë¨
 
     private void Awake()
     {
-        // ÀÌ ¸Å´ÏÀú°¡ 2°³ ÀÌ»ó ÀÖÀ¸¸é 1°³´Â »èÁ¦
-        #region ½Ì±ÛÅæ
+        // ì´ ë§¤ë‹ˆì €ê°€ 2ê°œ ì´ìƒ ìˆìœ¼ë©´ 1ê°œëŠ” ì‚­ì œ
+        #region ì‹±ê¸€í†¤
         if (instanceJsonManger == null)
         {
             instanceJsonManger = this;
             DontDestroyOnLoad(gameObject);
-            LoadJsonFile(); // ÆÄÀÏ ºÒ·¯¿À±â
+            LoadJsonFile(); // íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°
         }
         else
         {
@@ -37,44 +55,116 @@ public class JsonManager : MonoBehaviour
         #endregion
     }
 
-    public void Start()
+    /*
+    private void Start()
     {
         ChangeID(targetID, targetLevel);
     }
+    */
 
-    private void LoadJsonFile()
+    // ì´ í•¨ìˆ˜ë¥¼ í†µí•´
+    public void GetJsonRequest(JsonType type, string path, int id)
     {
-        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(ÅØ½ºÆ® ÆÄÀÏ Çü½Ä) À¸·Î ¸®¼Ò½º Æú´õ ÇÏÀ§ °æ·Î¿¡¼­ TowerData ÆÄÀÏÀ» ºÒ·¯¿È//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(ÅØ½ºÆ® ÆÄÀÏ Çü½Ä) À¸·Î ¸®¼Ò½º Æú´õ ÇÏÀ§ °æ·Î¿¡¼­ TowerData ÆÄÀÏÀ» ºÒ·¯¿È
-        if (jsonDataFile != null)
+        // ë¶ˆëŸ¬ì˜¤ê¸° ì „ì— ë°ì´í„° ë³€ê²½
+        jsonType = type;
+        dataFilePath = path;
+        targetID = id;
+
+        // ë°ì´í„°ë¥¼ ë¶„ë¥˜ ë° ë¶ˆëŸ¬ì˜¤ê¸°
+        switch (jsonType)
         {
-            _towerData = JsonUtility.FromJson<TowerDataList>(jsonDataFile.text);    // JsonUtility È°¿ëÇØ TowerDataList ¿ªÁ÷·ÄÈ­
+            case JsonType.None: break;
+            case JsonType.SceneData: break;
+            case JsonType.ProjectileData:
+                ChangeProjectileID(targetID);
+                break;
+            default: break;
         }
-        else
+    }
+    public void GetJsonRequest(JsonType type, string path, int id, int lv)
+    {
+        // ë¶ˆëŸ¬ì˜¤ê¸° ì „ì— ë°ì´í„° ë³€ê²½
+        jsonType = type;
+        dataFilePath = path;
+        targetID = id;
+        targetLevel = lv;
+
+        // ë°ì´í„°ë¥¼ ë¶„ë¥˜ ë° ë¶ˆëŸ¬ì˜¤ê¸°
+        switch (jsonType)
         {
-            Debug.LogError("ÆÄÀÏ ¾øÀ½");
+            case JsonType.None: break;
+            case JsonType.BaseData: break;
+            case JsonType.TowerData:
+                ChangeTowerID(targetID, targetLevel);
+                break;
+            case JsonType.PlayerData: break;
+            case JsonType.MonsterData: break;
+            case JsonType.StatusEffectData: break;
+            default: break;
         }
     }
 
-    // ¿øÇÏ´Â ID¸¦ Å¸¿ö¿¡ Àü´ŞÇÏ´Â ¿ªÇÒ
-    // ÃßÈÄ ¿À¹ö·Îµù ÇØ¼­ ´Ù¾çÇÑ ÄÉÀÌ½º¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ¼öÁ¤ÇÒ ÇÊ¿ä ÀÖÀ½
-    public void ChangeID(int id, int level)
-    {
-        if (_towerData == null) return; // Å¸¿ö µ¥ÀÌÅÍ¿¡ ¾øÀ¸¸é ¸®ÅÏ
 
-        // TowerDataList¿¡¼­ ÇØ´ç ·¹º§ÀÇ ID°ªÀÇ Ä³¸¯ÅÍ Ã£±â
-        TowerDatas foundData = _towerData.towers.Find(t => t.towerID == id && t.level == level);
+    // ì•„ë˜ëŠ” íŒŒì¼ ì¡°ê±´ì— ë”°ë¼ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜
+
+    private void LoadJsonFile()
+    {
+        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(í…ìŠ¤íŠ¸ íŒŒì¼ í˜•ì‹) ìœ¼ë¡œ ë¦¬ì†ŒìŠ¤ í´ë” í•˜ìœ„ ê²½ë¡œì—ì„œ TowerData íŒŒì¼ì„ ë¶ˆëŸ¬ì˜´//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(í…ìŠ¤íŠ¸ íŒŒì¼ í˜•ì‹) ìœ¼ë¡œ ë¦¬ì†ŒìŠ¤ í´ë” í•˜ìœ„ ê²½ë¡œì—ì„œ TowerData íŒŒì¼ì„ ë¶ˆëŸ¬ì˜´
+        if (jsonDataFile != null)
+        {
+            _towerData = JsonUtility.FromJson<TowerDataList>(jsonDataFile.text);    // JsonUtility í™œìš©í•´ TowerDataList ì—­ì§ë ¬í™”
+        }
+        else
+        {
+            Debug.LogError("íŒŒì¼ ì—†ìŒ");
+        }
+    }
+
+    /* ì•„ë˜ ChangeID ê¸°ëŠ¥ì€ í˜„ì¬ TowerDatas ë§Œ ì½ì„ ìˆ˜ ìˆì–´ì„œ ìˆ˜ì • í•„ìš” */
+
+    // ì›í•˜ëŠ” IDì™€ ë ˆë²¨ì„ ë°›ì•„ì„œ ë¶ˆëŸ¬ì˜¤ëŠ” ìš©ë„
+    // íƒ€ì›Œ, ëª¬ìŠ¤í„°, ê¸°ì§€ ë“±ì—ì„œ ì‚¬ìš©í•  ì˜ˆì •
+    private void ChangeTowerID(int id, int level)
+    {
+        if (_towerData == null) return; // íƒ€ì›Œ ë°ì´í„°ì— ì—†ìœ¼ë©´ ë¦¬í„´
+
+        // TowerDataListì—ì„œ í•´ë‹¹ ë ˆë²¨ì˜ IDê°’ì˜ ìºë¦­í„° ì°¾ê¸°
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id && t.level == level);
 
         if (foundData != null)
         {
-            TowerStats tower = FindFirstObjectByType<TowerStats>(); // ÇöÀç ¾À¿¡¼­ ¹èÄ¡µÈ ¿ÀºêÁ§Æ®Áß TowerStats ºÙÀº ¿ÀºêÁ§Æ® 1°³¸¸ Ã£±â
+            TowerStats tower = FindFirstObjectByType<TowerStats>(); // í˜„ì¬ ì”¬ì—ì„œ ë°°ì¹˜ëœ ì˜¤ë¸Œì íŠ¸ì¤‘ TowerStats ë¶™ì€ ì˜¤ë¸Œì íŠ¸ 1ê°œë§Œ ì°¾ê¸°
             if (tower != null)
             {
-                tower.SetupValue(foundData); // TowerStats ¿¡¼­ ¹ŞÀº ´É·ÂÄ¡·Î ¼³Á¤
+                tower.SetupValue(foundData); // TowerStats ì—ì„œ ë°›ì€ ëŠ¥ë ¥ì¹˜ë¡œ ì„¤ì •
             }
         }
         else
         {
-            Debug.LogWarning($"ID {id}³ª {level} ·¹º§¿¡ ÇØ´çÇÏ´Â µ¥ÀÌÅÍ ¾øÀ½");
+            Debug.LogWarning($"ID {id}ë‚˜ {level} ë ˆë²¨ì— í•´ë‹¹í•˜ëŠ” ë°ì´í„° ì—†ìŒ");
+        }
+    }
+
+    // ì˜¤ë²„ë¡œë”©ì„ í†µí•´ ì›í•˜ëŠ” IDë¥¼ ë°›ì•„ì„œ ë¶ˆëŸ¬ì˜¤ëŠ” ìš©ë„
+    // ì‹œë‚˜ë¦¬ì˜¤, íˆ¬ì‚¬ì²´ ë“±ì—ì„œ ì‚¬ìš©í•  ì˜ˆì •
+    private void ChangeProjectileID(int id)
+    {
+        if (_projectileData == null) return; // íˆ¬ì‚¬ì²´ ë°ì´í„°ì— ì—†ìœ¼ë©´ ë¦¬í„´
+
+        // ProjectileDataList ì—ì„œ í•´ë‹¹ ë ˆë²¨ì˜ IDê°’ì˜ ìºë¦­í„° ì°¾ê¸°
+        ProjectileDatas foundData = _projectileData.projectiles.Find(t => t.id == id);
+
+        if (foundData != null)
+        {
+            ProjectileStats projectile = FindFirstObjectByType<ProjectileStats>(); // í˜„ì¬ ì”¬ì—ì„œ ë°°ì¹˜ëœ ì˜¤ë¸Œì íŠ¸ì¤‘ ProjectileStats ë¶™ì€ ì˜¤ë¸Œì íŠ¸ 1ê°œë§Œ ì°¾ê¸°
+            if (projectile != null)
+            {
+                projectile.SetupValue(foundData); // ProjectileStats ì—ì„œ ë°›ì€ ëŠ¥ë ¥ì¹˜ë¡œ ì„¤ì •
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"ID {id}ì— í•´ë‹¹í•˜ëŠ” ë°ì´í„° ì—†ìŒ");
         }
     }
 }
