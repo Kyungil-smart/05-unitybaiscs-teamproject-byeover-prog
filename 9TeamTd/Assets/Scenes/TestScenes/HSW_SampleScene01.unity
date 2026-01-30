@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetID: 1100
   targetLevel: 1
+  jsonType: 1
   dataFilePath: Datas/TowerDataExample
 --- !u!4 &305265082
 Transform:

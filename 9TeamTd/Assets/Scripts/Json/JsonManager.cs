@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using static TowerStats;
 using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 한성우
+
+public enum JsonType
+{
+    Default,
+    None,
+    SceneData,  // 현재 테이블 없음
+    BaseData,   // 현재 테이블 없음
+    TowerData,
+    MonsterData,    // 현재 테이블 없음
+    ProjectileData,
+    StatusEffectData,   // 현재 테이블 없음
+}
 
 // https://3dperson1.tistory.com/117 스크립트 기반 -> 추후 수정 예정
 public class JsonManager : MonoBehaviour
@@ -14,10 +27,11 @@ public class JsonManager : MonoBehaviour
 
     [Header("대상의 정보")]
     [SerializeField] private int targetID = 0;
-    [SerializeField] private int targetLevel = 0;
+    [SerializeField] private int targetLevel = -1;
 
-    [Header("Json 파일 경로")]
-    [SerializeField] private string dataFilePath = "";  // Json 파일 경로
+    [Header("파일 유형 및 경로")]
+    [SerializeField] private JsonType jsonType = JsonType.None;
+    [SerializeField] string dataFilePath = "";  // Json 파일 경로
 
 
     private TowerDataList _towerData;   // TowerStats 의 데이터를 불러오면 됨
@@ -41,11 +55,55 @@ public class JsonManager : MonoBehaviour
     }
 
     /*
-    public void Start()
+    private void Start()
     {
         ChangeID(targetID, targetLevel);
     }
     */
+
+    // 이 함수를 통해
+    public void GetJsonRequest(JsonType type, string path, int id)
+    {
+        // 불러오기 전에 데이터 변경
+        jsonType = type;
+        dataFilePath = path;
+        targetID = id;
+
+        // 데이터를 분류 및 불러오기
+        switch (jsonType)
+        {
+            case JsonType.None: break;
+            case JsonType.SceneData: break;
+            case JsonType.ProjectileData:
+                ChangeProjectileID(targetID);
+                break;
+            default: break;
+        }
+    }
+    public void GetJsonRequest(JsonType type, string path, int id, int lv)
+    {
+        // 불러오기 전에 데이터 변경
+        jsonType = type;
+        dataFilePath = path;
+        targetID = id;
+        targetLevel = lv;
+
+        // 데이터를 분류 및 불러오기
+        switch (jsonType)
+        {
+            case JsonType.None: break;
+            case JsonType.BaseData: break;
+            case JsonType.TowerData:
+                ChangeTowerID(targetID, targetLevel);
+                break;
+            case JsonType.MonsterData: break;
+            case JsonType.StatusEffectData: break;
+            default: break;
+        }
+    }
+
+
+    // 아래는 파일 조건에 따라 불러오는 함수
 
     private void LoadJsonFile()
     {
@@ -64,7 +122,7 @@ public class JsonManager : MonoBehaviour
 
     // 원하는 ID와 레벨을 받아서 불러오는 용도
     // 타워, 몬스터, 기지 등에서 사용할 예정
-    public void ChangeID(int id, int level)
+    private void ChangeTowerID(int id, int level)
     {
         if (_towerData == null) return; // 타워 데이터에 없으면 리턴
 
@@ -87,19 +145,19 @@ public class JsonManager : MonoBehaviour
 
     // 오버로딩을 통해 원하는 ID를 받아서 불러오는 용도
     // 시나리오, 투사체 등에서 사용할 예정
-    public void ChangeID(int id)
+    private void ChangeProjectileID(int id)
     {
-        if (_towerData == null) return; // 타워 데이터에 없으면 리턴
+        if (_projectileData == null) return; // 투사체 데이터에 없으면 리턴
 
-        // TowerDataList에서 해당 레벨의 ID값의 캐릭터 찾기
-        TowerDatas foundData = _towerData.towers.Find(t => t.id == id);
+        // ProjectileDataList 에서 해당 레벨의 ID값의 캐릭터 찾기
+        ProjectileDatas foundData = _projectileData.projectiles.Find(t => t.id == id);
 
         if (foundData != null)
         {
-            TowerStats tower = FindFirstObjectByType<TowerStats>(); // 현재 씬에서 배치된 오브젝트중 TowerStats 붙은 오브젝트 1개만 찾기
-            if (tower != null)
+            ProjectileStats projectile = FindFirstObjectByType<ProjectileStats>(); // 현재 씬에서 배치된 오브젝트중 ProjectileStats 붙은 오브젝트 1개만 찾기
+            if (projectile != null)
             {
-                tower.SetupValue(foundData); // TowerStats 에서 받은 능력치로 설정
+                projectile.SetupValue(foundData); // ProjectileStats 에서 받은 능력치로 설정
             }
         }
         else
