@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using static ProjectileEnumData;
+using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 한성우
 
@@ -12,7 +13,7 @@ public class Projectile : MonoBehaviour
     // ProjectileStats 변수는 여기 넣을 필요 없음
     // 테스트 이후     [SerializeField] 제거 필요
     [SerializeField] private GameObject attacker;
-    [SerializeField] private GameObject target;
+    [SerializeField] private Transform _target;
     [SerializeField] private Vector3 moveDirection;
 
     [SerializeField] private int attackValue; // 생성한 타워로부터 공격력 받아오기
@@ -23,6 +24,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
     [SerializeField] private DamageTargetTeamType damageTargetTeamType;
+    [SerializeField] private ProjectileDamageCategory projectileDamageCategory;
     
     
     // 데미지 계산 스크립트
@@ -49,6 +51,7 @@ public class Projectile : MonoBehaviour
             projectileSpwanType = stats.projectileSpwanType;
             projectileSpacialAbility = stats.projectileSpacialAbility;
             damageTargetTeamType = stats.damageTargetTeamType;
+            projectileDamageCategory = stats.projectileDamageCategory;
         }
 
         // 방향 초기화
@@ -90,9 +93,9 @@ public class Projectile : MonoBehaviour
         // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
         if (projectileSpwanType != ProjectileSpwanType.AttackerPosition)
         {
-            if (target.transform.position != null)
+            if (_target != null)
             {
-                moveDirection = (target.transform.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
+                moveDirection = (_target.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
                 transform.rotation = Quaternion.LookRotation(moveDirection);
             }
         }
@@ -115,7 +118,7 @@ public class Projectile : MonoBehaviour
     private void MoveHoming()
     {
         // 타겟이 있다면 타겟의 방향을 실시간으로 받아옴 (타겟이 없다면(비활성화 되었다면) 마지막으로 받은 타겟 방향에서 멈춤)
-        if (target != null) SetRotation();  // 이동식 계속 회전
+        if (_target != null) SetRotation();  // 이동식 계속 회전
 
         Move(); // 기능 통일을 위해 MoveTowards 사용 안하고 Move() 에서 처리
     }
@@ -235,6 +238,15 @@ public class Projectile : MonoBehaviour
     }
 
 
+    // 타워랑 연결하는 코드
+    public void SetTarget(Transform target, float damage)
+    {
+        _target = target;
+        attackValue = (int)damage;
+
+        // 발사 순간 방향 저장
+        SetRotation();
+    }
 
 
 
