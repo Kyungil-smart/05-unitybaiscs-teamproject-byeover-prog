@@ -16,8 +16,13 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
         {
-            ESCpanel.SetActive(!ESCpanel.activeSelf);
-            Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
+            OpenEscPanel();
         }
+    }
+
+    public void OpenEscPanel()
+    {
+        ESCpanel.SetActive(!ESCpanel.activeSelf);
+        Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
     }
 }
