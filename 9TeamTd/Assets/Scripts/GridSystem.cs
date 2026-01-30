@@ -20,13 +20,13 @@ public sealed class GridSystem : MonoBehaviour
     [FormerlySerializedAs("base_transform")]
     [SerializeField] private Transform baseTransform;
 
-    // Used only when baseTransform is missing
+    // baseTransform이 비어있을 때 사용할 대체 기지 셀
     [FormerlySerializedAs("base_cell")]
     [SerializeField] private Cell fallbackBaseCell = new Cell(15, 10);
 
     [Header("Towers")]
     [FormerlySerializedAs("tower_prefab")]
-    [Tooltip("If null, a default Cube will be created.")]
+    [Tooltip("타워 프리팹이 없으면 기본 Cube로 생성.")]
     [SerializeField] private GameObject towerPrefab;
 
     [FormerlySerializedAs("tower_height")]
@@ -34,14 +34,14 @@ public sealed class GridSystem : MonoBehaviour
 
     [Header("Placement Rules")]
     [FormerlySerializedAs("no_build_border_thickness")]
-    [Tooltip("Cells within this border thickness from the edge cannot be built on.")]
+    [Tooltip("맵 가장자리에서 2만큼은 설치 금지 구역으로 만든다.")] // 2칸이 몬스터 나오는 곳이라서 타워 설치하면 오류남
     [SerializeField, Min(0)] private int noBuildBorderThickness = 2;
 
     [FormerlySerializedAs("prevent_build_on_monster")]
     [SerializeField] private bool preventBuildOnMonster = true;
 
     [FormerlySerializedAs("monster_layer_mask")]
-    [SerializeField] private LayerMask monsterLayerMask;
+    [SerializeField] private LayerMask monsterLayerMask;    
 
     [FormerlySerializedAs("monster_check_y")]
     [SerializeField, Min(0f)] private float monsterCheckY = 0.5f;
@@ -80,8 +80,11 @@ public sealed class GridSystem : MonoBehaviour
     };
 
     private CellState[] cellStates;
-    private int[] distanceToBase;         // Real distance field used by monsters
-    private int[] previewDistanceToBase;  // Scratch distance field used by placement preview
+    private int[] distanceToBase;         // (몬스터가 사용하는 실제 필드)
+                                          // Real distance field used by monsters
+                                          
+    private int[] previewDistanceToBase;  // (배치 미리보기에 사용되는 거리 필드)
+                                          // Scratch distance field used by placement preview
 
     private Cell baseCell;
 
@@ -99,11 +102,14 @@ public sealed class GridSystem : MonoBehaviour
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
-        RegisterObstacles(); // ��ֹ� ��� �߰���
+        RegisterObstacles(); // ��ֹ� ��� �߰���
 
         SnapBaseTransformToCellCenter();
     }
 
+    /// <summary>
+    /// 인스펙터에서 스크립트의 속성이 수정될 때마다 호출되는 메서드
+    /// </summary>
     private void OnValidate()
     {
         if (Application.isPlaying)
@@ -120,6 +126,15 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Coordinate conversion
     // -----------------------
+    /// <summary>
+    /// 월드 공간의 3D 위치를 그리드 상의 2D 셀 좌표로 변환하는 메서드
+    /// </summary>
+    /// <remarks>
+    /// 월드 좌표의 X축은 그리드의 X(열), Z축은 그리드의 Y(행)
+    /// 소수점 좌표는 FloorToInt로 인해 내림으로 처리되어 칸의 인덱스를 반환
+    /// </remarks>
+    /// <param name="worldPosition">변환할 월드 좌표(Vector3)</param>
+    /// <returns>해당 위치가 포함된 그리드 셀(Cell)</returns>
     public Cell WorldToCell(Vector3 worldPosition)
     {
         int x = Mathf.FloorToInt(worldPosition.x / cellSize);
@@ -127,21 +142,35 @@ public sealed class GridSystem : MonoBehaviour
         return new Cell(x, y);
     }
 
+    /// <summary>
+    /// 그리드 좌표를 실제 유니티 좌표로 변환해주는 계산기 메서드
+    /// </summary>
+    /// <param name="cell">변환할 그리드 셀 좌표</param>
+    /// <param name="y">반환할 월드 좌표의 높이 값</param>
+    /// <returns></returns>
     public Vector3 CellToWorld(Cell cell, float y = 0f)
     {
+        // 좌표 계산시 0.5를 더해 그리드 칸의 정중앙을 구함
         float worldX = (cell.X + 0.5f) * cellSize;
         float worldZ = (cell.Y + 0.5f) * cellSize;
         return new Vector3(worldX, y, worldZ);
     }
 
+    /// <summary>
+    /// 입력된 셀 좌표가 그리드 경계 내부에 있는지 검사하는 메서드
+    /// </summary>
+    /// <param name="cell">검사할 때 사용하는 셀 좌표</param>
+    /// <returns>좌표가 그리드 안에 있으면 true, 벗어나 있으면 false 반환</returns>
     public bool IsInside(Cell cell)
     {
         return cell.X >= 0 && cell.X < gridWidth && cell.Y >= 0 && cell.Y < gridHeight;
     }
 
-    // -----------------------
-    // Placement queries
-    // -----------------------
+    /// <summary>
+    /// 타워 설치가 가능한지 검사하는 메서드
+    /// </summary>
+    /// <param name="cell">건설을 시도할 때 사용할 셀 좌표</param>
+    /// <returns>건설 가능하면 true, 불가능하면 false</returns>
     public bool IsBuildable(Cell cell)
     {
         // 1) Basic bounds / static rules first
@@ -154,13 +183,22 @@ public sealed class GridSystem : MonoBehaviour
         if (GetCellState(cell) != CellState.Empty)
             return false;
 
-        // 2) Dynamic rule: prevent building on a monster
+        // 2) Dynamic rule: 몬스터 위/근처 설치 금지(필요할 때 주석 해제)
         //if (IsCellOccupiedByMonster(cell))
         //    return false;
 
         return true;
     }
 
+    /// <summary>
+    /// 타워 건설 시, 게임 진행에 문제가 없는지 검사하는 메서드
+    /// </summary>
+    /// <remarks>
+    /// assumedBlockedCell이라는 가상벽을 세워
+    /// 몬스터가 기지까지 도달할 수 있는지 시뮬레이션 돌리는 메서드
+    /// </remarks>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <returns>건설 가능하고 길도 막히지 않았으면 true</returns>
     public bool CanPlaceTower(Cell cell)
     {
         if (!IsBuildable(cell))
@@ -170,6 +208,16 @@ public sealed class GridSystem : MonoBehaviour
         return HasAnyReachableEdgeSpawn(previewDistanceToBase, assumedBlockedCell: cell);
     }
 
+    /// <summary>
+    /// 실제로 타워를 설치할 수 있는지 시도하는 메서드
+    /// </summary>
+    /// <remarks>
+    /// 먼저, 셀을 Blocked로 설정해놓고,
+    /// 몬스터가 Base로 지나갈 셀이 끊겼다면 Cell을
+    /// Bloked에서 Empty로 롤백
+    /// </remarks>
+    /// <param name="cell">타워 건설을 시도할 셀 좌표</param>
+    /// <returns>건설에 성공했다면 true, 길을 막거나 건설이 불가능하면 false</returns>
     public bool TryPlaceTower(Cell cell)
     {
         if (!IsBuildable(cell))
@@ -179,7 +227,7 @@ public sealed class GridSystem : MonoBehaviour
 #endif
             return false;
         }
-
+        
         SetCellState(cell, CellState.Blocked);
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
@@ -201,8 +249,14 @@ public sealed class GridSystem : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 설치된 타워를 제거하고 베이스까지의 경로를 재계산하는 메서드
+    /// </summary>
+    /// <param name="cell">철거할 타워가 있는 셀 좌표</param>
+    /// <returns>철거에 성공했으면 true, 타워가 없거나 맵 밖이면 false</returns>
     public bool RemoveTower(Cell cell)
     {
+        // 유효성 검사
         if (!IsInside(cell))
             return false;
 
@@ -229,24 +283,32 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Monster occupancy (dynamic rule)
     // -----------------------
+    /// <summary>
+    /// 해당 셀 위치에 몬스터가 존재하는지 검사하는 메서드 (Physic 사용)
+    /// </summary>
+    /// <remarks>
+    /// 타워를 건설할 때 몬스터 바로 위에 짓는 것을 막기 위해 사용
+    /// </remarks>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <returns>몬스터가 있으면 true, 없으면 false</returns>
     public bool IsCellOccupiedByMonster(Cell cell)
     {
         if (!preventBuildOnMonster)
             return false;
-
-        // Only check physics while playing
+        
+        // 물리 연산은 게임 실행중에만
         if (!Application.isPlaying)
             return false;
-
-        // Defensive check (in case called elsewhere)
+        
         if (!IsInside(cell))
             return false;
 
         Vector3 center = CellToWorld(cell, y: monsterCheckY);
-
-        // IMPORTANT: use cellSize (NOT cell_size)
+        
+        // 중요!! : 수정할 때 cellSize 변수 사용 (cell_size 절대 금지)
         Vector3 halfExtents = new Vector3(cellSize * 0.45f, monsterCheckHalfHeight, cellSize * 0.45f);
 
+        
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
             halfExtents,
@@ -583,10 +645,10 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     // ---
-    // ��ֹ�
+    // ��ֹ�
     // ---
     /// <summary>
-    /// ���� �ִ� ��� GridObstacle�� ã�Ƽ� �׸��忡 ���
+    /// ���� �ִ� ��� GridObstacle�� ã�Ƽ� �׸��忡 ���
     /// </summary>
     private void RegisterObstacles()
     {
@@ -596,7 +658,7 @@ public sealed class GridSystem : MonoBehaviour
         {
             obstacle.Initialize(this);
 
-            // �����ϴ� ������ Blocked ���·� ����
+            // �����ϴ� ������ Blocked ���·� ����
             foreach (Cell cell in obstacle.occupiedCells)
             {
                 if (!IsInside(cell))

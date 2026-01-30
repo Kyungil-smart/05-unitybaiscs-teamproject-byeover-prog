@@ -77,7 +77,8 @@ public sealed class MonsterAgent : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, desired, Time.deltaTime * turnSpeed);
         }
     }
-
+    
+    
     private bool TryGetSpawnCell(out Cell spawnCell)
     {
         if (!gridSystem.TryGetRandomSpawnCell(out spawnCell))
