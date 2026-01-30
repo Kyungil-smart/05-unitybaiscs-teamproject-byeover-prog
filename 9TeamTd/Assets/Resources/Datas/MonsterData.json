@@ -6,7 +6,10 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 1
+    "defenceValue": 1,
+    "moveType": "Ground",
+    "enemyRank": "Normal",
+    "moveSpeed": 1
   },
   {
     "id": 2001,
@@ -14,7 +17,10 @@
     "level": 1,
     "maxHP": 10,
     "attackValue": 1,
-    "defenceValue": 1
+    "defenceValue": 1,
+    "moveType": "Flying",
+    "enemyRank": "Normal",
+    "moveSpeed": 1.5
   },
   {
     "id": 2002,
@@ -22,7 +28,76 @@
     "level": 1,
     "maxHP": 20,
     "attackValue": 1,
-    "defenceValue": 1
+    "defenceValue": 1,
+    "moveType": "Ground",
+    "enemyRank": "Normal",
+    "moveSpeed": 0.7
+  },
+  {
+    "id": 2000,
+    "name": "골렘",
+    "level": 2,
+    "maxHP": 50,
+    "attackValue": 2,
+    "defenceValue": 2,
+    "moveType": "Ground",
+    "enemyRank": "Elite",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2001,
+    "name": "가고일",
+    "level": 2,
+    "maxHP": 30,
+    "attackValue": 2,
+    "defenceValue": 2,
+    "moveType": "Flying",
+    "enemyRank": "Elite",
+    "moveSpeed": 3
+  },
+  {
+    "id": 2002,
+    "name": "폭탄광",
+    "level": 2,
+    "maxHP": 40,
+    "attackValue": 2,
+    "defenceValue": 2,
+    "moveType": "Ground",
+    "enemyRank": "Elite",
+    "moveSpeed": 1.4
+  },
+  {
+    "id": 2000,
+    "name": "골렘",
+    "level": 3,
+    "maxHP": 100,
+    "attackValue": 3,
+    "defenceValue": 3,
+    "moveType": "Ground",
+    "enemyRank": "Boss",
+    "moveSpeed": 4
+  },
+  {
+    "id": 2001,
+    "name": "가고일",
+    "level": 3,
+    "maxHP": 80,
+    "attackValue": 3,
+    "defenceValue": 3,
+    "moveType": "Flying",
+    "enemyRank": "Boss",
+    "moveSpeed": 6
+  },
+  {
+    "id": 2002,
+    "name": "폭탄광",
+    "level": 3,
+    "maxHP": 90,
+    "attackValue": 3,
+    "defenceValue": 3,
+    "moveType": "Ground",
+    "enemyRank": "Boss",
+    "moveSpeed": 2.8
   }
 ]
 }

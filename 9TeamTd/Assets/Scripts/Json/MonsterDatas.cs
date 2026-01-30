@@ -13,7 +13,10 @@ public class MonsterDatas
     public int level;
     public int maxHp;
     public int attackValue;
-    public int defenceValue;
+    public float defenceValue;
+    public string moveType;
+    public string enemyRank;
+    public string moveSpeed;
 }
 
 // MonsterDatas 데이터 리스트
