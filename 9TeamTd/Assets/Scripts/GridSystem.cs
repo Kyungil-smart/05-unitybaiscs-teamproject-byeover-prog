@@ -314,6 +314,11 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Spawn / path following
     // -----------------------
+    /// <summary>
+    /// 목표 지점까지 도달 가능한 가장자리 셀 중 하나를 무작위로 반환
+    /// </summary>
+    /// <param name="spawnCell">선택된 스폰 위치의 그리드 좌표</param>
+    /// <returns>경로가 막혀있거나 스폰 가능한 곳이 없으면 false, 스폰 가능한 위치면 true</returns>
     public bool TryGetRandomSpawnCell(out Cell spawnCell)
     {
         CollectReachableEdgeCells(edgeSpawnBuffer);
@@ -329,6 +334,14 @@ public sealed class GridSystem : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="currentCell"></param>
+    /// <param name="lastDir"></param>
+    /// <param name="nextCell"></param>
+    /// <param name="nextDir"></param>
+    /// <returns></returns>
     public bool TryGetNextStep(Cell currentCell, Vector2Int lastDir, out Cell nextCell, out Vector2Int nextDir)
     {
         nextCell = currentCell;
