@@ -11,7 +11,7 @@ public class SpawnExampleScript : MonoBehaviour
 
     [Header("파일 유형 및 경로")]
     [SerializeField] private JsonType jsonType = JsonType.None;
-    [SerializeField] string dataFilePath = "";  // Json 파일 경로
+    [SerializeField] private string dataFilePath = "";  // Json 파일 경로
 
     [Header("스폰 위치")]
     [SerializeField] private Vector3 spawnPosition = Vector3.zero;
@@ -29,7 +29,36 @@ public class SpawnExampleScript : MonoBehaviour
         yield return new WaitForSeconds(waitSec);
         Debug.Log("3초 대기 완료");
 
-        // 게임 오브젝트 스폰
-        Instantiate(spawnObject, spawnPosition, Quaternion.identity);
+        SpawnObject();
+    }
+
+    private void SpawnObject()
+    {
+        if (JsonManager.instanceJsonManger == null)
+        {
+            Debug.LogError("JsonManager 없음");
+            return;
+        }
+
+        // 게임 오브젝트 스폰 및 데이터 가져오기 (타워의 경우)
+        GameObject spawnTower = Instantiate(spawnObject, spawnPosition, Quaternion.identity);
+        TowerStats towerStats = spawnTower.GetComponent<TowerStats>();
+
+        if (towerStats != null)
+        {
+            Debug.Log("디버그 1");
+            // Json 매니저에게 요청
+            TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
+            Debug.Log("디버그 2");
+            if (data != null)
+            {
+                // 가져온 데이터 주입
+                towerStats.SetupValue(data);
+            }
+        }
+        else
+        {
+            Debug.LogError("스폰된 오브젝트 'TowerStats' 없음");
+        }
     }
 }
