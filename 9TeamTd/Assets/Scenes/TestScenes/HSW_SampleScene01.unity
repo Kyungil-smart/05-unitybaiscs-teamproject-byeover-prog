@@ -990,10 +990,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Arrow_02_Homing
       objectReference: {fileID: 0}
-    - target: {fileID: 1505202377459535677, guid: 3ee4435cb8502824d9c1fda0f5db3e7e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2721289953733903674, guid: 3ee4435cb8502824d9c1fda0f5db3e7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.1
@@ -1035,10 +1031,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861731805130451481, guid: 3ee4435cb8502824d9c1fda0f5db3e7e, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 650882297}
-    - target: {fileID: 4861731805130451481, guid: 3ee4435cb8502824d9c1fda0f5db3e7e, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 650882298}
@@ -1079,14 +1071,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_IceField_GroundDoT
       objectReference: {fileID: 0}
-    - target: {fileID: 3755944093790279855, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567989987671955205, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 650882297}
     - target: {fileID: 5567989987671955205, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
       propertyPath: _target
       value: 
@@ -1200,6 +1184,71 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+--- !u!1001 &2241745195018084612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182928775488501035, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315880451864866402, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: m_Name
+      value: Projectile_VoltageReel_TargetDir
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872512201035826656, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 650882298}
+    - target: {fileID: 6872512201035826656, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
+      propertyPath: attacker
+      value: 
+      objectReference: {fileID: 1930921466051960926}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 47af8ea5215c2ef4f9f6498f2aaff115, type: 3}
 --- !u!1001 &2485817373899961674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1212,14 +1261,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Arrow_01_Stright
       objectReference: {fileID: 0}
-    - target: {fileID: 597714055441402764, guid: b855423f94f0a1542961e9b6058b28b4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4644893451384000129, guid: b855423f94f0a1542961e9b6058b28b4, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 650882297}
     - target: {fileID: 4644893451384000129, guid: b855423f94f0a1542961e9b6058b28b4, type: 3}
       propertyPath: _target
       value: 
@@ -1300,10 +1341,6 @@ PrefabInstance:
     - target: {fileID: 7488871257274296066, guid: 1c60be81627da9242bc7e8b1bab6783a, type: 3}
       propertyPath: m_Name
       value: Projectile_Flame_Short
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488871257274296066, guid: 1c60be81627da9242bc7e8b1bab6783a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7843533436040802296, guid: 1c60be81627da9242bc7e8b1bab6783a, type: 3}
       propertyPath: _target
@@ -1418,10 +1455,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Arrow_03_Stright_Percing
       objectReference: {fileID: 0}
-    - target: {fileID: 8716421107613152892, guid: a6eb81e051835ce4784fa1f24ed0dc3c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1455,10 +1488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1953261585209352226, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 650882297}
     - target: {fileID: 1953261585209352226, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
       propertyPath: _target
       value: 
@@ -1510,10 +1539,6 @@ PrefabInstance:
     - target: {fileID: 5803240884950955449, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
       propertyPath: m_Name
       value: Projectile_Flame_GroundDoT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803240884950955449, guid: f66778bb5e4c45a47a709b3e2082a5ea, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1863,3 +1888,4 @@ SceneRoots:
   - {fileID: 3186819578023805426}
   - {fileID: 76521023294530815}
   - {fileID: 1496498481610815773}
+  - {fileID: 2241745195018084612}
