@@ -315,7 +315,7 @@ public sealed class GridSystem : MonoBehaviour
     // Spawn / path following
     // -----------------------
     /// <summary>
-    /// 목표 지점까지 도달 가능한 가장자리 셀 중 하나를 무작위로 반환
+    /// 목표 지점까지 도달 가능한 가장자리 셀 중 하나를 무작위로 반환하는 메서드
     /// </summary>
     /// <param name="spawnCell">선택된 스폰 위치의 그리드 좌표</param>
     /// <returns>경로가 막혀있거나 스폰 가능한 곳이 없으면 false, 스폰 가능한 위치면 true</returns>
@@ -335,13 +335,13 @@ public sealed class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 현재 위치에서 베이스로 향하는 다음 이동 경로를 계산하는 메서드
     /// </summary>
-    /// <param name="currentCell"></param>
-    /// <param name="lastDir"></param>
-    /// <param name="nextCell"></param>
-    /// <param name="nextDir"></param>
-    /// <returns></returns>
+    /// <param name="currentCell">몬스터의 현재 그리드 좌표</param>
+    /// <param name="lastDir">몬스터가 직전의 이동해온 방향</param>
+    /// <param name="nextCell">이동할 다음 그리드 좌표</param>
+    /// <param name="nextDir">이동할 다음 방향 벡터</param>
+    /// <returns>이동할 다음 경로를 찾았다면 true, 이미 도착했거나 경로가 없으면 false</returns>
     public bool TryGetNextStep(Cell currentCell, Vector2Int lastDir, out Cell nextCell, out Vector2Int nextDir)
     {
         nextCell = currentCell;
@@ -389,6 +389,9 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Internal setup
     // -----------------------
+    /// <summary>
+    /// 베이스(목표 지점) 트랜스폼 참조가 누락됐을 때, 태그를 통해 자동으로 참조하는 메서드
+    /// </summary>
     private void ResolveReferencesIfNeeded()
     {
         if (baseTransform == null)
@@ -487,8 +490,20 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // BFS distance field (Pathfinding)
     // -----------------------
+    
+    /// <summary>
+    /// 특정한 셀에서 베이스까지의 최단 거리를 반환하는 메서드
+    /// </summary>
+    /// <param name="distanceField">참조할 거리 필드 배열</param>
+    /// <param name="cell">거리를 알고 싶은 셀 위치</param>
+    /// <returns>목표까지의 거리, 도달 불가능하면 -1</returns>
     public int GetDistance(int[] distanceField, Cell cell) => distanceField[ToIndex(cell)];
 
+    /// <summary>
+    /// 중요 BFS 알고리즘 사용해서 베이스에서 모든 셀까지의 거리를 계산하는 메서드
+    /// </summary>
+    /// <param name="outDistanceField">계산될 거리를 저장할 배열</param>
+    /// <param name="assumedBlockedCell">경로 계산 시 장애물로 간주할 셀</param>
     public void RebuildDistanceField(int[] outDistanceField, Cell? assumedBlockedCell)
     {
         for (int i = 0; i < outDistanceField.Length; i++)
@@ -534,16 +549,22 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Edge spawn validation
     // -----------------------
+    /// <summary>
+    /// 맵 가장자리 중, 베이스까지 도달 가능한 스폰 지점이 하나라도 있는지 검사해주는 메서드
+    /// </summary>
+    /// <param name="distanceField">검사할 거리 필드</param>
+    /// <param name="assumedBlockedCell">검사할 때 이용할 가상 벽</param>
+    /// <returns>몬스터가 스폰될 지점이 하나라도 있으면 true, 아예 없으면 false</returns>
     private bool HasAnyReachableEdgeSpawn(int[] distanceField, Cell? assumedBlockedCell)
     {
-        // Top row
+        // 상단 (y=0)
         for (int x = 0; x < gridWidth; x++)
         {
             if (IsReachableSpawnCell(new Cell(x, 0), distanceField, assumedBlockedCell))
                 return true;
         }
 
-        // Bottom row
+        // 하단(y=gridHeight-1)
         int bottomY = gridHeight - 1;
         if (bottomY != 0)
         {
@@ -554,7 +575,7 @@ public sealed class GridSystem : MonoBehaviour
             }
         }
 
-        // Left/right columns without corners
+        // 좌/우 엣지(y=1~gridHeight-2)
         for (int y = 1; y < gridHeight - 1; y++)
         {
             if (IsReachableSpawnCell(new Cell(0, y), distanceField, assumedBlockedCell))
@@ -568,6 +589,20 @@ public sealed class GridSystem : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 특정 셀이 유효한 몬스터 스폰 위치인지 검증하는 메서드
+    /// </summary>
+    /// <remarks>
+    /// 1. 그리드 범위 내부인가?
+    /// 2. 베이스가 아닌가?
+    /// 3. 이동 가능한 타일인가? (타워나 장애물이 없어야함)
+    /// 4. 베이스까지의 경로가 존재하는가?
+    /// 이 4가지 조건을 모두 만족해야지 true를 반환
+    /// </remarks>
+    /// <param name="cell">검사할 셀 좌표</param>
+    /// <param name="distanceField">참조할 거리 필드 배열</param>
+    /// <param name="assumedBlockedCell">검사할 때 이용할 가상 벽</param>
+    /// <returns>스폰 가능한 위치면 true, 불가능하면 false</returns>
     private bool IsReachableSpawnCell(Cell cell, int[] distanceField, Cell? assumedBlockedCell)
     {
         if (!IsInside(cell)) return false;
