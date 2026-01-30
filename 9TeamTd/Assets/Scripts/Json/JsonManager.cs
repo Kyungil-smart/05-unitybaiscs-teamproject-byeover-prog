@@ -17,7 +17,7 @@ public enum JsonType
     SceneData,  // 현재 테이블 없음
     BaseData,   // 현재 테이블 없음
     TowerData,
-    MonsterData,    // 현재 테이블 없음
+    MonsterData,
     ProjectileData,
     StatusEffectData,   // 현재 테이블 없음
 }
@@ -35,9 +35,12 @@ public class JsonManager : MonoBehaviour
     [SerializeField] private JsonType jsonType = JsonType.None;
     [SerializeField] string dataFilePath = "";  // Json 파일 경로
 
+
     // 테이블 추가될 때마다 업데이트 필요
     private TowerDataList _towerData;   // TowerStats 의 데이터를 불러오면 됨
+    private MonsterDataList _monsterData;
     private ProjectileDataList _projectileData;   // TowerStats 의 데이터를 불러오면 됨
+
 
     private void Awake()
     {
@@ -61,7 +64,9 @@ public class JsonManager : MonoBehaviour
     private void LoadJsonFiles()
     {
         LoadTowerData("Datas/TowerDataExample");
+        LoadMonsterData("Datas/MonsterData");
         LoadProjectileData("Datas/ProjectileData");
+
         /*
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴
         if (jsonDataFile != null)
@@ -90,6 +95,21 @@ public class JsonManager : MonoBehaviour
         }
     }
 
+
+    private void LoadMonsterData(string dataFilePath)
+    {
+        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);
+        if (jsonDataFile != null)
+        {
+            _monsterData = JsonUtility.FromJson<MonsterDataList>(jsonDataFile.text);
+        }
+        else
+        {
+            Debug.LogError($"파일 없음: {dataFilePath}");
+        }
+    }
+
+
     private void LoadProjectileData(string dataFilePath)
     {
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);
@@ -102,6 +122,13 @@ public class JsonManager : MonoBehaviour
             Debug.LogError($"파일 없음: {dataFilePath}");
         }
     }
+
+
+
+
+
+
+
 
 
     // 각 데이터 별로 찾아서 리턴까지 하도록 기능 수정
@@ -120,6 +147,21 @@ public class JsonManager : MonoBehaviour
 
         return foundData; // 찾은 데이터를 호출한 곳으로 돌려줌
     }
+
+    public MonsterDatas GetMonsterData(int id, int level)
+    {
+        if (_monsterData == null) return null;
+
+        MonsterDatas foundData = _monsterData.monsters.Find(t => t.id == id && t.level == level);
+
+        if (foundData == null)
+        {
+            Debug.LogError($"ID: {id}, Level: {level} 에 해당하는 몬스터 데이터 없음");
+        }
+
+        return foundData;
+    }
+
 
 
     private ProjectileDatas GetProjectileData(int id)
