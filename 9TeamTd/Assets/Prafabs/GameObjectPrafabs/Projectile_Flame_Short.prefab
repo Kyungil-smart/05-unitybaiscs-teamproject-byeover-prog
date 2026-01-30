@@ -86,8 +86,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 6, z: 20}
-  m_Center: {x: 0, y: 0, z: 10}
+  m_Size: {x: 2, y: 2, z: 10}
+  m_Center: {x: 0, y: 0, z: 5}
 --- !u!114 &4451614682662890405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   id: 0
   name: 
   moveSpeed: 0
-  lifeTime: 0.6
+  lifeTime: 1
   damageInterval: 0
   projectileSpwanType: 6
   projectileSpacialAbility: 2
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   attackValue: 5
   damageRatio: 1
@@ -132,6 +132,7 @@ MonoBehaviour:
   projectileSpwanType: 0
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
+  projectileDamageCategory: 0
 --- !u!1001 &1142378707693606239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,12 +194,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
       propertyPath: VelocityModule.z.scalar
-      value: 70
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
       propertyPath: VelocityModule.inWorldSpace
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -207,6 +220,10 @@ PrefabInstance:
     - target: {fileID: 7800976807239527951, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
       propertyPath: lengthInSec
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738164053269320704, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

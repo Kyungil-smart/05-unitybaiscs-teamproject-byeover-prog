@@ -86,7 +86,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8898940868695259427
 MonoBehaviour:
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   attackValue: 3
   damageRatio: 1
@@ -132,6 +132,7 @@ MonoBehaviour:
   projectileSpwanType: 0
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
+  projectileDamageCategory: 0
 --- !u!1001 &4012866212876953873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1480619598020344120, guid: 281a4c3ccb8a89e4e983832ccc9f855c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1480619598020344120, guid: 281a4c3ccb8a89e4e983832ccc9f855c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -179,10 +180,6 @@ PrefabInstance:
     - target: {fileID: 1480619598020344120, guid: 281a4c3ccb8a89e4e983832ccc9f855c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064153058898684144, guid: 281a4c3ccb8a89e4e983832ccc9f855c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5508788492117443945, guid: 281a4c3ccb8a89e4e983832ccc9f855c, type: 3}
       propertyPath: m_Name

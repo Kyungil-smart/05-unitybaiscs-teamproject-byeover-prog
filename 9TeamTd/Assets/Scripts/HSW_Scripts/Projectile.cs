@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static ProjectileEnumData;
@@ -54,8 +55,20 @@ public class Projectile : MonoBehaviour
             projectileDamageCategory = stats.projectileDamageCategory;
         }
 
-        // 방향 초기화
+        // 방향 초기화, 이 함수가 아래의 SetFirstPosition 함수보다 먼저 있어야 적 위치에서 생성되는 투사체 방향 제대로 잡힘
         SetRotation();
+
+
+        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기
+        if (projectileSpwanType == ProjectileSpwanType.TargetPosition ||
+           projectileSpwanType == ProjectileSpwanType.TargetPositionAtkToTrgDirection)
+        {
+            SetFirstPosition(_target);
+        }
+
+
+
+        Debug.Log(transform.rotation);
 
         // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어
         StartCoroutine(LifeTimeCoroutine());
@@ -90,20 +103,23 @@ public class Projectile : MonoBehaviour
 
     private void SetRotation()
     {
-        // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
-        if (projectileSpwanType != ProjectileSpwanType.AttackerPosition)
-        {
-            if (_target != null)
-            {
-                moveDirection = (_target.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
-                transform.rotation = Quaternion.LookRotation(moveDirection);
-            }
-        }
         // 방향이 필요없는 공격 방식은 벡터 앞 방향으로
-        else if ((projectileSpwanType == ProjectileSpwanType.AttackerPosition))
+        if (projectileSpwanType == ProjectileSpwanType.AttackerPosition ||
+            projectileSpwanType == ProjectileSpwanType.TargetPosition)
         {
             moveDirection = Vector3.forward;
         }
+
+        // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
+        else
+        {
+            if (_target != null)
+            {
+                moveDirection = (_target.position - transform.position).normalized; // 방향벡터 노멀라이즈 해서 받아오기
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+            }
+        }
+
     }
 
 
@@ -246,6 +262,14 @@ public class Projectile : MonoBehaviour
 
         // 발사 순간 방향 저장
         SetRotation();
+
+
+    }
+
+    // 적의 위치에 생성되는 경우 소환 즉시 적의 위치로 이동시키기
+    private void SetFirstPosition(Transform target)
+    {
+        this.transform.position = target.position;
     }
 
 
