@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 문형근
 
 // 자 이제 무엇을 할까요 
 
@@ -24,9 +25,10 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        _currentTarget = null;
+        _currentTarget = null;  // 현재 타겟은 기본적으로 null 값임
         
-        if (_range <= 0) _range = 5f; 
+        // 0 이상이라면 ~
+        if (_range <= 0) _range = 5f;  
         if (_damage <= 0) _damage = 10f; 
         if (_attackSpeed <= 0) _attackSpeed = 1f;
     }
@@ -47,7 +49,7 @@ public class Tower : MonoBehaviour
     public void FindTarget() //타겟 찾는 경로
     {
         // 타겟을 찾자        
-        Debug.Log("타겟 찾는 로직 시작");
+        //Debug.Log("타겟 찾는 로직 시작");
 
         // 타겟이 있으면 찾지 않아
         if(_currentTarget != null) 
@@ -67,7 +69,8 @@ public class Tower : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("타겟 찾는 로직 끝");
+        // 이렇게 Debug.Log 쓰면 의미가 있는지 모르겠네요 문제 있으면 여기라고 말하고 싶은데
+        //Debug.Log("타겟 찾는 로직 끝");
     }
 
     //타겟이 죽거나 범위 밖으로 나갈 경우를 타겟을 해제한다 
@@ -87,6 +90,8 @@ public class Tower : MonoBehaviour
         {
             _currentTarget = null;
         }
+
+        //Debug.Log("타겟 범위 찾기 완료");
     }
 
     //타겟 공격
