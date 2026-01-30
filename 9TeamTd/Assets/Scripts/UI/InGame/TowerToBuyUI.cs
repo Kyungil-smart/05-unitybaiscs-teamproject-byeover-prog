@@ -40,7 +40,7 @@ public class TowerToBuyUI : MonoBehaviour
         attackValueText.text = $"파워: {attackValue}";
         attackSpeedText.text = $"속도: {attackSpeed}";
         attackRangeText.text = $"범위: {attackRange}";
-        costText.text = cost.ToString();
+        costText.text = $"<sprite=0>{cost}";
 
         SetPanelPosition(buttonRect);
         TowerToBuyPanel.SetActive(true);

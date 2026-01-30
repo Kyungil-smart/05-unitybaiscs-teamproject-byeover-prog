@@ -84,7 +84,7 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
-    m_Scale: 4.9
+    m_Scale: 4.8
     m_Name: Coin_0
     m_HashCode: -1625700636
   m_SpriteGlyphTable:
@@ -92,7 +92,7 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 243.6
       m_Height: 249.3
-      m_HorizontalBearingX: 25.9
+      m_HorizontalBearingX: 119.9
       m_HorizontalBearingY: 145.4
       m_HorizontalAdvance: 286
     m_GlyphRect:
