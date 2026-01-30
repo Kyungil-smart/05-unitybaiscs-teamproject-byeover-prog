@@ -103,7 +103,7 @@ MonoBehaviour:
   id: 0
   name: 
   moveSpeed: 0
-  lifeTime: 0.6
+  lifeTime: 1
   damageInterval: 0
   projectileSpwanType: 6
   projectileSpacialAbility: 2
