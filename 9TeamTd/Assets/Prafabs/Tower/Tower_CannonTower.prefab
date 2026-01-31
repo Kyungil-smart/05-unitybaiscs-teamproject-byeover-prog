@@ -1254,10 +1254,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4336529629352447263}
+  - component: {fileID: 4226743533186174730}
   - component: {fileID: 7670777750589015021}
   - component: {fileID: 3539852660730191027}
   - component: {fileID: 1991723250517394053}
-  - component: {fileID: 4226743533186174730}
   m_Layer: 0
   m_Name: Tower_CannonTower
   m_TagString: Tower
@@ -1282,6 +1282,29 @@ Transform:
   - {fileID: 3964893892250787940}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4226743533186174730
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339094510750771618}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7670777750589015021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,31 +1351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a81ddd4209e98458a8409cf68d13b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Turret: {fileID: 9102737209948078765}
+  _turret: {fileID: 9204849889285617998}
+  _target: {fileID: 0}
+  turretRotationType: 2
   moveDirection: {x: 0, y: 0, z: 0}
---- !u!136 &4226743533186174730
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339094510750771618}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  rotationSpeed: 30
 --- !u!1 &1357443305239037486
 GameObject:
   m_ObjectHideFlags: 0

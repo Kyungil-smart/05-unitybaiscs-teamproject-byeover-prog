@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5982768620346435607}
+  - component: {fileID: 7696394982418158933}
   - component: {fileID: 6446173052965136688}
   - component: {fileID: 7142831909584562532}
   - component: {fileID: -5374449307439242090}
-  - component: {fileID: 7696394982418158933}
   m_Layer: 0
   m_Name: Tower_DragonFlameTower
   m_TagString: Tower
@@ -37,6 +37,29 @@ Transform:
   - {fileID: 304648146678727365}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7696394982418158933
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962409237225484853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6446173052965136688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,31 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a81ddd4209e98458a8409cf68d13b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Turret: {fileID: 4414335055805518748}
+  _turret: {fileID: 4734437431532108052}
+  _target: {fileID: 0}
+  turretRotationType: 2
   moveDirection: {x: 0, y: 0, z: 0}
---- !u!136 &7696394982418158933
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962409237225484853}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  rotationSpeed: 30
 --- !u!1 &2842779138058436252
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,9 +231,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
---- !u!4 &4414335055805518748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3777088474815482718, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
+--- !u!1 &4734437431532108052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5232107918815814102, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
   m_PrefabInstance: {fileID: 659838561080498370}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5845930904633328847 stripped
