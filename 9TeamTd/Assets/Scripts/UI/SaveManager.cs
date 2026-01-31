@@ -5,8 +5,7 @@ using UnityEngine;
 public class SaveData
 {
     public int nowStage = 1;
-    public int gold = 0;
-    public List<string> ownedItems = new List<string>();
+    public int money = 100;
 }
 
 public class SaveManager : MonoBehaviour

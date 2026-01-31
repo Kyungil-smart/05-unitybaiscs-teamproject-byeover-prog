@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5160115342940577931}
   - component: {fileID: 7525324628968497797}
   - component: {fileID: -5062993016829778630}
-  m_Layer: 7
+  m_Layer: 20
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +122,3 @@ MonoBehaviour:
   moveSpeed: 3
   arrivalRadius: 0.05
   turnSpeed: 12
-  useFixedSpawnCell: 0
-  fixedSpawnX: 1
-  fixedSpawnY: 1

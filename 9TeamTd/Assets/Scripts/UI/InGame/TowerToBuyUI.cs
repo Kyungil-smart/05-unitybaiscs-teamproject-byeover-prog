@@ -31,10 +31,8 @@ public class TowerToBuyUI : MonoBehaviour
     public void ShowTowerInfo(int targetID, int targetLevel, RectTransform buttonRect)
     {
         TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
-        if (data != null)
-        {
-            SetupValue(data);
-        }
+        SetupValue(data);
+
         nameText.text = towerName;
         //hpText.text = maxHP.ToString();
         attackValueText.text = $"ÆÄ¿ö: {attackValue}";
@@ -48,8 +46,6 @@ public class TowerToBuyUI : MonoBehaviour
 
     public void SetupValue(TowerDatas data)
     {
-        if (data == null) return;
-
         towerName = data.name;
         maxHP = data.maxHP;
         attackValue = data.attackValue;

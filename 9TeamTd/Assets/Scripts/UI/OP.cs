@@ -14,25 +14,25 @@ public class OP<T>
             if (!EqualityComparer<T>.Default.Equals(_value, value))
             {
                 _value = value;
-                onValueChanged?.Invoke(_value);
+                OnValueChanged?.Invoke(_value);
             }
         }
     }
 
-    public Action<T> onValueChanged;
+    public Action<T> OnValueChanged;
 
     public void AddListener(Action<T> listener)
     {
-        onValueChanged += listener;
+        OnValueChanged += listener;
     }
 
     public void RemoveListener(Action<T> listener)
     {
-        onValueChanged -= listener;
+        OnValueChanged -= listener;
     }
 
     public void RemoveAllListeners()
     {
-        onValueChanged = null;
+        OnValueChanged = null;
     }
 }
