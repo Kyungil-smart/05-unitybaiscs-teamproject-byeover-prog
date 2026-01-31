@@ -1,18 +1,86 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class TowerToBuyUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+// 타워 구매 정보를 보여주는 UI // 작성자 : PEY
+public class TowerToBuyUI : MonoBehaviour
 {
+    Canvas canvas;
+    [Header("UI")]
     [SerializeField] GameObject TowerToBuyPanel;
+    [SerializeField] float offsetYRatio = 0.32f;  // Canvas 높이 대비 비율 
+    [SerializeField] TextMeshProUGUI nameText;
+    //[SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI attackValueText;
+    [SerializeField] TextMeshProUGUI attackRangeText;
+    [SerializeField] TextMeshProUGUI attackSpeedText;
+    [SerializeField] TextMeshProUGUI costText;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    [Header("대상의 정보")]
+    [SerializeField] string towerName;
+    [SerializeField] int maxHP;
+    [SerializeField] int attackValue;
+    [SerializeField] float attackRange;
+    [SerializeField] float attackSpeed;
+    [SerializeField] float cost;
+
+    private void Awake()
     {
-        TowerToBuyPanel.SetActive(true);
-
+        canvas = GetComponent<Canvas>();
     }
-    public void OnPointerExit(PointerEventData eventData)
+
+    public void ShowTowerInfo(int targetID, int targetLevel, RectTransform buttonRect)
+    {
+        TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
+        if (data != null)
+        {
+            SetupValue(data);
+        }
+        nameText.text = towerName;
+        //hpText.text = maxHP.ToString();
+        attackValueText.text = $"파워: {attackValue}";
+        attackSpeedText.text = $"속도: {attackSpeed}";
+        attackRangeText.text = $"범위: {attackRange}";
+        costText.text = $"<sprite=0>{cost}";
+
+        SetPanelPosition(buttonRect);
+        TowerToBuyPanel.SetActive(true);
+    }
+
+    public void SetupValue(TowerDatas data)
+    {
+        if (data == null) return;
+
+        towerName = data.name;
+        maxHP = data.maxHP;
+        attackValue = data.attackValue;
+        attackRange = data.attackRange;
+        attackSpeed = data.attackSpeed;
+        cost = data.towerCost;
+    }
+
+    // 패널 위치를 버튼 위로 설정
+    private void SetPanelPosition(RectTransform buttonRect)
+    {
+        RectTransform panelRect = TowerToBuyPanel.GetComponent<RectTransform>();
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+
+        // 버튼의 월드 좌표를 캔버스 로컬 좌표로 변환
+        Vector2 buttonLocalPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, buttonRect.position),
+            canvas.worldCamera,
+            out buttonLocalPos
+        );
+
+        // 캔버스 높이 대비 오프셋 계산
+        float offsetY = canvasRect.rect.height * offsetYRatio;
+
+        // 패널 위치 설정 (버튼 위로)
+        panelRect.anchoredPosition = new Vector2(buttonLocalPos.x, buttonLocalPos.y + offsetY);
+    }
+
+    public void HideTowerInfo()
     {
         TowerToBuyPanel.SetActive(false);
     }

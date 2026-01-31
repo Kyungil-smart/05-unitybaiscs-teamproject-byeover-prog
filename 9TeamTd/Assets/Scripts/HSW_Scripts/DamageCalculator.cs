@@ -1,12 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// ì‘ì„±ì : í•œì„±ìš°
+
 
 public class DamageCalculator : MonoBehaviour
 {
     public int CalculatingDamage(int atkValue, float dmgRatio, int dfnValue)
     {
-        int finalDamage = Mathf.Clamp((int)(dmgRatio * (atkValue - dfnValue)), 0, int.MaxValue); // ÇÇÇØ·®ÀÌ 0 ~ int ÃÖ´ë°ª »çÀÌ°¡ µÇµµ·Ï Ã³¸®
+        int finalDamage = Mathf.Clamp((int)(dmgRatio * (atkValue - dfnValue)), 0, int.MaxValue); // í”¼í•´ëŸ‰ì´ 0 ~ int ìµœëŒ€ê°’ ì‚¬ì´ê°€ ë˜ë„ë¡ ì²˜ë¦¬
         return finalDamage;
     }
 }
