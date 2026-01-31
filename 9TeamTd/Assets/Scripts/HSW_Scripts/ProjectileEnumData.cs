@@ -13,8 +13,8 @@ public class ProjectileEnumData : MonoBehaviour
         AttackerToTargetHoming -> Single / Piercing
         AttackerPosition -> Piercing / GroundDoT, 가능하나 어색함 : Single
         AttackerPositionTargetDirection -> Piercing / GroundDoT, 가능하나 어색함 : Single
-        
-
+        TargetPosition -> Piercing / GroundDoT, 가능하나 어색함 : Single
+        TargetPositionAtkToTrgDirection -> Piercing / GroundDoT, 가능하나 어색함 : Single
      */
 
     // 투사체가 어떻게 스폰되는지에 대한 속성
@@ -27,8 +27,8 @@ public class ProjectileEnumData : MonoBehaviour
         AttackerToTargetInstance,   // 공격자 위치에서 생성되어 피격자 에게 즉각 피해를 주는 투사체, ex) 레이저빔 등
         AttackerPosition,   // * 방향 없이 공격자의 위치에서 생성되는 투사체, ex) 원형 불 장판 등
         AttackerPositionTargetDirection, // * 공격자의 위치에서 타겟의 방향으로 생성되는 투사체, 투사체 이동 X, ex) 파이어벳 화염 방사 등
-        TargetPosition, // 방향 없이 피격자의 위치에서 생성되는 투사체, ex) 낙뢰 등
-        TargetPositionAtkToTrgDirection, // 피격자의 위치에서 공격자 -> 피격자의 방향으로 생성되는 투사체
+        TargetPosition, // * 방향 없이 피격자의 위치에서 생성되는 투사체, ex) 낙뢰 등
+        TargetPositionAtkToTrgDirection, // * 피격자의 위치에서 공격자 -> 피격자의 방향으로 생성되는 투사체
     }
 
     // 투사체의 특별한 능력
