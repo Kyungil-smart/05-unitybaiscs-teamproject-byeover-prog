@@ -17,7 +17,7 @@ public class Tower_Re : MonoBehaviour
     public float _attackSpeed;    // 타워 공격속도
     public float _towerheals; // 타워 체력
     public enum TargetingMode { Nearest} // 가까운 몬스터 찾기 
-    private Transform _currentTarget;  // 현재 타겟
+    [SerializeField] private Transform _currentTarget;  // 현재 타겟
 
     //☆★☆★ 테스트 프리팹이라 나중에 이거 다 바꿔야함 ☆★☆★
     public GameObject _bulletPrefab; // 총알 프리팹 (test용) 

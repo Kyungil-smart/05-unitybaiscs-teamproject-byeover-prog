@@ -55,19 +55,22 @@ public class Projectile : MonoBehaviour
             projectileDamageCategory = stats.projectileDamageCategory;
         }
 
+
+
+    }
+
+    public void start()
+    {
         // 방향 초기화, 이 함수가 아래의 SetFirstPosition 함수보다 먼저 있어야 적 위치에서 생성되는 투사체 방향 제대로 잡힘
         SetRotation();
 
 
-        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기
+        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기, OnEnable에서 실행되면 정보를받지 못해 오류남
         if (projectileSpwanType == ProjectileSpwanType.TargetPosition ||
            projectileSpwanType == ProjectileSpwanType.TargetPositionAtkToTrgDirection)
         {
             SetFirstPosition(_target);
         }
-
-
-
 
         // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어
         StartCoroutine(LifeTimeCoroutine());
