@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public static OP<int> gold = new();
 
-    private void Awake()
+    private void Start()
     {
         gold.Value = 110;
     }

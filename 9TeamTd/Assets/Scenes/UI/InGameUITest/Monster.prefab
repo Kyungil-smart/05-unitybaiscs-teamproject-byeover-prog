@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5062993016829778630}
   m_Layer: 20
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
