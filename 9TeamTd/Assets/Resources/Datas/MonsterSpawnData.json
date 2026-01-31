@@ -1,0 +1,46 @@
+﻿{
+  "spawnPattern" : [
+  {
+    "id": 2100,
+    "startTime": 0,
+    "endTime": 60,
+    "interval": 2
+  },
+  {
+    "id": 2100,
+    "startTime": 60,
+    "endTime": 180,
+    "interval": 0.5
+  },
+  {
+    "id": 2101,
+    "startTime": 40,
+    "endTime": 120,
+    "interval": 5
+  },
+  {
+    "id": 2101,
+    "startTime": 120,
+    "endTime": 200,
+    "interval": 2
+  },
+  {
+    "id": 2102,
+    "startTime": 100,
+    "endTime": 180,
+    "interval": 3
+  },
+  {
+    "id": 2102,
+    "startTime": 150,
+    "endTime": 200,
+    "interval": 5
+  },
+  {
+    "id": 2103,
+    "startTime": 200,
+    "endTime": 201,
+    "interval": 100
+  }
+]
+}
