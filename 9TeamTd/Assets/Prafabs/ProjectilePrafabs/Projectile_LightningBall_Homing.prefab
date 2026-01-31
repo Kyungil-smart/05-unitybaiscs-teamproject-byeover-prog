@@ -108,7 +108,7 @@ MonoBehaviour:
   projectileSpwanType: 2
   projectileSpacialAbility: 1
   damageTargetTeamType: 4
-  projectileDamageCategory: 7
+  projectileDamageCategory: 6
 --- !u!114 &4861731805130451481
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿{
   "towers" : [
   {
-    "id": 1100,
+    "id": 1000,
     "name": "기초 마탑",
     "level": 1,
     "towerType": "Base",
@@ -15,7 +15,7 @@
     "towerCost": 100
   },
   {
-    "id": 1100,
+    "id": 1000,
     "name": "기초 마탑",
     "level": 2,
     "towerType": "Base",
@@ -29,7 +29,7 @@
     "towerCost": 150
   },
   {
-    "id": 1101,
+    "id": 1001,
     "name": "수정 마탑",
     "level": 1,
     "towerType": "Base",
@@ -43,7 +43,7 @@
     "towerCost": 200
   },
   {
-    "id": 1101,
+    "id": 1001,
     "name": "수정 마탑",
     "level": 2,
     "towerType": "Base",
@@ -57,7 +57,7 @@
     "towerCost": 300
   },
   {
-    "id": 1102,
+    "id": 1002,
     "name": "자수정 마탑",
     "level": 1,
     "towerType": "Base",
@@ -71,7 +71,7 @@
     "towerCost": 400
   },
   {
-    "id": 1102,
+    "id": 1002,
     "name": "자수정 마탑",
     "level": 2,
     "towerType": "Base",
@@ -85,7 +85,7 @@
     "towerCost": 600
   },
   {
-    "id": 1103,
+    "id": 1003,
     "name": "불과 재의 마탑",
     "level": 1,
     "towerType": "Base",
@@ -93,13 +93,13 @@
     "attackType": "Target",
     "attackValue": 30,
     "attackRange": 4,
-    "attackProjectileIDs": 11031,
+    "attackProjectileIDs": 10031,
     "attackSpeed": 0.5,
     "defenceValue": 0,
     "towerCost": 700
   },
   {
-    "id": 1103,
+    "id": 1003,
     "name": "불과 재의 마탑",
     "level": 2,
     "towerType": "Base",
@@ -107,13 +107,13 @@
     "attackType": "Target",
     "attackValue": 30,
     "attackRange": 4,
-    "attackProjectileIDs": 11031,
+    "attackProjectileIDs": 10031,
     "attackSpeed": 0.63,
     "defenceValue": 0,
     "towerCost": 1050
   },
   {
-    "id": 1104,
+    "id": 1004,
     "name": "폭풍의 마탑",
     "level": 1,
     "towerType": "Base",
@@ -121,13 +121,13 @@
     "attackType": "Target",
     "attackValue": 10,
     "attackRange": 15,
-    "attackProjectileIDs": 11041,
+    "attackProjectileIDs": 10041,
     "attackSpeed": 0.05,
     "defenceValue": 0,
     "towerCost": 1200
   },
   {
-    "id": 1104,
+    "id": 1004,
     "name": "폭풍의 마탑",
     "level": 2,
     "towerType": "Base",
@@ -135,7 +135,7 @@
     "attackType": "Target",
     "attackValue": 10,
     "attackRange": 18.75,
-    "attackProjectileIDs": 11041,
+    "attackProjectileIDs": 10041,
     "attackSpeed": 0.05,
     "defenceValue": 0,
     "towerCost": 1800

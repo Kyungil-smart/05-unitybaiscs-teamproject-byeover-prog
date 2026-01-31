@@ -259,8 +259,10 @@ public class Projectile : MonoBehaviour
     // 충돌이나 지속 시간 등으로 비활성화시 리셋해야 하는 요소 모음
     private void SetEnableObject()
     {
-        Reset();
-        this.gameObject.SetActive(false);
+        // Reset();
+        // this.gameObject.SetActive(false);
+
+        Destroy(this.gameObject );  // !!!!! 추후 오브젝트풀링 하면 삭제 예정
     }
 
 
