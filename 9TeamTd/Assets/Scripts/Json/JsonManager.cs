@@ -10,6 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 한성우
 
+// @@ 테이블 추가될 때마다 추가 필요
 public enum JsonType
 {
     Default,
@@ -18,6 +19,8 @@ public enum JsonType
     BaseData,   // 현재 테이블 없음
     TowerData,
     MonsterData,
+    MonsterResourcesData,
+    MonsterSpawnData,
     ProjectileData,
     StatusEffectData,   // 현재 테이블 없음
 }
@@ -36,10 +39,12 @@ public class JsonManager : MonoBehaviour
     [SerializeField] string dataFilePath = "";  // Json 파일 경로
 
 
-    // 테이블 추가될 때마다 업데이트 필요
+    // @@ 테이블 추가될 때마다 업데이트 필요
     private TowerDataList _towerData;   // TowerStats 의 데이터를 불러오면 됨
     private MonsterDataList _monsterData;
-    private ProjectileDataList _projectileData;   // TowerStats 의 데이터를 불러오면 됨
+    private MonsterResourcesDataList _monsterResourcesData;
+    private MonsterSpawnDataList _monsterSpawnData;
+    private ProjectileDataList _projectileData;
 
 
     private void Awake()
@@ -60,12 +65,15 @@ public class JsonManager : MonoBehaviour
     }
 
 
-    // 테이블 추가될 때마다 업데이트 필요
+    // @@ 테이블 추가될 때마다 업데이트 필요
     private void LoadJsonFiles()
     {
         LoadTowerData("Datas/TowerDataExample");
         LoadMonsterData("Datas/MonsterData");
+        LoadMonsterData("Datas/MonsterResourcesData");
+        LoadMonsterData("Datas/MonsterSpawnData");
         LoadProjectileData("Datas/ProjectileData");
+
 
         /*
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴
@@ -81,7 +89,7 @@ public class JsonManager : MonoBehaviour
     }
 
 
-    // 테이블 추가될 때마다 업데이트 필요
+    // @@ 테이블 추가될 때마다 업데이트 필요
     private void LoadTowerData(string dataFilePath)
     {
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴
@@ -109,6 +117,32 @@ public class JsonManager : MonoBehaviour
         }
     }
 
+    private void LoadMonsterResourcesData(string dataFilePath)
+    {
+        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);
+        if (jsonDataFile != null)
+        {
+            _monsterResourcesData = JsonUtility.FromJson<MonsterResourcesDataList>(jsonDataFile.text);
+        }
+        else
+        {
+            Debug.LogError($"파일 없음: {dataFilePath}");
+        }
+    }
+
+    private void LoadMonsterSpawnData(string dataFilePath)
+    {
+        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);
+        if (jsonDataFile != null)
+        {
+            _monsterSpawnData = JsonUtility.FromJson<MonsterSpawnDataList>(jsonDataFile.text);
+        }
+        else
+        {
+            Debug.LogError($"파일 없음: {dataFilePath}");
+        }
+    }
+
 
     private void LoadProjectileData(string dataFilePath)
     {
@@ -126,12 +160,7 @@ public class JsonManager : MonoBehaviour
 
 
 
-
-
-
-
-
-    // 각 데이터 별로 찾아서 리턴까지 하도록 기능 수정
+    // @@ 각 데이터 별로 찾아서 리턴까지 하도록 기능 수정
 
     public TowerDatas GetTowerData(int id, int level)
     {
@@ -162,7 +191,33 @@ public class JsonManager : MonoBehaviour
         return foundData;
     }
 
+    public MonsterResourcesDatas GetMonsterResourcesData(int id)
+    {
+        if (_monsterResourcesData == null) return null;
 
+        MonsterResourcesDatas foundData = _monsterResourcesData.monsterResource.Find(t => t.id == id);
+
+        if (foundData == null)
+        {
+            Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
+        }
+
+        return foundData;
+    }
+
+    public MonsterSpawnDatas GetMonsterSpawnData(int id)
+    {
+        if (_monsterSpawnData == null) return null;
+
+        MonsterSpawnDatas foundData = _monsterSpawnData.monsterSpawn.Find(t => t.id == id);
+
+        if (foundData == null)
+        {
+            Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
+        }
+
+        return foundData;
+    }
 
     private ProjectileDatas GetProjectileData(int id)
     {
