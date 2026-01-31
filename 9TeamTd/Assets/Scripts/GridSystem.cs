@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public sealed class GridSystem : MonoBehaviour
+public partial class GridSystem : MonoBehaviour
 {
     private const string BaseTag = "Base";
 
@@ -41,7 +41,7 @@ public sealed class GridSystem : MonoBehaviour
     [SerializeField] private bool preventBuildOnMonster = true;
 
     [FormerlySerializedAs("monster_layer_mask")]
-    [SerializeField] private LayerMask monsterLayerMask;    
+    [SerializeField] private LayerMask monsterLayerMask;
 
     [FormerlySerializedAs("monster_check_y")]
     [SerializeField, Min(0f)] private float monsterCheckY = 0.5f;
@@ -64,7 +64,7 @@ public sealed class GridSystem : MonoBehaviour
     public float CellSize => cellSize;
     public Cell BaseCell => baseCell;
 
-    private enum CellState : byte
+    public enum CellState : byte
     {
         Empty = 0,
         Blocked = 1,
@@ -79,10 +79,10 @@ public sealed class GridSystem : MonoBehaviour
         new Vector2Int(-1, 0),  // Left
     };
 
-    private CellState[] cellStates;
+    [HideInInspector] public CellState[] cellStates;
     private int[] distanceToBase;         // (몬스터가 사용하는 실제 필드)
                                           // Real distance field used by monsters
-                                          
+
     private int[] previewDistanceToBase;  // (배치 미리보기에 사용되는 거리 필드)
                                           // Scratch distance field used by placement preview
 
@@ -227,7 +227,7 @@ public sealed class GridSystem : MonoBehaviour
 #endif
             return false;
         }
-        
+
         SetCellState(cell, CellState.Blocked);
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
@@ -295,20 +295,20 @@ public sealed class GridSystem : MonoBehaviour
     {
         if (!preventBuildOnMonster)
             return false;
-        
+
         // 물리 연산은 게임 실행중에만
         if (!Application.isPlaying)
             return false;
-        
+
         if (!IsInside(cell))
             return false;
 
         Vector3 center = CellToWorld(cell, y: monsterCheckY);
-        
+
         // 중요!! : 수정할 때 cellSize 변수 사용 (cell_size 절대 금지)
         Vector3 halfExtents = new Vector3(cellSize * 0.45f, monsterCheckHalfHeight, cellSize * 0.45f);
 
-        
+
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
             halfExtents,
@@ -482,13 +482,13 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // Grid storage helpers
     // -----------------------
-    private int ToIndex(Cell cell) => cell.Y * gridWidth + cell.X;
+    public int ToIndex(Cell cell) => cell.Y * gridWidth + cell.X;
 
-    private CellState GetCellState(Cell cell) => cellStates[ToIndex(cell)];
+    public CellState GetCellState(Cell cell) => cellStates[ToIndex(cell)];
 
-    private void SetCellState(Cell cell, CellState state) => cellStates[ToIndex(cell)] = state;
+    public void SetCellState(Cell cell, CellState state) => cellStates[ToIndex(cell)] = state;
 
-    private bool IsCellWalkable(Cell cell, Cell? assumedBlockedCell)
+    public bool IsCellWalkable(Cell cell, Cell? assumedBlockedCell)
     {
         if (assumedBlockedCell.HasValue && cell == assumedBlockedCell.Value)
             return false;
@@ -500,7 +500,7 @@ public sealed class GridSystem : MonoBehaviour
     // -----------------------
     // BFS distance field (Pathfinding)
     // -----------------------
-    
+
     /// <summary>
     /// 특정한 셀에서 베이스까지의 최단 거리를 반환하는 메서드
     /// </summary>
@@ -701,28 +701,29 @@ public sealed class GridSystem : MonoBehaviour
         towerVisualByIndex[index] = towerObj;
     }
 
-    // ---
-    // ��ֹ�
-    // ---
     /// <summary>
-    /// ���� �ִ� ��� GridObstacle�� ã�Ƽ� �׸��忡 ���
+    /// 장애물 오브젝트들을 그리드에 등록하는 메서드 (수정됨)
     /// </summary>
     private void RegisterObstacles()
     {
         GridObstacle[] obstacles = FindObjectsOfType<GridObstacle>();
+        GridObstacleBIG[] bigObstacles = FindObjectsOfType<GridObstacleBIG>();
 
         foreach (GridObstacle obstacle in obstacles)
         {
             obstacle.Initialize(this);
 
-            // �����ϴ� ������ Blocked ���·� ����
-            foreach (Cell cell in obstacle.occupiedCells)
+            Cell cell = obstacle.occupiedCell;
             {
-                if (!IsInside(cell))
-                {
-                    Debug.Log($"[GridSystem] Obstacle cell {cell} is outside grid! Skipping.");
-                    continue;
-                }
+                SetCellState(cell, CellState.Blocked);
+            }
+        }
+        foreach (GridObstacleBIG bigObstacle in bigObstacles)
+        {
+            bigObstacle.Initialize(this);
+
+            foreach (Cell cell in bigObstacle.occupiedCells)
+            {
                 SetCellState(cell, CellState.Blocked);
             }
         }
