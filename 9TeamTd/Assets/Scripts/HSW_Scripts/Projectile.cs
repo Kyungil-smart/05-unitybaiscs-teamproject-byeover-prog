@@ -55,11 +55,40 @@ public class Projectile : MonoBehaviour
             projectileDamageCategory = stats.projectileDamageCategory;
         }
 
+
+        // 콜라이더 범위 내 리스트 초기화 (오브젝트 풀링을 할거라, 무조건 초기화 해야함)
+        dmgTrgets.Clear();
+
+
+        // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어, Start에 넣으면 에러 생김
+        StartCoroutine(LifeTimeCoroutine());
+
+        // 있으면 이동 및 방향 재설정(적 위치에 생성되는 방향성 있는 투사체를 위해 필요)
+        if (_target != null)
+        {
+            InitProjectile();
+        }
+
+
+
+        //  주기에 따라 여러 번 데미지 주는 경우 데미지 코루틴 시작
+        if (projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT)
+        {
+            GroundDoTCoroutine = StartCoroutine(DoTIntervalCoroutine());
+        }
+
+    }
+
+
+    // 이동 및 방향 재설정
+    public void InitProjectile()
+    {
+
         // 방향 초기화, 이 함수가 아래의 SetFirstPosition 함수보다 먼저 있어야 적 위치에서 생성되는 투사체 방향 제대로 잡힘
         SetRotation();
 
 
-        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기
+        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기, OnEnable에서 실행되면 정보를받지 못해 오류남
         if (projectileSpwanType == ProjectileSpwanType.TargetPosition ||
            projectileSpwanType == ProjectileSpwanType.TargetPositionAtkToTrgDirection)
         {
@@ -67,19 +96,6 @@ public class Projectile : MonoBehaviour
         }
 
 
-
-
-        // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어
-        StartCoroutine(LifeTimeCoroutine());
-
-        // 콜라이더 범위 내 리스트 초기화 (오브젝트 풀링을 할거라, 무조건 초기화 해야함)
-        dmgTrgets.Clear();
-
-        //  주기에 따라 여러 번 데미지 주는 경우 데미지 코루틴 시작
-        if (projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT)
-        {
-            GroundDoTCoroutine = StartCoroutine(DoTIntervalCoroutine());
-        }
     }
 
     // 투사체 비활성화시 처리
@@ -229,6 +245,7 @@ public class Projectile : MonoBehaviour
 
     // 생명 주기 관련 함수들
 
+
     // 투사체가 지속 시간 이후에도 남아있다면 비활성화 시켜주는 코루틴, 오브젝트 풀링을 위해 사용
     IEnumerator LifeTimeCoroutine()
     {
@@ -259,8 +276,9 @@ public class Projectile : MonoBehaviour
         _target = target;
         attackValue = (int)damage;
 
+
         // 발사 순간 방향 저장
-        SetRotation();
+        InitProjectile();
 
 
     }
