@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6397357908491731333
 Transform:
   m_ObjectHideFlags: 0
@@ -184,50 +184,6 @@ PrefabInstance:
     - target: {fileID: 5559013761625709443, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
       propertyPath: m_Name
       value: VE_FlameEmission_Short
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559013761625709443, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6845340927908380858, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: lengthInSec
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: VelocityModule.z.scalar
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: VelocityModule.inWorldSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063830782543761902, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800976807239527951, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: lengthInSec
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738164053269320704, guid: b1a0b741efe343e40834f333ecda5e67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
