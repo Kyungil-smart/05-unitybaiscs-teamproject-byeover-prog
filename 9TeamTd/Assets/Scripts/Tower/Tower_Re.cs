@@ -4,6 +4,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 문형근
+// 수정 : 한성우
 
 // 자 이제 무엇을 할까요 
 
