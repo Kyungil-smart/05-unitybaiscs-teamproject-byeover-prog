@@ -13,15 +13,15 @@ public class DrawTower : MonoBehaviour // 타워 배치 UI와 상호작용
     Vector3 worldPoint; Cell cell;
     private void Update()
     {
-        // 항상 플레이어의 위치에 worldPont를 설정
-        worldPoint = transform.position;
-        cell = gridSystem.WorldToCell(worldPoint);
-
-        if (Input.GetKeyDown(KeyCode.Space)) // 타워 배치
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(!gridSystem.IsCellOccupiedByMonster(cell) && gridSystem.TryPlaceTower(cell))
+            // 플레이어의 위치에 worldPont를 설정
+            worldPoint = transform.position;
+            cell = gridSystem.WorldToCell(worldPoint);
+
+            if (!gridSystem.IsCellOccupiedByMonster(cell) && gridSystem.TryPlaceTower(cell)) // 타워 배치 코드
             {
-                TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(UIController.selectedTwID.Value, UIController.selectedTwLevel);
+                TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(UIController.toBuyTwID.Value, 1);
 
                 if (Player.gold.Value < data.towerCost) return;
                 Player.gold.Value -= data.towerCost;

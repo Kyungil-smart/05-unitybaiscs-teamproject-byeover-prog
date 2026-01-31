@@ -33,7 +33,7 @@ public class PrefabIconBaker
                     // 3. 파일로 저장 (프리팹 이름_Icon.png)
                     string path = AssetDatabase.GetAssetPath(prefab);
                     string dir = Path.GetDirectoryName(path);
-                    string fileName = Path.GetFileNameWithoutExtension(path);
+                    string fileName = Path.GetFileNameWithoutExtension(path) + ".png";
                     string finalPath = Path.Combine(dir, fileName);
 
                     File.WriteAllBytes(finalPath, bytes);

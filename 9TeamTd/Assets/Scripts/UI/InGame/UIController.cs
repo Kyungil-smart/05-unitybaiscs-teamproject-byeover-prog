@@ -11,8 +11,7 @@ using TMPro;
 /// </summary>
 public class UIController : MonoBehaviour
 {
-    public static OP<int> selectedTwID = new();
-    public static int selectedTwLevel = 1;
+    public static OP<int> toBuyTwID = new();
 
     // 패널
     [SerializeField] GameObject ESCpanel;
@@ -22,7 +21,6 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        selectedTwID.Value = 0; // 첫 선택 타워
         UpdateGoldText(Player.gold.Value);
     }
     void UpdateGoldText(int value)
@@ -48,13 +46,12 @@ public class UIController : MonoBehaviour
         }
 
         // 디버그용 코드
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Player.gold.Value += 100;
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Player.gold.Value -= 100;
+#if UNITY_EDITOR
+            Debug.Log("돈무한 치트 사용!!!");
+#endif
         }
     }
 
