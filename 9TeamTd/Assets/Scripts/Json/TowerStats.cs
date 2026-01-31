@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TowerEnumData;
 
 // 작성자 : 한성우
 
@@ -9,13 +10,17 @@ public class TowerStats : MonoBehaviour
 {
     // TowerData.cs 참고하여 모두 설정해줌
     [Header("Tower Status")]
-    public int id;  // 식별자
+    public int id;
     public string name;
     public int level;
+    public TowerType towerType;
     public int maxHP;
+    public attackType attackType;
     public int attackValue;
     public float attackRange;
+    public int attackProjectileIDs;
     public float attackSpeed;
+    public int defenceValue;
     public int towerCost;
 
 
@@ -28,10 +33,14 @@ public class TowerStats : MonoBehaviour
         id = data.id;
         name = data.name;
         level = data.level;
+        towerType = data.towerType;
         maxHP = data.maxHP;
+        attackType = data.attackType;
         attackValue = data.attackValue;
         attackRange = data.attackRange;
+        attackProjectileIDs = data.attackProjectileIDs;
         attackSpeed = data.attackSpeed;
+        defenceValue = data.defenceValue;
         towerCost = data.towerCost;
 
 

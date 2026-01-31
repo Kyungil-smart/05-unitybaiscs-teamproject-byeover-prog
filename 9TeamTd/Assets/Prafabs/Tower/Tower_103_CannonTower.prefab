@@ -1255,8 +1255,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4336529629352447263}
   - component: {fileID: 4226743533186174730}
+  - component: {fileID: -6766126830250023324}
   - component: {fileID: 7670777750589015021}
-  - component: {fileID: 3539852660730191027}
   - component: {fileID: 1991723250517394053}
   m_Layer: 0
   m_Name: Tower_103_CannonTower
@@ -1305,6 +1305,30 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-6766126830250023324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339094510750771618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3bac48ad82b154e81222ce4023ce52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  name: 
+  level: 0
+  towerType: 0
+  maxHP: 0
+  attackType: 0
+  attackValue: 0
+  attackRange: 0
+  attackProjectileIDs: 0
+  attackSpeed: 0
+  defenceValue: 0
+  towerCost: 0
 --- !u!114 &7670777750589015021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,28 +1341,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ca1edcc7b025e4eb2502c4ce30ae19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 15
-  _damage: 20
-  _attackSpeed: 0.2
+  id: 0
+  name: 
+  level: 0
+  towerType: 3
   _towerheals: 10
+  attackType: 3
+  _damage: 20
+  _range: 15
+  attackProjectileIDs: 0
+  _attackSpeed: 0.2
+  defenceValue: 0
+  towerCost: 0
   _currentTarget: {fileID: 0}
   _bulletPrefab: {fileID: 597714055441402764, guid: 5d2aa44b505bce34f83ad55a040a0898, type: 3}
   _firePoint: {fileID: 456787823888505924}
---- !u!114 &3539852660730191027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339094510750771618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6458a0d733e712640b16e61c64db0222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _towerPrefab: {fileID: 1339094510750771618}
-  _gold: 100
-  _towerCost: 50
 --- !u!114 &1991723250517394053
 MonoBehaviour:
   m_ObjectHideFlags: 0

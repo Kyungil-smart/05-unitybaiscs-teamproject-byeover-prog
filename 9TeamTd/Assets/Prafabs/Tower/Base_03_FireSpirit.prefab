@@ -4956,10 +4956,14 @@ MonoBehaviour:
   id: 0
   name: 
   level: 0
+  towerType: 0
   maxHP: 0
+  attackType: 0
   attackValue: 0
   attackRange: 0
+  attackProjectileIDs: 0
   attackSpeed: 0
+  defenceValue: 0
   towerCost: 0
 --- !u!114 &6925412329360101800
 MonoBehaviour:
@@ -4973,10 +4977,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ca1edcc7b025e4eb2502c4ce30ae19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0
-  _damage: 0
-  _attackSpeed: 0
-  _towerheals: 0
+  id: 0
+  name: 
+  level: 0
+  towerType: 2
+  _towerheals: 20
+  attackType: 3
+  _damage: 30
+  _range: 4
+  attackProjectileIDs: 0
+  _attackSpeed: 0.5
+  defenceValue: 0
+  towerCost: 0
   _currentTarget: {fileID: 0}
   _bulletPrefab: {fileID: 7488871257274296066, guid: 1c60be81627da9242bc7e8b1bab6783a, type: 3}
   _firePoint: {fileID: 441115392121887794}

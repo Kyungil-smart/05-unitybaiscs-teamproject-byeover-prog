@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ProjectileEnumData;
+using static TowerEnumData;
 using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 문형근
@@ -13,10 +15,22 @@ using static UnityEngine.GraphicsBuffer;
 // 적 감지, 타겟정하기, 공격 실행 등 기능 구현 예정  
 public class Tower_Re : MonoBehaviour
 {
-    public float _range;          // 타워 사거리
-    public float _damage;         // 타워 공격력
-    public float _attackSpeed;    // 타워 공격속도
+    [SerializeField] private int id;
+    [SerializeField] private string name;
+    [SerializeField] private int level;
+    [SerializeField] private TowerType towerType;
     public float _towerheals; // 타워 체력
+    [SerializeField] private attackType attackType;
+    public float _damage;         // 타워 공격력
+    public float _range;          // 타워 사거리
+    [SerializeField] private int attackProjectileIDs;
+    public float _attackSpeed;    // 타워 공격속도
+    [SerializeField] private int defenceValue;
+    [SerializeField] private int towerCost;
+
+
+
+
     public enum TargetingMode { Nearest } // 가까운 몬스터 찾기 
     [SerializeField] private Transform _currentTarget;  // 현재 타겟
 
@@ -25,7 +39,35 @@ public class Tower_Re : MonoBehaviour
     public Transform _firePoint; // 총알 발 사 위치
     private float _attackTimer = 0f; // 공격 타이머 (에임 타이머 같이 활용 가능)
 
-    void Start()
+
+    private void OnEnable()
+    {
+        // 자신에게 붙은 TowerStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
+        TowerStats stats = this.GetComponent<TowerStats>();
+        if (stats != null)
+        {
+            id = stats.id;
+            name = stats.name;
+            level = stats.level;
+            towerType = stats.towerType;
+            _towerheals = stats.maxHP;
+            attackType = stats.attackType;
+            _damage = stats.attackValue;
+            _range = stats.attackRange;
+            attackProjectileIDs = stats.attackProjectileIDs;
+            _attackSpeed = stats.attackSpeed;
+            defenceValue = stats.defenceValue;
+            towerCost = stats.towerCost;
+        }
+
+
+    }
+
+
+
+
+
+        void Start()
     {
         _currentTarget = null;  // 현재 타겟은 기본적으로 null 값임
 

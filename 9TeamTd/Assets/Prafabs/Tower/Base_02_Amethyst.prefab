@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6710579435942677017}
   - component: {fileID: 7311452998971178542}
   - component: {fileID: 8127730061229081142}
+  - component: {fileID: 8991736352460703089}
   - component: {fileID: 6854951058473507846}
   m_Layer: 10
   m_Name: Base_02_Amethyst
@@ -106,11 +107,42 @@ MonoBehaviour:
   id: 0
   name: 
   level: 0
+  towerType: 0
   maxHP: 0
+  attackType: 0
   attackValue: 0
   attackRange: 0
+  attackProjectileIDs: 0
   attackSpeed: 0
+  defenceValue: 0
   towerCost: 0
+--- !u!114 &8991736352460703089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058170672345537425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ca1edcc7b025e4eb2502c4ce30ae19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  name: 
+  level: 0
+  towerType: 2
+  _towerheals: 0
+  attackType: 1
+  _damage: 0
+  _range: 0
+  attackProjectileIDs: 0
+  _attackSpeed: 0
+  defenceValue: 0
+  towerCost: 0
+  _currentTarget: {fileID: 0}
+  _bulletPrefab: {fileID: 597714055441402764, guid: ef94540815794724ab1a747743ec158b, type: 3}
+  _firePoint: {fileID: 441115392121887794}
 --- !u!114 &6854951058473507846
 MonoBehaviour:
   m_ObjectHideFlags: 0
