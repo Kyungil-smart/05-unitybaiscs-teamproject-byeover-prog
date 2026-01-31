@@ -50,10 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _range: 0
   _damage: 0
-  _attackSpeed: 0.00001
+  _attackSpeed: 0.001
   _towerheals: 10
   _currentTarget: {fileID: 0}
-  _bulletPrefab: {fileID: 597714055441402764, guid: 5d2aa44b505bce34f83ad55a040a0898, type: 3}
+  _bulletPrefab: {fileID: 597714055441402764, guid: ef94540815794724ab1a747743ec158b, type: 3}
   _firePoint: {fileID: 5289155118828585868}
 --- !u!114 &4582252307055965980
 MonoBehaviour:

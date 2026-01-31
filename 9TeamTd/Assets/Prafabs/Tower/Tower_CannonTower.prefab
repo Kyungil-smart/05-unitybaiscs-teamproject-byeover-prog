@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 20
-  _damage: 10
+  _damage: 20
   _attackSpeed: 0.5
   _towerheals: 10
   _currentTarget: {fileID: 0}
