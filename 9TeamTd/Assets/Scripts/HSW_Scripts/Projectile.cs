@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor;
 using UnityEngine;
 using static ProjectileEnumData;
+using static TowerEnumData;
 using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 한성우
@@ -44,15 +47,12 @@ public class Projectile : MonoBehaviour
 
         // 자신에게 붙은 ProjectileStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
         ProjectileStats stats = this.GetComponent<ProjectileStats>();
+
         if (stats != null)
         {
-            moveSpeed = stats.moveSpeed;
-            lifeTime = stats.lifeTime;
-            damageInterval = stats.damageInterval;
-            projectileSpwanType = stats.projectileSpwanType;
-            projectileSpacialAbility = stats.projectileSpacialAbility;
-            damageTargetTeamType = stats.damageTargetTeamType;
-            projectileDamageCategory = stats.projectileDamageCategory;
+            // 안전을 위해 다시 projectileStats 을 부르고 다시 셋팅
+            stats.Init();
+            InitStats(stats); 
         }
 
 
@@ -80,9 +80,28 @@ public class Projectile : MonoBehaviour
     }
 
 
+    public void InitStats(ProjectileStats stats)
+    {
+        if (stats == null) return;
+        else
+        {
+            moveSpeed = stats.moveSpeed;
+            lifeTime = stats.lifeTime;
+            damageInterval = stats.damageInterval;
+            projectileSpwanType = stats.projectileSpwanType;
+            projectileSpacialAbility = stats.projectileSpacialAbility;
+            damageTargetTeamType = stats.damageTargetTeamType;
+            projectileDamageCategory = stats.projectileDamageCategory;
+
+        }
+    }
+
+
     // 이동 및 방향 재설정
     public void InitProjectile()
     {
+
+
 
         // 방향 초기화, 이 함수가 아래의 SetFirstPosition 함수보다 먼저 있어야 적 위치에서 생성되는 투사체 방향 제대로 잡힘
         SetRotation();

@@ -12,9 +12,9 @@ public class TowerDatas // .json 파일과 이름과 겹치면 안 됨
     public int id;
     public string name;
     public int level;
-    public TowerType towerType;
+    public string towerType;
     public int maxHP;
-    public attackType attackType;
+    public string attackType;
     public int attackValue;
     public float attackRange;
     public int attackProjectileIDs;

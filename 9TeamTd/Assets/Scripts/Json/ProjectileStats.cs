@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,41 @@ public class ProjectileStats : MonoBehaviour
     public ProjectileDamageCategory projectileDamageCategory;
 
 
+    // 시작시 초기화
+    private void Start()
+    {
+        Init();
+    }
+
+
+    public void Init()
+    {
+        // 버그 확인용
+        if (JsonManager.instanceJsonManger == null)
+        {
+            Debug.LogError("JsonManager 없음");
+            return;
+        }
+
+        ProjectileDatas tData = JsonManager.instanceJsonManger.GetProjectileData(id);
+
+        if (tData != null)
+        {
+            SetupValue(tData);
+            Projectile towerScript = GetComponent<Projectile>();
+
+            if (towerScript != null)
+            {
+                towerScript.InitStats(this);
+            }
+        }
+
+    }
+
+
+
+
+
     // 호출 받으면 ProjectileDatas.cs 참고하여 모두 설정해줌
     public void SetupValue(ProjectileDatas data)
     {
@@ -31,10 +67,10 @@ public class ProjectileStats : MonoBehaviour
         moveSpeed = data.moveSpeed;
         lifeTime = data.lifeTime;
         damageInterval = data.damageInterval;
-        projectileSpwanType = data.projectileSpwanType;
-        projectileSpacialAbility = data.projectileSpacialAbility;
-        damageTargetTeamType = data.damageTargetTeamType;
-        projectileDamageCategory = data.projectileDamageCategory;
+        projectileSpwanType = (ProjectileSpwanType)Enum.Parse(typeof(ProjectileSpwanType), data.projectileSpwanType);
+        projectileSpacialAbility = (ProjectileSpacialAbility)Enum.Parse(typeof(ProjectileSpacialAbility), data.projectileSpacialAbility);
+        damageTargetTeamType = (DamageTargetTeamType)Enum.Parse(typeof(DamageTargetTeamType), data.damageTargetTeamType);
+        projectileDamageCategory = (ProjectileDamageCategory)Enum.Parse(typeof(ProjectileDamageCategory), data.projectileDamageCategory);
 
 
         Debug.Log($"{name}의 능력치 설정 완료");

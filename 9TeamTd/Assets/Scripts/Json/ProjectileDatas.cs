@@ -14,10 +14,10 @@ public class ProjectileDatas // .json 파일과 이름과 겹치면 안 됨
     public float moveSpeed;
     public float lifeTime;
     public float damageInterval;
-    public ProjectileSpwanType projectileSpwanType;
-    public ProjectileSpacialAbility projectileSpacialAbility;
-    public DamageTargetTeamType damageTargetTeamType;
-    public ProjectileDamageCategory projectileDamageCategory;
+    public string projectileSpwanType;
+    public string projectileSpacialAbility;
+    public string damageTargetTeamType;
+    public string projectileDamageCategory;
 }
 
 // ProjectileDatas 형식의 리스트로 만들어 관리 

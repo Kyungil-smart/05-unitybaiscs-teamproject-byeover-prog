@@ -219,7 +219,7 @@ public class JsonManager : MonoBehaviour
         return foundData;
     }
 
-    private ProjectileDatas GetProjectileData(int id)
+    public ProjectileDatas GetProjectileData(int id)
     {
         if (_projectileData == null) return null;
 

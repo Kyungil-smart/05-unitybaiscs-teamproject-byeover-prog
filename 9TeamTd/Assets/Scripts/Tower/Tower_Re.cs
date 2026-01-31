@@ -40,11 +40,12 @@ public class Tower_Re : MonoBehaviour
     private float _attackTimer = 0f; // 공격 타이머 (에임 타이머 같이 활용 가능)
 
 
-    private void OnEnable()
+    // 자신에게 붙은 TowerStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
+    public void GetStats(TowerStats stats)
     {
-        // 자신에게 붙은 TowerStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
-        TowerStats stats = this.GetComponent<TowerStats>();
-        if (stats != null)
+        
+        if (stats == null) return;
+        else
         {
             id = stats.id;
             name = stats.name;
@@ -60,7 +61,10 @@ public class Tower_Re : MonoBehaviour
             towerCost = stats.towerCost;
         }
 
-
+        // 0 이상이라면 ~
+        if (_range <= 0) _range = 0;
+        if (_damage <= 0) _damage = 0;
+        if (_attackSpeed <= 0) _attackSpeed = 0;
     }
 
 
@@ -71,14 +75,14 @@ public class Tower_Re : MonoBehaviour
     {
         _currentTarget = null;  // 현재 타겟은 기본적으로 null 값임
 
-        // 0 이상이라면 ~
-        if (_range <= 0) _range = 5f;
-        if (_damage <= 0) _damage = 10f;
-        if (_attackSpeed <= 0) _attackSpeed = 1f;
+
     }
 
     void Update()
     {
+        // 공격하지 않는 타워면 리턴시켜 에러 안나도록
+        if (attackType == attackType.None || _attackSpeed <= 0) return;
+
         CheckTarget(); // 타겟이 범위 안에 있는지
         FindTarget(); // 타겟 찾는 함수 진행
         Attack(); // 공격 추가
