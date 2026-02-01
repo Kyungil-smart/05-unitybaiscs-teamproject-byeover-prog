@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1001
-  name: 
   level: 1
+  name: 
   towerType: 0
   maxHP: 0
   attackType: 0

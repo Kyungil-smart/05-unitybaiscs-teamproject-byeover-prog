@@ -1,7 +1,7 @@
 ﻿{
   "projectiles" : [
   {
-    "id": 10031,
+    "id": 10051,
     "name": "Projectile_Flame_Short",
     "moveSpeed": -1,
     "lifeTime": 1,
@@ -12,7 +12,7 @@
     "projectileDamageCategory": "Fire"
   },
   {
-    "id": 10041,
+    "id": 10061,
     "name": "Projectile_LIghtingArea_Target_GroundDoT",
     "moveSpeed": -1,
     "lifeTime": 6,
