@@ -36,9 +36,18 @@ public class TowerToBuyUI : MonoBehaviour
 
         nameText.text = towerName;
         //hpText.text = maxHP.ToString();
-        attackValueText.text = $"파워: {attackValue}";
-        attackSpeedText.text = $"속도: {attackSpeed}";
-        attackRangeText.text = $"범위: {attackRange}";
+        if (attackValue < 0)
+        {
+            attackValueText.text = "파워: 없음";
+            attackSpeedText.text = "속도: 없음";
+            attackRangeText.text = "범위: 없음";
+        }
+        else
+        {
+            attackValueText.text = $"파워: {attackValue}";
+            attackSpeedText.text = $"속도: {attackSpeed}";
+            attackRangeText.text = $"범위: {attackRange}";
+        }
         costText.text = $"<sprite=0>{cost}";
 
         SetPanelPosition(buttonRect);

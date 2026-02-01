@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// 타워 업그레이드/판매 정보 패널 UI
 public class TowerToUpSellUI : MonoBehaviour
 {
     Canvas canvas;
@@ -14,11 +13,10 @@ public class TowerToUpSellUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI costText;
 
     [Header("대상의 정보")]
-    [SerializeField] string towerName;
-    [SerializeField] float cost;
+    string towerName;
+    float cost;
 
-    Ray ray; RaycastHit hit;
-
+    //Ray ray; RaycastHit hit;
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
@@ -33,6 +31,17 @@ public class TowerToUpSellUI : MonoBehaviour
         costText.text = $"<sprite=0>{cost}";
 
         SetPanelPosition(clickedTower);
+        TowerToUpSellPanel.SetActive(true);
+    }
+    public void ShowInfo(int targetID, int targetLevel, Vector3 screenPos)
+    {
+        TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
+        SetupValue(data);
+
+        nameText.text = towerName;
+        costText.text = $"<sprite=0>{cost}";
+
+        SetPanelPositionFromScreen(screenPos);
         TowerToUpSellPanel.SetActive(true);
     }
     public void SetupValue(TowerDatas data)
@@ -62,26 +71,45 @@ public class TowerToUpSellUI : MonoBehaviour
         panelRect.anchoredPosition = new Vector2(clickedTowerLocalPos.x, clickedTowerLocalPos.y + offsetY);
     }
 
-    private void Update()
+    private void SetPanelPositionFromScreen(Vector3 screenPos)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.CompareTag("Tower"))
-                {
-                    TowerToUpSellPanel.SetActive(true);
-                }
-                else
-                {
-                    TowerToUpSellPanel.SetActive(false);
-                }
-            }
-            else
-            {
-                TowerToUpSellPanel.SetActive(false);
-            }
-        }
+        RectTransform panelRect = TowerToUpSellPanel.GetComponent<RectTransform>();
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect, screenPos, canvas.worldCamera, out Vector2 localPos
+        );
+
+        float offsetY = canvasRect.rect.height * offsetYRatio;
+        panelRect.anchoredPosition = new Vector2(localPos.x, localPos.y + offsetY);
     }
+
+
+    public void HidePanel()
+    {
+        TowerToUpSellPanel.SetActive(false);
+    }
+
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+    //            if (hit.collider.CompareTag("Tower"))
+    //            {
+    //                TowerToUpSellPanel.SetActive(true);
+    //            }
+    //            else
+    //            {
+    //                TowerToUpSellPanel.SetActive(false);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            TowerToUpSellPanel.SetActive(false);
+    //        }
+    //    }
+    //}
 }
