@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamagable
 {
     [Header("컴포넌트")] 
     [SerializeField] private MonsterAgent agent;
@@ -44,11 +44,11 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float damage)
     {
         if (isDead) return;
         
-        currentHp -= amount;
+        currentHp -= damage;
 
         if (currentHp <= 0)
         {
