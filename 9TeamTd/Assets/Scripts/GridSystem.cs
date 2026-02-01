@@ -353,14 +353,12 @@ public partial class GridSystem : MonoBehaviour
         nextCell = currentCell;
         nextDir = Vector2Int.zero;
 
-        if (!IsInside(currentCell))
-            return false;
+        if (!IsInside(currentCell)) return false;
 
         int currentDistance = GetDistance(distanceToBase, currentCell);
-        if (currentDistance <= 0)
-            return false; // 0 = base, -1 = unreachable
+        if (currentDistance <= 0) return false; // 0 = base, -1 = unreachable
 
-        // Straight-first
+        // 직진 우선
         if (lastDir != Vector2Int.zero)
         {
             Cell straightCell = new Cell(currentCell.X + lastDir.x, currentCell.Y + lastDir.y);
@@ -372,14 +370,13 @@ public partial class GridSystem : MonoBehaviour
             }
         }
 
-        // Fallback: fixed priority
+        // 다른 방향 탐색
         for (int i = 0; i < CardinalDirections.Length; i++)
         {
             Vector2Int dir = CardinalDirections[i];
             Cell candidate = new Cell(currentCell.X + dir.x, currentCell.Y + dir.y);
 
-            if (!IsInside(candidate))
-                continue;
+            if (!IsInside(candidate)) continue;
 
             if (GetDistance(distanceToBase, candidate) == currentDistance - 1)
             {
@@ -388,7 +385,6 @@ public partial class GridSystem : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 
@@ -400,8 +396,7 @@ public partial class GridSystem : MonoBehaviour
     /// </summary>
     private void ResolveReferencesIfNeeded()
     {
-        if (baseTransform == null)
-            return;
+        if (baseTransform == null) return;
 
         try
         {
@@ -411,7 +406,7 @@ public partial class GridSystem : MonoBehaviour
         }
         catch (UnityException)
         {
-            // Tag missing is fine; fallbackBaseCell will be used.
+            // 태그가 누락되어도 fallbackBaseCell이 사용됨
         }
     }
 
@@ -421,7 +416,7 @@ public partial class GridSystem : MonoBehaviour
         if (gridHeight < 2) gridHeight = 2;
         if (cellSize < 0.1f) cellSize = 0.1f;
         if (noBuildBorderThickness < 0) noBuildBorderThickness = 0;
-        if (towerHeight < 0.1f) towerHeight = 0.1f;
+        // if (towerHeight < 0.1f) towerHeight = 0.1f;
     }
 
     private void EnsureBuffers()
@@ -536,15 +531,11 @@ public partial class GridSystem : MonoBehaviour
                 Vector2Int dir = CardinalDirections[i];
                 Cell neighbor = new Cell(current.X + dir.x, current.Y + dir.y);
 
-                if (!IsInside(neighbor))
-                    continue;
-
-                if (!IsCellWalkable(neighbor, assumedBlockedCell))
-                    continue;
+                if (!IsInside(neighbor)) continue;
+                if (!IsCellWalkable(neighbor, assumedBlockedCell)) continue;
 
                 int neighborIndex = ToIndex(neighbor);
-                if (outDistanceField[neighborIndex] != -1)
-                    continue;
+                if (outDistanceField[neighborIndex] != -1) continue;
 
                 outDistanceField[neighborIndex] = currentDistance + 1;
                 queue.Enqueue(neighbor);
