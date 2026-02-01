@@ -82,4 +82,20 @@ public class TowerStats : MonoBehaviour
 
         Debug.Log($"{name}의 능력치 설정 완료");
     }
+
+
+    // 건설할 타워 금액 알려주는 함수
+    public int SetCost(int gId, int gLv)
+    {
+        TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(gId, gLv);
+
+        if (tData == null)
+        {
+            SetupValue(tData);
+            
+        }
+
+        return tData.towerCost;
+    }
+
 }

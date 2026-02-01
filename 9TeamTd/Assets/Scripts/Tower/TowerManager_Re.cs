@@ -1,31 +1,33 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÀÛ¼ºÀÚ : ¹®Çü±Ù
-// ¼öÁ¤ : ÇÑ¼º¿ì
-// ÀÌÄ£±¸´Â ¾îµğ´Ù°¡ ¾µ±î¿ä ÀÌ·¸°Ô ºĞ¸®ÇÏ°í ÇÏ´øµ¥ 
+// ì‘ì„±ì : ë¬¸í˜•ê·¼
+// ìˆ˜ì • : í•œì„±ìš°
+// ì´ì¹œêµ¬ëŠ” ì–´ë””ë‹¤ê°€ ì“¸ê¹Œìš” ì´ë ‡ê²Œ ë¶„ë¦¬í•˜ê³  í•˜ë˜ë° 
 
 
-// Å¸¿ö »ı¼º, »èÁ¦, °ü¸® µî ±â´É ±¸Çö ¿¹Á¤
-// Å¸¿ö ·¹º§¾÷, ½ºÅ³ Àû¿ë µîµµ ¿©±â¼­ Ã³¸®ÇÒ ¼ö ÀÖÀ½
-// °Ç¼³ °¡´ÉÇÑ À§Ä¡ ÀÎÁö, ÇöÀç ¹èÄ¡µÈ Å¸¿ö ¸ñ·Ï °ü¸® 
+// íƒ€ì›Œ ìƒì„±, ì‚­ì œ, ê´€ë¦¬ ë“± ê¸°ëŠ¥ êµ¬í˜„ ì˜ˆì •
+// íƒ€ì›Œ ë ˆë²¨ì—…, ìŠ¤í‚¬ ì ìš© ë“±ë„ ì—¬ê¸°ì„œ ì²˜ë¦¬í•  ìˆ˜ ìˆìŒ
+// ê±´ì„¤ ê°€ëŠ¥í•œ ìœ„ì¹˜ ì¸ì§€, í˜„ì¬ ë°°ì¹˜ëœ íƒ€ì›Œ ëª©ë¡ ê´€ë¦¬ 
 
 
 public class TowerManager_Re : MonoBehaviour
 {
-    //¹èÄ¡ µÈ Å¸¿ö ÀúÀåÇÏ´Â ¸®½ºÆ® (¹è¿­·Î ³ÖÀ» ¿¹Á¤)
+    //ë°°ì¹˜ ëœ íƒ€ì›Œ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸ (ë°°ì—´ë¡œ ë„£ì„ ì˜ˆì •)
     private List<Tower> _placedTowers = new List<Tower>();
 
-    //Å¸¿ö ÇÁ¸®Æé °ü·Ã
+    //íƒ€ì›Œ í”„ë¦¬í© ê´€ë ¨
     public List<GameObject> _towerPrefabs = new List<GameObject>();
     public GameObject _currentTowerPrefab;
     [SerializeField] int _currentTowerIndex = 0;
 
-    // ÇÃ·¹ÀÌ¾î °ñµå
+    [SerializeField] int _towerLevel = 1;   // ## ìŠ¤í°í•  íƒ€ì›Œ ë ˆë²¨
+
+    // í”Œë ˆì´ì–´ ê³¨ë“œ
     public int _currentGold = 1000;
 
-    // Å¸¿ö °¡°İ
+    // íƒ€ì›Œ ê°€ê²©
     public int _towerCost = 50;
 
 
@@ -36,214 +38,223 @@ public class TowerManager_Re : MonoBehaviour
 
     void Update()
     {
-        // ¹èÄ¡ÇÒ Å¸¿ö ¼±ÅÃ °úÁ¤
+        // ë°°ì¹˜í•  íƒ€ì›Œ ì„ íƒ ê³¼ì •
         SetPlacingTower();
 
 
 
 
-        // ¸¶¿ì½º Å¬¸¯À¸·Î Å¸¿ö »ı¼º
+        // ë§ˆìš°ìŠ¤ í´ë¦­ìœ¼ë¡œ íƒ€ì›Œ ìƒì„±
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("[TowerManager] ÁÂÅ¬¸¯ °¨Áö");
+            Debug.Log("[TowerManager] ì¢Œí´ë¦­ ê°ì§€");
 
-            // ¸¶¿ì½º À§Ä¡¿¡¼­ Ray ¹ß»ç
+            // ë§ˆìš°ìŠ¤ ìœ„ì¹˜ì—ì„œ Ray ë°œì‚¬
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // Ray°¡ ¹º°¡¿¡ ¸Â¾ÒÀ¸¸é 
+            // Rayê°€ ë­”ê°€ì— ë§ì•˜ìœ¼ë©´ 
             if (Physics.Raycast(ray, out hit))
             {
-                // Å¸¿ö¸¦ Å¬¸¯ Çß´ÂÁö È®ÀÎ
+                // íƒ€ì›Œë¥¼ í´ë¦­ í–ˆëŠ”ì§€ í™•ì¸
                 Tower clickedTower = hit.collider.GetComponent<Tower>();
 
-                // ¸øÃ£À¸¸é ºÎ¸ğ¿¡¼­ Ã£±â
+                // ëª»ì°¾ìœ¼ë©´ ë¶€ëª¨ì—ì„œ ì°¾ê¸°
                 if (clickedTower == null)
                 {
                     clickedTower = hit.collider.GetComponentInParent<Tower>();
                 }
                 if (clickedTower != null)
                 {
-                    Debug.Log("[TowerManager] Å¸¿ö Å¬¸¯ È®ÀÎ / ¼±ÅÃÀº TowerSelector¿¡¼­ ÁøÇà");
+                    Debug.Log("[TowerManager] íƒ€ì›Œ í´ë¦­ í™•ì¸ / ì„ íƒì€ TowerSelectorì—ì„œ ì§„í–‰");
                 }
                 else
                 {
-                    Debug.Log("[TowerManger] Ray°¡ ¾Æ¹«°Íµµ ¸ÂÁö ¾ÊÀ½");
+                    Debug.Log("[TowerManger] Rayê°€ ì•„ë¬´ê²ƒë„ ë§ì§€ ì•ŠìŒ");
                     PlaceTower(hit.point);
                 }
             }
         }
     }
 
-    // Å¸¿ö ¼±ÅÃ ÇÔ¼ö
+    // íƒ€ì›Œ ì„ íƒ í•¨ìˆ˜
     public void SetPlacingTower()
     {
-        // ¸¶¿ì½º ÈÙ·Î »ı¼ºÇÑ Å¸¿ö ¼±ÅÃ
+        // ë§ˆìš°ìŠ¤ íœ ë¡œ ìƒì„±í•œ íƒ€ì›Œ ì„ íƒ
         float mouseScrollInput = Input.GetAxis("Mouse ScrollWheel");
 
-        // ¸¶¿ì½º ÈÙ·Î ÀÎµ¦½º Áõ°¨ (À½¼ö°¡ Áõ°¡·Î))
+        // ë§ˆìš°ìŠ¤ íœ ë¡œ ì¸ë±ìŠ¤ ì¦ê° (ìŒìˆ˜ê°€ ì¦ê°€ë¡œ))
         if (mouseScrollInput > 0) _currentTowerIndex -= 1;
         else if (mouseScrollInput < 0) _currentTowerIndex += 1;
 
-        // ¿¹¿Ü Ã³¸®
+        // ì˜ˆì™¸ ì²˜ë¦¬
         if (_currentTowerIndex < 0) _currentTowerIndex = 0;
         else if (_currentTowerIndex > _towerPrefabs.Count - 1) _currentTowerIndex = _towerPrefabs.Count - 1;
 
-        // ¼ÒÈ¯ÇÒ Å¸¿ö ÇÁ¸®Æé Àû¿ë
+        // ì†Œí™˜í•  íƒ€ì›Œ í”„ë¦¬í© ì ìš©, ë ˆë²¨ê³¼ ê°€ê²©ë„ ì ìš©ë¨
         _currentTowerPrefab = _towerPrefabs[_currentTowerIndex];
 
-        // ¸¶¿ì½º ÈÙ ÃÊ±âÈ­
+        // ## ì¶”í›„ì— ë ˆë²¨ì´ ëŠ˜ì–´ë‚˜ë©´ ìˆ«ì ëŠ˜ë ¤ë„ ë¨, í˜„ì¬ëŠ” 1ë ˆë²¨ ë°–ì— ì—†ëŠ” íƒ€ì›Œë„ ìˆì–´ì„œ ì—ëŸ¬ ë‚¨
+        if (_towerLevel > 1) _towerLevel = 1;
+        else if (_towerLevel < 1) _towerLevel = 1;
+
+        _towerCost = _towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>()
+            .SetCost(_towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>().id, _towerLevel);
+
+        // ë§ˆìš°ìŠ¤ íœ  ì´ˆê¸°í™”
         mouseScrollInput = 0;
     }
 
 
-    //Å¸¿ö »ı¼º ÇÔ¼ö
+    //íƒ€ì›Œ ìƒì„± í•¨ìˆ˜
     public bool PlaceTower(Vector3 position)
     {
-        Debug.Log("Å¸¿ö ¹èÄ¡ ÇÔ¼ö ½ÃÀÛ");
+        Debug.Log("íƒ€ì›Œ ë°°ì¹˜ í•¨ìˆ˜ ì‹œì‘");
 
-        // °ñµå Á¶°Ç Ãß°¡
+
+
+        // ê³¨ë“œ ì¡°ê±´ ì¶”ê°€
         if (_currentGold < _towerCost)
         {
-            Debug.Log("°ñµå°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+            Debug.Log("ê³¨ë“œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
             return false;
         }
 
         if (CanPlaceTower(position) == false)
         {
-            return false; // Å¸¿ö°¡ ÀÖ´Ù¸é Å¸¿ö°¡ ¾È»ı±è
+            return false; // íƒ€ì›Œê°€ ìˆë‹¤ë©´ íƒ€ì›Œê°€ ì•ˆìƒê¹€
         }
 
-        //Å¸¿ö »ı¼º (Instantiate º¹Á¦ÇØ¼­ »õ¿ÀºêÁ§Æ®¿¡ ³Ö±â)
+        //íƒ€ì›Œ ìƒì„± (Instantiate ë³µì œí•´ì„œ ìƒˆì˜¤ë¸Œì íŠ¸ì— ë„£ê¸°)
         GameObject newTowerObj = Instantiate(_currentTowerPrefab, position, Quaternion.identity);
         Tower newTower = newTowerObj.GetComponent<Tower>();
 
-        //¸®½ºÆ®¿¡ Ãß°¡ (»õ·Î¿î Å¸¿ö¸¦ ¸®½ºÆ®¿¡ ¹è¿­·Î Ãß°¡)
+        //ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€ (ìƒˆë¡œìš´ íƒ€ì›Œë¥¼ ë¦¬ìŠ¤íŠ¸ì— ë°°ì—´ë¡œ ì¶”ê°€)
         _placedTowers.Add(newTower);
 
-        // °ñµå Â÷°¨
+        // ê³¨ë“œ ì°¨ê°
         _currentGold -= _towerCost;
 
-        Debug.Log("Å¸¿ö ¹èÄ¡ ¿Ï·á! ³²Àº °ñµå :" + _currentGold);
-        return true; // ¹èÄ¡ ¼º°øÇßÀ¸¸é ¿Ï·á 
+        Debug.Log("íƒ€ì›Œ ë°°ì¹˜ ì™„ë£Œ! ë‚¨ì€ ê³¨ë“œ :" + _currentGold);
+        return true; // ë°°ì¹˜ ì„±ê³µí–ˆìœ¼ë©´ ì™„ë£Œ 
     }
 
-    // ¸¸¾à¿¡ A B C Á¶°ÇÀÌ¶ó¸é Å¸¿ö°¡ °Ç¼³ ¾ÈµÇ¾ßÇØ 
-    // A Á¶°ÇÀº ~
-    // ¸®ÅÏÇÏ´Âµ¥ true ¿©¾ß ÇÔ (Á¶°Ç¿¡ ¸ÂÀ¸´Ï±î?)
-    // ºÎÁ¤ÇüÀÌ ¾Æ´Ï¶ó¸é °¡´ÉÇÑ Á¶°Ç¸¸ ¸¸µé¾î¼­ °Ç¼³ÇØ¾ßÇÔ
+    // ë§Œì•½ì— A B C ì¡°ê±´ì´ë¼ë©´ íƒ€ì›Œê°€ ê±´ì„¤ ì•ˆë˜ì•¼í•´ 
+    // A ì¡°ê±´ì€ ~
+    // ë¦¬í„´í•˜ëŠ”ë° true ì—¬ì•¼ í•¨ (ì¡°ê±´ì— ë§ìœ¼ë‹ˆê¹Œ?)
+    // ë¶€ì •í˜•ì´ ì•„ë‹ˆë¼ë©´ ê°€ëŠ¥í•œ ì¡°ê±´ë§Œ ë§Œë“¤ì–´ì„œ ê±´ì„¤í•´ì•¼í•¨
 
-    // °Ç¼³ °¡´ÉÇÑ À§Ä¡ÀÎÁö È®ÀÎ
+    // ê±´ì„¤ ê°€ëŠ¥í•œ ìœ„ì¹˜ì¸ì§€ í™•ì¸
     public bool CanPlaceTower(Vector3 position)
     {
-        // Á¶°Ç 1 : ÇØ´ç À§Ä¡¿¡ ÀÌ¹Ì Å¸¿ö°¡ ÀÖ´ÂÁö Ã¼Å©
-        if (CheckTowerExists(position) == false)  // Å¸¿ö°¡ ¾øÀ¸¸é false ¹İÈ¯
+        // ì¡°ê±´ 1 : í•´ë‹¹ ìœ„ì¹˜ì— ì´ë¯¸ íƒ€ì›Œê°€ ìˆëŠ”ì§€ ì²´í¬
+        if (CheckTowerExists(position) == false)  // íƒ€ì›Œê°€ ì—†ìœ¼ë©´ false ë°˜í™˜
         {
             return false;
         }
 
-        //°æ·Î¸¦ ¿ÏÀüÈ÷ ¸·¾Ò´ÂÁö (´Ù¸¥ ºĞÀÌ ±¸Çö ¿¹Á¤)
+        //ê²½ë¡œë¥¼ ì™„ì „íˆ ë§‰ì•˜ëŠ”ì§€ (ë‹¤ë¥¸ ë¶„ì´ êµ¬í˜„ ì˜ˆì •)
         if (CheckPathBlocked(position) == false)
         {
             return false;
         }
 
-        // »õ·Î¿î Á¶°ÇÀÌ ÀÖ´Ù¸é  Ãß°¡ÇÏ½Ã¸éµÊ
+        // ìƒˆë¡œìš´ ì¡°ê±´ì´ ìˆë‹¤ë©´  ì¶”ê°€í•˜ì‹œë©´ë¨
         // if (CheckPathBlocked(position) == false)
         // {
         //     return false;
         // }
         return true;
     }
-    // Á¶°Ç 1 : Å¸¿ö Áßº¹ Á¶°Ç Ãß°¡
+    // ì¡°ê±´ 1 : íƒ€ì›Œ ì¤‘ë³µ ì¡°ê±´ ì¶”ê°€
     private bool CheckTowerExists(Vector3 position)
     {
-        // Å¸¿ö ¼³Ä¡½Ã °Å¸®°¡ 1Â÷ÀÌ°¡ ³ª°Ô ¿ì¼±¸¸µé¾îµÒ ±â´É È®ÀÎ ¹× Á¶°ÇÀ» À§ÇØ
-        // ½ÇÁ¦ Á¶°ÇÀº Å¸ÀÏ (x,y,0 ·Î µÉ°Í °°À½)
+        // íƒ€ì›Œ ì„¤ì¹˜ì‹œ ê±°ë¦¬ê°€ 1ì°¨ì´ê°€ ë‚˜ê²Œ ìš°ì„ ë§Œë“¤ì–´ë‘  ê¸°ëŠ¥ í™•ì¸ ë° ì¡°ê±´ì„ ìœ„í•´
+        // ì‹¤ì œ ì¡°ê±´ì€ íƒ€ì¼ (x,y,0 ë¡œ ë ê²ƒ ê°™ìŒ)
         float checkRadius = 1f;
         Collider[] colliders = Physics.OverlapSphere(position, checkRadius);
 
         foreach (Collider col in colliders)
         {
-            if (col.CompareTag("Tower")) // Å¸°ÙÀÌ Å¸¿öÀÎ Ä£±¸µé¸¸ Ã¼Å© ¿¡Á¤
+            if (col.CompareTag("Tower")) // íƒ€ê²Ÿì´ íƒ€ì›Œì¸ ì¹œêµ¬ë“¤ë§Œ ì²´í¬ ì—ì •
             {
-                Debug.Log("ÀÌ¹Ì Å¸¿ö°¡ ÀÖ´Â À§Ä¡ÀÔ´Ï´Ù.!");
+                Debug.Log("ì´ë¯¸ íƒ€ì›Œê°€ ìˆëŠ” ìœ„ì¹˜ì…ë‹ˆë‹¤.!");
                 return false;
             }
         }
         return true;
     }
-    // Á¶°Ç 2: °æ·Î ¸·Èû Ã¼Å© (ÆÀ¿øÀÌ ±¸Çö ¿¹Á¤)
+    // ì¡°ê±´ 2: ê²½ë¡œ ë§‰í˜ ì²´í¬ (íŒ€ì›ì´ êµ¬í˜„ ì˜ˆì •)
     private bool CheckPathBlocked(Vector3 position)
     {
-        // TODO: ÆÀ¿øÀÌ ¿©±â¿¡ °æ·Î ¸·Èû ·ÎÁ÷ ±¸Çö
-        // °æ·Î°¡ ¸·È÷¸é return false; Áà¾ßÇÔ
-        return true; // ÀÏ´Ü Åë°ú
+        // TODO: íŒ€ì›ì´ ì—¬ê¸°ì— ê²½ë¡œ ë§‰í˜ ë¡œì§ êµ¬í˜„
+        // ê²½ë¡œê°€ ë§‰íˆë©´ return false; ì¤˜ì•¼í•¨
+        return true; // ì¼ë‹¨ í†µê³¼
     }
 
     public void RemoveTower(Tower tower)
     {
         if (_placedTowers.Contains(tower))
         {
-            //50% È¯ºÒ (Á¤¼ö ¹ö¸²)
+            //50% í™˜ë¶ˆ (ì •ìˆ˜ ë²„ë¦¼)
             int refund = _towerCost / 2;
             _currentGold += refund;
 
-            // ¸®½ºÆ®¿¡¼­ Á¦°Å
+            // ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
             _placedTowers.Remove(tower);
 
-            // ¿ÀºêÁ§Æ® »èÁ¦
+            // ì˜¤ë¸Œì íŠ¸ ì‚­ì œ
             Destroy(tower.gameObject);
 
-            Debug.Log("Å¸¿ö »èÁ¦! È¯ºÒ :" + refund + "/³²Àº °ñµå :" + _currentGold);
+            Debug.Log("íƒ€ì›Œ ì‚­ì œ! í™˜ë¶ˆ :" + refund + "/ë‚¨ì€ ê³¨ë“œ :" + _currentGold);
         }
     }
     /// <summary>
-    /// Å¸¿ö ¾÷±×·¹ÀÌµå
-    /// °ñµå¸¦ ¼Ò¸ğÇÏ°í Å¸¿öÀÇ ´É·ÂÄ¡¸¦ °­È­ÇÔ
+    /// íƒ€ì›Œ ì—…ê·¸ë ˆì´ë“œ
+    /// ê³¨ë“œë¥¼ ì†Œëª¨í•˜ê³  íƒ€ì›Œì˜ ëŠ¥ë ¥ì¹˜ë¥¼ ê°•í™”í•¨
     /// </summary>
-    /// <param name="tower">¾÷±×·¹ÀÌµåÇÒ Å¸¿ö</param>
+    /// <param name="tower">ì—…ê·¸ë ˆì´ë“œí•  íƒ€ì›Œ</param>
     public void UpgradeTower(Tower tower)
     {
-        Debug.Log("[TowerManager] ¾÷±×·¹ÀÌµå ÇÔ¼ö È£ÃâµÊ");
+        Debug.Log("[TowerManager] ì—…ê·¸ë ˆì´ë“œ í•¨ìˆ˜ í˜¸ì¶œë¨");
 
-        // Å¸¿ö°¡ nullÀÌ¸é Á¾·á
+        // íƒ€ì›Œê°€ nullì´ë©´ ì¢…ë£Œ
         if (tower == null)
         {
-            Debug.LogError("[TowerManager] ¾÷±×·¹ÀÌµå ½ÇÆĞ - Å¸¿ö°¡ nullÀÔ´Ï´Ù!");
+            Debug.LogError("[TowerManager] ì—…ê·¸ë ˆì´ë“œ ì‹¤íŒ¨ - íƒ€ì›Œê°€ nullì…ë‹ˆë‹¤!");
             return;
         }
 
-        Debug.Log($"[TowerManager] ¾÷±×·¹ÀÌµå ´ë»ó: {tower.name}");
-        Debug.Log($"[TowerManager] ÇöÀç °ñµå: {_currentGold}G / ÇÊ¿ä °ñµå: {_towerCost}G");
+        Debug.Log($"[TowerManager] ì—…ê·¸ë ˆì´ë“œ ëŒ€ìƒ: {tower.name}");
+        Debug.Log($"[TowerManager] í˜„ì¬ ê³¨ë“œ: {_currentGold}G / í•„ìš” ê³¨ë“œ: {_towerCost}G");
 
-        // °ñµå Ã¼Å©
+        // ê³¨ë“œ ì²´í¬
         if (_currentGold < _towerCost)
         {
-            Debug.LogWarning("[TowerManager] ¾÷±×·¹ÀÌµå ½ÇÆĞ - °ñµå°¡ ºÎÁ·ÇÕ´Ï´Ù!");
-            Debug.LogWarning($"  ÇÊ¿ä: {_towerCost}G, º¸À¯: {_currentGold}G, ºÎÁ·: {_towerCost - _currentGold}G");
+            Debug.LogWarning("[TowerManager] ì—…ê·¸ë ˆì´ë“œ ì‹¤íŒ¨ - ê³¨ë“œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤!");
+            Debug.LogWarning($"  í•„ìš”: {_towerCost}G, ë³´ìœ : {_currentGold}G, ë¶€ì¡±: {_towerCost - _currentGold}G");
             return;
         }
 
-        // °ñµå Â÷°¨
+        // ê³¨ë“œ ì°¨ê°
         _currentGold -= _towerCost;
-        Debug.Log($"[TowerManager] °ñµå Â÷°¨: -{_towerCost}G (³²Àº °ñµå: {_currentGold}G)");
+        Debug.Log($"[TowerManager] ê³¨ë“œ ì°¨ê°: -{_towerCost}G (ë‚¨ì€ ê³¨ë“œ: {_currentGold}G)");
 
-        // ¾÷±×·¹ÀÌµå Àü ½ºÅÈ ÀúÀå (·Î±×¿ë)
+        // ì—…ê·¸ë ˆì´ë“œ ì „ ìŠ¤íƒ¯ ì €ì¥ (ë¡œê·¸ìš©)
         float oldDamage = tower._damage;
         float oldRange = tower._range;
 
-        // ´É·ÂÄ¡ °­È­ (ÀÓ½Ã·Î 1.5¹è, 1.1¹è Àû¿ë)
-        // TODO: TowerStats, JsonManager¿Í ¿¬µ¿ÇÏ¿© ·¹º§º° ½ºÅÈ Àû¿ë
+        // ëŠ¥ë ¥ì¹˜ ê°•í™” (ì„ì‹œë¡œ 1.5ë°°, 1.1ë°° ì ìš©)
+        // TODO: TowerStats, JsonManagerì™€ ì—°ë™í•˜ì—¬ ë ˆë²¨ë³„ ìŠ¤íƒ¯ ì ìš©
         tower._damage *= 1.5f;
         tower._range *= 1.1f;
 
-        // ¾÷±×·¹ÀÌµå °á°ú Ãâ·Â
+        // ì—…ê·¸ë ˆì´ë“œ ê²°ê³¼ ì¶œë ¥
         Debug.Log("============================================");
-        Debug.Log($"[¾÷±×·¹ÀÌµå ¿Ï·á] {tower.name}");
-        Debug.Log($"  - °ø°İ·Â: {oldDamage} ¡æ {tower._damage} (+{tower._damage - oldDamage})");
-        Debug.Log($"  - »ç°Å¸®: {oldRange} ¡æ {tower._range} (+{tower._range - oldRange})");
-        Debug.Log($"  - ³²Àº °ñµå: {_currentGold}G");
+        Debug.Log($"[ì—…ê·¸ë ˆì´ë“œ ì™„ë£Œ] {tower.name}");
+        Debug.Log($"  - ê³µê²©ë ¥: {oldDamage} â†’ {tower._damage} (+{tower._damage - oldDamage})");
+        Debug.Log($"  - ì‚¬ê±°ë¦¬: {oldRange} â†’ {tower._range} (+{tower._range - oldRange})");
+        Debug.Log($"  - ë‚¨ì€ ê³¨ë“œ: {_currentGold}G");
         Debug.Log("============================================");
     }
 }
