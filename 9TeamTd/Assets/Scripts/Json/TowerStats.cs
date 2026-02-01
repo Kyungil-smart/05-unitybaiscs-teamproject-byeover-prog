@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static ProjectileEnumData;
 using static TowerEnumData;
@@ -46,7 +47,7 @@ public class TowerStats : MonoBehaviour
 
         TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level);
 
-        if(tData == null)
+        if (tData == null)
         {
             SetupValue(tData);
             Tower_Re towerScript = GetComponent<Tower_Re>();
@@ -92,10 +93,16 @@ public class TowerStats : MonoBehaviour
         if (tData == null)
         {
             SetupValue(tData);
-            
+
         }
 
-        return tData.towerCost;
+        if (tData.level != gLv)
+        {
+            Debug.LogError($"{gId}의 {gLv} 레벨 데이터가 없습니다.");
+            return 999999999;
+        }
+        else return tData.towerCost;
+
     }
 
 }
