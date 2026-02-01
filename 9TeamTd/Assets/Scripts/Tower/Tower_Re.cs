@@ -13,13 +13,14 @@ using static UnityEngine.GraphicsBuffer;
 // 타워의 기본 속성 및 기능 관리
 // 타워 사거리, 공격력, 공격속도, 타겟팅 방식 등 관리
 // 적 감지, 타겟정하기, 공격 실행 등 기능 구현 예정  
-public class Tower_Re : MonoBehaviour
+public class Tower_Re : MonoBehaviour, IDamagable
 {
     [SerializeField] private int id;
     [SerializeField] private string name;
     [SerializeField] private int level;
     [SerializeField] private TowerType towerType;
-    public float _towerheals; // 타워 체력
+    public float _towerheals; // 타워 최대 체력
+    public int _currentheals; // 타워 현재 체력
     [SerializeField] private attackType attackType;
     public float _damage;         // 타워 공격력
     public float _range;          // 타워 사거리
@@ -61,10 +62,12 @@ public class Tower_Re : MonoBehaviour
             towerCost = stats.towerCost;
         }
 
-        // 0 이상이라면 ~
+        // 0 이하라면 ~
         if (_range <= 0) _range = 0;
         if (_damage <= 0) _damage = 0;
         if (_attackSpeed <= 0) _attackSpeed = 0;
+
+        _currentheals = (int)_towerheals;
     }
 
 
@@ -74,7 +77,7 @@ public class Tower_Re : MonoBehaviour
         void Start()
     {
         _currentTarget = null;  // 현재 타겟은 기본적으로 null 값임
-
+        
 
     }
 
@@ -186,4 +189,22 @@ public class Tower_Re : MonoBehaviour
     }
 
 
+
+    // 타워가 데미지를 받는 함수
+    public void TakeDamage(float damage, float ratio)
+    {
+        // if (isDead) return; 오브젝트 풀링으로 바꾸면 안정성을 위해 추가 필요
+
+        _currentheals -= (int)damage;
+
+        if (_currentheals <= 0)
+        {
+            _currentheals = 0;
+
+            /*파괴 이펙트 추가 필요*/
+
+
+            Destroy(gameObject, 0.5f);  // 나중에 오브젝트 풀링으로 수정할 수 있으면 바꿔야 함
+        }
+    }
 }

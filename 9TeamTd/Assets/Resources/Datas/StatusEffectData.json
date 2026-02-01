@@ -1,0 +1,74 @@
+﻿{
+  "statusEffect" : [
+  {
+    "id": 100511,
+    "effectName": "Burn",
+    "effectType": "DoT",
+    "effectRate": 3000,
+    "effectValue": 0.1,
+    "effectInterval": 1,
+    "duration": 6,
+    "overlapCount": 1
+  },
+  {
+    "id": 100611,
+    "effectName": "Stun",
+    "effectType": "CC",
+    "effectRate": 5000,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": 1
+  },
+  {
+    "id": 110411,
+    "effectName": "Stun",
+    "effectType": "CC",
+    "effectRate": 1500,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": 1
+  },
+  {
+    "id": 110511,
+    "effectName": "Knockback",
+    "effectType": "CC",
+    "effectRate": 10000,
+    "effectValue": 0.5,
+    "effectInterval": -1,
+    "duration": -1,
+    "overlapCount": -1
+  },
+  {
+    "id": 110611,
+    "effectName": "Stun",
+    "effectType": "CC",
+    "effectRate": 3000,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": 1
+  },
+  {
+    "id": 110711,
+    "effectName": "Freeze",
+    "effectType": "Debuff",
+    "effectRate": 5000,
+    "effectValue": -0.1,
+    "effectInterval": -1,
+    "duration": 20,
+    "overlapCount": 8
+  },
+  {
+    "id": 110811,
+    "effectName": "Burn",
+    "effectType": "DoT",
+    "effectRate": 10000,
+    "effectValue": 0.15,
+    "effectInterval": 1,
+    "duration": 6,
+    "overlapCount": 1
+  }
+]
+}
