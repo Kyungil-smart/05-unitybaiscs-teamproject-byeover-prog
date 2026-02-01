@@ -11,7 +11,7 @@ public class MonsterStats : MonoBehaviour
     public int id;
     public string name;
     public int level;
-    public int maxHp;
+    public int maxHP;
     public int attackValue;
     public float defenceValue;
     public string moveType;
@@ -25,7 +25,7 @@ public class MonsterStats : MonoBehaviour
         id = data.id;
         name = data.name;
         level = data.level;
-        maxHp = data.maxHp;
+        maxHP = data.maxHP;
         attackValue = data.attackValue;
         defenceValue = data.defenceValue;
         moveType = data.moveType;

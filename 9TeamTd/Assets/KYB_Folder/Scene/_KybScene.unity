@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356ece92ebd34894089cadeceb05f995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetID: 2000
+  targetID: 2100
   targetLevel: 1
   jsonType: 5
   dataFilePath: Datas/MonsterData

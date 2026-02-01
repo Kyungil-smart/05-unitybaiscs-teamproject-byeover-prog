@@ -11,7 +11,7 @@ public class MonsterDatas
     public int id;
     public string name;
     public int level;
-    public int maxHp;
+    public int maxHP;
     public int attackValue;
     public float defenceValue;
     public string moveType;

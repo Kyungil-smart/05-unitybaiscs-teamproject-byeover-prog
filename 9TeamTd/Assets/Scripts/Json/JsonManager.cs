@@ -177,9 +177,14 @@ public class JsonManager : MonoBehaviour
         return foundData; // 찾은 데이터를 호출한 곳으로 돌려줌
     }
 
+    
     public MonsterDatas GetMonsterData(int id, int level)
     {
-        if (_monsterData == null) return null;
+        if (_monsterData == null || _monsterData.monsters == null)
+        {
+            Debug.LogError("[GetMonsterData] 몬스터 데이터가 로드되지 않았습니다.");
+            return null;
+        }
 
         MonsterDatas foundData = _monsterData.monsters.Find(t => t.id == id && t.level == level);
 
@@ -209,7 +214,7 @@ public class JsonManager : MonoBehaviour
     {
         if (_monsterSpawnData == null) return null;
 
-        MonsterSpawnDatas foundData = _monsterSpawnData.monsterSpawn.Find(t => t.id == id);
+        MonsterSpawnDatas foundData = _monsterSpawnData.spawnPattern.Find(t => t.id == id);
 
         if (foundData == null)
         {
