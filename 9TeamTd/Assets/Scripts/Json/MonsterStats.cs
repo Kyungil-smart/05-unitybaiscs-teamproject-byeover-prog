@@ -16,7 +16,7 @@ public class MonsterStats : MonoBehaviour
     public float defenceValue;
     public string moveType;
     public string enemyRank;
-    public string moveSpeed;
+    public float moveSpeed;
     
     public void SetupValue(MonsterDatas data)
     {
