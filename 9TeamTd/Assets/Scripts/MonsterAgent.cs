@@ -4,37 +4,32 @@ using UnityEngine.Serialization;
 public sealed class MonsterAgent : MonoBehaviour
 {
     [Header("References")]
-    [FormerlySerializedAs("grid_system")]
     [SerializeField] private GridSystem gridSystem;
 
+    // 속도는 Json으로 데이터 받아와서 필요없긴 한데, 디버깅용으로 남겨줌
     [Header("Movement")]
-    [FormerlySerializedAs("move_speed")]
     [SerializeField, Min(0.1f)] private float moveSpeed = 3f;
-
-    [FormerlySerializedAs("arrival_radius")]
+    
     [SerializeField, Min(0.001f)] private float arrivalRadius = 0.05f;
 
     [SerializeField, Min(0f)] private float turnSpeed = 12f;
 
     private Cell currentCell;
     private Cell targetCell;
+    
     private Vector3 targetWorld;
-
     private Vector2Int lastMoveDir;
+    
     private bool hasTarget;
+    private bool isInitialized = false; // 초기화 여부 체크
 
     private void Awake()
-    {
-        if (gridSystem == null)
-            gridSystem = FindObjectOfType<GridSystem>();
-
-        if (gridSystem == null)
-        {
-            Debug.LogError("[MonsterAgent] GridSystem not found in scene.");
-            enabled = false;
-        }
+    { 
+        if (GridSystem.Instance != null) gridSystem = GridSystem.Instance;
+        else gridSystem = FindObjectOfType<GridSystem>();
     }
 
+    /*
     private void Start()
     {
         if (!TryGetSpawnCell(out Cell spawnCell))
@@ -44,6 +39,20 @@ public sealed class MonsterAgent : MonoBehaviour
         }
 
         TeleportToCell(spawnCell);
+    }
+    */
+    // Start 이벤트 함수 안쓰고 Initialize 함수를 매니저에서 호출해서 사용
+    public void Initialize(float speed, Transform baseTarget)
+    {
+        this.moveSpeed = speed;
+        
+        // 현재 내 위치를 그리드 좌표로 인식
+        if (gridSystem != null)
+        {
+            TeleportToCell(gridSystem.WorldToCell(baseTarget.position));
+        }
+        
+        this.isInitialized = true;
     }
 
     private void Update()
@@ -55,8 +64,9 @@ public sealed class MonsterAgent : MonoBehaviour
             currentCell = targetCell;
             hasTarget = false;
 
+            // 다음 이동할 곳 찾기
             if (!gridSystem.TryGetNextStep(currentCell, lastMoveDir, out Cell nextCell, out Vector2Int nextDir))
-                return;
+                return; // 없거나 도착하면 return
 
             targetCell = nextCell;
             lastMoveDir = nextDir;
@@ -64,10 +74,10 @@ public sealed class MonsterAgent : MonoBehaviour
             hasTarget = true;
         }
 
-        // Smooth movement (world interpolation)
+        // 이동 (moveTowards)
         transform.position = Vector3.MoveTowards(transform.position, targetWorld, moveSpeed * Time.deltaTime);
 
-        // Optional: rotate toward movement direction (top-down friendly)
+        // 회전 (LookRotation)
         Vector3 dir = targetWorld - transform.position;
         dir.y = 0f;
 
@@ -78,7 +88,7 @@ public sealed class MonsterAgent : MonoBehaviour
         }
     }
     
-    
+    /* MonsterManager에서 스폰 지정해주기 때문에 필요 없음 함수 이름 : TryGetSpawnCell
     private bool TryGetSpawnCell(out Cell spawnCell)
     {
         if (!gridSystem.TryGetRandomSpawnCell(out spawnCell))
@@ -89,15 +99,19 @@ public sealed class MonsterAgent : MonoBehaviour
 
         return true;
     }
-
+    */
+    
     private void TeleportToCell(Cell cell)
     {
         currentCell = cell;
         targetCell = cell;
 
-        targetWorld = gridSystem.CellToWorld(cell, y: transform.position.y);
+        if (gridSystem != null)
+        {
+            targetWorld = gridSystem.CellToWorld(cell, y: transform.position.y);
+        }
+        
         transform.position = targetWorld;
-
         hasTarget = false;
         lastMoveDir = Vector2Int.zero;
     }
