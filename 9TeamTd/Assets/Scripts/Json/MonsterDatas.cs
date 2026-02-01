@@ -16,7 +16,7 @@ public class MonsterDatas
     public float defenceValue;
     public string moveType;
     public string enemyRank;
-    public string moveSpeed;
+    public float moveSpeed;
 }
 
 // MonsterDatas 데이터 리스트

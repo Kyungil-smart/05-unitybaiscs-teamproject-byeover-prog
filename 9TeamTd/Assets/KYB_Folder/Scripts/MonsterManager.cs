@@ -64,7 +64,27 @@ public class MonsterManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (!isRunning) return;
+
+        gameTime += Time.deltaTime;
+
+        // 스케줄 리스트를 검사
+        foreach (var pattern in currentLevelSchedule)
+        {
+            // 1. 지금이 이 몬스터가 나올 시간대인가? (Start <= 현재 < End)
+            if (gameTime >= pattern.startTime && gameTime < pattern.endTime)
+            {
+                // 2. 쿨타임(Interval)이 지났는가?
+                if (!lastSpawnTimeById.ContainsKey(pattern.id))
+                    lastSpawnTimeById[pattern.id] = -999f; // 처음엔 무조건 스폰
+                
+                if (gameTime - lastSpawnTimeById[pattern.id] >= pattern.interval)
+                {
+                    SpawnMonster(pattern.id);
+                    lastSpawnTimeById[pattern.id] = gameTime; // 마지막 스폰 시간 갱신
+                }
+            }
+        }
     }
     
     // 몬스터 스폰 로직
@@ -113,7 +133,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    public void ReturnToPool()
+    public void ReturnToPool(Monster monster)
     {
         monster.gameObject.SetActive(false);
         pool.Push(monster);
