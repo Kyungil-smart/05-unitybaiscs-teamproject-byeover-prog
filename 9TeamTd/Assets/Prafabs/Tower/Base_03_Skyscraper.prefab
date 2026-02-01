@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 5514014587716943128}
   m_Layer: 10
   m_Name: Base_03_Skyscraper
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   level: 0
   towerType: 2
   _towerheals: 0
+  _towercurrentheals: 0
   attackType: 1
   _damage: 0
   _range: 0

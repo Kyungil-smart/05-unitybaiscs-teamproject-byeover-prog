@@ -4896,7 +4896,7 @@ GameObject:
   - component: {fileID: 6925412329360101800}
   m_Layer: 10
   m_Name: Base_05_FireSpirit
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4982,6 +4982,7 @@ MonoBehaviour:
   level: 0
   towerType: 2
   _towerheals: 20
+  _towercurrentheals: 0
   attackType: 3
   _damage: 30
   _range: 4

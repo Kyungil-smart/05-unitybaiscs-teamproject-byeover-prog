@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7423503202874449142}
   m_Layer: 0
   m_Name: Base_06_Storm
-  m_TagString: Tower
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   level: 0
   towerType: 2
   _towerheals: 10
+  _towercurrentheals: 0
   attackType: 3
   _damage: 10
   _range: 15
