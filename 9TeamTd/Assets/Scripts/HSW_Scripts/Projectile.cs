@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     
     
     // 데미지 계산 스크립트
-    DamageCalculator damageCalculator = new DamageCalculator();
+    // DamageCalculator damageCalculator = new DamageCalculator();
 
     // 콜라이더 범위 내 적 담아둘 리스트(주기에 따라 여러 번 데미지를 주는 경우 사용)
     private List<Collider> dmgTrgets = new List<Collider>();
@@ -217,7 +217,7 @@ public class Projectile : MonoBehaviour
     private void GiveDamageChance(Collider other)
     {
         // 데미지 계산
-        int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
+        int finalDMG = DamageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
 
         // 실제로 데미지 주는 처리 (추가 필요)
         // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
