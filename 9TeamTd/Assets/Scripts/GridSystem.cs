@@ -210,8 +210,7 @@ public partial class GridSystem : MonoBehaviour
     /// <returns>건설 가능하고 길도 막히지 않았으면 true</returns>
     public bool CanPlaceTower(Cell cell)
     {
-        if (!IsBuildable(cell))
-            return false;
+        if (!IsBuildable(cell)) return false;
 
         RebuildDistanceField(previewDistanceToBase, assumedBlockedCell: cell);
         return HasAnyReachableEdgeSpawn(previewDistanceToBase, assumedBlockedCell: cell);
@@ -251,7 +250,7 @@ public partial class GridSystem : MonoBehaviour
             return false;
         }
 
-        //SpawnTowerVisual(cell);
+        SpawnTowerVisual(cell); // 자체 비주얼 생성 (필요 없으면 주석 처리)
 #if UNITY_EDITOR
         Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
 #endif
@@ -266,14 +265,10 @@ public partial class GridSystem : MonoBehaviour
     public bool RemoveTower(Cell cell)
     {
         // 유효성 검사
-        if (!IsInside(cell))
-            return false;
-
-        if (GetCellState(cell) != CellState.Blocked)
-            return false;
+        if (!IsInside(cell)) return false;
+        if (GetCellState(cell) != CellState.Blocked) return false;
 
         int index = ToIndex(cell);
-
         if (towerVisualByIndex.TryGetValue(index, out GameObject visual) && visual != null)
         {
             Destroy(visual);
@@ -302,22 +297,14 @@ public partial class GridSystem : MonoBehaviour
     /// <returns>몬스터가 있으면 true, 없으면 false</returns>
     public bool IsCellOccupiedByMonster(Cell cell)
     {
-        if (!preventBuildOnMonster)
-            return false;
-
-        // 물리 연산은 게임 실행중에만
-        if (!Application.isPlaying)
-            return false;
-
-        if (!IsInside(cell))
-            return false;
+        if (!preventBuildOnMonster) return false;
+        if (!Application.isPlaying) return false;
+        if (!IsInside(cell)) return false;
 
         Vector3 center = CellToWorld(cell, y: monsterCheckY);
-
         // 중요!! : 수정할 때 cellSize 변수 사용 (cell_size 절대 금지)
         Vector3 halfExtents = new Vector3(cellSize * 0.45f, monsterCheckHalfHeight, cellSize * 0.45f);
-
-
+        
         int hitCount = Physics.OverlapBoxNonAlloc(
             center,
             halfExtents,
