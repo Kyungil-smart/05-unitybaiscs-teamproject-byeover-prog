@@ -1,10 +1,10 @@
 ﻿{
   "monsters" : [
   {
-    "id": 2000,
+    "id": 2100,
     "name": "골렘",
     "level": 1,
-    "maxHP": 30,
+    "maxHP": 1000,
     "attackValue": 1,
     "defenceValue": 1,
     "moveType": "Ground",
@@ -12,10 +12,10 @@
     "moveSpeed": 1
   },
   {
-    "id": 2001,
+    "id": 2101,
     "name": "가고일",
     "level": 1,
-    "maxHP": 10,
+    "maxHP": 1010,
     "attackValue": 1,
     "defenceValue": 1,
     "moveType": "Flying",
@@ -23,10 +23,10 @@
     "moveSpeed": 1.5
   },
   {
-    "id": 2002,
+    "id": 2102,
     "name": "폭탄광",
     "level": 1,
-    "maxHP": 20,
+    "maxHP": 1020,
     "attackValue": 1,
     "defenceValue": 1,
     "moveType": "Ground",
@@ -34,10 +34,10 @@
     "moveSpeed": 0.7
   },
   {
-    "id": 2000,
+    "id": 2100,
     "name": "골렘",
     "level": 2,
-    "maxHP": 50,
+    "maxHP": 1050,
     "attackValue": 2,
     "defenceValue": 2,
     "moveType": "Ground",
@@ -45,10 +45,10 @@
     "moveSpeed": 2
   },
   {
-    "id": 2001,
+    "id": 2101,
     "name": "가고일",
     "level": 2,
-    "maxHP": 30,
+    "maxHP": 1030,
     "attackValue": 2,
     "defenceValue": 2,
     "moveType": "Flying",
@@ -56,10 +56,10 @@
     "moveSpeed": 3
   },
   {
-    "id": 2002,
+    "id": 2102,
     "name": "폭탄광",
     "level": 2,
-    "maxHP": 40,
+    "maxHP": 1040,
     "attackValue": 2,
     "defenceValue": 2,
     "moveType": "Ground",
@@ -67,10 +67,10 @@
     "moveSpeed": 1.4
   },
   {
-    "id": 2000,
+    "id": 2100,
     "name": "골렘",
     "level": 3,
-    "maxHP": 100,
+    "maxHP": 1100,
     "attackValue": 3,
     "defenceValue": 3,
     "moveType": "Ground",
@@ -78,10 +78,10 @@
     "moveSpeed": 4
   },
   {
-    "id": 2001,
+    "id": 2101,
     "name": "가고일",
     "level": 3,
-    "maxHP": 80,
+    "maxHP": 1080,
     "attackValue": 3,
     "defenceValue": 3,
     "moveType": "Flying",
@@ -89,10 +89,10 @@
     "moveSpeed": 6
   },
   {
-    "id": 2002,
+    "id": 2102,
     "name": "폭탄광",
     "level": 3,
-    "maxHP": 90,
+    "maxHP": 1090,
     "attackValue": 3,
     "defenceValue": 3,
     "moveType": "Ground",

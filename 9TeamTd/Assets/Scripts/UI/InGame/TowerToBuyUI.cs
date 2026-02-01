@@ -8,6 +8,7 @@ public class TowerToBuyUI : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject TowerToBuyPanel;
     [SerializeField] float offsetYRatio = 0.32f;  // Canvas 높이 대비 비율 
+
     [SerializeField] TextMeshProUGUI nameText;
     //[SerializeField] TextMeshProUGUI hpText;
     [SerializeField] TextMeshProUGUI attackValueText;
@@ -17,7 +18,7 @@ public class TowerToBuyUI : MonoBehaviour
 
     [Header("대상의 정보")]
     [SerializeField] string towerName;
-    [SerializeField] int maxHP;
+    //[SerializeField] int maxHP;
     [SerializeField] int attackValue;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
@@ -28,18 +29,25 @@ public class TowerToBuyUI : MonoBehaviour
         canvas = GetComponent<Canvas>();
     }
 
-    public void ShowTowerInfo(int targetID, int targetLevel, RectTransform buttonRect)
+    public void ShowInfo(int targetID, int targetLevel, RectTransform buttonRect)
     {
         TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
-        if (data != null)
-        {
-            SetupValue(data);
-        }
+        SetupValue(data);
+
         nameText.text = towerName;
         //hpText.text = maxHP.ToString();
-        attackValueText.text = $"파워: {attackValue}";
-        attackSpeedText.text = $"속도: {attackSpeed}";
-        attackRangeText.text = $"범위: {attackRange}";
+        if (attackValue < 0)
+        {
+            attackValueText.text = "파워: 없음";
+            attackSpeedText.text = "속도: 없음";
+            attackRangeText.text = "범위: 없음";
+        }
+        else
+        {
+            attackValueText.text = $"파워: {attackValue}";
+            attackSpeedText.text = $"속도: {attackSpeed}";
+            attackRangeText.text = $"범위: {attackRange}";
+        }
         costText.text = $"<sprite=0>{cost}";
 
         SetPanelPosition(buttonRect);
@@ -48,10 +56,8 @@ public class TowerToBuyUI : MonoBehaviour
 
     public void SetupValue(TowerDatas data)
     {
-        if (data == null) return;
-
         towerName = data.name;
-        maxHP = data.maxHP;
+        //maxHP = data.maxHP;
         attackValue = data.attackValue;
         attackRange = data.attackRange;
         attackSpeed = data.attackSpeed;
