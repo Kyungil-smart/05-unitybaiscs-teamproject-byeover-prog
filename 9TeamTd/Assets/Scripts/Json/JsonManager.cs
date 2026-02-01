@@ -70,8 +70,8 @@ public class JsonManager : MonoBehaviour
     {
         LoadTowerData("Datas/TowerDataExample");
         LoadMonsterData("Datas/MonsterData");
-        LoadMonsterData("Datas/MonsterResourcesData");
-        LoadMonsterData("Datas/MonsterSpawnData");
+        LoadMonsterResourcesData("Datas/MonsterResourcesData");
+        LoadMonsterSpawnData("Datas/MonsterSpawnData");
         LoadProjectileData("Datas/ProjectileData");
 
 
