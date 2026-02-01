@@ -44,14 +44,19 @@ public class Monster : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float attackValue, float ratio)
     {
         if (isDead) return;
+
+        float myDef = stat.defenceValue;
+
+        int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
         
-        currentHp -= damage;
+        currentHp -= finalDamage;
 
         if (currentHp <= 0)
         {
+            currentHp = 0;
             Die(isKilledByPlayer: true);
         }
     }

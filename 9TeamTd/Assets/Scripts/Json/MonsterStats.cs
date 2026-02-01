@@ -12,7 +12,7 @@ public class MonsterStats : MonoBehaviour
     public string name;
     public int level;
     public int maxHP;
-    public int attackValue;
+    public float attackValue;
     public float defenceValue;
     public string moveType;
     public string enemyRank;
