@@ -48,7 +48,7 @@ public class TowerStats : MonoBehaviour
 
         TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level);
 
-        if (tData == null)
+        if (tData != null)
         {
             SetupValue(tData);
             Tower_Re towerScript = GetComponent<Tower_Re>();
@@ -150,18 +150,16 @@ public class TowerStats : MonoBehaviour
         Debug.Log("레벨 업 함수 실행 완료");
     }
 
+    /*
     // 테스트용 레벨업 함수
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("K 입력");
+            Debug.Log("P 입력");
             LevelUpCost();
-            LevelUp();
-            
+            LevelUp();       
         }
-
-
     }
-    
+    */
 }

@@ -68,7 +68,7 @@ public class JsonManager : MonoBehaviour
     // @@ 테이블 추가될 때마다 업데이트 필요
     private void LoadJsonFiles()
     {
-        LoadTowerData("Datas/TowerDataExample");
+        LoadTowerData("Datas/TowerData");
         LoadMonsterData("Datas/MonsterData");
         LoadMonsterResourcesData("Datas/MonsterResourcesData");
         LoadMonsterSpawnData("Datas/MonsterSpawnData");
