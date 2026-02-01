@@ -4,6 +4,9 @@ using UnityEngine.Serialization;
 
 public partial class GridSystem : MonoBehaviour
 {
+    // 싱글톤 추가
+    public static GridSystem Instance { get; private set; }
+    
     private const string BaseTag = "Base";
 
     [Header("Grid")]
@@ -94,6 +97,13 @@ public partial class GridSystem : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        
         ResolveReferencesIfNeeded();
         ClampSettings();
         EnsureBuffers();
@@ -174,20 +184,19 @@ public partial class GridSystem : MonoBehaviour
     public bool IsBuildable(Cell cell)
     {
         // 1) Basic bounds / static rules first
-        if (!IsInside(cell))
-            return false;
+        if (!IsInside(cell)) return false;
+        if (cell == baseCell) return false;
+        if (GetCellState(cell) != CellState.Empty) return false;
 
-        if (cell == baseCell)
+        // 가장자리 (스폰구역) 건설 금지
+        if (cell.X < noBuildBorderThickness || cell.X >= gridWidth - noBuildBorderThickness ||
+            cell.Y < noBuildBorderThickness || cell.Y >= gridWidth - noBuildBorderThickness)
             return false;
-
-        if (GetCellState(cell) != CellState.Empty)
-            return false;
-
+        
+        return true;
         // 2) Dynamic rule: 몬스터 위/근처 설치 금지(필요할 때 주석 해제)
         //if (IsCellOccupiedByMonster(cell))
         //    return false;
-
-        return true;
     }
 
     /// <summary>
