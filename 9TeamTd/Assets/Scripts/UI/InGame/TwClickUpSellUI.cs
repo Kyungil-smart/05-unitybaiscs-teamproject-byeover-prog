@@ -73,18 +73,23 @@ public class TwClickUpSellUI : MonoBehaviour
                 switch (selectedTower.level)
                 {
                     case 1:
+                        FalseAllFrames();
                         Frame1.SetActive(true);
                         break;
                     case 2:
+                        FalseAllFrames();
                         Frame2.SetActive(true);
                         break;
                     case 3:
+                        FalseAllFrames();
                         Frame3.SetActive(true);
                         break;
                     case 4:
+                        FalseAllFrames();
                         Frame4.SetActive(true);
                         break;
                     case 5:
+                        FalseAllFrames();
                         Frame5.SetActive(true);
                         break;
                 }
@@ -99,6 +104,10 @@ public class TwClickUpSellUI : MonoBehaviour
     {
         selectedTower = null;
         towerToUpSellUI.HidePanel();
+        FalseAllFrames();
+    }
+    void FalseAllFrames()
+    {
         Frame1.SetActive(false);
         Frame2.SetActive(false);
         Frame3.SetActive(false);
