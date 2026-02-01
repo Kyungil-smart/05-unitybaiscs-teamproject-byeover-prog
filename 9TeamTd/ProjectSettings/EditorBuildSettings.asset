@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/UI/TitleMenu.unity
     guid: 84e98f29d923029459bd4b956efe96b7
   - enabled: 1
-    path: Assets/Scenes/UI/InGameUITest/GameUITest.unity
-    guid: 12f073c64ef310e41a2a1e60e9c80b8c
+    path: Assets/Scenes/UI/InGamePrototype.unity
+    guid: 750984ef36a933e48bca26c3504acb15
   m_configObjects: {}
