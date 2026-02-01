@@ -26,14 +26,24 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
+        /*
         // 싱글톤 초기화
         if (Instance != null || Instance != this)
         {
+            Debug.LogError($"MonsterManager가 {Instance.gameObject.name}에 중복되어 있음");
             Destroy(gameObject);
             return;
         }
-
+        */
         Instance = this;
+        Debug.Log("싱글톤 등록 완료 [MonsterManager]");
+
+        if (baseTransform == null)
+        {
+            GameObject baseObj = GameObject.Find("Base");
+            if (baseObj != null) baseTransform = baseObj.transform;
+        }
+        // DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -47,7 +57,7 @@ public class MonsterManager : MonoBehaviour
         lastSpawnTimeById.Clear();
         
         // JsonManager에서 스폰 데이터를 가져온다
-        for (int id = 1100; id <= 1110; id++) // << 엑셀에 적은 ID 범위에 맞게 수정
+        for (int id = 2100; id <= 2200; id++) // << 엑셀에 적은 ID 범위에 맞게 수정
         {
             var data = JsonManager.instanceJsonManger.GetMonsterSpawnData(id);
 
