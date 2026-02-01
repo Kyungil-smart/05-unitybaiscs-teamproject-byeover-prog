@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour, IDamagable
         this.resource = ressData;
         
         // 스탯 적용
-        this.currentHp = statData.maxHp;
+        this.currentHp = statData.maxHP;
         this.isDead = false;
         
         // 디버깅용 이름 변경
@@ -79,6 +79,17 @@ public class Monster : MonoBehaviour, IDamagable
         }
 
         OnDeath?.Invoke(this);
+        
+        MonsterManager.Instance.ReturnMonster(this);
+    }
+
+    private void ReachBase()
+    {
+        // 나중에 게임 매니저랑 연결 (플레이어에게 데미지 주기)
+        // 
+        Debug.Log("기지 도착");
+        
+        MonsterManager.Instance.ReturnMonster(this);
     }
 
     private void OnTriggerEnter(Collider other)
