@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1108
-  name: 
   level: 1
+  name: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -199,6 +199,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 304648146678727365}
     m_Modifications:
+    - target: {fileID: 3777088474815482718, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186995359615946570, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5310297043344140726, guid: 2366580841d88b04e9e25c6390c17431, type: 3}
       propertyPath: m_Name
       value: Body_DragonFlameTower

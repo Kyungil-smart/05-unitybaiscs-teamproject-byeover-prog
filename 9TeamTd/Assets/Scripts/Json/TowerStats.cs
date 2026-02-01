@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using static ProjectileEnumData;
 using static TowerEnumData;
@@ -95,14 +96,72 @@ public class TowerStats : MonoBehaviour
             SetupValue(tData);
 
         }
-
+        
         if (tData.level != gLv)
         {
             Debug.LogError($"{gId}의 {gLv} 레벨 데이터가 없습니다.");
-            return 999999999;
+            return 999999;
         }
-        else return tData.towerCost;
+        
+        return tData.towerCost;
 
     }
 
+
+    // 레벨업할 타워 금액 알려주는 함수
+    public int? LevelUpCost()
+    {
+        TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level + 1);
+
+        if (tData == null)
+        {
+            return null;
+            Debug.Log($"{tData.level} 데이터 확인 불가");
+        }
+
+        Debug.Log($"{tData.towerCost} 필요");
+
+        return tData.towerCost;
+    }
+
+    // 타워 레벨 업 함수
+    public void LevelUp()
+    {
+        // 자신의 level 1만 올려 다시 json 요청
+        TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level + 1);
+
+        if (tData == null)
+        {
+            return;
+            Debug.Log("데이터 확인 불가");
+        }
+
+
+
+
+        // 1레벨 올려 스텟 다시 세팅
+        SetupValue(tData);
+        Tower_Re towerScript = GetComponent<Tower_Re>();
+
+        if (towerScript != null)
+        {
+            towerScript.GetStats(this);
+        }
+        Debug.Log("레벨 업 함수 실행 완료");
+    }
+
+    // 테스트용 레벨업 함수
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("K 입력");
+            LevelUpCost();
+            LevelUp();
+            
+        }
+
+
+    }
+    
 }
