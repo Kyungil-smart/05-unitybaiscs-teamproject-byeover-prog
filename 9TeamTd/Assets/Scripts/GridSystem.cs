@@ -250,7 +250,7 @@ public partial class GridSystem : MonoBehaviour
             return false;
         }
 
-        SpawnTowerVisual(cell); // 자체 비주얼 생성 (필요 없으면 주석 처리)
+        // SpawnTowerVisual(cell); // 자체 비주얼 생성 (필요 없으면 주석 처리)
 #if UNITY_EDITOR
         Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
 #endif
