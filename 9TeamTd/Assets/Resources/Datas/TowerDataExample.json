@@ -30,7 +30,7 @@
   },
   {
     "id": 1001,
-    "name": "수정 마탑",
+    "name": "수정탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 15,
@@ -44,7 +44,7 @@
   },
   {
     "id": 1001,
-    "name": "수정 마탑",
+    "name": "수정탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 19,
@@ -58,7 +58,7 @@
   },
   {
     "id": 1002,
-    "name": "자수정 마탑",
+    "name": "대수정탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 20,
@@ -72,7 +72,7 @@
   },
   {
     "id": 1002,
-    "name": "자수정 마탑",
+    "name": "대수정탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 25,
@@ -86,6 +86,62 @@
   },
   {
     "id": 1003,
+    "name": "마법 마천루",
+    "level": 1,
+    "towerType": "Base",
+    "maxHP": 25,
+    "attackType": "None",
+    "attackValue": -1,
+    "attackRange": -1,
+    "attackProjectileIDs": -1,
+    "attackSpeed": -1,
+    "defenceValue": 0,
+    "towerCost": 700
+  },
+  {
+    "id": 1003,
+    "name": "마법 마천루",
+    "level": 2,
+    "towerType": "Base",
+    "maxHP": 31,
+    "attackType": "None",
+    "attackValue": -1,
+    "attackRange": -1,
+    "attackProjectileIDs": -1,
+    "attackSpeed": -1,
+    "defenceValue": 0,
+    "towerCost": 1050
+  },
+  {
+    "id": 1004,
+    "name": "자수정 마탑",
+    "level": 1,
+    "towerType": "Base",
+    "maxHP": 20,
+    "attackType": "None",
+    "attackValue": -1,
+    "attackRange": -1,
+    "attackProjectileIDs": -1,
+    "attackSpeed": -1,
+    "defenceValue": 0,
+    "towerCost": 700
+  },
+  {
+    "id": 1004,
+    "name": "자수정 마탑",
+    "level": 2,
+    "towerType": "Base",
+    "maxHP": 25,
+    "attackType": "None",
+    "attackValue": -1,
+    "attackRange": -1,
+    "attackProjectileIDs": -1,
+    "attackSpeed": -1,
+    "defenceValue": 0,
+    "towerCost": 1050
+  },
+  {
+    "id": 1005,
     "name": "불과 재의 마탑",
     "level": 1,
     "towerType": "Base",
@@ -93,13 +149,13 @@
     "attackType": "Target",
     "attackValue": 30,
     "attackRange": 4,
-    "attackProjectileIDs": 10031,
+    "attackProjectileIDs": 10051,
     "attackSpeed": 0.5,
     "defenceValue": 0,
-    "towerCost": 700
+    "towerCost": 1200
   },
   {
-    "id": 1003,
+    "id": 1005,
     "name": "불과 재의 마탑",
     "level": 2,
     "towerType": "Base",
@@ -107,13 +163,13 @@
     "attackType": "Target",
     "attackValue": 30,
     "attackRange": 4,
-    "attackProjectileIDs": 10031,
+    "attackProjectileIDs": 10051,
     "attackSpeed": 0.63,
     "defenceValue": 0,
-    "towerCost": 1050
+    "towerCost": 1800
   },
   {
-    "id": 1004,
+    "id": 1006,
     "name": "폭풍의 마탑",
     "level": 1,
     "towerType": "Base",
@@ -121,13 +177,13 @@
     "attackType": "Target",
     "attackValue": 10,
     "attackRange": 15,
-    "attackProjectileIDs": 10041,
+    "attackProjectileIDs": 10061,
     "attackSpeed": 0.05,
     "defenceValue": 0,
-    "towerCost": 1200
+    "towerCost": 1600
   },
   {
-    "id": 1004,
+    "id": 1006,
     "name": "폭풍의 마탑",
     "level": 2,
     "towerType": "Base",
@@ -135,10 +191,10 @@
     "attackType": "Target",
     "attackValue": 10,
     "attackRange": 18.75,
-    "attackProjectileIDs": 10041,
+    "attackProjectileIDs": 10061,
     "attackSpeed": 0.05,
     "defenceValue": 0,
-    "towerCost": 1800
+    "towerCost": 2400
   },
   {
     "id": 1100,
