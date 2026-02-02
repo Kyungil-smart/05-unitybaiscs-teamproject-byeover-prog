@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 
 // ========== 게임 상태 ==========
@@ -43,6 +44,8 @@ public class StageManager : MonoBehaviour
     public int CurrentWave => _currentWave;
     public int TotalWaves => _totalWaves;
 
+
+    public Action StageClear;
 
 
 
@@ -89,6 +92,14 @@ public class StageManager : MonoBehaviour
         {
             currentMinutes += 1;
             currentSeconds = 0;
+        }
+
+
+
+        if(stageEndTime <= currentTime)
+        {
+            _currentState = GameState.Victory;
+            StageClear?.Invoke();
         }
 
     }
