@@ -29,29 +29,20 @@ public sealed class MonsterAgent : MonoBehaviour
         else gridSystem = FindObjectOfType<GridSystem>();
     }
 
-    /*
+    
     private void Start()
     {
-        if (!TryGetSpawnCell(out Cell spawnCell))
-        {
-            enabled = false;
-            return;
-        }
-
+        TryGetSpawnCell(out Cell spawnCell);
         TeleportToCell(spawnCell);
     }
-    */
+    
     // Start 이벤트 함수 안쓰고 Initialize 함수를 매니저에서 호출해서 사용
     public void Initialize(float speed, Transform baseTarget)
     {
         this.moveSpeed = speed;
-        
-        // 현재 내 위치를 그리드 좌표로 인식
-        if (gridSystem != null)
-        {
-            TeleportToCell(gridSystem.WorldToCell(baseTarget.position));
-        }
-        
+#if UNITY_EDITOR
+        Debug.Log("몬스터의 스피드는 " + speed + "입니다.");
+#endif
         this.isInitialized = true;
     }
 
@@ -88,7 +79,7 @@ public sealed class MonsterAgent : MonoBehaviour
         }
     }
     
-    /* MonsterManager에서 스폰 지정해주기 때문에 필요 없음 함수 이름 : TryGetSpawnCell
+    
     private bool TryGetSpawnCell(out Cell spawnCell)
     {
         if (!gridSystem.TryGetRandomSpawnCell(out spawnCell))
@@ -99,7 +90,7 @@ public sealed class MonsterAgent : MonoBehaviour
 
         return true;
     }
-    */
+    
     
     private void TeleportToCell(Cell cell)
     {
