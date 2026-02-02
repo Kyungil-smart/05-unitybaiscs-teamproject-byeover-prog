@@ -13,9 +13,9 @@ public sealed class MonsterAgent : MonoBehaviour
     [SerializeField, Min(0.001f)] private float arrivalRadius = 0.05f;
 
     [SerializeField, Min(0f)] private float turnSpeed = 12f;
-    
+
     // 비행 시작 높이 (높을 수록 급강하 각도가 나옴)
-    private const float FLY_START_HEIGHT = 8.0f;
+    [SerializeField] private const float FLY_START_HEIGHT = 5.0f;
 
     private Cell currentCell;
     private Cell targetCell;
