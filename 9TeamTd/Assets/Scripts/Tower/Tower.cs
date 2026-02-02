@@ -221,9 +221,18 @@ public class Tower : MonoBehaviour, IDamagable
 
             GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");           
             Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.5f);
+
+            if (towerType == TowerType.Base) BaseDestroyed();
             Destroy(gameObject, 0.5f);  // 나중에 오브젝트 풀링으로 수정할 수 있으면 바꿔야 함
+            
         }
     }
 
+
+
+    public void BaseDestroyed()
+    {
+        StageManager.Instance.OnDefeat();
+    }
 
 }

@@ -46,14 +46,13 @@ public class StageManager : MonoBehaviour
 
 
     public Action StageClear;
+    public Action StageDefeat;
 
     public static OP<int> gold = new();
 
 
     private void Awake()
     {
-
-
 
                 // 싱글톤 설정
         if (Instance == null)
@@ -111,15 +110,6 @@ public class StageManager : MonoBehaviour
         }
         */
 
-        if(_currentState == GameState.Victory)
-        {
-            Debug.Log("승리!!!!");
-        }
-
-        if (_currentState == GameState.Defeat)
-        {
-
-        }
     }
 
 
@@ -142,8 +132,8 @@ public class StageManager : MonoBehaviour
 
         if(stageEndTime <= currentTime)
         {
-            _currentState = GameState.Victory;
-            StageClear?.Invoke();
+            OnVictory();
+
         }
 
     }
@@ -221,14 +211,18 @@ public class StageManager : MonoBehaviour
         Debug.Log("║                              ║");
         Debug.Log("╚══════════════════════════════╝");
         Debug.Log("");
-        Debug.Log($"[GameManager] 모든 웨이브 클리어! ({_currentWave}/{_totalWaves})");
+        // Debug.Log($"[GameManager] 모든 웨이브 클리어! ({_currentWave}/{_totalWaves})");
 
         // TODO: 승리 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
+
+        StageClear?.Invoke();
     }
 
+
+
     // ========== 패배 처리 ==========
-    private void OnDefeat()
+    public void OnDefeat()
     {
         _currentState = GameState.Defeat;
 
@@ -239,7 +233,9 @@ public class StageManager : MonoBehaviour
         Debug.Log("║                              ║");
         Debug.Log("╚══════════════════════════════╝");
         Debug.Log("");
-        Debug.Log($"[GameManager] 생명이 0이 되었습니다!");
+        // Debug.Log($"[GameManager] 생명이 0이 되었습니다!");
+
+        StageDefeat?.Invoke();
 
         // TODO: 패배 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
@@ -256,5 +252,15 @@ public class StageManager : MonoBehaviour
 
 
 
-
+    public void PauseFunction()
+    {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+    }
 }
