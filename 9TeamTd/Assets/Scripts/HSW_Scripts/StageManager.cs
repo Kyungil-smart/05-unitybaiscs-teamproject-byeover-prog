@@ -47,6 +47,7 @@ public class StageManager : MonoBehaviour
 
     public Action StageClear;
 
+    public static OP<int> gold = new();
 
 
     private void Awake()
@@ -76,6 +77,49 @@ public class StageManager : MonoBehaviour
 
         // 게임 시작 시 초기화
         StartInGame();
+        gold.Value = 110;
+    }
+
+
+    
+    void Update()
+    {
+
+        // ========== 디버그용 테스트 (키보드 입력) ==========
+        /*
+        // F1: 데미지 테스트
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Debug.Log("[GameManager] F1 - 데미지 테스트");
+            TakeDamage(1);
+        }
+        */
+
+        /*
+        // F2: 웨이브 클리어 테스트
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Debug.Log("[GameManager] F2 - 웨이브 클리어 테스트");
+            WaveCleared();
+        }
+
+        // F3: 게임 재시작 테스트
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            Debug.Log("[GameManager] F3 - 게임 재시작 테스트");
+            RestartGame();
+        }
+        */
+
+        if(_currentState == GameState.Victory)
+        {
+            Debug.Log("승리!!!!");
+        }
+
+        if (_currentState == GameState.Defeat)
+        {
+
+        }
     }
 
 
@@ -210,34 +254,7 @@ public class StageManager : MonoBehaviour
         // TODO: 씬 다시 로드하거나 오브젝트 초기화
     }
 
-    // ========== 디버그용 테스트 (키보드 입력) ==========
-    void Update()
-    {
-        /*
-        // F1: 데미지 테스트
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Debug.Log("[GameManager] F1 - 데미지 테스트");
-            TakeDamage(1);
-        }
-        */
 
-        /*
-        // F2: 웨이브 클리어 테스트
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            Debug.Log("[GameManager] F2 - 웨이브 클리어 테스트");
-            WaveCleared();
-        }
-
-        // F3: 게임 재시작 테스트
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            Debug.Log("[GameManager] F3 - 게임 재시작 테스트");
-            RestartGame();
-        }
-        */
-    }
 
 
 }
