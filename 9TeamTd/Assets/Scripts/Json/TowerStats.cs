@@ -19,6 +19,7 @@ public class TowerStats : MonoBehaviour
     // TowerData.cs 참고하여 모두 설정해줌
     [Header("Auto Status")]
     public string name;
+    public string desc;
     public TowerType towerType;
     public int maxHP;
     public attackType attackType;
@@ -58,7 +59,6 @@ public class TowerStats : MonoBehaviour
                 towerScript.GetStats(this);
             }
         }
-
     }
 
 
@@ -70,6 +70,7 @@ public class TowerStats : MonoBehaviour
         // json과 동일해야 함
         id = data.id;
         name = data.name;
+        desc = data.desc;
         level = data.level;
         towerType = (TowerType)Enum.Parse(typeof(TowerType), data.towerType);
         maxHP = data.maxHP;

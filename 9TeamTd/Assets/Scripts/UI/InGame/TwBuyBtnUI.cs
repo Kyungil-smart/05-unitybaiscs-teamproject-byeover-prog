@@ -31,12 +31,12 @@ public class TwBuyBtnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void OnEnable()
     {
         UIController.toBuyTwID.OnValueChanged += OnSelectedTowerIDChanged;
-        Player.gold.OnValueChanged += OnPlayerGoldChanged;
+        StageManager.gold.OnValueChanged += OnPlayerGoldChanged;
     }
     private void OnDisable()
     {
         UIController.toBuyTwID.OnValueChanged -= OnSelectedTowerIDChanged;
-        Player.gold.OnValueChanged -= OnPlayerGoldChanged;
+        StageManager.gold.OnValueChanged -= OnPlayerGoldChanged;
     }
 
     void OnSelectedTowerIDChanged(int value)

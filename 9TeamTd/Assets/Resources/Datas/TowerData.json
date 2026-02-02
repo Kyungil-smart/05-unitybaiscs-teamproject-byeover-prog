@@ -3,6 +3,7 @@
   {
     "id": 1000,
     "name": "기초 마탑",
+    "desc": "마법사 조수의 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 10,
@@ -17,6 +18,7 @@
   {
     "id": 1000,
     "name": "기초 마탑",
+    "desc": "마법사 조수의 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 13,
@@ -31,6 +33,7 @@
   {
     "id": 1001,
     "name": "수정탑",
+    "desc": "마법사의 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 15,
@@ -45,6 +48,7 @@
   {
     "id": 1001,
     "name": "수정탑",
+    "desc": "마법사의 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 19,
@@ -59,6 +63,7 @@
   {
     "id": 1002,
     "name": "대수정탑",
+    "desc": "마법 박사의 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 20,
@@ -73,6 +78,7 @@
   {
     "id": 1002,
     "name": "대수정탑",
+    "desc": "마법 박사의 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 25,
@@ -87,6 +93,7 @@
   {
     "id": 1003,
     "name": "마법 마천루",
+    "desc": "대마법사의 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 25,
@@ -101,6 +108,7 @@
   {
     "id": 1003,
     "name": "마법 마천루",
+    "desc": "대마법사의 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 31,
@@ -115,9 +123,10 @@
   {
     "id": 1004,
     "name": "자수정 마탑",
+    "desc": "마법 기술자의 탑",
     "level": 1,
     "towerType": "Base",
-    "maxHP": 20,
+    "maxHP": 25,
     "attackType": "None",
     "attackValue": -1,
     "attackRange": -1,
@@ -129,9 +138,10 @@
   {
     "id": 1004,
     "name": "자수정 마탑",
+    "desc": "마법 기술자의 탑",
     "level": 2,
     "towerType": "Base",
-    "maxHP": 25,
+    "maxHP": 31,
     "attackType": "None",
     "attackValue": -1,
     "attackRange": -1,
@@ -143,6 +153,7 @@
   {
     "id": 1005,
     "name": "불과 재의 마탑",
+    "desc": "접근하는 자를 모두 재로 돌리는 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 20,
@@ -157,6 +168,7 @@
   {
     "id": 1005,
     "name": "불과 재의 마탑",
+    "desc": "접근하는 자를 모두 재로 돌리는 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 25,
@@ -171,6 +183,7 @@
   {
     "id": 1006,
     "name": "폭풍의 마탑",
+    "desc": "폭풍을 부르는 마법사의 탑",
     "level": 1,
     "towerType": "Base",
     "maxHP": 20,
@@ -185,6 +198,7 @@
   {
     "id": 1006,
     "name": "폭풍의 마탑",
+    "desc": "폭풍을 부르는 마법사의 탑",
     "level": 2,
     "towerType": "Base",
     "maxHP": 25,
@@ -199,6 +213,7 @@
   {
     "id": 1100,
     "name": "목책벽",
+    "desc": "기본적인 나무 벽",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 1,
@@ -213,6 +228,7 @@
   {
     "id": 1101,
     "name": "돌벽",
+    "desc": "돌로 만들어진 단단한 벽",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 3,
@@ -227,6 +243,7 @@
   {
     "id": 1102,
     "name": "망루",
+    "desc": "단일 적에게 화살을 발사하는 기초 방어시설",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -241,6 +258,7 @@
   {
     "id": 1102,
     "name": "망루",
+    "desc": "단일 적에게 화살을 발사하는 기초 방어시설",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -255,6 +273,7 @@
   {
     "id": 1102,
     "name": "망루",
+    "desc": "단일 적에게 화살을 발사하는 기초 방어시설",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -269,6 +288,7 @@
   {
     "id": 1102,
     "name": "망루",
+    "desc": "단일 적에게 화살을 발사하는 기초 방어시설",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -283,6 +303,7 @@
   {
     "id": 1102,
     "name": "망루",
+    "desc": "단일 적에게 화살을 발사하는 기초 방어시설",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -297,6 +318,7 @@
   {
     "id": 1103,
     "name": "소형 포탑",
+    "desc": "단일 적에게 소형탄을 발사하는 방어시설",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -311,6 +333,7 @@
   {
     "id": 1103,
     "name": "소형 포탑",
+    "desc": "단일 적에게 소형탄을 발사하는 방어시설",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -325,6 +348,7 @@
   {
     "id": 1103,
     "name": "소형 포탑",
+    "desc": "단일 적에게 소형탄을 발사하는 방어시설",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -339,6 +363,7 @@
   {
     "id": 1103,
     "name": "소형 포탑",
+    "desc": "단일 적에게 소형탄을 발사하는 방어시설",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -353,6 +378,7 @@
   {
     "id": 1103,
     "name": "소형 포탑",
+    "desc": "단일 적에게 소형탄을 발사하는 방어시설",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -367,6 +393,7 @@
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
+    "desc": "광역 적에게 낙뢰를 꽂는 방어탑",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -381,6 +408,7 @@
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
+    "desc": "광역 적에게 낙뢰를 꽂는 방어탑",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -395,6 +423,7 @@
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
+    "desc": "광역 적에게 낙뢰를 꽂는 방어탑",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -409,6 +438,7 @@
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
+    "desc": "광역 적에게 낙뢰를 꽂는 방어탑",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -423,6 +453,7 @@
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
+    "desc": "광역 적에게 낙뢰를 꽂는 방어탑",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -437,6 +468,7 @@
   {
     "id": 1105,
     "name": "공성 포탑",
+    "desc": "경로상 모든 적을 공격하는 강한 포탑",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -451,6 +483,7 @@
   {
     "id": 1105,
     "name": "공성 포탑",
+    "desc": "경로상 모든 적을 공격하는 강한 포탑",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -465,6 +498,7 @@
   {
     "id": 1105,
     "name": "공성 포탑",
+    "desc": "경로상 모든 적을 공격하는 강한 포탑",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -479,6 +513,7 @@
   {
     "id": 1105,
     "name": "공성 포탑",
+    "desc": "경로상 모든 적을 공격하는 강한 포탑",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -493,6 +528,7 @@
   {
     "id": 1105,
     "name": "공성 포탑",
+    "desc": "경로상 모든 적을 공격하는 강한 포탑",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -507,6 +543,7 @@
   {
     "id": 1106,
     "name": "뇌격의 오벨리스크",
+    "desc": "광역 적에게 직선 이동하는 낙뢰를 꽂는 방어탑",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -521,6 +558,7 @@
   {
     "id": 1106,
     "name": "뇌격의 오벨리스크",
+    "desc": "광역 적에게 직선 이동하는 낙뢰를 꽂는 방어탑",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -535,6 +573,7 @@
   {
     "id": 1106,
     "name": "뇌격의 오벨리스크",
+    "desc": "광역 적에게 직선 이동하는 낙뢰를 꽂는 방어탑",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -549,6 +588,7 @@
   {
     "id": 1106,
     "name": "뇌격의 오벨리스크",
+    "desc": "광역 적에게 직선 이동하는 낙뢰를 꽂는 방어탑",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -563,6 +603,7 @@
   {
     "id": 1106,
     "name": "뇌격의 오벨리스크",
+    "desc": "광역 적에게 직선 이동하는 낙뢰를 꽂는 방어탑",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -577,6 +618,7 @@
   {
     "id": 1107,
     "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 2,
@@ -591,6 +633,7 @@
   {
     "id": 1107,
     "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 2,
@@ -605,6 +648,7 @@
   {
     "id": 1107,
     "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 2,
@@ -619,6 +663,7 @@
   {
     "id": 1107,
     "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 2,
@@ -633,6 +678,7 @@
   {
     "id": 1107,
     "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 2,
@@ -647,6 +693,7 @@
   {
     "id": 1108,
     "name": "용의 철탑",
+    "desc": "경로상 모든 적을 불태우는 동방 제국의 무기",
     "level": 1,
     "towerType": "Tower",
     "maxHP": 3,
@@ -661,6 +708,7 @@
   {
     "id": 1108,
     "name": "용의 철탑",
+    "desc": "경로상 모든 적을 불태우는 동방 제국의 무기",
     "level": 2,
     "towerType": "Tower",
     "maxHP": 3,
@@ -675,6 +723,7 @@
   {
     "id": 1108,
     "name": "용의 철탑",
+    "desc": "경로상 모든 적을 불태우는 동방 제국의 무기",
     "level": 3,
     "towerType": "Tower",
     "maxHP": 3,
@@ -689,6 +738,7 @@
   {
     "id": 1108,
     "name": "용의 철탑",
+    "desc": "경로상 모든 적을 불태우는 동방 제국의 무기",
     "level": 4,
     "towerType": "Tower",
     "maxHP": 3,
@@ -703,6 +753,7 @@
   {
     "id": 1108,
     "name": "용의 철탑",
+    "desc": "경로상 모든 적을 불태우는 동방 제국의 무기",
     "level": 5,
     "towerType": "Tower",
     "maxHP": 3,

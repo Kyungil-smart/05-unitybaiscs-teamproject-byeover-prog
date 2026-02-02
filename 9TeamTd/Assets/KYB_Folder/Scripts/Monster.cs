@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MonsterType
+{
+    Normal = 0,
+    Flying = 1,
+    Boss = 2
+}
+
 public class Monster : MonoBehaviour, IDamagable
 {
     [Header("컴포넌트")] 
@@ -12,8 +19,35 @@ public class Monster : MonoBehaviour, IDamagable
     private MonsterDatas stat;
     private MonsterResourcesDatas resource;
 
-    private float currentHp;
+    public OP<int> currentHp = new();
+    
     private bool isDead = false;
+    
+    // Json 변수들
+    [SerializeField]private int id;
+    [SerializeField]private string name;
+    [SerializeField]private int level;
+    [SerializeField]private int maxHP;
+    [SerializeField]private float attackValue;
+    [SerializeField]private float defenceValue;
+    [SerializeField]private int Type;
+    [SerializeField]private string enemyRank;
+    [SerializeField]private float moveSpeed;
+
+    public void GetMonsterStats(MonsterStats stats)
+    {
+        if (stats == null) return;
+        
+        id = stats.id;
+        name = stats.name;
+        level = stats.level;
+        maxHP = stats.maxHP;
+        attackValue = stats.attackValue;
+        defenceValue = stats.defenceValue;
+        Type = stats.Type;
+        moveSpeed = stats.moveSpeed;
+        enemyRank = stats.enemyRank;
+    }
     
     // 매니저에게 반납하기 위한 이벤트
     public event Action<Monster> OnDeath;
@@ -24,13 +58,13 @@ public class Monster : MonoBehaviour, IDamagable
     }
     
     // MonsterManager가 소환 직후 호출
-    public void Initialize(MonsterDatas statData, MonsterResourcesDatas ressData, Transform baseTransform)
+    public void Initialize(MonsterDatas statData, MonsterResourcesDatas resData, Transform baseTransform)
     {
         this.stat = statData;
-        this.resource = ressData;
+        this.resource = resData;
         
         // 스탯 적용
-        this.currentHp = statData.maxHP;
+        this.currentHp.Value = statData.maxHP;
         this.isDead = false;
         
         // 디버깅용 이름 변경
@@ -40,7 +74,8 @@ public class Monster : MonoBehaviour, IDamagable
         // Agent 이동 시작
         if (agent != null)
         {
-            agent.Initialize(statData.moveSpeed, baseTransform);
+            bool isFlying = stat.Type == 1;
+            agent.Initialize(statData.moveSpeed, baseTransform, isFlying);
         }
     }
 
@@ -49,15 +84,18 @@ public class Monster : MonoBehaviour, IDamagable
         if (isDead) return;
 
         float myDef = stat.defenceValue;
-
-        int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
         
-        currentHp -= finalDamage;
+        // 데미지 계산
+        int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
 
-        if (currentHp <= 0)
+        currentHp.Value -= finalDamage;
+        Debug.Log($"{finalDamage}피해 입음. 남은 생명력 : {currentHp.Value}"); //<< 주석 빼도 됩니다
+        
+        if (currentHp.Value <= 0)
         {
-            currentHp = 0;
-            Die(isKilledByPlayer: true);
+            currentHp.Value = 0;
+            // Die(isKilledByPlayer: true);
+            Destroy(gameObject);
         }
     }
 
@@ -80,28 +118,42 @@ public class Monster : MonoBehaviour, IDamagable
         else
         {
             // 기지에서 죽음 (보상 X)
-            Debug.Log("기지 타격!");
+            Debug.Log("기지 타격! 후 소멸");
         }
-
+        /*
         OnDeath?.Invoke(this);
         
+        // 풀 반납
         MonsterManager.Instance.ReturnMonster(this);
+        */
     }
-
-    private void ReachBase()
-    {
-        // 나중에 게임 매니저랑 연결 (플레이어에게 데미지 주기)
-        // 
-        Debug.Log("기지 도착");
-        
-        MonsterManager.Instance.ReturnMonster(this);
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Base"))
         {
-            Die(isKilledByPlayer: false);
+            IDamagable baseTarget = other.gameObject.GetComponent<IDamagable>();
+
+            if (baseTarget != null)
+            {
+                float finalDamage = stat.attackValue;
+
+                if (stat.Type == 2)
+                {
+                    Debug.Log("보스 기지 충돌! 게임 오버");
+                    finalDamage = 99999999999f;
+                }
+                
+                // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
+                baseTarget.TakeDamage(stat.attackValue, 1.0f);
+            }
+            else
+            {
+                Debug.LogWarning("기지에 IDamageble 스크립트가 없습니다");
+            }
+
+            Destroy(gameObject);
+            // Die(isKilledByPlayer: false);
         }
     }
 }
