@@ -6436,6 +6436,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4116397393966972, guid: bfec0a21b0fbb5345a7a01580e91a320, type: 3}
   m_PrefabInstance: {fileID: 1565937804}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1803503279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803503281}
+  - component: {fileID: 1803503280}
+  m_Layer: 0
+  m_Name: MonsterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1803503280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803503279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f71c93309ea0104e954699c82f70ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterPrefab: {fileID: 7435257534779501668, guid: 1fbd8c017f0934e448f06592f29ba0f6, type: 3}
+  baseTransform: {fileID: 379652914}
+--- !u!4 &1803503281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803503279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.5, y: 0.5, z: 22.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818163088
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,7 +7424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1978347473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7391,7 +7437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faeb13787f3050643bf022ed2028969e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSystem: {fileID: 2119423397}
+  gridSystem: {fileID: 0}
   monsterPrefab: {fileID: -5062993016829778630, guid: ecbf6970aad66e947bc6a3564808024d, type: 3}
   spawnKey: 32
   spawnCountPerPress: 1
@@ -7866,6 +7912,7 @@ SceneRoots:
   - {fileID: 1585239637}
   - {fileID: 273230878}
   - {fileID: 1914698004}
+  - {fileID: 1803503281}
   - {fileID: 1978347474}
   - {fileID: 18977609}
   - {fileID: 655726351}
