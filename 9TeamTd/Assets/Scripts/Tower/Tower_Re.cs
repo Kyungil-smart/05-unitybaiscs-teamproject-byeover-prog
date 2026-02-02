@@ -44,7 +44,7 @@ public class Tower_Re : MonoBehaviour, IDamagable
     // 자신에게 붙은 TowerStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
     public void GetStats(TowerStats stats)
     {
-        
+
         if (stats == null) return;
         else
         {
@@ -74,21 +74,35 @@ public class Tower_Re : MonoBehaviour, IDamagable
 
 
 
-        void Start()
+    void Start()
     {
         _currentTarget = null;  // 현재 타겟은 기본적으로 null 값임
-        
+
 
     }
 
     void Update()
     {
+        /*
+        // 데미지 받기 테스트용 함수, 공격하지않는 타워보다 위에 있어야 작동함
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("K 입력");
+            TakeDamage(3, 1);
+        }
+        */
+
+
         // 공격하지 않는 타워면 리턴시켜 에러 안나도록
         if (attackType == attackType.None || _attackSpeed <= 0) return;
 
         CheckTarget(); // 타겟이 범위 안에 있는지
         FindTarget(); // 타겟 찾는 함수 진행
         Attack(); // 공격 추가
+
+        
+
+        
 
     }
 
@@ -195,16 +209,19 @@ public class Tower_Re : MonoBehaviour, IDamagable
     {
         // if (isDead) return; 오브젝트 풀링으로 바꾸면 안정성을 위해 추가 필요
 
+
+        Debug.Log($"{_currentheals} - {damage}");
         _currentheals -= (int)damage;
 
         if (_currentheals <= 0)
         {
             _currentheals = 0;
 
-            /*파괴 이펙트 추가 필요*/
-
-
+            GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");           
+            Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.5f);
             Destroy(gameObject, 0.5f);  // 나중에 오브젝트 풀링으로 수정할 수 있으면 바꿔야 함
         }
     }
+
+
 }

@@ -15,7 +15,7 @@ using UnityEngine;
 public class TowerManager_Re : MonoBehaviour
 {
     //배치 된 타워 저장하는 리스트 (배열로 넣을 예정)
-    private List<Tower> _placedTowers = new List<Tower>();
+    private List<Tower_Re> _placedTowers = new List<Tower_Re>();
 
     //타워 프리펩 관련
     public List<GameObject> _towerPrefabs = new List<GameObject>();
@@ -57,12 +57,12 @@ public class TowerManager_Re : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // 타워를 클릭 했는지 확인
-                Tower clickedTower = hit.collider.GetComponent<Tower>();
+                Tower_Re clickedTower = hit.collider.GetComponent<Tower_Re>();
 
                 // 못찾으면 부모에서 찾기
                 if (clickedTower == null)
                 {
-                    clickedTower = hit.collider.GetComponentInParent<Tower>();
+                    clickedTower = hit.collider.GetComponentInParent<Tower_Re>();
                 }
                 if (clickedTower != null)
                 {
@@ -95,8 +95,8 @@ public class TowerManager_Re : MonoBehaviour
         _currentTowerPrefab = _towerPrefabs[_currentTowerIndex];
 
         // ## 추후에 레벨이 늘어나면 숫자 늘려도 됨, 현재는 1레벨 밖에 없는 타워도 있어서 에러 남
-        if (_towerLevel > 1) _towerLevel = 1;
-        else if (_towerLevel < 1) _towerLevel = 1;
+        if (_towerLevel < 1) _towerLevel = 1;
+        else if (_towerLevel > 5) _towerLevel = 5;
 
         _towerCost = _towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>()
             .SetCost(_towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>().id, _towerLevel);
@@ -127,7 +127,7 @@ public class TowerManager_Re : MonoBehaviour
 
         //타워 생성 (Instantiate 복제해서 새오브젝트에 넣기)
         GameObject newTowerObj = Instantiate(_currentTowerPrefab, position, Quaternion.identity);
-        Tower newTower = newTowerObj.GetComponent<Tower>();
+        Tower_Re newTower = newTowerObj.GetComponent<Tower_Re>();
 
         //리스트에 추가 (새로운 타워를 리스트에 배열로 추가)
         _placedTowers.Add(newTower);
@@ -192,7 +192,7 @@ public class TowerManager_Re : MonoBehaviour
         return true; // 일단 통과
     }
 
-    public void RemoveTower(Tower tower)
+    public void RemoveTower(Tower_Re tower)
     {
         if (_placedTowers.Contains(tower))
         {
@@ -214,7 +214,7 @@ public class TowerManager_Re : MonoBehaviour
     /// 골드를 소모하고 타워의 능력치를 강화함
     /// </summary>
     /// <param name="tower">업그레이드할 타워</param>
-    public void UpgradeTower(Tower tower)
+    public void UpgradeTower(Tower_Re tower)
     {
         Debug.Log("[TowerManager] 업그레이드 함수 호출됨");
 

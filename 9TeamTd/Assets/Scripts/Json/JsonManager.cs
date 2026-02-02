@@ -89,6 +89,20 @@ public class JsonManager : MonoBehaviour
     }
 
 
+    // 안정성을 위해 테스트하는 함수
+    public bool HasTowerData(int id, int level)
+    {
+        // 해당 자료 있으면 통과, 자료 없으면 false 뱉도록
+        if (_towerData == null) return false;
+
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id && t.level == level);
+
+        return foundData != null;
+    }
+
+
+
+
     // @@ 테이블 추가될 때마다 업데이트 필요
     private void LoadTowerData(string dataFilePath)
     {
