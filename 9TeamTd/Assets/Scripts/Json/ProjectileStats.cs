@@ -20,6 +20,15 @@ public class ProjectileStats : MonoBehaviour
     public DamageTargetTeamType damageTargetTeamType;
     public ProjectileDamageCategory projectileDamageCategory;
 
+    public int effectRate;   // 이 아래는 상태 효과를 위해 추가
+    public float effectValue;
+    public float effectInterval;
+    public float duration;
+    public int overlapCount;
+
+
+
+
 
     // 시작시 초기화
     private void Start()
@@ -71,6 +80,16 @@ public class ProjectileStats : MonoBehaviour
         projectileSpacialAbility = (ProjectileSpacialAbility)Enum.Parse(typeof(ProjectileSpacialAbility), data.projectileSpacialAbility);
         damageTargetTeamType = (DamageTargetTeamType)Enum.Parse(typeof(DamageTargetTeamType), data.damageTargetTeamType);
         projectileDamageCategory = (ProjectileDamageCategory)Enum.Parse(typeof(ProjectileDamageCategory), data.projectileDamageCategory);
+
+        
+        effectRate = data.effectRate;
+        effectValue = data.effectValue;
+        effectInterval = data.effectInterval;
+        duration = data.duration;
+        overlapCount = data.overlapCount;
+
+
+        Debug.Log($"SetupValue{effectRate}");
 
 
         Debug.Log($"{name}의 능력치 설정 완료");

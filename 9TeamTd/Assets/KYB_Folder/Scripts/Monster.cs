@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum MonsterType
 {
@@ -34,6 +35,11 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField]private string enemyRank;
     [SerializeField]private float moveSpeed;
 
+    // 상태이상 변수들
+    [SerializeField] private bool isFreeze = false;
+    [SerializeField] private bool isStun = false;
+    [SerializeField] private float originalSpeed;
+
     public void GetMonsterStats(MonsterStats stats)
     {
         if (stats == null) return;
@@ -47,6 +53,8 @@ public class Monster : MonoBehaviour, IDamagable
         Type = stats.Type;
         moveSpeed = stats.moveSpeed;
         enemyRank = stats.enemyRank;
+
+        originalSpeed = stats.moveSpeed;
     }
     
     // 매니저에게 반납하기 위한 이벤트
@@ -153,9 +161,88 @@ public class Monster : MonoBehaviour, IDamagable
         // Debug.Log(5);
         OnDeath?.Invoke(this);
         // Debug.Log(6);
-        GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");
+        GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_03");
         Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.3f);
         Destroy(gameObject);
         // Debug.Log(7);
+    }
+
+
+
+
+
+    // 피격 시 속성 별 상태 효과 구현 함수들
+
+    // 물리 -> 넉백
+    public void KnockBack(Vector3 moveDirection, float effectValue, float duration)
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddForce(moveDirection * effectValue, ForceMode.Impulse);
+
+        Debug.Log("넉백 실행");
+        StartCoroutine(EffectTimeKinematic(duration));
+    }
+
+    // 불 -> 화상
+    public void Burn()
+    {
+
+    }
+
+    // 물 -> 빙결
+    public void Freeze(float effectValue, float duration, int overlapCount)
+    {
+        if (isFreeze) return;
+
+        isFreeze = true;
+        moveSpeed = Math.Clamp(originalSpeed * (1 + effectValue), 0.05f, moveSpeed);
+        Debug.Log(moveSpeed);
+        StartCoroutine(EffectTimeFreeze(duration));
+        // 추후 오버렙 카운트 사용되도록 수정 필요
+    }
+
+    // 번개 -> 스턴
+    public void Stun(float duration)
+    {
+        if (isStun) return;
+
+        isStun = true;
+        moveSpeed = originalSpeed * 0;
+        Debug.Log(moveSpeed);
+        StartCoroutine(EffectTimeStun(duration));
+    }
+
+
+
+
+    IEnumerator EffectTimeFreeze(float time)
+    {
+        Debug.Log("빙결");
+        yield return new WaitForSeconds(time);
+        moveSpeed = originalSpeed;
+        Debug.Log(moveSpeed);
+        isFreeze = false;
+        Debug.LogWarning("빙결 종료");
+    }
+
+
+    IEnumerator EffectTimeStun(float time)
+    {
+        Debug.Log("스턴");
+        yield return new WaitForSeconds(time);
+        moveSpeed = originalSpeed;
+        Debug.Log(moveSpeed);
+        isStun = false;
+        Debug.LogWarning("스턴 종료");
+    }
+
+
+
+    IEnumerator EffectTimeKinematic(float time)
+    {
+        
+        yield return new WaitForSeconds(time);
+        GetComponent<Rigidbody>().isKinematic = true;
+        
     }
 }

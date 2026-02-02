@@ -1,9 +1,9 @@
 ﻿{
-  "statusEffect" : [
+  "statusEffects" : [
   {
     "id": 100511,
-    "effectName": "Burn",
-    "effectType": "DoT",
+    "effectType": "Burn",
+    "effectClass": "DoT",
     "effectRate": 3000,
     "effectValue": 0.1,
     "effectInterval": 1,
@@ -12,8 +12,8 @@
   },
   {
     "id": 100611,
-    "effectName": "Stun",
-    "effectType": "CC",
+    "effectType": "Stun",
+    "effectClass": "CC",
     "effectRate": 5000,
     "effectValue": -1,
     "effectInterval": -1,
@@ -22,8 +22,8 @@
   },
   {
     "id": 110411,
-    "effectName": "Stun",
-    "effectType": "CC",
+    "effectType": "Stun",
+    "effectClass": "CC",
     "effectRate": 1500,
     "effectValue": -1,
     "effectInterval": -1,
@@ -32,8 +32,8 @@
   },
   {
     "id": 110511,
-    "effectName": "Knockback",
-    "effectType": "CC",
+    "effectType": "Knockback",
+    "effectClass": "CC",
     "effectRate": 10000,
     "effectValue": 0.5,
     "effectInterval": -1,
@@ -42,8 +42,8 @@
   },
   {
     "id": 110611,
-    "effectName": "Stun",
-    "effectType": "CC",
+    "effectType": "Stun",
+    "effectClass": "CC",
     "effectRate": 3000,
     "effectValue": -1,
     "effectInterval": -1,
@@ -52,8 +52,8 @@
   },
   {
     "id": 110711,
-    "effectName": "Freeze",
-    "effectType": "Debuff",
+    "effectType": "Freeze",
+    "effectClass": "Debuff",
     "effectRate": 5000,
     "effectValue": -0.1,
     "effectInterval": -1,
@@ -62,8 +62,8 @@
   },
   {
     "id": 110811,
-    "effectName": "Burn",
-    "effectType": "DoT",
+    "effectType": "Burn",
+    "effectClass": "DoT",
     "effectRate": 10000,
     "effectValue": 0.15,
     "effectInterval": 1,
