@@ -9,7 +9,7 @@
     "defenceValue": 1,
     "Type": 0,
     "enemyRank": "Normal",
-    "moveSpeed": 1
+    "moveSpeed": 2
   },
   {
     "id": 2101,
@@ -20,7 +20,7 @@
     "defenceValue": 1,
     "Type": 1,
     "enemyRank": "Normal",
-    "moveSpeed": 1.5
+    "moveSpeed": 3
   },
   {
     "id": 2102,
@@ -31,7 +31,7 @@
     "defenceValue": 1,
     "Type": 2,
     "enemyRank": "Normal",
-    "moveSpeed": 0.7
+    "moveSpeed": 1.5
   }
 ]
 }
