@@ -94,13 +94,14 @@ public class Monster : MonoBehaviour, IDamagable
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
-            Die(isKilledByPlayer: true);
+            Die();
             // Destroy(gameObject);
         }
     }
 
-    private void Die(bool isKilledByPlayer)
+    private void Die()
     {
+        if (isDead) return;
         isDead = true;
         
         // 수정됨: 죽으면 무조건 보상 지급
@@ -116,20 +117,12 @@ public class Monster : MonoBehaviour, IDamagable
         {
             StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
         }
-        
-        // --로그
 
-        if (isKilledByPlayer)
-        {
-            Debug.Log($"[Monster] 플레이어 처치!");
-        }
-        else
-        {
-            Debug.Log($"[Monster] 기지 타격!");
-        }
+        Debug.Log($"[Monster] 기지 타격!");
 
         OnDeath?.Invoke(this);
         MonsterManager.Instance.ReturnMonster(this);
+        gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -159,7 +152,7 @@ public class Monster : MonoBehaviour, IDamagable
             }
 
             // Destroy(gameObject);
-            Die(isKilledByPlayer: false);
+            Die();
         }
     }
 }

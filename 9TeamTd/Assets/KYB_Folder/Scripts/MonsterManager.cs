@@ -158,5 +158,7 @@ public class MonsterManager : MonoBehaviour
     public void ReturnMonster(Monster monster)
     {
         monsterPool.Release(monster);
+        
+        monster.gameObject.SetActive(false);
     }
 }
