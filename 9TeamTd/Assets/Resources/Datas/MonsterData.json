@@ -7,7 +7,7 @@
     "maxHP": 1000,
     "attackValue": 1,
     "defenceValue": 1,
-    "moveType": "Ground",
+    "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 1
   },
@@ -18,7 +18,7 @@
     "maxHP": 1010,
     "attackValue": 1,
     "defenceValue": 1,
-    "moveType": "Flying",
+    "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 1.5
   },
@@ -29,7 +29,7 @@
     "maxHP": 1020,
     "attackValue": 1,
     "defenceValue": 1,
-    "moveType": "Ground",
+    "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 0.7
   }

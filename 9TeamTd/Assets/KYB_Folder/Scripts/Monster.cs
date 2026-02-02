@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField]private int maxHP;
     [SerializeField]private float attackValue;
     [SerializeField]private float defenceValue;
-    [SerializeField]private string moveType;
+    [SerializeField]private int Type;
     [SerializeField]private string enemyRank;
     [SerializeField]private float moveSpeed;
 
@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour, IDamagable
         maxHP = stats.maxHP;
         attackValue = stats.attackValue;
         defenceValue = stats.defenceValue;
-        moveType = stats.moveType;
+        Type = stats.Type;
         moveSpeed = stats.moveSpeed;
         enemyRank = stats.enemyRank;
     }
@@ -74,7 +74,7 @@ public class Monster : MonoBehaviour, IDamagable
         // Agent 이동 시작
         if (agent != null)
         {
-            bool isFlying = stat.Type == MonsterType.Flying;
+            bool isFlying = stat.Type == 1;
             agent.Initialize(statData.moveSpeed, baseTransform, isFlying);
         }
     }
@@ -136,7 +136,7 @@ public class Monster : MonoBehaviour, IDamagable
             {
                 float finalDamage = stat.attackValue;
 
-                if (stat.Type == MonsterType.Boss)
+                if (stat.Type == 2)
                 {
                     Debug.Log("보스 기지 충돌! 게임 오버");
                     finalDamage = 99999999999f;

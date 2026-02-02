@@ -13,6 +13,9 @@ public sealed class MonsterAgent : MonoBehaviour
     [SerializeField, Min(0.001f)] private float arrivalRadius = 0.05f;
 
     [SerializeField, Min(0f)] private float turnSpeed = 12f;
+    
+    // 비행 시작 높이 (높을 수록 급강하 각도가 나옴)
+    private const float FLY_START_HEIGHT = 8.0f;
 
     private Cell currentCell;
     private Cell targetCell;
@@ -44,9 +47,10 @@ public sealed class MonsterAgent : MonoBehaviour
     public void Initialize(float speed, Transform baseTarget, bool flyMode)
     {
         this.moveSpeed = speed;
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         Debug.Log("몬스터의 스피드는 " + speed + "입니다.");
-#endif
+        #endif
+        
         // 비행용 기지타입 저장
         this.baseTransform = baseTarget;
         this.isFlying = flyMode;
@@ -79,7 +83,7 @@ public sealed class MonsterAgent : MonoBehaviour
         
         // 목표: 기지 위치
         Vector3 destination = baseTransform.position;
-        destination.y = 3.0f;
+        // destination.y = 3.0f;
         
         // 이동
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
@@ -148,7 +152,7 @@ public sealed class MonsterAgent : MonoBehaviour
         {
             targetWorld = gridSystem.CellToWorld(cell, y: transform.position.y);
 
-            if (isFlying) targetWorld.y = 3.0f;
+            if (isFlying) targetWorld.y = FLY_START_HEIGHT; // << 8미터 상공에서 시작
         }
         
         transform.position = targetWorld;
