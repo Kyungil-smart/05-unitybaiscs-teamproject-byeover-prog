@@ -20,8 +20,9 @@ public class StageManager : MonoBehaviour
     public static StageManager Instance { get; private set; }
 
     [SerializeField] private float currentTime = 0;
-    [SerializeField] private int currentMinutes = 0;
-    [SerializeField] private int currentSeconds = 0;
+    public int currentMinutes = 0;
+    public float currentSeconds = 0;
+    public float stageEndTime = 1200f;
 
 
     // 현재 게임 상태
@@ -78,8 +79,10 @@ public class StageManager : MonoBehaviour
     // 인게임 로직
     private void FixedUpdate()
     {
+
+        // 플레이 시가 계산
         currentTime += Time.fixedDeltaTime;
-        currentSeconds = (int)currentTime;
+        currentSeconds += Time.fixedDeltaTime;
 
 
         if (currentSeconds >= 60)
@@ -208,7 +211,7 @@ public class StageManager : MonoBehaviour
         }
         */
 
-
+        /*
         // F2: 웨이브 클리어 테스트
         if (Input.GetKeyDown(KeyCode.F2))
         {
@@ -222,6 +225,7 @@ public class StageManager : MonoBehaviour
             Debug.Log("[GameManager] F3 - 게임 재시작 테스트");
             RestartGame();
         }
+        */
     }
 
 
