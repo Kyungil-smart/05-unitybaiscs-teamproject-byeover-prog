@@ -20,6 +20,7 @@ public class StageManager : MonoBehaviour
     public int stageID = 0;
     public float stageEndTimeForReset = 0;
     public int startGold = 0;
+    public int ClearOutGameGem = 0;
     [SerializeField] private Transform basePosition;
 
     [Header("For GamePlay")]

@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Stage Info")]
-    public int outGameGold = 0;
+    public int outGameGem = 0;
     public int SelectedBaseID = 0;
     public int SelectedStageNum = 0;
 

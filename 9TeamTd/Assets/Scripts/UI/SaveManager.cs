@@ -5,7 +5,8 @@ using UnityEngine;
 public class SaveData
 {
     public int lastOpenStageNum = 1;
-    public int outGameGold = 100;
+    public int outGameGem = 100;
+    public List<int> GetBaseID;
 }
 
 public class SaveManager : MonoBehaviour
