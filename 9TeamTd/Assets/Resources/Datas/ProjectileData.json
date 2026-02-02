@@ -42,8 +42,8 @@
     "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical",
-    "effectRate": 10000,
-    "effectValue": 10,
+    "effectRate": -1,
+    "effectValue": -1,
     "effectInterval": -1,
     "duration": -1,
     "overlapCount": -1
@@ -91,9 +91,9 @@
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical",
     "effectRate": 10000,
-    "effectValue": 0.5,
+    "effectValue": 4,
     "effectInterval": -1,
-    "duration": -1,
+    "duration": 0.5,
     "overlapCount": -1
   },
   {

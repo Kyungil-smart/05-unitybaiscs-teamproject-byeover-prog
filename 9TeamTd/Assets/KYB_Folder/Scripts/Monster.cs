@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum MonsterType
 {
@@ -157,5 +158,48 @@ public class Monster : MonoBehaviour, IDamagable
         Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.3f);
         Destroy(gameObject);
         // Debug.Log(7);
+    }
+
+
+
+
+
+    // 피격 시 속성 별 상태 효과 구현 함수들
+
+    // 물리 -> 넉백
+    public void KnockBack(Vector3 moveDirection, float effectValue, float duration)
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddForce(moveDirection * effectValue, ForceMode.Impulse);
+
+        Debug.Log("넉백 실행");
+        StartCoroutine(EffectTime(duration));
+    }
+
+    // 불 -> 화상
+    public void Burn()
+    {
+
+    }
+
+    // 물 -> 빙결
+    public void Freeze()
+    {
+
+    }
+
+    // 번개 -> 스턴
+    public void Stun()
+    {
+
+    }
+
+
+    IEnumerator EffectTime(float time)
+    {
+        Debug.Log("시간 지연");
+        yield return new WaitForSeconds(time);
+        GetComponent<Rigidbody>().isKinematic = true;
+        Debug.LogWarning("시간 지연 종료");
     }
 }

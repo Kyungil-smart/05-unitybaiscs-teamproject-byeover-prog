@@ -273,15 +273,15 @@ public class Projectile : MonoBehaviour
                 break;
             case ProjectileDamageCategory.Physical:
                 Debug.Log("물리 확인");
-                KnockBack(other);
+                other.GetComponent<Monster>().KnockBack(moveDirection, effectValue, duration);
                 break;
 
             case ProjectileDamageCategory.Fire:
-                Burn( other);
+                other.GetComponent<Monster>().Burn();
                 break;
 
             case ProjectileDamageCategory.Water:
-                Freeze( other);
+                other.GetComponent<Monster>().Freeze();
                 break;
 
             case ProjectileDamageCategory.Wind:
@@ -293,7 +293,7 @@ public class Projectile : MonoBehaviour
                 break;
 
             case ProjectileDamageCategory.Lightning:
-                Stun( other);
+                other.GetComponent<Monster>().Stun();
                 break;
 
             case ProjectileDamageCategory.Light:
@@ -395,33 +395,7 @@ public class Projectile : MonoBehaviour
     }
 
 
-    // 속성 별 상태 효과 구현 함수들
 
-    // 물리 -> 넉백
-    public void KnockBack(Collider other)
-    {
-        other.GetComponent<Rigidbody>().isKinematic = false;
-        other.GetComponent<Rigidbody>().AddForce(moveDirection * effectValue, ForceMode.Impulse);
-        Debug.Log("넉백 실행");
-    }
-
-    // 불 -> 화상
-    public void Burn(Collider other)
-    {
-
-    }
-
-    // 물 -> 빙결
-    public void Freeze(Collider other)
-    {
-
-    }
-
-    // 번개 -> 스턴
-    public void Stun(Collider other)
-    {
-
-    }
 
 
 

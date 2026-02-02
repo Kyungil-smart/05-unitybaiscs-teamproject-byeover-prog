@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageID: 0
   stageEndTimeForReset: 1200
-  startGold: 110
+  startGold: 200
   ClearOutGameGem: 100
   DefeatOutGameGem: 30
   basePosition: {fileID: 2524287949461117010}
