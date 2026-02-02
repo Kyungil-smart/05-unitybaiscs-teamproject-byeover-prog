@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4870235423742481237}
   - component: {fileID: -2540062969186467015}
   - component: {fileID: 3164973952890429089}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tower_101_Wall_02
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8445815854042568204}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5289155118828585868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 910701258217921664, guid: 33982f583fb9616458721bedc88a87b3, type: 3}
       propertyPath: m_Name
       value: Body_Wall_B_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 910701258217921664, guid: 33982f583fb9616458721bedc88a87b3, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8820969940989520241, guid: 33982f583fb9616458721bedc88a87b3, type: 3}
       propertyPath: m_LocalPosition.x

@@ -222,7 +222,7 @@ public class Projectile : MonoBehaviour
 
         // 실제로 데미지 주는 처리 (방어력 들어가도록 수정 필요)
         other.GetComponent<Monster>().TakeDamage(attackValue, damageRatio);
-        //Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
+        Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
 
         // 단일 피해면 오브젝트 비활성화
         if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
