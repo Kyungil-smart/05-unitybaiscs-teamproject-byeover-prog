@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MonsterType
+{
+    Normal = 0,
+    Flying = 1,
+    Boss = 2
+}
+
 public class Monster : MonoBehaviour, IDamagable
 {
     [Header("컴포넌트")] 
@@ -14,7 +21,6 @@ public class Monster : MonoBehaviour, IDamagable
 
     public OP<int> currentHp = new();
     
-    //private float currentHp;
     private bool isDead = false;
     
     // Json 변수들
@@ -24,7 +30,7 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField]private int maxHP;
     [SerializeField]private float attackValue;
     [SerializeField]private float defenceValue;
-    [SerializeField]private string moveType;
+    [SerializeField]private int Type;
     [SerializeField]private string enemyRank;
     [SerializeField]private float moveSpeed;
 
@@ -38,7 +44,7 @@ public class Monster : MonoBehaviour, IDamagable
         maxHP = stats.maxHP;
         attackValue = stats.attackValue;
         defenceValue = stats.defenceValue;
-        moveType = stats.moveType;
+        Type = stats.Type;
         moveSpeed = stats.moveSpeed;
         enemyRank = stats.enemyRank;
     }
@@ -68,7 +74,8 @@ public class Monster : MonoBehaviour, IDamagable
         // Agent 이동 시작
         if (agent != null)
         {
-            agent.Initialize(statData.moveSpeed, baseTransform);
+            bool isFlying = stat.Type == 1;
+            agent.Initialize(statData.moveSpeed, baseTransform, isFlying);
         }
     }
 
@@ -127,6 +134,14 @@ public class Monster : MonoBehaviour, IDamagable
 
             if (baseTarget != null)
             {
+                float finalDamage = stat.attackValue;
+
+                if (stat.Type == 2)
+                {
+                    Debug.Log("보스 기지 충돌! 게임 오버");
+                    finalDamage = 99999999999f;
+                }
+                
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
                 baseTarget.TakeDamage(stat.attackValue, 1.0f);
             }

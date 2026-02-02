@@ -13,6 +13,9 @@ public sealed class MonsterAgent : MonoBehaviour
     [SerializeField, Min(0.001f)] private float arrivalRadius = 0.05f;
 
     [SerializeField, Min(0f)] private float turnSpeed = 12f;
+    
+    // 비행 시작 높이 (높을 수록 급강하 각도가 나옴)
+    private const float FLY_START_HEIGHT = 8.0f;
 
     private Cell currentCell;
     private Cell targetCell;
@@ -23,6 +26,9 @@ public sealed class MonsterAgent : MonoBehaviour
     private bool hasTarget;
     private bool isInitialized = false; // 초기화 여부 체크
 
+    private bool isFlying = false;
+    private Transform baseTransform;
+
     private void Awake()
     { 
         if (GridSystem.Instance != null) gridSystem = GridSystem.Instance;
@@ -32,21 +38,67 @@ public sealed class MonsterAgent : MonoBehaviour
     
     private void Start()
     {
-        TryGetSpawnCell(out Cell spawnCell);
-        TeleportToCell(spawnCell);
+        // 매니저에서 Initialize 호출해서 괜찮음
+        // TryGetSpawnCell(out Cell spawnCell);
+        // TeleportToCell(spawnCell);
     }
     
     // Start 이벤트 함수 안쓰고 Initialize 함수를 매니저에서 호출해서 사용
-    public void Initialize(float speed, Transform baseTarget)
+    public void Initialize(float speed, Transform baseTarget, bool flyMode)
     {
         this.moveSpeed = speed;
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         Debug.Log("몬스터의 스피드는 " + speed + "입니다.");
-#endif
+        #endif
+        
+        // 비행용 기지타입 저장
+        this.baseTransform = baseTarget;
+        this.isFlying = flyMode;
         this.isInitialized = true;
+        
+        // 시작할 때 그리드 위치 잡기 (버그나면 없애기)
+        if (TryGetSpawnCell(out Cell spawnCell))
+        {
+            TeleportToCell(spawnCell);
+        }
     }
 
     private void Update()
+    {
+        if (!isInitialized) return;
+
+        if (isFlying)
+        {
+            MoveFlying();
+        }
+        else
+        {
+            MoveNormal();
+        }
+    }
+
+    private void MoveFlying()
+    {
+        if (baseTransform == null) return;
+        
+        // 목표: 기지 위치
+        Vector3 destination = baseTransform.position;
+        // destination.y = 3.0f;
+        
+        // 이동
+        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        
+        // 회전 (기지 바라보기)
+        Vector3 dir = destination - transform.position;
+
+        if (dir.sqrMagnitude > 0.0001f)
+        {
+            Quaternion desired = Quaternion.LookRotation(dir.normalized);
+            transform.rotation = Quaternion.Slerp(transform.rotation, desired, Time.deltaTime * turnSpeed);
+        }
+    }
+
+    private void MoveNormal()
     {
         if (!hasTarget || HasArrivedToTarget())
         {
@@ -84,13 +136,12 @@ public sealed class MonsterAgent : MonoBehaviour
     {
         if (!gridSystem.TryGetRandomSpawnCell(out spawnCell))
         {
-            Debug.LogWarning("[MonsterAgent] No reachable edge spawn cell.");
+            // Debug.LogWarning("[MonsterAgent] No reachable edge spawn cell.");
+            spawnCell = new Cell(0, 0);
             return false;
         }
-
         return true;
     }
-    
     
     private void TeleportToCell(Cell cell)
     {
@@ -100,6 +151,8 @@ public sealed class MonsterAgent : MonoBehaviour
         if (gridSystem != null)
         {
             targetWorld = gridSystem.CellToWorld(cell, y: transform.position.y);
+
+            if (isFlying) targetWorld.y = FLY_START_HEIGHT; // << 8미터 상공에서 시작
         }
         
         transform.position = targetWorld;
