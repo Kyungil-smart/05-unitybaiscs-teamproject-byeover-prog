@@ -153,7 +153,7 @@ public class Monster : MonoBehaviour, IDamagable
         // Debug.Log(5);
         OnDeath?.Invoke(this);
         // Debug.Log(6);
-        GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");
+        GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_03");
         Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.3f);
         Destroy(gameObject);
         // Debug.Log(7);
