@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        UpdateGoldText(Player.gold.Value);
+        UpdateGoldText(StageManager.gold.Value);
     }
     void UpdateGoldText(int value)
     {
@@ -30,11 +30,11 @@ public class UIController : MonoBehaviour
 
     void OnEnable()
     {
-        Player.gold.OnValueChanged += UpdateGoldText;
+        StageManager.gold.OnValueChanged += UpdateGoldText;
     }
     void OnDisable()
     {
-        Player.gold.OnValueChanged -= UpdateGoldText;
+        StageManager.gold.OnValueChanged -= UpdateGoldText;
     }
 
 
@@ -48,7 +48,7 @@ public class UIController : MonoBehaviour
         // 디버그용 코드
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Player.gold.Value += 100;
+            StageManager.gold.Value += 100;
 #if UNITY_EDITOR
             Debug.Log("돈무한 치트 사용!!!");
 #endif
