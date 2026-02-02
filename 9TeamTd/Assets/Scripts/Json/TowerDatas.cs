@@ -1,22 +1,31 @@
+ï»¿using System;
+using System.Collections.Generic; // ë°ì´í„°ì— ë¦¬ìŠ¤íŠ¸ ì‚¬ìš©ì‹œ í•„ìš”
 using UnityEngine;
-using System;
-using System.Collections.Generic; // µ¥ÀÌÅÍ¿¡ ¸®½ºÆ® »ç¿ë½Ã ÇÊ¿ä
+using static TowerEnumData;
+
+// ì‘ì„±ì : í•œì„±ìš°
+
 
 [Serializable]
-public class TowerDatas // .json ÆÄÀÏ°ú ÀÌ¸§°ú °ãÄ¡¸é ¾È µÊ
+public class TowerDatas // .json íŒŒì¼ê³¼ ì´ë¦„ê³¼ ê²¹ì¹˜ë©´ ì•ˆ ë¨
 {
     public int id;
     public string name;
     public int level;
+    public string towerType;
     public int maxHP;
+    public string attackType;
     public int attackValue;
     public float attackRange;
+    public int attackProjectileIDs;
     public float attackSpeed;
+    public int defenceValue;
+    public int towerCost;
 
 
 }
 
-// TowerDatas Çü½ÄÀÇ ¸®½ºÆ®·Î ¸¸µé¾î °ü¸® 
+// TowerDatas í˜•ì‹ì˜ ë¦¬ìŠ¤íŠ¸ë¡œ ë§Œë“¤ì–´ ê´€ë¦¬ 
 [Serializable]
 public class TowerDataList
 {

@@ -3,18 +3,12 @@ using UnityEngine.Serialization;
 
 public sealed class MonsterTestSpawner : MonoBehaviour
 {
-    [Header("References")]
-    [FormerlySerializedAs("grid_system")]
     [SerializeField] private GridSystem gridSystem;
 
-    [FormerlySerializedAs("monster_prefab")]
     [SerializeField] private MonsterAgent monsterPrefab;
 
-    [Header("Test Spawn")]
-    [FormerlySerializedAs("spawn_key")]
     [SerializeField] private KeyCode spawnKey = KeyCode.Space;
 
-    [FormerlySerializedAs("spawn_count_per_press")]
     [SerializeField, Min(1)] private int spawnCountPerPress = 1;
 
     [SerializeField] private float spawnHeight = 0.5f;

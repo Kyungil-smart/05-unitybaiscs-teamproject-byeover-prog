@@ -1,37 +1,103 @@
 ﻿{
   "projectiles" : [
   {
-    "id": 11001,
-    "name": "Arrow01",
-    "moveSpeed": 6,
-    "lifeTime": 6,
+    "id": 10051,
+    "name": "Projectile_Flame_Short",
+    "moveSpeed": -1,
+    "lifeTime": 1,
     "damageInterval": -1,
-    "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "projectileSpwanType": "AttackerPositionTargetDirection",
+    "projectileSpacialAbility": "Piercing",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Physical"
+    "projectileDamageCategory": "Fire"
   },
   {
-    "id": 11002,
-    "name": "Arrow02",
-    "moveSpeed": 12,
+    "id": 10061,
+    "name": "Projectile_LIghtingArea_Target_GroundDoT",
+    "moveSpeed": -1,
     "lifeTime": 6,
-    "damageInterval": -1,
-    "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "damageInterval": 1,
+    "projectileSpwanType": "TargetPosition",
+    "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Physical"
+    "projectileDamageCategory": "Lightning"
   },
   {
-    "id": 11003,
-    "name": "Arrow03",
+    "id": 11021,
+    "name": "Projectile_Arrow_01_Stright",
     "moveSpeed": 24,
-    "lifeTime": 6,
+    "lifeTime": 0.5,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
-    "projectileSpacialAbility": null,
+    "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11031,
+    "name": "Projectile_CannonBall_01_Stright",
+    "moveSpeed": 30,
+    "lifeTime": 0.5,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerToTarget",
+    "projectileSpacialAbility": "Single",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11041,
+    "name": "Projectile_LightningBall_Homing",
+    "moveSpeed": 4,
+    "lifeTime": 6,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerToTargetHoming",
+    "projectileSpacialAbility": "Single",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Lightning"
+  },
+  {
+    "id": 11051,
+    "name": "Projectile_CannonRocket",
+    "moveSpeed": 48,
+    "lifeTime": 0.5,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerToTarget",
+    "projectileSpacialAbility": "Piercing",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Physical"
+  },
+  {
+    "id": 11061,
+    "name": "Projectile_Voltage",
+    "moveSpeed": -1,
+    "lifeTime": 0.8,
+    "damageInterval": -1,
+    "projectileSpwanType": "TargetPosition",
+    "projectileSpacialAbility": "Piercing",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Lightning"
+  },
+  {
+    "id": 11071,
+    "name": "Projectile_IceField_GroundDoT",
+    "moveSpeed": -1,
+    "lifeTime": 12,
+    "damageInterval": 2,
+    "projectileSpwanType": "AttackerPosition",
+    "projectileSpacialAbility": "GroundDoT",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Water"
+  },
+  {
+    "id": 11081,
+    "name": "Projectile_Flame_GroundDoT",
+    "moveSpeed": -1,
+    "lifeTime": 3,
+    "damageInterval": 1,
+    "projectileSpwanType": "AttackerPositionTargetDirection",
+    "projectileSpacialAbility": "GroundDoT",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Fire"
   }
 ]
 }

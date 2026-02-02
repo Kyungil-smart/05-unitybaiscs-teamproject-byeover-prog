@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor;
 using UnityEngine;
 using static ProjectileEnumData;
+using static TowerEnumData;
+using static UnityEngine.GraphicsBuffer;
 
 // 작성자 : 한성우
 
@@ -12,21 +17,23 @@ public class Projectile : MonoBehaviour
     // ProjectileStats 변수는 여기 넣을 필요 없음
     // 테스트 이후     [SerializeField] 제거 필요
     [SerializeField] private GameObject attacker;
-    [SerializeField] private GameObject target;
+    [SerializeField] private Transform _target;
     [SerializeField] private Vector3 moveDirection;
 
+
     [SerializeField] private int attackValue; // 생성한 타워로부터 공격력 받아오기
-    [SerializeField] private float damageRatio; // 생성한 타워로부터 공격력 받아오기
+    [SerializeField] private float damageRatio = 1; // 비율은 일단 1로
     [SerializeField] private float moveSpeed;   // ProjectileStats 에서 받아오기
     [SerializeField] private float lifeTime;    // ProjectileStats 에서 받아오기
     [SerializeField] private float damageInterval;  // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpwanType projectileSpwanType;    // ProjectileStats 에서 받아오기
     [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
     [SerializeField] private DamageTargetTeamType damageTargetTeamType;
-    
-    
+    [SerializeField] private ProjectileDamageCategory projectileDamageCategory;
+
+
     // 데미지 계산 스크립트
-    DamageCalculator damageCalculator = new DamageCalculator();
+    // DamageCalculator damageCalculator = new DamageCalculator();
 
     // 콜라이더 범위 내 적 담아둘 리스트(주기에 따라 여러 번 데미지를 주는 경우 사용)
     private List<Collider> dmgTrgets = new List<Collider>();
@@ -41,7 +48,43 @@ public class Projectile : MonoBehaviour
 
         // 자신에게 붙은 ProjectileStats 에서 필요한 변수 받아오기 (만약에 스크립트가 없다면 예외 처리 어떻게할지 고민 필요)
         ProjectileStats stats = this.GetComponent<ProjectileStats>();
+
         if (stats != null)
+        {
+            // 안전을 위해 다시 projectileStats 을 부르고 다시 셋팅
+            stats.Init();
+            InitStats(stats);
+        }
+
+
+        // 콜라이더 범위 내 리스트 초기화 (오브젝트 풀링을 할거라, 무조건 초기화 해야함)
+        dmgTrgets.Clear();
+
+
+        // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어, Start에 넣으면 에러 생김
+        StartCoroutine(LifeTimeCoroutine());
+
+        // 있으면 이동 및 방향 재설정(적 위치에 생성되는 방향성 있는 투사체를 위해 필요)
+        if (_target != null)
+        {
+            InitProjectile();
+        }
+
+
+
+        //  주기에 따라 여러 번 데미지 주는 경우 데미지 코루틴 시작
+        if (projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT)
+        {
+            GroundDoTCoroutine = StartCoroutine(DoTIntervalCoroutine());
+        }
+
+    }
+
+
+    public void InitStats(ProjectileStats stats)
+    {
+        if (stats == null) return;
+        else
         {
             moveSpeed = stats.moveSpeed;
             lifeTime = stats.lifeTime;
@@ -49,22 +92,30 @@ public class Projectile : MonoBehaviour
             projectileSpwanType = stats.projectileSpwanType;
             projectileSpacialAbility = stats.projectileSpacialAbility;
             damageTargetTeamType = stats.damageTargetTeamType;
-        }
+            projectileDamageCategory = stats.projectileDamageCategory;
 
-        // 방향 초기화
+        }
+    }
+
+
+    // 이동 및 방향 재설정
+    public void InitProjectile()
+    {
+
+
+
+        // 방향 초기화, 이 함수가 아래의 SetFirstPosition 함수보다 먼저 있어야 적 위치에서 생성되는 투사체 방향 제대로 잡힘
         SetRotation();
 
-        // 객체를 미리 여러개 생성해 놓고 코루틴으로 투사체 유지 시간 제어
-        StartCoroutine(LifeTimeCoroutine());
 
-        // 콜라이더 범위 내 리스트 초기화 (오브젝트 풀링을 할거라, 무조건 초기화 해야함)
-        dmgTrgets.Clear();
-
-        //  주기에 따라 여러 번 데미지 주는 경우 데미지 코루틴 시작
-        if (projectileSpacialAbility == ProjectileSpacialAbility.GroundDoT)
+        // 만약 타겟의 위치에 생성되는 투사체면 타겟의 위치로 이동시키기, OnEnable에서 실행되면 정보를받지 못해 오류남
+        if (projectileSpwanType == ProjectileSpwanType.TargetPosition ||
+           projectileSpwanType == ProjectileSpwanType.TargetPositionAtkToTrgDirection)
         {
-            GroundDoTCoroutine = StartCoroutine(DoTIntervalCoroutine());
+            SetFirstPosition(_target);
         }
+
+
     }
 
     // 투사체 비활성화시 처리
@@ -87,20 +138,23 @@ public class Projectile : MonoBehaviour
 
     private void SetRotation()
     {
-        // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
-        if (projectileSpwanType != ProjectileSpwanType.AttackerPosition)
-        {
-            if (target.transform.position != null)
-            {
-                moveDirection = (target.transform.position - transform.position).normalized;    // 방향벡터 노멀라이즈 해서 받아오기
-                transform.rotation = Quaternion.LookRotation(moveDirection);
-            }
-        }
         // 방향이 필요없는 공격 방식은 벡터 앞 방향으로
-        else if ((projectileSpwanType == ProjectileSpwanType.AttackerPosition))
+        if (projectileSpwanType == ProjectileSpwanType.AttackerPosition ||
+            projectileSpwanType == ProjectileSpwanType.TargetPosition)
         {
             moveDirection = Vector3.forward;
         }
+
+        // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
+        else
+        {
+            if (_target != null)
+            {
+                moveDirection = (_target.position - transform.position).normalized; // 방향벡터 노멀라이즈 해서 받아오기
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+            }
+        }
+
     }
 
 
@@ -115,7 +169,7 @@ public class Projectile : MonoBehaviour
     private void MoveHoming()
     {
         // 타겟이 있다면 타겟의 방향을 실시간으로 받아옴 (타겟이 없다면(비활성화 되었다면) 마지막으로 받은 타겟 방향에서 멈춤)
-        if (target != null) SetRotation();  // 이동식 계속 회전
+        if (_target != null) SetRotation();  // 이동식 계속 회전
 
         Move(); // 기능 통일을 위해 MoveTowards 사용 안하고 Move() 에서 처리
     }
@@ -164,11 +218,11 @@ public class Projectile : MonoBehaviour
     private void GiveDamageChance(Collider other)
     {
         // 데미지 계산
-        int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
+        int finalDMG = DamageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
 
-        // 실제로 데미지 주는 처리 (추가 필요)
-        // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
-        Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
+        // 실제로 데미지 주는 처리 (방어력 들어가도록 수정 필요)
+        other.GetComponent<Monster>().TakeDamage(attackValue, damageRatio);
+        //Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
 
         // 단일 피해면 오브젝트 비활성화
         if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
@@ -211,6 +265,7 @@ public class Projectile : MonoBehaviour
 
     // 생명 주기 관련 함수들
 
+
     // 투사체가 지속 시간 이후에도 남아있다면 비활성화 시켜주는 코루틴, 오브젝트 풀링을 위해 사용
     IEnumerator LifeTimeCoroutine()
     {
@@ -224,8 +279,10 @@ public class Projectile : MonoBehaviour
     // 충돌이나 지속 시간 등으로 비활성화시 리셋해야 하는 요소 모음
     private void SetEnableObject()
     {
-        Reset();
-        this.gameObject.SetActive(false);
+        // Reset();
+        // this.gameObject.SetActive(false);
+
+        Destroy(this.gameObject);  // !!!!! 추후 오브젝트풀링 하면 삭제 예정
     }
 
 
@@ -235,6 +292,24 @@ public class Projectile : MonoBehaviour
     }
 
 
+    // 타워랑 연결하는 코드
+    public void SetTarget(Transform target, float attackPower)
+    {
+        _target = target;
+        attackValue = (int)attackPower;
+
+
+        // 발사 순간 방향 저장
+        InitProjectile();
+
+
+    }
+
+    // 적의 위치에 생성되는 경우 소환 즉시 적의 위치로 이동시키기
+    private void SetFirstPosition(Transform target)
+    {
+        this.transform.position = target.position;
+    }
 
 
 

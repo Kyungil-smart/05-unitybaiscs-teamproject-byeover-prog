@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작성자 : 한성우
+
 public class SpawnExampleScript : MonoBehaviour
 {
     [Header("대상의 정보")]
@@ -46,10 +48,10 @@ public class SpawnExampleScript : MonoBehaviour
 
         if (towerStats != null)
         {
-            Debug.Log("디버그 1");
+           
             // Json 매니저에게 요청
             TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(targetID, targetLevel);
-            Debug.Log("디버그 2");
+            
             if (data != null)
             {
                 // 가져온 데이터 주입

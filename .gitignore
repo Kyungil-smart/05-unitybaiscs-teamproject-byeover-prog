@@ -102,3 +102,7 @@ ServerData
 
 # Ignore imported assets
 Assets/Imports/**
+9TeamTd/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset.meta
+9TeamTd/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset.meta
+*.meta
+9TeamTd/ProjectSettings/EditorBuildSettings.asset

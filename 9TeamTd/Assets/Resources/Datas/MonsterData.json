@@ -1,0 +1,37 @@
+﻿{
+  "monsters" : [
+  {
+    "id": 2100,
+    "name": "골렘",
+    "level": 1,
+    "maxHP": 1000,
+    "attackValue": 1,
+    "defenceValue": 1,
+    "moveType": "Ground",
+    "enemyRank": "Normal",
+    "moveSpeed": 1
+  },
+  {
+    "id": 2101,
+    "name": "가고일",
+    "level": 1,
+    "maxHP": 1010,
+    "attackValue": 1,
+    "defenceValue": 1,
+    "moveType": "Flying",
+    "enemyRank": "Normal",
+    "moveSpeed": 1.5
+  },
+  {
+    "id": 2102,
+    "name": "폭탄광",
+    "level": 1,
+    "maxHP": 1020,
+    "attackValue": 1,
+    "defenceValue": 1,
+    "moveType": "Ground",
+    "enemyRank": "Normal",
+    "moveSpeed": 0.7
+  }
+]
+}
