@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class MonsterStats : MonoBehaviour
 {
+    [Header("Key Status")] 
+    public int id;
+    public int level;
+    
     // MonsterDatas 스크립트 일치시키기
     [Header("Monster Status")]
-    public int id;
     public string name;
-    public int level;
     public int maxHP;
     public float attackValue;
     public float defenceValue;
@@ -20,7 +22,7 @@ public class MonsterStats : MonoBehaviour
     public float moveSpeed;
 
 
-    private void Awake()
+    private void Start()
     {
         Init();
     }
@@ -35,7 +37,6 @@ public class MonsterStats : MonoBehaviour
         }
 
         MonsterDatas mData = JsonManager.instanceJsonManger.GetMonsterData(id, level);
-        // TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level);
 
         if (mData != null)
         {

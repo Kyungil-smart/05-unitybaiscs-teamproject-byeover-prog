@@ -2,9 +2,9 @@
   "monsters" : [
   {
     "id": 2100,
-    "name": "골렘",
+    "name": "주민1",
     "level": 1,
-    "maxHP": 1000,
+    "maxHP": 30,
     "attackValue": 1,
     "defenceValue": 1,
     "Type": 0,
@@ -13,9 +13,9 @@
   },
   {
     "id": 2101,
-    "name": "가고일",
+    "name": "마법중년",
     "level": 1,
-    "maxHP": 1010,
+    "maxHP": 20,
     "attackValue": 1,
     "defenceValue": 1,
     "Type": 1,
@@ -24,9 +24,9 @@
   },
   {
     "id": 2102,
-    "name": "폭탄광",
+    "name": "화공차",
     "level": 1,
-    "maxHP": 1020,
+    "maxHP": 100,
     "attackValue": 1,
     "defenceValue": 1,
     "Type": 2,
