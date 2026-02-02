@@ -2,16 +2,23 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+public class OpenBases
+{
+    public int id;
+    public int level;
+}
+
 public class SaveData
 {
     public int lastOpenStageNum = 1;
+    public int MaxStageNum = 3;
     public int outGameGem = 100;
-    public List<int> GetBaseID;
+    public List<OpenBases> GetBases;
 }
 
 public class SaveManager : MonoBehaviour
 {
-    public SaveData nowPlayer = new SaveData();
+    public static SaveData nowSave = new SaveData();
 
     [HideInInspector] public int nowSlot;
 
@@ -39,16 +46,42 @@ public class SaveManager : MonoBehaviour
         return Path.Combine(Application.persistentDataPath, $"save_{slotNum}.json");
     }
 
-    public void SaveData()
+    // 스테이지 패배시 사용
+    public void SaveData(int _outGameGem)
     {
-        string json = JsonUtility.ToJson(nowPlayer);
+        nowSave.outGameGem += _outGameGem;
+
+        string json = JsonUtility.ToJson(nowSave);
+        File.WriteAllText(GetPath(nowSlot), json);
+    }
+
+    // 스테이지 클리어 시 사용
+    public void SaveData(int number, int _outGameGem)
+    {
+        if (nowSave.lastOpenStageNum < nowSave.MaxStageNum) nowSave.lastOpenStageNum += number;
+        else nowSave.lastOpenStageNum = nowSave.MaxStageNum;
+
+        nowSave.outGameGem += _outGameGem;
+        // 해금된 기지 추가 방법 추가 필요
+
+        string json = JsonUtility.ToJson(nowSave);
+        File.WriteAllText(GetPath(nowSlot), json);
+    }
+
+    // 기지 해금 시 사용
+    public void SaveData(int _lastOpenStageNum, int _outGameGem, OpenBases _openBases)
+    {
+        
+        nowSave.outGameGem += _outGameGem;
+
+        string json = JsonUtility.ToJson(nowSave);
         File.WriteAllText(GetPath(nowSlot), json);
     }
 
     public void LoadData()
     {
         string json = File.ReadAllText(GetPath(nowSlot));
-        JsonUtility.FromJsonOverwrite(json, nowPlayer);
+        JsonUtility.FromJsonOverwrite(json, nowSave);
     }
 
     public bool LoadDataForPreview(int slotNum)

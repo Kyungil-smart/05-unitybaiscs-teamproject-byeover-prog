@@ -21,6 +21,7 @@ public class StageManager : MonoBehaviour
     public float stageEndTimeForReset = 0;
     public int startGold = 0;
     public int ClearOutGameGem = 0;
+    public int DefeatOutGameGem = 0;
     [SerializeField] private Transform basePosition;
 
     [Header("For GamePlay")]
@@ -229,6 +230,8 @@ public class StageManager : MonoBehaviour
 
         StageClear?.Invoke();
         PauseFunction();
+
+        SaveManager.instance.SaveData(1, ClearOutGameGem);
     }
 
 
@@ -250,6 +253,8 @@ public class StageManager : MonoBehaviour
         StageDefeat?.Invoke();
         PauseFunction();
 
+
+        SaveManager.instance.SaveData(DefeatOutGameGem);
         // TODO: 패배 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
     }
@@ -278,8 +283,7 @@ public class StageManager : MonoBehaviour
     }
 
 
-    [Header("아이템 드랍 설정")]
-    [SerializeField] private List<GameObject> dropItemPrefabs;
+
 
 
     public void GetGold(int value)
@@ -289,8 +293,15 @@ public class StageManager : MonoBehaviour
         gold.Value += value;
         Debug.Log($"[StageManager] 골드 획득! +{value}");
 
-        // UI 업데이트 이벤트를 호출하거나 연결하면 .. 될듯싶은데
     }
+
+
+
+
+    // 아이템 드랍 및 획득 기능 추가 및 테스트 필요
+    [Header("아이템 드랍 설정")]
+    [SerializeField] private List<GameObject> dropItemPrefabs;
+
 
     public void TryDropItem(string itemId, float prob, Vector3 spawnPos)
     {
