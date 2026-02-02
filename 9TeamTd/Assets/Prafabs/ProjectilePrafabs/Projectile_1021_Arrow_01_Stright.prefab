@@ -72,13 +72,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 11021
   name: 
-  moveSpeed: 24
+  moveSpeed: 0
   lifeTime: 0.5
   damageInterval: 0
   projectileSpwanType: 1
   projectileSpacialAbility: 1
   damageTargetTeamType: 4
   projectileDamageCategory: 1
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &4644893451384000129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +108,11 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!1 &8588553140684015885
 GameObject:
   m_ObjectHideFlags: 0

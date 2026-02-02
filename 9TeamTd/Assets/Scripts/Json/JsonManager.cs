@@ -75,7 +75,7 @@ public class JsonManager : MonoBehaviour
         LoadMonsterResourcesData("Datas/MonsterResourcesData");
         LoadMonsterSpawnData("Datas/MonsterSpawnData");
         LoadProjectileData("Datas/ProjectileData");
-        LoadProjectileData("Datas/StatusEffectData");
+        LoadStatusEffectData("Datas/StatusEffectData");
 
         /*
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴
@@ -102,7 +102,16 @@ public class JsonManager : MonoBehaviour
         return foundData != null;
     }
 
+    // 현재 사용 안함
+    public bool HasProjectileData(int id)
+    {
+        // 해당 자료 있으면 통과, 자료 없으면 false 뱉도록
+        if (_towerData == null) return false;
 
+        ProjectileDatas foundData = _projectileData.projectiles.Find(t => t.id == id);
+
+        return foundData != null;
+    }
 
 
 
