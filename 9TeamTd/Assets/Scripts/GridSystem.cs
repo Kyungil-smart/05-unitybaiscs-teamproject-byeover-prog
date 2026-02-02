@@ -112,7 +112,8 @@ public partial class GridSystem : MonoBehaviour
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
-        RegisterObstacles(); // ��ֹ� ��� �߰���
+        RegisterObstacles();
+        RegisterBaseSize();
 
         SnapBaseTransformToCellCenter();
     }
@@ -712,6 +713,22 @@ public partial class GridSystem : MonoBehaviour
             foreach (Cell cell in bigObstacle.occupiedCells)
             {
                 SetCellState(cell, CellState.Blocked);
+            }
+        }
+    }
+
+    // 베이스 크기 등록
+    private void RegisterBaseSize()
+    {
+        GridBaseSize[] baseObstacles = FindObjectsOfType<GridBaseSize>();
+
+        foreach (GridBaseSize baseObstacle in baseObstacles)
+        {
+            baseObstacle.Initialize(this);
+
+            foreach (Cell cell in baseObstacle.occupiedCells)
+            {
+                SetCellState(cell, CellState.Base);
             }
         }
     }
