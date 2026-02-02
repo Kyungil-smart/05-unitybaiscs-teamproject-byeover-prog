@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SaveData
 {
-    public int nowStage = 1;
-    public int money = 100;
+    public int lastOpenStageNum = 1;
+    public int outGameGold = 100;
 }
 
 public class SaveManager : MonoBehaviour
@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
 
     public string GetPath(int slotNum)
     {
-
+        // 저장 위치 : \Users\(본인 계정명)\AppData\LocalLow\DefaultCompany\9TeamTd
         return Path.Combine(Application.persistentDataPath, $"save_{slotNum}.json");
     }
 

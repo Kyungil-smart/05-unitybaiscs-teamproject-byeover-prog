@@ -108,27 +108,38 @@ public class Monster : MonoBehaviour, IDamagable
 
     private void Die()
     {
+
+        Debug.Log(1);
+        /*
         if (isDead) return;
         isDead = true;
-        
+        */
         // 수정됨: 죽으면 무조건 보상 지급
         
         // 골드 무조건 지급
-        if (StageManager.Instance != null)
+        if (true/*StageManager.Instance != null*/)
         {
-            StageManager.Instance.GetGold(resource.gold);
-            
+            Debug.Log(2);
+            //StageManager.Instance.GetGold(resource.gold);
+            Debug.Log(3);
             // 아이템 무조건 드랍 시도
-            if (resource.DropItemId != null && StageManager.Instance != null)
+            Debug.Log(3);
+            if (true/*resource.DropItemId != null && StageManager.Instance != null*/)
             {
-                StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+                Debug.Log(4);
+                // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+                Debug.Log(5);
             }
         }
 
         Debug.Log($"[Monster] 기지 타격!");
 
         OnDeath?.Invoke(this);
-        gameObject.SetActive(false);
+        Debug.Log(6);
+
+        Destroy(gameObject);
+        Debug.Log(7);
+        // gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter(Collider other)
