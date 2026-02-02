@@ -87,14 +87,14 @@ public class Monster : MonoBehaviour, IDamagable
         
         // 데미지 계산
         int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
-        
+
         currentHp.Value -= finalDamage;
-        // Debug.Log($"{finalDamage}피해 입음. 남은 체력: {currentHp}"); << 주석 빼도 됩니다
+        Debug.Log($"{finalDamage}피해 입음. 남은 생명력 : {currentHp.Value}"); //<< 주석 빼도 됩니다
         
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
-            Die(isKilledByPlayer: true);
+            // Die(isKilledByPlayer: true);
             Destroy(gameObject);
         }
     }
@@ -120,11 +120,12 @@ public class Monster : MonoBehaviour, IDamagable
             // 기지에서 죽음 (보상 X)
             Debug.Log("기지 타격! 후 소멸");
         }
-
+        /*
         OnDeath?.Invoke(this);
         
         // 풀 반납
         MonsterManager.Instance.ReturnMonster(this);
+        */
     }
     
     private void OnTriggerEnter(Collider other)
