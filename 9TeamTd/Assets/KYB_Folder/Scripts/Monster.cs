@@ -94,38 +94,42 @@ public class Monster : MonoBehaviour, IDamagable
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
-            // Die(isKilledByPlayer: true);
-            Destroy(gameObject);
+            Die(isKilledByPlayer: true);
+            // Destroy(gameObject);
         }
     }
 
     private void Die(bool isKilledByPlayer)
     {
         isDead = true;
+        
+        // 수정됨: 죽으면 무조건 보상 지급
+        
+        // 골드 무조건 지급
+        if (StageManager.Instance != null)
+        {
+            StageManager.Instance.GetGold(resource.gold);
+        }
+        
+        // 아이템 무조건 드랍 시도
+        if (resource.DropItemId != null && StageManager.Instance != null)
+        {
+            StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+        }
+        
+        // --로그
 
         if (isKilledByPlayer)
         {
-            // 골드 보상 (나중에 GameManager 생기면 연결)
-            // GameManager.Instance.골드얻기(resource.gold);
-            Debug.Log($"골드 획득: {resource.gold}");
-
-            if (UnityEngine.Random.value <= resource.DropProp)
-            {
-                Debug.Log($"아이템 드랍 성공! ID: {resource.DropItemId}");
-                // ItemManager.Instance.DropItem(transform.position, resource.dropItem);
-            }
+            Debug.Log($"[Monster] 플레이어 처치!");
         }
         else
         {
-            // 기지에서 죽음 (보상 X)
-            Debug.Log("기지 타격! 후 소멸");
+            Debug.Log($"[Monster] 기지 타격!");
         }
-        /*
+
         OnDeath?.Invoke(this);
-        
-        // 풀 반납
         MonsterManager.Instance.ReturnMonster(this);
-        */
     }
     
     private void OnTriggerEnter(Collider other)

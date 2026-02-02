@@ -267,8 +267,33 @@ public class StageManager : MonoBehaviour
     }
 
 
+    [Header("아이템 드랍 설정")] 
+    [SerializeField] private List<GameObject> dropItemPrefabs;
+    
+    
     public void GetGold(int value)
     {
-        gold.Value += value;
+        if (gold == null) gold = new OP<int>();
+        
+        gold.Value = value;
+        Debug.Log($"[StageManager] 골드 획득! +{value}");
+        
+        // UI 업데이트 이벤트를 호출하거나 연결하면 .. 될듯싶은데
+    }
+
+    public void TryDropItem(string itemId, float prob, Vector3 spawnPos)
+    {
+        if (string.IsNullOrEmpty(itemId)) return;
+        
+        // 확률 체크
+        if (UnityEngine.Random.value < prob)
+        {
+            SpawnItem(itemId, spawnPos);
+        }
+    }
+
+    private void SpawnItem(string itemId, Vector3 pos)
+    {
+        
     }
 }
