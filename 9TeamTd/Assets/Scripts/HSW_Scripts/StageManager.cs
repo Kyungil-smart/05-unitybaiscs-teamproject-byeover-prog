@@ -217,6 +217,7 @@ public class StageManager : MonoBehaviour
         // TODO: 게임 일시정지 (Time.timeScale = 0)
 
         StageClear?.Invoke();
+        PauseFunction()
     }
 
 
@@ -236,6 +237,7 @@ public class StageManager : MonoBehaviour
         // Debug.Log($"[GameManager] 생명이 0이 되었습니다!");
 
         StageDefeat?.Invoke();
+        PauseFunction()
 
         // TODO: 패배 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
@@ -262,5 +264,11 @@ public class StageManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
+    }
+
+
+    public void GetGold(int value)
+    {
+        gold.Value += value;
     }
 }
