@@ -152,7 +152,7 @@ public class MonsterManager : MonoBehaviour
         // 위치 및 초기화
         Vector3 spawnPos = GridSystem.Instance.CellToWorld(spawnCell);
         // 땅에 파묻히면 Y 값 조정
-        // spawnPos.y += 0.5f;
+        spawnPos.y += 0.5f;
         
         newMonster.transform.position = spawnPos;
         newMonster.Initialize(stats, rewards, baseTransform);
