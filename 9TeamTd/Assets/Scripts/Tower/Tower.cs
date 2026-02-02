@@ -20,8 +20,8 @@ public class Tower : MonoBehaviour, IDamagable
     [SerializeField] private string _towerdesc;
     [SerializeField] private int level;
     [SerializeField] private TowerType towerType;
-    public float _towerheals; // 타워 최대 체력
-    public int _currentheals; // 타워 현재 체력
+    public float _towerMaxHP; // 타워 최대 체력
+    public int _currentHP; // 타워 현재 체력
     [SerializeField] private attackType attackType;
     public float _damage;         // 타워 공격력
     public float _range;          // 타워 사거리
@@ -54,7 +54,7 @@ public class Tower : MonoBehaviour, IDamagable
             _towerdesc = stats.desc;
             level = stats.level;
             towerType = stats.towerType;
-            _towerheals = stats.maxHP;
+            _towerMaxHP = stats.maxHP;
             attackType = stats.attackType;
             _damage = stats.attackValue;
             _range = stats.attackRange;
@@ -69,7 +69,7 @@ public class Tower : MonoBehaviour, IDamagable
         if (_damage <= 0) _damage = 0;
         if (_attackSpeed <= 0) _attackSpeed = 0;
 
-        _currentheals = (int)_towerheals;
+        _currentHP = (int)_towerMaxHP;
     }
 
 
@@ -212,12 +212,12 @@ public class Tower : MonoBehaviour, IDamagable
         // if (isDead) return; 오브젝트 풀링으로 바꾸면 안정성을 위해 추가 필요
 
 
-        Debug.Log($"{_currentheals} - {damage}");
-        _currentheals -= (int)damage;
+        Debug.Log($"{_currentHP} - {damage}");
+        _currentHP -= (int)damage;
 
-        if (_currentheals <= 0)
+        if (_currentHP <= 0)
         {
-            _currentheals = 0;
+            _currentHP = 0;
 
             GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");           
             Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.5f);
