@@ -51,7 +51,7 @@ public class TowerStats : MonoBehaviour
         if (tData != null)
         {
             SetupValue(tData);
-            Tower_Re towerScript = GetComponent<Tower_Re>();
+            Tower towerScript = GetComponent<Tower>();
 
             if (towerScript != null)
             {
@@ -158,7 +158,7 @@ public class TowerStats : MonoBehaviour
 
         // 1레벨 올려 스텟 다시 세팅
         SetupValue(tData);
-        Tower_Re towerScript = GetComponent<Tower_Re>();
+        Tower towerScript = GetComponent<Tower>();
 
         if (towerScript != null)
         {
