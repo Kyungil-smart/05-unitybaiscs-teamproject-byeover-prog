@@ -40,13 +40,13 @@ public class TowerToBuyUI : MonoBehaviour
         {
             attackValueText.text = "파워: 없음";
             attackSpeedText.text = "속도: 없음";
-            attackRangeText.text = "범위: 없음";
+            attackRangeText.text = "사거리: 없음";
         }
         else
         {
             attackValueText.text = $"파워: {attackValue}";
             attackSpeedText.text = $"속도: {attackSpeed}";
-            attackRangeText.text = $"범위: {attackRange}";
+            attackRangeText.text = $"사거리: {attackRange}";
         }
         costText.text = $"<sprite=0>{cost}";
 

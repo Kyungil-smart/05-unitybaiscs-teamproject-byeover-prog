@@ -53,6 +53,19 @@ public class UIController : MonoBehaviour
             Debug.Log("돈무한 치트 사용!!!");
 #endif
         }
+
+        // x 를 누르면 씬에서 첫번째 Monster 클래스를 찾고 currentHp 값을 깍기
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Monster monster = FindObjectOfType<Monster>();
+            if (monster != null)
+            {
+                monster.currentHp.Value -= 10;
+#if UNITY_EDITOR
+                Debug.Log("몬스터 체력 깎음");
+#endif
+            }
+        }
     }
 
     public void OpenEscPanel()
