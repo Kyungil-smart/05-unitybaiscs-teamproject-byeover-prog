@@ -12,8 +12,36 @@ public class Monster : MonoBehaviour, IDamagable
     private MonsterDatas stat;
     private MonsterResourcesDatas resource;
 
-    private float currentHp;
+    public OP<int> currentHp = new();
+    
+    //private float currentHp;
     private bool isDead = false;
+    
+    // Json 변수들
+    [SerializeField]private int id;
+    [SerializeField]private string name;
+    [SerializeField]private int level;
+    [SerializeField]private int maxHP;
+    [SerializeField]private float attackValue;
+    [SerializeField]private float defenceValue;
+    [SerializeField]private string moveType;
+    [SerializeField]private string enemyRank;
+    [SerializeField]private float moveSpeed;
+
+    public void GetMonsterStats(MonsterStats stats)
+    {
+        if (stats == null) return;
+        
+        id = stats.id;
+        name = stats.name;
+        level = stats.level;
+        maxHP = stats.maxHP;
+        attackValue = stats.attackValue;
+        defenceValue = stats.defenceValue;
+        moveType = stats.moveType;
+        moveSpeed = stats.moveSpeed;
+        enemyRank = stats.enemyRank;
+    }
     
     // 매니저에게 반납하기 위한 이벤트
     public event Action<Monster> OnDeath;
@@ -30,7 +58,7 @@ public class Monster : MonoBehaviour, IDamagable
         this.resource = resData;
         
         // 스탯 적용
-        this.currentHp = statData.maxHP;
+        this.currentHp.Value = statData.maxHP;
         this.isDead = false;
         
         // 디버깅용 이름 변경
@@ -53,12 +81,12 @@ public class Monster : MonoBehaviour, IDamagable
         // 데미지 계산
         int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
         
-        currentHp -= finalDamage;
+        currentHp.Value -= finalDamage;
         // Debug.Log($"{finalDamage}피해 입음. 남은 체력: {currentHp}"); << 주석 빼도 됩니다
-
-        if (currentHp <= 0)
+        
+        if (currentHp.Value <= 0)
         {
-            currentHp = 0;
+            currentHp.Value = 0;
             Die(isKilledByPlayer: true);
         }
     }

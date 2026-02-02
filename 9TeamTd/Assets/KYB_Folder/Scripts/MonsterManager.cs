@@ -55,10 +55,6 @@ public class MonsterManager : MonoBehaviour
         // 프리팹 생성 후 Monster 컴포넌트 리턴
         GameObject obj = Instantiate(monsterPrefab);
         Monster monster = obj.GetComponent<Monster>();
-        if (monster != null)
-        {
-            Debug.LogError("프리팹에 Monster 스크립트가 없습니다.");
-        }
 
         return monster;
     }
@@ -152,7 +148,7 @@ public class MonsterManager : MonoBehaviour
         // 위치 및 초기화
         Vector3 spawnPos = GridSystem.Instance.CellToWorld(spawnCell);
         // 땅에 파묻히면 Y 값 조정
-        spawnPos.y += 0.5f;
+        spawnPos.y += 1.0f;
         
         newMonster.transform.position = spawnPos;
         newMonster.Initialize(stats, rewards, baseTransform);
