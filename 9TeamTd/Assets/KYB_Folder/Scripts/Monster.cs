@@ -21,7 +21,7 @@ public class Monster : MonoBehaviour, IDamagable
 
     public OP<int> currentHp = new();
     
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
     
     // Json 변수들
     [SerializeField]private int id;
@@ -51,6 +51,10 @@ public class Monster : MonoBehaviour, IDamagable
     
     // 매니저에게 반납하기 위한 이벤트
     public event Action<Monster> OnDeath;
+    
+    // 디버그 확인용
+    [Header("Hp 확인용 디버그 전용")]
+    [SerializeField] private int debugCurrentHpView;
 
     private void Awake()
     {
@@ -65,11 +69,11 @@ public class Monster : MonoBehaviour, IDamagable
         
         // 스탯 적용
         this.currentHp.Value = statData.maxHP;
+        this.debugCurrentHpView = statData.maxHP; // 인스펙터 확인용
         this.isDead = false;
         
         // 디버깅용 이름 변경
         gameObject.name = $"{statData.name} _{statData.id}";
-        gameObject.SetActive(true);
         
         // Agent 이동 시작
         if (agent != null)
@@ -87,42 +91,24 @@ public class Monster : MonoBehaviour, IDamagable
         
         // 데미지 계산
         int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
+        
+        if (finalDamage < 1) finalDamage = 1;
 
         currentHp.Value -= finalDamage;
+        debugCurrentHpView = currentHp.Value; // 인스펙터 갱신
         Debug.Log($"{finalDamage}피해 입음. 남은 생명력 : {currentHp.Value}"); //<< 주석 빼도 됩니다
         
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
-            Die();
-            // Destroy(gameObject);
-        }
-    }
-
-    private void Die()
-    {
-        if (isDead) return;
-        isDead = true;
-        
-        // 수정됨: 죽으면 무조건 보상 지급
-        
-        // 골드 무조건 지급
-        if (StageManager.Instance != null)
-        {
+            
             StageManager.Instance.GetGold(resource.gold);
-        }
-        
-        // 아이템 무조건 드랍 시도
-        if (resource.DropItemId != null && StageManager.Instance != null)
-        {
             StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+
+            OnDeath?.Invoke(this);
+            
+            Destroy(gameObject);
         }
-
-        Debug.Log($"[Monster] 기지 타격!");
-
-        OnDeath?.Invoke(this);
-        MonsterManager.Instance.ReturnMonster(this);
-        gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -144,15 +130,17 @@ public class Monster : MonoBehaviour, IDamagable
                 }
                 
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
-                baseTarget.TakeDamage(stat.attackValue, 1.0f);
+                baseTarget.TakeDamage(finalDamage, 1.0f);
             }
-            else
-            {
-                Debug.LogWarning("기지에 IDamageble 스크립트가 없습니다");
-            }
-
-            // Destroy(gameObject);
-            Die();
+            
+            isDead = true;
+            
+            StageManager.Instance.GetGold(resource.gold);
+            StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+            
+            OnDeath?.Invoke(this);
+            
+            Destroy(gameObject);
         }
     }
 }

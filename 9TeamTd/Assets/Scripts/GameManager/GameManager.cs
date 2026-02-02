@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // 작성자 : 문형근
+// 수정자 : 한성우
 // 게임 전체 상태 관리 (승리, 패배, 웨이브 등)
 // 사용법:
 // 1. 빈 오브젝트 만들고 이 스크립트 추가
@@ -11,6 +12,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Stage Info")]
+    public int outGameGold = 0;
+    public int SelectedBaseID = 0;
+    public int SelectedStageNum = 0;
+
+
+
     // ========== 싱글톤 ==========
     // 다른 스크립트에서 GameManager.Instance로 접근 가능
     public static GameManager Instance; /*{ get; private set; }*/
