@@ -167,7 +167,7 @@ public class TowerStats : MonoBehaviour
         Debug.Log("레벨 업 함수 실행 완료");
     }
 
-    
+    /*
     // 테스트용 레벨업 함수
     private void Update()
     {
@@ -178,5 +178,5 @@ public class TowerStats : MonoBehaviour
             LevelUp();       
         }
     }
-    
+    */
 }
