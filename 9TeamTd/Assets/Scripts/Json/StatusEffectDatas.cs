@@ -7,7 +7,14 @@ using UnityEngine;
 public class StatusEffectDatas // .json 파일과 이름과 겹치면 안 됨
 {
     public int id;
-    public string name;
+    public string effectType;
+    public string effectClass;
+    public string effectRate;
+    public string effectValue;
+    public string effectInterval;
+    public string duration;
+    public string overlapCount;
+        
 
 
 }
