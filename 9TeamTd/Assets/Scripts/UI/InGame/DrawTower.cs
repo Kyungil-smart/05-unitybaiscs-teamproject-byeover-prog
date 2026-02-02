@@ -11,6 +11,14 @@ public class DrawTower : MonoBehaviour // 타워 배치 UI와 상호작용
     [HideInInspector] public static int targetIndex; // UI에서 선택한 타워 인덱스
 
     Vector3 worldPoint; Cell cell;
+
+    private void Start()
+    {
+        worldPoint = transform.position;
+        cell = gridSystem.WorldToCell(worldPoint);
+        gridSystem.TryPlaceTower(cell);
+        gridSystem.SetCellState(cell, GridSystem.CellState.Empty);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

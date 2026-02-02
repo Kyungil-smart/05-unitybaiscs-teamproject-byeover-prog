@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public GameObject selectPanel;
+
     // UI 버튼에 연결할 함수
     public void OnClickSlot()
     {
@@ -18,5 +20,10 @@ public class SceneLoader : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void OpenPanel()
+    {
+        selectPanel.SetActive(true);
     }
 }
