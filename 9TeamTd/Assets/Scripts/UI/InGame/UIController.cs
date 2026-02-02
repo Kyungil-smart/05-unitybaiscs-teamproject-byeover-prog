@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
 
     // 패널
     [SerializeField] GameObject ESCpanel;
-    //[SerializeField] GameObject victoryPanel;
+    [SerializeField] GameObject victoryPanel;
     [SerializeField] GameObject defeatPanel;
 
     // 텍스트
@@ -35,57 +35,68 @@ public class UIController : MonoBehaviour
     void OnEnable()
     {
         StageManager.gold.OnValueChanged += UpdateGoldText;
-        //StageManager.Instance.StageClear += () =>
+        StageManager.Instance.StageClear += ShowVictoryPanel;
+        StageManager.Instance.StageDefeat += ShowDefeatPanel;
     }
     void OnDisable()
     {
         StageManager.gold.OnValueChanged -= UpdateGoldText;
+        StageManager.Instance.StageClear -= ShowVictoryPanel;
+        StageManager.Instance.StageDefeat -= ShowDefeatPanel;
     }
 
-
-    private void Start()
+    void ShowVictoryPanel()
     {
-        // 씬에서 baseTower를 찾음
-        if (baseTower == null)
-        {
-            baseTower = FindFirstObjectByType<Tower>();
-        }
+        victoryPanel.SetActive(true);
+    }
+    void ShowDefeatPanel()
+    {
+        defeatPanel.SetActive(true);
     }
 
-    private void Update()
+private void Start()
+{
+    // 씬에서 baseTower를 찾음
+    if (baseTower == null)
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
-        {
-            OpenEscPanel();
-        }
+        baseTower = FindFirstObjectByType<Tower>();
+    }
+}
 
-        // 디버그용 코드
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            StageManager.gold.Value += 100;
+private void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
+    {
+        OpenEscPanel();
+    }
+
+    // 디버그용 코드
+    if (Input.GetKeyDown(KeyCode.Tab))
+    {
+        StageManager.gold.Value += 100;
 #if UNITY_EDITOR
-            Debug.Log("돈무한 치트 사용!!!");
+        Debug.Log("돈무한 치트 사용!!!");
 #endif
-        }
-
-        hpText.text = $"<sprite=0>{baseTower._currentHP}";
     }
 
-    public void OpenEscPanel()
-    {
-        ESCpanel.SetActive(!ESCpanel.activeSelf);
-        Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
-    }
+    hpText.text = $"<sprite=0>{baseTower._currentHP}";
+}
 
-    public void RestartGame()
-    {
-        Time.timeScale = 1f; // 시간 재개
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
-    }
+public void OpenEscPanel()
+{
+    ESCpanel.SetActive(!ESCpanel.activeSelf);
+    Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
+}
 
-    public void QuitGame()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
-    }
+public void RestartGame()
+{
+    Time.timeScale = 1f; // 시간 재개
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
+}
+
+public void QuitGame()
+{
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(0);
+}
 }

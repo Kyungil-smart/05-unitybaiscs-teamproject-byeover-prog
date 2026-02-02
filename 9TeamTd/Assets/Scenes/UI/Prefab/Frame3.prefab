@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7434694353708277249
+--- !u!1 &7509153120340169325
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4482799239042077420}
-  - component: {fileID: 4568530268966124968}
-  - component: {fileID: 2103676567952476681}
+  - component: {fileID: 246087863761465581}
+  - component: {fileID: 8146355283616459150}
+  - component: {fileID: 5697655273731177567}
   m_Layer: 5
   m_Name: Frame3
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!224 &4482799239042077420
+--- !u!224 &246087863761465581
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7434694353708277249}
+  m_GameObject: {fileID: 7509153120340169325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,21 +37,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 8.229309}
   m_SizeDelta: {x: 318.34, y: 316.2315}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4568530268966124968
+--- !u!222 &8146355283616459150
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7434694353708277249}
+  m_GameObject: {fileID: 7509153120340169325}
   m_CullTransparentMesh: 1
---- !u!114 &2103676567952476681
+--- !u!114 &5697655273731177567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7434694353708277249}
+  m_GameObject: {fileID: 7509153120340169325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
