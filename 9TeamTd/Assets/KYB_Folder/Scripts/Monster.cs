@@ -95,6 +95,7 @@ public class Monster : MonoBehaviour, IDamagable
         {
             currentHp.Value = 0;
             Die(isKilledByPlayer: true);
+            Destroy(gameObject);
         }
     }
 
