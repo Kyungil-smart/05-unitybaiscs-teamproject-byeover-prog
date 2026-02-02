@@ -55,7 +55,7 @@ public class Monster : MonoBehaviour, IDamagable
         
         currentHp -= finalDamage;
         // Debug.Log($"{finalDamage}피해 입음. 남은 체력: {currentHp}"); << 주석 빼도 됩니다
-
+        
         if (currentHp <= 0)
         {
             currentHp = 0;
