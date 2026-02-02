@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("Stage Info")]
     public int outGameGold = 0;
     public int SelectedBaseID = 0;
-    public int SelectedstageID = 0;
+    public int SelectedStageNum = 0;
 
 
 

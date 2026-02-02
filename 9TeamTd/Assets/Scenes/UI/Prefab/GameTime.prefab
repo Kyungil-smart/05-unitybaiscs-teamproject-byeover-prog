@@ -88,10 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510915ecda5d64f43adb5340b6e0da3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeButton: {fileID: 4958203686047942639, guid: 56a75be18e400ab4991cc8ceb4b1b34c, type: 3}
-  sellButton: {fileID: 6793596874148836069, guid: ad3a4b8be1dfdb84993d8968e8c7bf5f, type: 3}
-  Frame1: {fileID: 1355615570157097980, guid: 2d7759aece28e1c45be00b6106ecac15, type: 3}
-  Frame2: {fileID: 1957994322571475282, guid: 7c277998fd3a45a44b864a7b6ed19292, type: 3}
-  Frame3: {fileID: 7434694353708277249, guid: 79507cb748e88b84fbff633d3f825a6f, type: 3}
-  Frame4: {fileID: 324343186441911418, guid: 3ac9baa3d85f26346aecd8f54cb1f238, type: 3}
-  Frame5: {fileID: 2875867246356910788, guid: c659d7a4a05ab9e4182fcbe4b39c3ab6, type: 3}
+  upgradeButton: {fileID: 1644292040361774818, guid: 56a75be18e400ab4991cc8ceb4b1b34c, type: 3}
+  sellButton: {fileID: 6432436882970107732, guid: ad3a4b8be1dfdb84993d8968e8c7bf5f, type: 3}
+  Frame1: {fileID: 6447942033051121845, guid: 2d7759aece28e1c45be00b6106ecac15, type: 3}
+  Frame2: {fileID: 8104575564579962775, guid: 7c277998fd3a45a44b864a7b6ed19292, type: 3}
+  Frame3: {fileID: 7509153120340169325, guid: 79507cb748e88b84fbff633d3f825a6f, type: 3}
+  Frame4: {fileID: 4618484987999353272, guid: 3ac9baa3d85f26346aecd8f54cb1f238, type: 3}
+  Frame5: {fileID: 5005075657786612153, guid: c659d7a4a05ab9e4182fcbe4b39c3ab6, type: 3}

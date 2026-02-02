@@ -109,6 +109,9 @@ public class Monster : MonoBehaviour, IDamagable
             
             Destroy(gameObject);
         }
+            Die();
+            // Destroy(gameObject);
+        }
     }
     
     private void OnTriggerEnter(Collider other)
