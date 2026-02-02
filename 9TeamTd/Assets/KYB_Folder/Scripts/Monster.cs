@@ -151,8 +151,9 @@ public class Monster : MonoBehaviour, IDamagable
             {
                 Debug.LogWarning("기지에 IDamageble 스크립트가 없습니다");
             }
-            
-            Die(isKilledByPlayer: false);
+
+            Destroy(gameObject);
+            // Die(isKilledByPlayer: false);
         }
     }
 }
