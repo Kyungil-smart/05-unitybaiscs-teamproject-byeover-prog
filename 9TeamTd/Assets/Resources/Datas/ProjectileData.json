@@ -30,7 +30,7 @@
     "effectValue": -1,
     "effectInterval": -1,
     "duration": 3,
-    "overlapCount": 1
+    "overlapCount": -1
   },
   {
     "id": 11021,
@@ -78,7 +78,7 @@
     "effectValue": -1,
     "effectInterval": -1,
     "duration": 3,
-    "overlapCount": 1
+    "overlapCount": -1
   },
   {
     "id": 11051,
@@ -110,23 +110,23 @@
     "effectValue": -1,
     "effectInterval": -1,
     "duration": 3,
-    "overlapCount": 1
+    "overlapCount": -1
   },
   {
     "id": 11071,
     "name": "Projectile_IceField_GroundDoT",
     "moveSpeed": -1,
-    "lifeTime": 12,
-    "damageInterval": 2,
+    "lifeTime": 6,
+    "damageInterval": 1,
     "projectileSpwanType": "AttackerPosition",
     "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
     "projectileDamageCategory": "Water",
     "effectRate": 5000,
-    "effectValue": -0.1,
+    "effectValue": -0.6,
     "effectInterval": -1,
-    "duration": 20,
-    "overlapCount": 8
+    "duration": 10,
+    "overlapCount": 3
   },
   {
     "id": 11081,

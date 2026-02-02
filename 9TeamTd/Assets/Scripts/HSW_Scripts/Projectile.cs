@@ -108,7 +108,7 @@ public class Projectile : MonoBehaviour
             duration = stats.duration;
             overlapCount = stats.overlapCount;
 
-            Debug.Log($"InitStats {effectRate}");
+            // Debug.Log($"InitStats {effectRate}");
 
 
 
@@ -249,14 +249,14 @@ public class Projectile : MonoBehaviour
         Random.InitState((int)temp);
 
         int randomInt = UnityEngine.Random.Range(0, 10000);
-        Debug.Log(randomInt);
-        Debug.Log(effectRate);
+        // Debug.Log(randomInt);
+        // Debug.Log(effectRate);
 
         // 발동 확률이 현재 선택된 랜덤 값 보다 클 경우 발동
         if (effectRate >= randomInt)
         {
             GiveStatusEffectChance(other);
-            Debug.Log("상태 효과 발동");
+            // Debug.Log("상태 효과 발동");
         }
         
 
@@ -272,7 +272,7 @@ public class Projectile : MonoBehaviour
                 Debug.LogWarning("투사체 공격 속성이 디폴트 값입니다");
                 break;
             case ProjectileDamageCategory.Physical:
-                Debug.Log("물리 확인");
+                // Debug.Log("물리 확인");
                 other.GetComponent<Monster>().KnockBack(moveDirection, effectValue, duration);
                 break;
 
@@ -281,7 +281,7 @@ public class Projectile : MonoBehaviour
                 break;
 
             case ProjectileDamageCategory.Water:
-                other.GetComponent<Monster>().Freeze();
+                other.GetComponent<Monster>().Freeze(effectValue, duration, overlapCount);
                 break;
 
             case ProjectileDamageCategory.Wind:
@@ -293,7 +293,7 @@ public class Projectile : MonoBehaviour
                 break;
 
             case ProjectileDamageCategory.Lightning:
-                other.GetComponent<Monster>().Stun();
+                other.GetComponent<Monster>().Stun(duration);
                 break;
 
             case ProjectileDamageCategory.Light:
