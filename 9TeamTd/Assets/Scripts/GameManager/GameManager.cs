@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,11 +15,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Stage Info")]
-    public int outGameGem = 0;
-    public int SelectedBaseID = 0;
-    public int SelectedStageNum = 0;
+
+    public int SelectedStageNum = 0;    // 선택된 스테이지
+
+    public int outGameGem = 0;  // 현재 아웃 게임 재화
 
 
+    public List<OpenBases> GetBases;    // 획득한 기지
+    public int SelectedBaseID = 0;  // 현재 선택된 기지
+
+    public SaveData gmSave = new SaveData();
 
     // ========== 싱글톤 ==========
     // 다른 스크립트에서 GameManager.Instance로 접근 가능
@@ -70,11 +77,31 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // 부팅은 Start에서 (씬 로드 타이밍 안정)
-        StartCoroutine(BootRoutine());
+        // StartCoroutine(BootRoutine());
+
+        Init();
+
+
 
         // 게임 시작 시 초기화
         // StartInGame();
     }
+
+
+    public void Init()
+    {
+        // 세이브 데이터 불러오기
+        gmSave = SaveManager.instance.LoadData();
+
+
+        SelectedStageNum = 1;   // 선택된 스테이지
+        SelectedBaseID = 1000;  // 현재 선택된 기지
+
+        GetBases = gmSave.GetBases; // 획득한 기지
+        outGameGem = gmSave.outGameGem;  // 현재 아웃 게임 재화
+        
+    }
+
 
 
 
@@ -98,14 +125,17 @@ public class GameManager : MonoBehaviour
             Json = go.AddComponent<JsonManager_02>();
         }
     }
-
+    /*
     private IEnumerator BootRoutine()
     {
-
+        // 부트 시작
         boot_completed = false;
-
         if (verbose_logs) Debug.Log("[GameManager] Boot start", this);
 
+
+
+
+        
         // 1) Save 로드가 최우선
         Save.Init();
         yield return Save.LoadOrCreateRoutine();
@@ -113,12 +143,14 @@ public class GameManager : MonoBehaviour
         // 2) Json 정의 데이터 초기화(테이블 로드 자리)
         Json.Init();
         yield return Json.LoadTablesRoutine();
+        
 
+        // 부트 완료
         boot_completed = true;
         if (verbose_logs) Debug.Log("[GameManager] Boot complete", this);
 
     }
-
+    */
 
     // -----------------------------
     // Title UI 버튼에 연결할 함수
@@ -142,5 +174,5 @@ public class GameManager : MonoBehaviour
     }
 
 
-   
+
 }

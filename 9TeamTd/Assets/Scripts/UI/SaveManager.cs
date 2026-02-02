@@ -18,11 +18,13 @@ public class SaveData
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveData nowSave = new SaveData();
+    public SaveData nowSave = new SaveData();
 
     [HideInInspector] public int nowSlot;
 
     public static SaveManager instance;
+
+
     private void Awake()
     {
         #region ΩÃ±€≈Ê
@@ -78,10 +80,12 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(GetPath(nowSlot), json);
     }
 
-    public void LoadData()
+    public SaveData LoadData()
     {
         string json = File.ReadAllText(GetPath(nowSlot));
         JsonUtility.FromJsonOverwrite(json, nowSave);
+
+        return nowSave;
     }
 
     public bool LoadDataForPreview(int slotNum)

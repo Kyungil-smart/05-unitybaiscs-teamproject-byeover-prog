@@ -232,6 +232,8 @@ public class StageManager : MonoBehaviour
         PauseFunction();
 
         SaveManager.instance.SaveData(1, ClearOutGameGem);
+        GameManager.Instance.Init();
+
     }
 
 
@@ -255,6 +257,9 @@ public class StageManager : MonoBehaviour
 
 
         SaveManager.instance.SaveData(DefeatOutGameGem);
+        GameManager.Instance.Init();
+
+
         // TODO: 패배 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
     }
