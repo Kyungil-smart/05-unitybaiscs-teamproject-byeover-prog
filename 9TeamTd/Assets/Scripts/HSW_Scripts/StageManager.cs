@@ -44,7 +44,6 @@ public class StageManager : MonoBehaviour
     public int CurrentWave => _currentWave;
     public int TotalWaves => _totalWaves;
 
-
     public Action StageClear;
     public Action StageDefeat;
 

@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static TowerEnumData;
-using static UnityEngine.GraphicsBuffer;
 
 // 인게임 타워를 클릭했을때 업그레이드/판매 패널을 표시하는 UI
 public class TwClickUpSellUI : MonoBehaviour
 {
-    [SerializeField] TowerToUpSellUI towerToUpSellUI;
+    TowerToUpSellUI towerToUpSellUI;
     Camera mainCamera;
 
     // 버튼
@@ -27,6 +26,7 @@ public class TwClickUpSellUI : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
+        towerToUpSellUI = GetComponentInParent<TowerToUpSellUI>();
     }
 
     void Update()

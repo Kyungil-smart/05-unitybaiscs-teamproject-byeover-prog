@@ -12,12 +12,16 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public static OP<int> toBuyTwID = new();
+    Tower baseTower;
 
     // 패널
     [SerializeField] GameObject ESCpanel;
+    //[SerializeField] GameObject victoryPanel;
+    [SerializeField] GameObject defeatPanel;
 
     // 텍스트
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI hpText;
 
     private void Awake()
     {
@@ -31,12 +35,22 @@ public class UIController : MonoBehaviour
     void OnEnable()
     {
         StageManager.gold.OnValueChanged += UpdateGoldText;
+        //StageManager.Instance.StageClear += () =>
     }
     void OnDisable()
     {
         StageManager.gold.OnValueChanged -= UpdateGoldText;
     }
 
+
+    private void Start()
+    {
+        // 씬에서 baseTower를 찾음
+        if (baseTower == null)
+        {
+            baseTower = FindFirstObjectByType<Tower>();
+        }
+    }
 
     private void Update()
     {
@@ -54,18 +68,7 @@ public class UIController : MonoBehaviour
 #endif
         }
 
-        // x 를 누르면 씬에서 첫번째 Monster 클래스를 찾고 currentHp 값을 깍기
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Monster monster = FindObjectOfType<Monster>();
-            if (monster != null)
-            {
-                monster.currentHp.Value -= 10;
-#if UNITY_EDITOR
-                Debug.Log("몬스터 체력 깎음");
-#endif
-            }
-        }
+        hpText.text = $"<sprite=0>{baseTower._currentHP}";
     }
 
     public void OpenEscPanel()
