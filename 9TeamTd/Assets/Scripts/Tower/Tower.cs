@@ -16,7 +16,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Tower : MonoBehaviour, IDamagable
 {
     [SerializeField] private int id;
-    [SerializeField] private string name;
+    [SerializeField] private string _towername;
     [SerializeField] private int level;
     [SerializeField] private TowerType towerType;
     public float _towerheals; // 타워 최대 체력
