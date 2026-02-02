@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6656489390863290133}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3533191055718762532}
   - component: {fileID: 6553142451886437067}
   - component: {fileID: 60684754283794048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tower_107_IceFieldTower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1107
-  name: 
   level: 1
+  name: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  name: 
+  _towername: 
   level: 0
   towerType: 3
   _towerheals: 10
+  _currentheals: 0
   attackType: 3
   _damage: 15
   _range: 4.5
@@ -150,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2908036864552871591}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,6 +182,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2908036864552871591}
     m_Modifications:
+    - target: {fileID: 50445363018951633, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 66407023470683596, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 442303132847811712, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -221,9 +230,97 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2266780705415272494, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757245756597573316, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3214469946204843824, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
       propertyPath: m_Name
       value: Body_IceFieldTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214469946204843824, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685654203545548389, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737214321015398878, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748906204022274927, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883868768855321818, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180078018364837013, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540446172496997040, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966935744534469485, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055729814926538320, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605202533545434551, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737570238904699459, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765891101658949303, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133825429957334000, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734005567260270494, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118175136989850158, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434088742850284417, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469828066512664912, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078989028872673990, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079045044032806451, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194822618473931827, guid: 907aca2ce37581640b9ac8931d9010ab, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
