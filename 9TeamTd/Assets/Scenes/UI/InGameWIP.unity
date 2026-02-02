@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetID: 0
   targetLevel: -1
-  jsonType: 4
+  jsonType: 0
   dataFilePath: Datas/TowerDataExample
 --- !u!4 &273230878
 Transform:
@@ -4965,6 +4965,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4722387993002150, guid: 718d40065ff572642864f2f593e0c929, type: 3}
   m_PrefabInstance: {fileID: 946098843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &950282244
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1855379503936451957, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855379503936451957, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.351
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.963688
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351336612968349159, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906786408324830274, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435257534779501668, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
+      propertyPath: m_Name
+      value: HPbarTestMob
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
 --- !u!1001 &953015393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6178,14 +6247,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510915ecda5d64f43adb5340b6e0da3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerToUpSellUI: {fileID: 0}
-  upgradeButton: {fileID: 0}
-  sellButton: {fileID: 0}
-  Frame1: {fileID: 0}
-  Frame2: {fileID: 0}
-  Frame3: {fileID: 0}
-  Frame4: {fileID: 0}
-  Frame5: {fileID: 0}
+  towerToUpSellUI: {fileID: 1219345812}
+  upgradeButton: {fileID: 686371791}
+  sellButton: {fileID: 1591217212}
+  Frame1: {fileID: 1608862797}
+  Frame2: {fileID: 841482924}
+  Frame3: {fileID: 615681359}
+  Frame4: {fileID: 1761785003}
+  Frame5: {fileID: 475690419}
 --- !u!1001 &1220141827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8828,7 +8897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f71c93309ea0104e954699c82f70ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 7435257534779501668, guid: 1fbd8c017f0934e448f06592f29ba0f6, type: 3}
+  monsterPrefab: {fileID: 7435257534779501668, guid: 0c0338730b4282b4683a72e78ecaf5f2, type: 3}
   baseTransform: {fileID: 379652914}
 --- !u!4 &1803503281
 Transform:
@@ -10713,16 +10782,17 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 273230878}
   - {fileID: 1866486354}
   - {fileID: 1219345808}
   - {fileID: 18977609}
   - {fileID: 1978347474}
   - {fileID: 1803503281}
   - {fileID: 1914698004}
-  - {fileID: 273230878}
   - {fileID: 1585239637}
   - {fileID: 2119423398}
   - {fileID: 705507995}
   - {fileID: 1148589606}
   - {fileID: 963194228}
   - {fileID: 458957948}
+  - {fileID: 950282244}

@@ -5,7 +5,6 @@ using static UnityEngine.GraphicsBuffer;
 // 인게임 타워를 클릭했을때 업그레이드/판매 패널을 표시하는 UI
 public class TwClickUpSellUI : MonoBehaviour
 {
-    [Header("UI 연결")]
     [SerializeField] TowerToUpSellUI towerToUpSellUI;
     Camera mainCamera;
 
