@@ -16,14 +16,23 @@ public enum GameState
 
 public class StageManager : MonoBehaviour
 {
-    // ========== 싱글톤 ==========
-    // 다른 스크립트에서 GameManager.Instance로 접근 가능
-    public static StageManager Instance { get; private set; }
+    [Header("Stage Info")]
+    public int stageID = 0;
+    public float stageEndTimeForReset = 0;
+    public int startGold = 0;
+    [SerializeField] private Transform basePosition;
 
+    [Header("For GamePlay")]
     [SerializeField] private float currentTime = 0;
     public int currentMinutes = 0;
     public float currentSeconds = 0;
-    public float stageEndTime = 1200f;
+    public float stageEndTime = 0;  // 추후 private 로 수정 필요
+
+
+
+    // ========== 싱글톤 ==========
+    // 다른 스크립트에서 GameManager.Instance로 접근 가능
+    public static StageManager Instance { get; private set; }
 
 
     // 현재 게임 상태
@@ -44,6 +53,7 @@ public class StageManager : MonoBehaviour
     public int CurrentWave => _currentWave;
     public int TotalWaves => _totalWaves;
 
+
     public Action StageClear;
     public Action StageDefeat;
 
@@ -53,7 +63,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
 
-                // 싱글톤 설정
+        // 싱글톤 설정
         if (Instance == null)
         {
             Instance = this;
@@ -74,12 +84,13 @@ public class StageManager : MonoBehaviour
     {
 
         // 게임 시작 시 초기화
+        stageEndTime = stageEndTimeForReset;
         StartInGame();
-        gold.Value = 110;
+        gold.Value = startGold;
     }
 
 
-    
+
     void Update()
     {
 
@@ -129,7 +140,7 @@ public class StageManager : MonoBehaviour
 
 
 
-        if(stageEndTime <= currentTime)
+        if (stageEndTime <= currentTime)
         {
             OnVictory();
 
@@ -266,24 +277,24 @@ public class StageManager : MonoBehaviour
     }
 
 
-    [Header("아이템 드랍 설정")] 
+    [Header("아이템 드랍 설정")]
     [SerializeField] private List<GameObject> dropItemPrefabs;
-    
-    
+
+
     public void GetGold(int value)
     {
         if (gold == null) gold = new OP<int>();
-        
+
         gold.Value = value;
         Debug.Log($"[StageManager] 골드 획득! +{value}");
-        
+
         // UI 업데이트 이벤트를 호출하거나 연결하면 .. 될듯싶은데
     }
 
     public void TryDropItem(string itemId, float prob, Vector3 spawnPos)
     {
         if (string.IsNullOrEmpty(itemId)) return;
-        
+
         // 확률 체크
         if (UnityEngine.Random.value < prob)
         {
@@ -293,6 +304,6 @@ public class StageManager : MonoBehaviour
 
     private void SpawnItem(string itemId, Vector3 pos)
     {
-        
+
     }
 }
