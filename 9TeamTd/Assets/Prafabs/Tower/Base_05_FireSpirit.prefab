@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 783207065477161451}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4840,7 +4840,7 @@ Transform:
   m_GameObject: {fileID: 827113643334353926}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 3.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4937,8 +4937,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8127730061229081142
@@ -4956,6 +4956,7 @@ MonoBehaviour:
   id: 1005
   level: 1
   name: 
+  desc: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -4979,10 +4980,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   _towername: 
+  _towerdesc: 
   level: 0
   towerType: 2
-  _towerheals: 20
-  _currentheals: 0
+  _towerMaxHP: 0
+  _currentHP: 0
   attackType: 3
   _damage: 30
   _range: 4
@@ -5020,7 +5022,7 @@ Transform:
   m_GameObject: {fileID: 3801956685921218730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.089999914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5262,7 +5264,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9750,7 +9752,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.11, z: 0.12}
+  m_LocalScale: {x: 0.36, y: 0.33, z: 0.36}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6672184231133614291}
@@ -9832,7 +9834,7 @@ Transform:
   m_GameObject: {fileID: 8152323585073085775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.089999914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10074,7 +10076,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2

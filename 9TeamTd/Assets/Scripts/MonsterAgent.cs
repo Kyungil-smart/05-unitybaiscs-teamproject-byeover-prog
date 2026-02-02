@@ -48,7 +48,7 @@ public sealed class MonsterAgent : MonoBehaviour
     {
         this.moveSpeed = speed;
         #if UNITY_EDITOR
-        Debug.Log("몬스터의 스피드는 " + speed + "입니다.");
+        // Debug.Log("몬스터의 스피드는 " + speed + "입니다.");
         #endif
         
         // 비행용 기지타입 저장

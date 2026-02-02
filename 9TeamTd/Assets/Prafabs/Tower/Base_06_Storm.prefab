@@ -56,8 +56,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &-5578859210678243599
@@ -75,6 +75,7 @@ MonoBehaviour:
   id: 1006
   level: 1
   name: 
+  desc: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -98,10 +99,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   _towername: 
+  _towerdesc: 
   level: 0
   towerType: 2
-  _towerheals: 10
-  _currentheals: 0
+  _towerMaxHP: 0
+  _currentHP: 0
   attackType: 3
   _damage: 10
   _range: 15
@@ -203,6 +205,18 @@ PrefabInstance:
     - target: {fileID: 1313333021001800864, guid: 02ebaf73369b8a346b83cb64900b4ef6, type: 3}
       propertyPath: m_Name
       value: Body_ThunderTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325610049615807757, guid: 02ebaf73369b8a346b83cb64900b4ef6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325610049615807757, guid: 02ebaf73369b8a346b83cb64900b4ef6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325610049615807757, guid: 02ebaf73369b8a346b83cb64900b4ef6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 3325610049615807757, guid: 02ebaf73369b8a346b83cb64900b4ef6, type: 3}
       propertyPath: m_LocalPosition.x

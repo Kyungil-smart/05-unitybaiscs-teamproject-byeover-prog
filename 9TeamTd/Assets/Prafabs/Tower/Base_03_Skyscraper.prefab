@@ -59,7 +59,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7802761483651036265}
@@ -170,8 +170,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8062157512891501036
@@ -189,6 +189,7 @@ MonoBehaviour:
   id: 1003
   level: 1
   name: 
+  desc: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -212,10 +213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   _towername: 
+  _towerdesc: 
   level: 0
   towerType: 2
-  _towerheals: 0
-  _currentheals: 0
+  _towerMaxHP: 0
+  _currentHP: 0
   attackType: 1
   _damage: 0
   _range: 0
@@ -270,8 +272,8 @@ Transform:
   m_GameObject: {fileID: 7421430272299358387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6720506, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7360335336054703122}
