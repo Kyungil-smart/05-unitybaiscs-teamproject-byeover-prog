@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,38 @@ public class MonsterStats : MonoBehaviour
     public string moveType;
     public string enemyRank;
     public float moveSpeed;
+
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        // 버그 확인용
+        if (JsonManager.instanceJsonManger == null)
+        {
+            Debug.LogError("JsonManager 없음");
+            return;
+        }
+
+        MonsterDatas mData = JsonManager.instanceJsonManger.GetMonsterData(id, level);
+        // TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level);
+
+        if (mData != null)
+        {
+            SetupValue(mData);
+            
+            
+            Monster monsterScript = GetComponent<Monster>();
+
+            if (monsterScript != null)
+            {
+                monsterScript.GetMonsterStats(this);
+            }
+        }
+    }
     
     public void SetupValue(MonsterDatas data)
     {

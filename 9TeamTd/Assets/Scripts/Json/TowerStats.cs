@@ -58,7 +58,6 @@ public class TowerStats : MonoBehaviour
                 towerScript.GetStats(this);
             }
         }
-
     }
 
 
