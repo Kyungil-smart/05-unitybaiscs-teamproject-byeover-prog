@@ -230,6 +230,21 @@ public class JsonManager : MonoBehaviour
         return foundData;
     }
 
+
+
+    // 스폰 데이터 전체 리스트를 반환하는 함수 (MonsterManager가 ID를 몰라도 됨)
+    public List<MonsterSpawnDatas> GetAllSpawnDatas()
+    {
+        if (_monsterSpawnData == null || _monsterSpawnData.spawnPattern == null)
+        {
+            Debug.LogWarning("MonsterSpawnData가 로드되지 않았거나 비어있습니다.");
+            return new List<MonsterSpawnDatas>();
+        }
+        return _monsterSpawnData.spawnPattern;
+    }
+
+
+
     public MonsterResourcesDatas GetMonsterResourcesData(int id)
     {
         if (_monsterResourcesData == null) return null;
@@ -238,7 +253,7 @@ public class JsonManager : MonoBehaviour
 
         if (foundData == null)
         {
-            Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
+            Debug.LogWarning($"ID: {id} 에 해당하는 몬스터 데이터 없음");
         }
 
         return foundData;
@@ -286,6 +301,11 @@ public class JsonManager : MonoBehaviour
 
         return foundData;
     }
+
+
+
+
+
 
 
 
