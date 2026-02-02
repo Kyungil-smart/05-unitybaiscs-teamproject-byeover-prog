@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3066832005776899710}
   - component: {fileID: 6522150875948189514}
   - component: {fileID: -6695028751971957353}
+  - component: {fileID: 8963784865607565353}
   m_Layer: 0
   m_Name: Flying Monster
   m_TagString: Monster
@@ -118,6 +119,27 @@ MonoBehaviour:
   id: 0
   name: 
   level: 0
+  maxHP: 0
+  attackValue: 0
+  defenceValue: 0
+  Type: 0
+  enemyRank: 
+  moveSpeed: 0
+--- !u!114 &8963784865607565353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324725576023583165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bda0fc26d0678468d878b79ce13a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  level: 0
+  name: 
   maxHP: 0
   attackValue: 0
   defenceValue: 0
