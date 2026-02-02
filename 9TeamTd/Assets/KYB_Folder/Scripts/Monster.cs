@@ -144,8 +144,10 @@ public class Monster : MonoBehaviour, IDamagable
         isDead = true;
 
         Debug.Log(3);
-        // StageManager.Instance.GetGold(resource.gold);
+        // 현재 몬스터에 붙은 정보를 못 불러옵니다
+        StageManager.Instance.GetGold(10 * (Type + 1));
         Debug.Log(4);
+        // 현재 몬스터에 붙은 정보를 못 불러옵니다
         // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
 
         Debug.Log(5);

@@ -286,7 +286,7 @@ public class StageManager : MonoBehaviour
     {
         if (gold == null) gold = new OP<int>();
 
-        gold.Value = value;
+        gold.Value += value;
         Debug.Log($"[StageManager] 골드 획득! +{value}");
 
         // UI 업데이트 이벤트를 호출하거나 연결하면 .. 될듯싶은데
