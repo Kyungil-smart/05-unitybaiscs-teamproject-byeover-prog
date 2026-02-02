@@ -11,6 +11,7 @@ public class TowerDatas // .json 파일과 이름과 겹치면 안 됨
 {
     public int id;
     public string name;
+    public string desc;
     public int level;
     public string towerType;
     public int maxHP;
