@@ -130,9 +130,9 @@ public class Monster : MonoBehaviour, IDamagable
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
                 baseTarget.TakeDamage(finalDamage, 1.0f);
             }
-            Debug.Log(1);
+           //  Debug.Log(1);
             DestroyMonster();
-            Debug.Log(8);
+            // Debug.Log(8);
 
         }
     }
@@ -140,20 +140,22 @@ public class Monster : MonoBehaviour, IDamagable
 
     public void DestroyMonster()
     {
-        Debug.Log(2);
+        // Debug.Log(2);
         isDead = true;
 
-        Debug.Log(3);
+        // Debug.Log(3);
         // 현재 몬스터에 붙은 정보를 못 불러옵니다
         StageManager.Instance.GetGold(10 * (Type + 1));
-        Debug.Log(4);
+       //  Debug.Log(4);
         // 현재 몬스터에 붙은 정보를 못 불러옵니다
         // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
 
-        Debug.Log(5);
+        // Debug.Log(5);
         OnDeath?.Invoke(this);
-        Debug.Log(6);
+        // Debug.Log(6);
+        GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_02");
+        Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.3f);
         Destroy(gameObject);
-        Debug.Log(7);
+        // Debug.Log(7);
     }
 }
