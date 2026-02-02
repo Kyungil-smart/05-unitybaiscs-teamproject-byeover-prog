@@ -10,10 +10,10 @@ public class OpenBases
 
 public class SaveData
 {
-    public int lastOpenStageNum = 1;
-    public int MaxStageNum = 3;
-    public int outGameGem = 100;
-    public List<OpenBases> GetBases;
+    public int lastOpenStageNum = 1;    // 가장 마지막에 오픈된 스테이지 (클리어시 자동 오픈)
+    public int MaxStageNum = 3; // 만들어진 최대 스테이지
+    public int outGameGem = 100;    // 아웃 게임 재화
+    public List<OpenBases> GetBases;    //해금된 기지 리스트, 0 해금 안됨, 1 ~ 2, json 에서 타워 코스트랑 같은 칼럼 사용하지만, 재화만 outGameGem으로
 }
 
 public class SaveManager : MonoBehaviour

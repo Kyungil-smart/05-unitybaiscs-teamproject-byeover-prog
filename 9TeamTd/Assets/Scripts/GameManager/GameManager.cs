@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
 
     public List<OpenBases> GetBases;    // 획득한 기지
-    public int SelectedBaseID = 0;  // 현재 선택된 기지
+    public OP<int> SelectedBaseID = new();  // 현재 선택된 기지
 
     public SaveData gmSave = new SaveData();
 
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
 
         SelectedStageNum = 1;   // 선택된 스테이지
-        SelectedBaseID = 1000;  // 현재 선택된 기지
+        SelectedBaseID.Value = 1000;  // 현재 선택된 기지
 
         GetBases = gmSave.GetBases; // 획득한 기지
         outGameGem = gmSave.outGameGem;  // 현재 아웃 게임 재화
