@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static TowerEnumData;
 using static UnityEngine.GraphicsBuffer;
 
 // 인게임 타워를 클릭했을때 업그레이드/판매 패널을 표시하는 UI
@@ -48,7 +49,7 @@ public class TwClickUpSellUI : MonoBehaviour
             TowerStats tower = hit.collider.GetComponent<TowerStats>()
                        ?? hit.collider.GetComponentInParent<TowerStats>();
 
-            if (tower != null)
+            if (tower.towerType == TowerType.Tower)
             {
                 Plane ground = new Plane(Vector3.up, Vector3.zero);
                 ground.Raycast(ray, out float enter);
