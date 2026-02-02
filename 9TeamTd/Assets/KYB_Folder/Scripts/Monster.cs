@@ -101,16 +101,14 @@ public class Monster : MonoBehaviour, IDamagable
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
-            
-            StageManager.Instance.GetGold(resource.gold);
-            StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
-
-            OnDeath?.Invoke(this);
-            
-            Destroy(gameObject);
+            Debug.Log(11);
+            DestroyMonster();
+            Debug.Log(22);
         }
+            // Die();
+
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
@@ -132,15 +130,28 @@ public class Monster : MonoBehaviour, IDamagable
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
                 baseTarget.TakeDamage(finalDamage, 1.0f);
             }
-            
-            isDead = true;
-            
-            StageManager.Instance.GetGold(resource.gold);
-            StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
-            
-            OnDeath?.Invoke(this);
-            
-            Destroy(gameObject);
+            Debug.Log(1);
+            DestroyMonster();
+            Debug.Log(8);
+
         }
+    }
+
+
+    public void DestroyMonster()
+    {
+        Debug.Log(2);
+        isDead = true;
+
+        Debug.Log(3);
+        // StageManager.Instance.GetGold(resource.gold);
+        Debug.Log(4);
+        // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+
+        Debug.Log(5);
+        OnDeath?.Invoke(this);
+        Debug.Log(6);
+        Destroy(gameObject);
+        Debug.Log(7);
     }
 }
