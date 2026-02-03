@@ -536,13 +536,13 @@ MonoBehaviour:
   startGold: 200
   ClearOutGameGem: 150
   DefeatOutGameGem: 50
+  spawnBaseID: 0
+  spawnBaseLevel: 1
   basePosition: {fileID: 198121807}
   currentTime: 0
   currentMinutes: 0
   currentSeconds: 0
   stageEndTime: 1200
-  _maxLife: 10
-  _totalWaves: 10
   dropItemPrefabs: []
 --- !u!1 &57274649
 GameObject:
@@ -5980,6 +5980,10 @@ PrefabInstance:
     - target: {fileID: 2764362450115579468, guid: 33f234fbe01d47b4fbcf90af5f21ae8b, type: 3}
       propertyPath: m_Name
       value: Base_06_Storm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764362450115579468, guid: 33f234fbe01d47b4fbcf90af5f21ae8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072588025821290908, guid: 33f234fbe01d47b4fbcf90af5f21ae8b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -24,9 +24,11 @@ public class StageManager : MonoBehaviour
     public int DefeatOutGameGem = 0;
 
     // 베이스 스폰 위치 관련
-    [SerializeField] int spawnBaseID = 0;
-    [SerializeField] int spawnBaseLevel = 1;
+    [SerializeField] private int spawnBaseID = 0;
+    [SerializeField] private int spawnBaseLevel = 1;
+    [SerializeField] private string baseAddress = "Tower/Base_00_First";
     [SerializeField] private Transform basePosition;
+    // [SerializeField] private Transform bRotation;   // 베이스 로테이션
 
     [Header("For GamePlay")]
     [SerializeField] private float currentTime = 0;
@@ -167,21 +169,27 @@ public class StageManager : MonoBehaviour
     {
         // 게임 오브젝트 스폰 및 데이터 가져오기 (타워의 경우)
         spawnBaseID = GameManager.Instance.SelectedBaseID.Value;
-        TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(spawnBaseID, spawnBaseLevel);
 
-        GameObject spawnBase = Resources.Load<GameObject>("Tower/Base_00_First");
+        // 위치를 받고 오브젝트 생성
+        Vector3 curBasePos = basePosition.position;
+        GameObject spawnBase = Instantiate(Resources.Load<GameObject>("Tower/Base_00_First"), curBasePos, Quaternion.identity);
+        spawnBase.GetComponent<TowerStats>().id = spawnBaseID;
+        spawnBase.GetComponent<TowerStats>().level = spawnBaseLevel;
+        spawnBase.GetComponent<TowerStats>().Init();
 
-        Vector3 currentPos = transform.position;
-        Instantiate(spawnBase, currentPos, Quaternion.identity);
+        /*
+        Tower newTower = spawnBase.GetComponent<Tower>().GetStats();
+
         TowerStats towerStats = spawnBase.GetComponent<TowerStats>();
 
+        TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(spawnBaseID, spawnBaseLevel);
         // spawnBaseID 기반 오브젝트 선택하기
         if (data != null)
         {
             // 가져온 데이터 주입
             towerStats.SetupValue(data);
         }
-
+        */
     }
 
 
