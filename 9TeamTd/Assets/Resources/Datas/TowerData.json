@@ -265,10 +265,10 @@
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
-    "attackValue": 15,
+    "attackValue": 14,
     "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.6,
+    "attackSpeed": 0.7,
     "defenceValue": 0,
     "towerCost": 40
   },
@@ -281,10 +281,10 @@
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
-    "attackValue": 15,
+    "attackValue": 14,
     "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.75,
+    "attackSpeed": 0.88,
     "defenceValue": 0,
     "towerCost": 60
   },
@@ -297,10 +297,10 @@
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
-    "attackValue": 15,
+    "attackValue": 14,
     "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.94,
+    "attackSpeed": 1.1,
     "defenceValue": 0,
     "towerCost": 90
   },
@@ -313,10 +313,10 @@
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
-    "attackValue": 15,
+    "attackValue": 14,
     "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.18,
+    "attackSpeed": 1.38,
     "defenceValue": 0,
     "towerCost": 135
   },
@@ -329,10 +329,10 @@
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
-    "attackValue": 15,
+    "attackValue": 14,
     "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.48,
+    "attackSpeed": 1.73,
     "defenceValue": 0,
     "towerCost": 203
   },
@@ -350,7 +350,7 @@
     "attackProjectileIDs": 11031,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 65
+    "towerCost": 60
   },
   {
     "id": 1103,
@@ -366,7 +366,7 @@
     "attackProjectileIDs": 11031,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 98
+    "towerCost": 90
   },
   {
     "id": 1103,
@@ -382,7 +382,7 @@
     "attackProjectileIDs": 11031,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 147
+    "towerCost": 135
   },
   {
     "id": 1103,
@@ -398,7 +398,7 @@
     "attackProjectileIDs": 11031,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 221
+    "towerCost": 203
   },
   {
     "id": 1103,
@@ -414,87 +414,87 @@
     "attackProjectileIDs": 11031,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 332
+    "towerCost": 305
   },
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
-    "desc": "단일 적에게 구상 번개를 발사하는 구조물",
+    "desc": "단일 적에게 유도 구전광을 발사하는 구조물",
     "level": 1,
     "towerAddress": "Tower/Tower_104_ArcaneObelisk",
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 30,
-    "attackRange": 10,
+    "attackRange": 12,
     "attackProjectileIDs": 11041,
-    "attackSpeed": 0.25,
+    "attackSpeed": 0.45,
     "defenceValue": 0,
-    "towerCost": 80
+    "towerCost": 100
   },
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
-    "desc": "단일 적에게 구상 번개를 발사하는 구조물",
+    "desc": "단일 적에게 유도 구전광을 발사하는 구조물",
     "level": 2,
     "towerAddress": "Tower/Tower_104_ArcaneObelisk",
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 35,
-    "attackRange": 12,
+    "attackRange": 14,
     "attackProjectileIDs": 11041,
     "attackSpeed": 0.25,
     "defenceValue": 0,
-    "towerCost": 120
+    "towerCost": 150
   },
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
-    "desc": "단일 적에게 구상 번개를 발사하는 구조물",
+    "desc": "단일 적에게 유도 구전광을 발사하는 구조물",
     "level": 3,
     "towerAddress": "Tower/Tower_104_ArcaneObelisk",
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 40,
-    "attackRange": 14,
+    "attackRange": 16,
     "attackProjectileIDs": 11041,
     "attackSpeed": 0.25,
     "defenceValue": 0,
-    "towerCost": 180
+    "towerCost": 225
   },
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
-    "desc": "단일 적에게 구상 번개를 발사하는 구조물",
+    "desc": "단일 적에게 유도 구전광을 발사하는 구조물",
     "level": 4,
     "towerAddress": "Tower/Tower_104_ArcaneObelisk",
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 46,
-    "attackRange": 16,
+    "attackRange": 18,
     "attackProjectileIDs": 11041,
     "attackSpeed": 0.25,
     "defenceValue": 0,
-    "towerCost": 270
+    "towerCost": 338
   },
   {
     "id": 1104,
     "name": "전격의 오벨리스크",
-    "desc": "단일 적에게 구상 번개를 발사하는 구조물",
+    "desc": "단일 적에게 유도 구전광을 발사하는 구조물",
     "level": 5,
     "towerAddress": "Tower/Tower_104_ArcaneObelisk",
     "towerType": "Tower",
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 53,
-    "attackRange": 18,
+    "attackRange": 21,
     "attackProjectileIDs": 11041,
     "attackSpeed": 0.25,
     "defenceValue": 0,
-    "towerCost": 405
+    "towerCost": 507
   },
   {
     "id": 1105,
@@ -510,7 +510,7 @@
     "attackProjectileIDs": 11051,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 90
+    "towerCost": 200
   },
   {
     "id": 1105,
@@ -526,7 +526,7 @@
     "attackProjectileIDs": 11051,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 135
+    "towerCost": 300
   },
   {
     "id": 1105,
@@ -542,7 +542,7 @@
     "attackProjectileIDs": 11051,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 203
+    "towerCost": 450
   },
   {
     "id": 1105,
@@ -558,7 +558,7 @@
     "attackProjectileIDs": 11051,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 305
+    "towerCost": 675
   },
   {
     "id": 1105,
@@ -574,7 +574,7 @@
     "attackProjectileIDs": 11051,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 458
+    "towerCost": 1013
   },
   {
     "id": 1106,
@@ -590,7 +590,7 @@
     "attackProjectileIDs": 11061,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 100
+    "towerCost": 150
   },
   {
     "id": 1106,
@@ -606,7 +606,7 @@
     "attackProjectileIDs": 11061,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 150
+    "towerCost": 225
   },
   {
     "id": 1106,
@@ -622,7 +622,7 @@
     "attackProjectileIDs": 11061,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 225
+    "towerCost": 338
   },
   {
     "id": 1106,
@@ -638,7 +638,7 @@
     "attackProjectileIDs": 11061,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 338
+    "towerCost": 507
   },
   {
     "id": 1106,
@@ -654,29 +654,13 @@
     "attackProjectileIDs": 11061,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 507
+    "towerCost": 761
   },
   {
     "id": 1107,
     "name": "제빙탑",
     "desc": "주변의 모든 적을 얼려 공격하는 탑",
     "level": 1,
-    "towerAddress": "Tower/Tower_107_IceFieldTower",
-    "towerType": "Tower",
-    "maxHP": 2,
-    "attackType": "Target",
-    "attackValue": 15,
-    "attackRange": 4.5,
-    "attackProjectileIDs": 11071,
-    "attackSpeed": 0.04,
-    "defenceValue": 0,
-    "towerCost": 120
-  },
-  {
-    "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 2,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -692,7 +676,7 @@
     "id": 1107,
     "name": "제빙탑",
     "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 3,
+    "level": 2,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -708,7 +692,7 @@
     "id": 1107,
     "name": "제빙탑",
     "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 4,
+    "level": 3,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -724,7 +708,7 @@
     "id": 1107,
     "name": "제빙탑",
     "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 5,
+    "level": 4,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -735,6 +719,22 @@
     "attackSpeed": 0.04,
     "defenceValue": 0,
     "towerCost": 608
+  },
+  {
+    "id": 1107,
+    "name": "제빙탑",
+    "desc": "주변의 모든 적을 얼려 공격하는 탑",
+    "level": 5,
+    "towerAddress": "Tower/Tower_107_IceFieldTower",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 15,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11071,
+    "attackSpeed": 0.04,
+    "defenceValue": 0,
+    "towerCost": 912
   },
   {
     "id": 1108,
@@ -750,7 +750,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.1,
     "defenceValue": 0,
-    "towerCost": 150
+    "towerCost": 200
   },
   {
     "id": 1108,
@@ -766,7 +766,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.1,
     "defenceValue": 0,
-    "towerCost": 225
+    "towerCost": 300
   },
   {
     "id": 1108,
@@ -782,7 +782,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.1,
     "defenceValue": 0,
-    "towerCost": 338
+    "towerCost": 450
   },
   {
     "id": 1108,
@@ -798,7 +798,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.1,
     "defenceValue": 0,
-    "towerCost": 507
+    "towerCost": 675
   },
   {
     "id": 1108,
@@ -814,7 +814,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.1,
     "defenceValue": 0,
-    "towerCost": 761
+    "towerCost": 1013
   }
 ]
 }
