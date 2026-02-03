@@ -5503,7 +5503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageID: 0
-  stageEndTimeForReset: 1200
+  stageEndTimeForReset: 1201
   startGold: 200
   ClearOutGameGem: 100
   DefeatOutGameGem: 30

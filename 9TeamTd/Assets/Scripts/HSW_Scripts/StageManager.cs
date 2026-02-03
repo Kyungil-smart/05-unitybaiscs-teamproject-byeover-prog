@@ -128,8 +128,10 @@ public class StageManager : MonoBehaviour
     // 인게임 로직
     private void FixedUpdate()
     {
-
-        // 플레이 시가 계산
+        currentTime = Time.timeSinceLevelLoad;
+        /*
+        // 플레이 시간 계산
+        
         currentTime += Time.fixedDeltaTime;
         currentSeconds += Time.fixedDeltaTime;
 
@@ -139,10 +141,10 @@ public class StageManager : MonoBehaviour
             currentMinutes += 1;
             currentSeconds = 0;
         }
+        */
 
 
-
-        if (stageEndTime <= currentTime)
+        if (stageEndTimeForReset <= Time.timeSinceLevelLoad)
         {
             OnVictory();
 
