@@ -1,46 +1,82 @@
 ﻿{
-    "spawnPattern": [
-        {
-            "id": 2100,
-            "startTime": 0,
-            "endTime": 60,
-            "interval": 5
-        },
-        {
-            "id": 2100,
-            "startTime": 60,
-            "endTime": 180,
-            "interval": 5
-        },
-        {
-            "id": 2101,
-            "startTime": 40,
-            "endTime": 120,
-            "interval": 6
-        },
-        {
-            "id": 2101,
-            "startTime": 120,
-            "endTime": 200,
-            "interval": 4
-        },
-        {
-            "id": 2100,
-            "startTime": 100,
-            "endTime": 180,
-            "interval": 2
-        },
-        {
-            "id": 2100,
-            "startTime": 150,
-            "endTime": 200,
-            "interval": 1
-        },
-        {
-            "id": 2102,
-            "startTime": 200,
-            "endTime": 201,
-            "interval": 100
-        }
-    ]
+  "spawnPattern" : [
+  {
+    "id": 2100,
+    "startTime": 0,
+    "endTime": 90,
+    "interval": 4
+  },
+  {
+    "id": 2100,
+    "startTime": 90,
+    "endTime": 240,
+    "interval": 3
+  },
+  {
+    "id": 2101,
+    "startTime": 90,
+    "endTime": 240,
+    "interval": 5
+  },
+  {
+    "id": 2100,
+    "startTime": 240,
+    "endTime": 480,
+    "interval": 3
+  },
+  {
+    "id": 2101,
+    "startTime": 240,
+    "endTime": 480,
+    "interval": 4
+  },
+  {
+    "id": 2102,
+    "startTime": 240,
+    "endTime": 480,
+    "interval": 9999
+  },
+  {
+    "id": 2100,
+    "startTime": 480,
+    "endTime": 720,
+    "interval": 3
+  },
+  {
+    "id": 2101,
+    "startTime": 480,
+    "endTime": 720,
+    "interval": 4
+  },
+  {
+    "id": 2102,
+    "startTime": 480,
+    "endTime": 720,
+    "interval": 9999
+  },
+  {
+    "id": 2100,
+    "startTime": 720,
+    "endTime": 900,
+    "interval": 2
+  },
+  {
+    "id": 2101,
+    "startTime": 720,
+    "endTime": 900,
+    "interval": 3
+  },
+  {
+    "id": 2102,
+    "startTime": 840,
+    "endTime": 900,
+    "interval": 9999
+  },
+  {
+    "id": 2102,
+    "startTime": 840,
+    "endTime": 900,
+    "interval": 9999
+  }
+]
 }

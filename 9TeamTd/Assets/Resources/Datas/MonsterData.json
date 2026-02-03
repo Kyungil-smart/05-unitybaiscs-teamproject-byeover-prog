@@ -6,18 +6,18 @@
     "level": 1,
     "maxHP": 45,
     "attackValue": 1,
-    "defenceValue": 1,
+    "defenceValue": 0,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
   },
   {
     "id": 2101,
-    "name": "마법중년",
+    "name": "마법 중년",
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 1,
+    "defenceValue": 0,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 3
@@ -27,11 +27,22 @@
     "name": "화공차",
     "level": 1,
     "maxHP": 300,
-    "attackValue": 1,
+    "attackValue": 99999,
     "defenceValue": 1,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.5
+  },
+  {
+    "id": 2103,
+    "name": "고스트 라이더",
+    "level": 1,
+    "maxHP": 200,
+    "attackValue": 99999,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 3
   }
 ]
 }
