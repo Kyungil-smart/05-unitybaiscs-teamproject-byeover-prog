@@ -5620,6 +5620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779885146}
   - component: {fileID: 779885145}
+  - component: {fileID: 779885147}
   m_Layer: 0
   m_Name: MonsterSpawnTester
   m_TagString: Untagged
@@ -5639,7 +5640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7937108a56714bd418e8dedf8b58f662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMonsterIds: 3408000048080000
+  testMonsterIds: 340800004808000052080000
   currentMonsterIndex: 0
   spawnKey: 256
   nextMonsterKey: 275
@@ -5647,10 +5648,6 @@ MonoBehaviour:
   toggleContinuousSpawnKey: 99
   isContinuousSpawn: 0
   continuousSpawnInterval: 1
-  useFixedPosition: 0
-  fixedSpawnPosition: {x: 0, y: 0, z: 0}
-  totalSpawnedCount: 0
-  currentMonsterInfo: 
 --- !u!4 &779885146
 Transform:
   m_ObjectHideFlags: 0
@@ -5666,6 +5663,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &779885147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779885144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed71fb25a6f09fc4abe859fd4570e151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDuration: 600
+  spawnInterval: 1
+  strongMonsterStartTime: 300
+  maxStrongMonsterChance: 0.3
+  isSpawning: 0
+  elapsedTime: 0
 --- !u!1001 &784440616
 PrefabInstance:
   m_ObjectHideFlags: 0
