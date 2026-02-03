@@ -119,7 +119,7 @@ public class TwClickUpSellUI : MonoBehaviour
     public void OnUpgradeClick()
     {
         if (selectedTower == null) return;
-        
+
         if (StageManager.gold.Value < towerToUpSellUI.cost)
         {
 #if UNITY_EDITOR
@@ -152,7 +152,7 @@ public class TwClickUpSellUI : MonoBehaviour
                 upgradeButton.SetActive(false);
                 break;
         }
-        towerToUpSellUI.ShowInfo(selectedTower.id, selectedTower.level, selectedTower.transform);
+        towerToUpSellUI.ShowInfo(selectedTower.id, selectedTower.level + 1, selectedTower.transform);
     }
 
     // 판매 버튼 클릭 시

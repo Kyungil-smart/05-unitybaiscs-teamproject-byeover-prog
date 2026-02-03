@@ -26,7 +26,7 @@ public class GoalTimeUI : MonoBehaviour
         goalTime -= Time.timeSinceLevelLoad;
         int minutes = Mathf.FloorToInt(goalTime / 60f);
         int seconds = Mathf.FloorToInt(goalTime % 60f);
-        goalTimeText.text = $"{minutes:00}:{seconds:00}";
+        goalTimeText.text = $"{minutes:00} : {seconds:00}";
     }
 
     private void Start()
