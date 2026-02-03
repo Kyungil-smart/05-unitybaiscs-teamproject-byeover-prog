@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3533191055718762532}
   - component: {fileID: 6553142451886437067}
   - component: {fileID: 60684754283794048}
+  - component: {fileID: 8348658735197731635}
   m_Layer: 11
   m_Name: Tower_107_IceFieldTower
   m_TagString: Tower
@@ -105,6 +106,8 @@ MonoBehaviour:
   id: 1107
   level: 1
   name: 
+  desc: 
+  towerAddress: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -128,10 +131,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   _towername: 
+  _towerdesc: 
+  _towerAddress: 
   level: 0
   towerType: 3
-  _towerheals: 10
-  _currentheals: 0
+  _towerMaxHP: 0
+  _currentHP: 0
   attackType: 3
   _damage: 15
   _range: 4.5
@@ -142,6 +147,25 @@ MonoBehaviour:
   _currentTarget: {fileID: 0}
   _bulletPrefab: {fileID: 3755944093790279855, guid: 94f3ed51c9f8c324d9962f367aff8a61, type: 3}
   _firePoint: {fileID: 6656489390863290133}
+--- !u!114 &8348658735197731635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2720011951741850005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6308c696f211c1f48acb5127b6a91e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterLayerMask:
+    serializedVersion: 2
+    m_Bits: 1048576
+  dotDamagePerSecond: 0
+  tickInterval: 1
+  slowMultiplier: 0.5
+  slowHoldSeconds: 6
 --- !u!1 &2967865237135293935
 GameObject:
   m_ObjectHideFlags: 0
