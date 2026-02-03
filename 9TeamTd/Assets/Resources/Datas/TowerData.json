@@ -253,7 +253,7 @@
     "attackRange": -1,
     "attackProjectileIDs": -1,
     "attackSpeed": -1,
-    "defenceValue": 1,
+    "defenceValue": 2,
     "towerCost": 50
   },
   {
@@ -266,11 +266,11 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 15,
-    "attackRange": 10,
+    "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.5,
+    "attackSpeed": 0.6,
     "defenceValue": 0,
-    "towerCost": 50
+    "towerCost": 40
   },
   {
     "id": 1102,
@@ -282,11 +282,11 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 15,
-    "attackRange": 10,
+    "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.63,
+    "attackSpeed": 0.75,
     "defenceValue": 0,
-    "towerCost": 75
+    "towerCost": 60
   },
   {
     "id": 1102,
@@ -298,11 +298,11 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 15,
-    "attackRange": 10,
+    "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.79,
+    "attackSpeed": 0.94,
     "defenceValue": 0,
-    "towerCost": 113
+    "towerCost": 90
   },
   {
     "id": 1102,
@@ -314,11 +314,11 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 15,
-    "attackRange": 10,
+    "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.99,
+    "attackSpeed": 1.18,
     "defenceValue": 0,
-    "towerCost": 170
+    "towerCost": 135
   },
   {
     "id": 1102,
@@ -330,11 +330,11 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 15,
-    "attackRange": 10,
+    "attackRange": 8,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.24,
+    "attackSpeed": 1.48,
     "defenceValue": 0,
-    "towerCost": 255
+    "towerCost": 203
   },
   {
     "id": 1103,

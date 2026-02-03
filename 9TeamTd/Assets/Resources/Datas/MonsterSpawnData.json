@@ -4,31 +4,31 @@
     "id": 2100,
     "startTime": 0,
     "endTime": 20,
-    "interval": 4
+    "interval": 2.67
   },
   {
     "id": 2101,
     "startTime": 25,
     "endTime": 45,
-    "interval": 4
+    "interval": 2.67
   },
   {
     "id": 2102,
     "startTime": 50,
     "endTime": 70,
-    "interval": 3
+    "interval": 2
   },
   {
     "id": 2123,
     "startTime": 75,
     "endTime": 95,
-    "interval": 3
+    "interval": 2
   },
   {
     "id": 2103,
     "startTime": 100,
     "endTime": 120,
-    "interval": 3
+    "interval": 2
   },
   {
     "id": 2132,
@@ -40,37 +40,37 @@
     "id": 2104,
     "startTime": 140,
     "endTime": 160,
-    "interval": 2.5
+    "interval": 1.67
   },
   {
     "id": 2124,
     "startTime": 165,
     "endTime": 185,
-    "interval": 2.5
+    "interval": 1.67
   },
   {
     "id": 2105,
     "startTime": 190,
     "endTime": 210,
-    "interval": 2.5
+    "interval": 1.67
   },
   {
     "id": 2106,
     "startTime": 215,
     "endTime": 235,
-    "interval": 2
+    "interval": 1.33
   },
   {
     "id": 2125,
     "startTime": 240,
     "endTime": 260,
-    "interval": 2
+    "interval": 1.33
   },
   {
     "id": 2107,
     "startTime": 265,
     "endTime": 285,
-    "interval": 2
+    "interval": 1.33
   },
   {
     "id": 2133,
@@ -82,43 +82,43 @@
     "id": 2108,
     "startTime": 305,
     "endTime": 325,
-    "interval": 1.5
+    "interval": 1
   },
   {
     "id": 2126,
     "startTime": 330,
     "endTime": 350,
-    "interval": 1.5
+    "interval": 1
   },
   {
     "id": 2127,
     "startTime": 355,
     "endTime": 375,
-    "interval": 1.5
+    "interval": 1
   },
   {
     "id": 2109,
     "startTime": 380,
     "endTime": 400,
-    "interval": 1.5
+    "interval": 1
   },
   {
     "id": 2110,
     "startTime": 405,
     "endTime": 430,
-    "interval": 1
+    "interval": 0.67
   },
   {
     "id": 2128,
     "startTime": 435,
     "endTime": 460,
-    "interval": 1
+    "interval": 0.67
   },
   {
     "id": 2111,
     "startTime": 465,
     "endTime": 490,
-    "interval": 0.5
+    "interval": 0.33
   },
   {
     "id": 2134,
@@ -136,7 +136,7 @@
     "id": 2129,
     "startTime": 525,
     "endTime": 550,
-    "interval": 0.5
+    "interval": 0.33
   }
 ]
 }

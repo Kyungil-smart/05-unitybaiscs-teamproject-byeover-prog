@@ -35,8 +35,8 @@
   {
     "id": 11021,
     "name": "Projectile_Arrow_01_Stright",
-    "moveSpeed": 24,
-    "lifeTime": 0.5,
+    "moveSpeed": 27,
+    "lifeTime": 0.4,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
     "projectileSpacialAbility": "Single",
