@@ -160,7 +160,7 @@ public class Projectile : MonoBehaviour
         if (projectileSpwanType == ProjectileSpwanType.AttackerPosition ||
             projectileSpwanType == ProjectileSpwanType.TargetPosition)
         {
-            moveDirection = Vector3.forward;
+            moveDirection = (_target.position - transform.position).normalized;
         }
 
         // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화

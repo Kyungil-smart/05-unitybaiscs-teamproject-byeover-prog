@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7375809256428748180}
   - component: {fileID: 9127578416529872460}
   - component: {fileID: 4644893451384000129}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,6 +54,11 @@ MonoBehaviour:
   projectileSpacialAbility: 1
   damageTargetTeamType: 4
   projectileDamageCategory: 1
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &4644893451384000129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,3 +83,8 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
