@@ -13,6 +13,127 @@
   },
   {
     "id": 2101,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 50,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2102,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 55,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2103,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 61,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2104,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 67,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2105,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 74,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2106,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 81,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2107,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 89,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2108,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 98,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2109,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 108,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2110,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 119,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2111,
+    "name": "주민1",
+    "level": 1,
+    "maxHP": 131,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 0,
+    "enemyRank": "Normal",
+    "moveSpeed": 2
+  },
+  {
+    "id": 2120,
     "name": "마법 중년",
     "level": 1,
     "maxHP": 30,
@@ -23,7 +144,106 @@
     "moveSpeed": 3
   },
   {
-    "id": 2102,
+    "id": 2121,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 3.45
+  },
+  {
+    "id": 2122,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 3.97
+  },
+  {
+    "id": 2123,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 4.57
+  },
+  {
+    "id": 2124,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 5.26
+  },
+  {
+    "id": 2125,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 6.05
+  },
+  {
+    "id": 2126,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 6.96
+  },
+  {
+    "id": 2127,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 8
+  },
+  {
+    "id": 2128,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 9.2
+  },
+  {
+    "id": 2129,
+    "name": "마법 중년",
+    "level": 1,
+    "maxHP": 30,
+    "attackValue": 1,
+    "defenceValue": 0,
+    "Type": 1,
+    "enemyRank": "Normal",
+    "moveSpeed": 10.58
+  },
+  {
+    "id": 2130,
     "name": "화공차",
     "level": 1,
     "maxHP": 300,
@@ -34,15 +254,59 @@
     "moveSpeed": 1.5
   },
   {
-    "id": 2103,
-    "name": "고스트 라이더",
+    "id": 2131,
+    "name": "화공차",
     "level": 1,
-    "maxHP": 200,
+    "maxHP": 321,
     "attackValue": 99999,
-    "defenceValue": 0,
-    "Type": 1,
+    "defenceValue": 1,
+    "Type": 2,
     "enemyRank": "Normal",
-    "moveSpeed": 3
+    "moveSpeed": 1.61
+  },
+  {
+    "id": 2132,
+    "name": "화공차",
+    "level": 1,
+    "maxHP": 343,
+    "attackValue": 99999,
+    "defenceValue": 1,
+    "Type": 2,
+    "enemyRank": "Normal",
+    "moveSpeed": 1.72
+  },
+  {
+    "id": 2133,
+    "name": "화공차",
+    "level": 1,
+    "maxHP": 367,
+    "attackValue": 99999,
+    "defenceValue": 1,
+    "Type": 2,
+    "enemyRank": "Normal",
+    "moveSpeed": 1.84
+  },
+  {
+    "id": 2134,
+    "name": "화공차",
+    "level": 1,
+    "maxHP": 393,
+    "attackValue": 99999,
+    "defenceValue": 1,
+    "Type": 2,
+    "enemyRank": "Normal",
+    "moveSpeed": 1.97
+  },
+  {
+    "id": 2135,
+    "name": "화공차",
+    "level": 1,
+    "maxHP": 421,
+    "attackValue": 99999,
+    "defenceValue": 1,
+    "Type": 2,
+    "enemyRank": "Normal",
+    "moveSpeed": 2.11
   }
 ]
 }
