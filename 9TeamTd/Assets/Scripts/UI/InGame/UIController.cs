@@ -66,8 +66,12 @@ public class UIController : MonoBehaviour
         while (baseTower == null)
         {
             baseTower = FindFirstObjectByType<Tower>();
+
             yield return null;
         }
+#if UNITY_EDITOR
+        Debug.Log("타워 발견" + baseTower);
+#endif
     }
 
     private void Update()
