@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 37832361}
   - component: {fileID: 37832360}
   - component: {fileID: 37832359}
+  - component: {fileID: 37832362}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -454,6 +455,27 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &37832362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37832357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29fcc9701d66d840910c88be62775bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main_bgm_source: {fileID: 0}
+  battle_bgm_source: {fileID: 0}
+  win_bgm_source: {fileID: 0}
+  lose_bgm_source: {fileID: 0}
+  main_bgm_clips: []
+  battle_bgm_clips: []
+  win_bgm_clips: []
+  lose_bgm_clips: []
+  verbose_logs: 0
 --- !u!1 &38074121
 GameObject:
   m_ObjectHideFlags: 0
