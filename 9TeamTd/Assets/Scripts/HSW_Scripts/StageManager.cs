@@ -271,13 +271,6 @@ public class StageManager : MonoBehaviour
     {
         _currentState = GameState.Victory;
 
-        Debug.Log("");
-        Debug.Log("╔══════════════════════════════╗");
-        Debug.Log("║                              ║");
-        Debug.Log("║       🎉 승리! 🎉            ║");
-        Debug.Log("║                              ║");
-        Debug.Log("╚══════════════════════════════╝");
-        Debug.Log("");
         // Debug.Log($"[GameManager] 모든 웨이브 클리어! ({_currentWave}/{_totalWaves})");
 
         // TODO: 승리 UI 표시
@@ -298,13 +291,6 @@ public class StageManager : MonoBehaviour
     {
         _currentState = GameState.Defeat;
 
-        Debug.Log("");
-        Debug.Log("╔══════════════════════════════╗");
-        Debug.Log("║                              ║");
-        Debug.Log("║       💀 패배... 💀          ║");
-        Debug.Log("║                              ║");
-        Debug.Log("╚══════════════════════════════╝");
-        Debug.Log("");
         // Debug.Log($"[GameManager] 생명이 0이 되었습니다!");
 
         StageDefeat?.Invoke();

@@ -49,6 +49,11 @@ public class TwClickUpSellUI : MonoBehaviour
             TowerStats tower = hit.collider.GetComponent<TowerStats>()
                        ?? hit.collider.GetComponentInParent<TowerStats>();
 
+            if (tower == null)
+            {
+                return;
+            }
+
             if (tower.towerType == TowerType.Tower)
             {
                 Plane ground = new Plane(Vector3.up, Vector3.zero);
