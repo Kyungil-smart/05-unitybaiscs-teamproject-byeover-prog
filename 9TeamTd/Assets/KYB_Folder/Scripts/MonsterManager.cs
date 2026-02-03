@@ -49,7 +49,7 @@ public class MonsterManager : MonoBehaviour
         _lastSpawnTimeById.Clear();
         
         // 엑셀 데이터 ID 범위에 맞춰 스폰 스케줄 로드 (2100 ~ 2200)
-        for (int id = 2100; id <= 2200; id++) 
+        for (int id = 2100; id <= 2300; id++) 
         {
             var data = JsonManager.instanceJsonManger.GetMonsterSpawnData(id);
             if (data != null)
