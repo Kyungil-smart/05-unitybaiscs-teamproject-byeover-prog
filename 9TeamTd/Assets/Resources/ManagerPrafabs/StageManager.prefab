@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5966955382118613173
+--- !u!1 &2379324889202909995
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8813751332362753781}
-  - component: {fileID: 2153511353550354571}
+  - component: {fileID: 3759865156909788133}
+  - component: {fileID: 112171749196013245}
   m_Layer: 0
-  m_Name: MonsterManager
+  m_Name: StageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8813751332362753781
+--- !u!4 &3759865156909788133
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5966955382118613173}
+  m_GameObject: {fileID: 2379324889202909995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.5, y: 0.5, z: 22.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2153511353550354571
+--- !u!114 &112171749196013245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5966955382118613173}
+  m_GameObject: {fileID: 2379324889202909995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f71c93309ea0104e954699c82f70ac2, type: 3}
+  m_Script: {fileID: 11500000, guid: a406b12dfcb24dd42a5e3bc0242c0ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab:
-  - {fileID: 7435257534779501668, guid: 1fbd8c017f0934e448f06592f29ba0f6, type: 3}
-  - {fileID: 6324725576023583165, guid: 8e53f6093b8acf14683b2534ec192a9f, type: 3}
-  - {fileID: 8501144949332976331, guid: 7afb7549ea3f1ee47a10ee0814958597, type: 3}
-  baseTransform: {fileID: 0}
+  stageID: 1
+  stageEndTimeForReset: 1201
+  startGold: 200
+  ClearOutGameGem: 100
+  DefeatOutGameGem: 30
+  spawnBaseID: 0
+  spawnBaseLevel: 1
+  baseAddress: Tower/Base_00_First
+  basePosition: {fileID: 0}
+  currentTime: 0
+  currentMinutes: 0
+  currentSeconds: 0
+  stageEndTime: 1200
+  dropItemPrefabs:
+  - {fileID: 258158784812038109, guid: d180d6a2614eece40b443ea4767a6889, type: 3}
