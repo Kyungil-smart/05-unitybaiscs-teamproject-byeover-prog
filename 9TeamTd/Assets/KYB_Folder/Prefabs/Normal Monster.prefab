@@ -15757,7 +15757,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -15817,6 +15817,9 @@ MonoBehaviour:
   Type: 0
   enemyRank: 
   moveSpeed: 0
+  isFreeze: 0
+  isStun: 0
+  originalSpeed: 0
   debugCurrentHpView: 0
 --- !u!114 &1842440102241158691
 MonoBehaviour:
