@@ -54,49 +54,56 @@ public class UIController : MonoBehaviour
         defeatPanel.SetActive(true);
     }
 
-private void Start()
-{
-    // 씬에서 baseTower를 찾음
-    if (baseTower == null)
+    private void Start()
     {
-        baseTower = FindFirstObjectByType<Tower>();
-    }
-}
 
-private void Update()
-{
-    if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
-    {
-        OpenEscPanel();
+        StartCoroutine(FindBaseTower());
+
     }
 
-    // 디버그용 코드
-    if (Input.GetKeyDown(KeyCode.Tab))
+    IEnumerator FindBaseTower()
     {
-        StageManager.gold.Value += 100;
+        while (baseTower == null)
+        {
+            baseTower = FindFirstObjectByType<Tower>();
+            yield return null;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
+        {
+            OpenEscPanel();
+        }
+
+        // 디버그용 코드
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            StageManager.gold.Value += 100;
 #if UNITY_EDITOR
-        Debug.Log("돈무한 치트 사용!!!");
+            Debug.Log("돈무한 치트 사용!!!");
 #endif
+        }
+
+        hpText.text = $"<sprite=0>{baseTower._currentHP}";
     }
 
-    hpText.text = $"<sprite=0>{baseTower._currentHP}";
-}
+    public void OpenEscPanel()
+    {
+        ESCpanel.SetActive(!ESCpanel.activeSelf);
+        Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
+    }
 
-public void OpenEscPanel()
-{
-    ESCpanel.SetActive(!ESCpanel.activeSelf);
-    Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
-}
+    public void RestartGame()
+    {
+        Time.timeScale = 1f; // 시간 재개
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
+    }
 
-public void RestartGame()
-{
-    Time.timeScale = 1f; // 시간 재개
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
-}
-
-public void QuitGame()
-{
-    Time.timeScale = 1f;
-    SceneManager.LoadScene(0);
-}
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
 }
