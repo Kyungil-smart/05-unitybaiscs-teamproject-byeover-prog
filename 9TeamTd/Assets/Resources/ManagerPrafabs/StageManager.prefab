@@ -57,5 +57,5 @@ MonoBehaviour:
   currentMinutes: 0
   currentSeconds: 0
   stageEndTime: 1200
-  dropItemPrefabs:
-  - {fileID: 258158784812038109, guid: d180d6a2614eece40b443ea4767a6889, type: 3}
+  itemPrefabs:
+  - {fileID: 5710213555215892218, guid: 768c22f611cc37e42a5896c226845773, type: 3}
