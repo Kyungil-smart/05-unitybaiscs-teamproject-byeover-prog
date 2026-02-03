@@ -76,19 +76,29 @@ public class UIController : MonoBehaviour
         {
             OpenEscPanel();
         }
+        hpText.text = $"<sprite=0>{baseTower._currentHP}";
 
         // 디버그용 코드
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            StageManager.gold.Value += 100;
+            StageManager.gold.Value += 1000;
 #if UNITY_EDITOR
             Debug.Log("돈무한 치트 사용!!!");
 #endif
         }
-
-        hpText.text = $"<sprite=0>{baseTower._currentHP}";
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StageManager.Instance.OnDefeat();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StageManager.Instance.stageEndTimeForReset = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            baseTower._currentHP += 100;
+        }
     }
-
     public void OpenEscPanel()
     {
         ESCpanel.SetActive(!ESCpanel.activeSelf);
