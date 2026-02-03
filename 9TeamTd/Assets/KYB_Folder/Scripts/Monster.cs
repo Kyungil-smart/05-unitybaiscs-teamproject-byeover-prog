@@ -137,6 +137,7 @@ public class Monster : MonoBehaviour, IDamagable
             if (baseTarget != null)
             {
                 float finalDamage = stat.attackValue;
+                Debug.LogWarning(finalDamage);
                 /*
                 if (stat.Type == 2)
                 {

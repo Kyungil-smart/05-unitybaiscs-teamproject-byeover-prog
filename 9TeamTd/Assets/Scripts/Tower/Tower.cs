@@ -214,8 +214,9 @@ public class Tower : MonoBehaviour, IDamagable
         // if (isDead) return; 오브젝트 풀링으로 바꾸면 안정성을 위해 추가 필요
 
 
-        Debug.Log($"{_currentHP} - {damage}");
-        _currentHP -= (int)damage;
+        Debug.LogWarning($"{Mathf.Clamp(((int)damage - defenceValue), 0, int.MaxValue)}");
+        _currentHP -= Mathf.Clamp(((int)damage - defenceValue), 0, int.MaxValue);
+
 
         if (_currentHP <= 0)
         {
