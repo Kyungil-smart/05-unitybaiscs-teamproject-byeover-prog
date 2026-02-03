@@ -8,14 +8,164 @@
   },
   {
     "id": 2101,
-    "gold": 2,
-    "DropItemId": "",
-    "DropProp": 0
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
   },
   {
     "id": 2102,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2103,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2104,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2105,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2106,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2107,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2108,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2109,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2110,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2111,
+    "gold": 1,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2120,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2121,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2122,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2123,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2124,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2125,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2126,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2127,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2128,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2129,
+    "gold": 2,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2130,
     "gold": 3,
-    "DropItemId": "",
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2131,
+    "gold": 3,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2132,
+    "gold": 3,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2133,
+    "gold": 3,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2134,
+    "gold": 3,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2135,
+    "gold": 3,
+    "DropItemId": "\"\"",
     "DropProp": 0
   }
 ]
