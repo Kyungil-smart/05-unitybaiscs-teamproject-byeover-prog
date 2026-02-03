@@ -11315,15 +11315,15 @@ PrefabInstance:
     - target: {fileID: 2153511353550354571, guid: c9574a219b7609a428564949f9d000b5, type: 3}
       propertyPath: monsterPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 8501144949332976331, guid: 7afb7549ea3f1ee47a10ee0814958597, type: 3}
+      objectReference: {fileID: 7435257534779501668, guid: 1fbd8c017f0934e448f06592f29ba0f6, type: 3}
     - target: {fileID: 2153511353550354571, guid: c9574a219b7609a428564949f9d000b5, type: 3}
       propertyPath: monsterPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 7435257534779501668, guid: 1fbd8c017f0934e448f06592f29ba0f6, type: 3}
+      objectReference: {fileID: 6324725576023583165, guid: 8e53f6093b8acf14683b2534ec192a9f, type: 3}
     - target: {fileID: 2153511353550354571, guid: c9574a219b7609a428564949f9d000b5, type: 3}
       propertyPath: monsterPrefab.Array.data[2]
       value: 
-      objectReference: {fileID: 6324725576023583165, guid: 8e53f6093b8acf14683b2534ec192a9f, type: 3}
+      objectReference: {fileID: 8501144949332976331, guid: 7afb7549ea3f1ee47a10ee0814958597, type: 3}
     - target: {fileID: 5966955382118613173, guid: c9574a219b7609a428564949f9d000b5, type: 3}
       propertyPath: m_Name
       value: MonsterManager
