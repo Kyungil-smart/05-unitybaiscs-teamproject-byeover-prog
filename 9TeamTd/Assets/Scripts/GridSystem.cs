@@ -245,16 +245,12 @@ public partial class GridSystem : MonoBehaviour
             // Rollback
             SetCellState(cell, CellState.Empty);
             RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
-#if UNITY_EDITOR
-            Debug.Log($"[GridSystem] TryPlaceTower failed (WouldBlockAllSpawns) cell={cell}");
-#endif
+
             return false;
         }
 
         //SpawnTowerVisual(cell); // 테스트 큐브 생성 코드라 주석처리 하였습니다
-#if UNITY_EDITOR
-        Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
-#endif
+
         return true;
     }
 
