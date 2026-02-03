@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &61215933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAE30\uC9C0\uB97C \uC120\uD0DD\uD558\uC138\uC694         \u25BC"
+  m_text: "\uAE30\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e93eed7c2699bb84da9a5e4cd4f834de, type: 2}
   m_sharedMaterial: {fileID: -345527944419325767, guid: e93eed7c2699bb84da9a5e4cd4f834de, type: 2}
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -225.94635, w: 0}
+  m_margin: {x: 0, y: 0, z: -398.0432, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2947,7 +2947,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: " \uC81C\uD55C\uC2DC\uAC04 \uAE4C\uC9C0 \uD0C0\uC6CC\uB97C \uAC74\uC124\uD558\uACE0
     \uAE30\uC9C0\uB97C \uC9C0\uD0A4\uC138\uC694!\n\n\uD074\uB9AC\uC5B4\uC2DC \uAE30\uC9C0\uC640
-    \uB2E4\uC74C \uC2A4\uD14C\uC774\uC9C0\uAC00 \uC624\uD508 \uB429\uB2C8\uB2E4\n\n\uAE30\uC9C0\uB97C
+    \uB2E4\uC74C \uC2A4\uD14C\uC774\uC9C0\uAC00 \uC624\uD508 \uB429\uB2C8\uB2E4\n\n\u25BC\uAE30\uC9C0\uB97C
     \uC120\uD0DD\uD558\uC138\uC694"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e93eed7c2699bb84da9a5e4cd4f834de, type: 2}
