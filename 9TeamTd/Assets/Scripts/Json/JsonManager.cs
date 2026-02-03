@@ -258,7 +258,7 @@ public class JsonManager : MonoBehaviour
     {
         if (_monsterResourcesData == null) return null;
 
-        MonsterResourcesDatas foundData = _monsterResourcesData.monsterResource.Find(t => t.id == id);
+        MonsterResourcesDatas foundData = _monsterResourcesData.resource.Find(t => t.id == id);
 
         if (foundData == null)
         {

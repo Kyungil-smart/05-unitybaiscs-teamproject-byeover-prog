@@ -15,25 +15,25 @@ public class Monster : MonoBehaviour, IDamagable
 {
     [Header("컴포넌트")] 
     [SerializeField] private MonsterAgent agent;
-    
+
     // 데이터 보관
     private MonsterDatas stat;
     private MonsterResourcesDatas resource;
 
     public OP<int> currentHp = new();
-    
+
     [SerializeField] private bool isDead = false;
-    
+
     // Json 변수들
-    [SerializeField]private int id;
-    [SerializeField]private string name;
-    [SerializeField]private int level;
-    [SerializeField]private int maxHP;
-    [SerializeField]private float attackValue;
-    [SerializeField]private float defenceValue;
-    [SerializeField]private int Type;
-    [SerializeField]private string enemyRank;
-    [SerializeField]private float moveSpeed;
+    [SerializeField] private int id;
+    [SerializeField] private string name;
+    [SerializeField] private int level;
+    [SerializeField] private int maxHP;
+    [SerializeField] private float attackValue;
+    [SerializeField] private float defenceValue;
+    [SerializeField] private int Type;
+    [SerializeField] private string enemyRank;
+    [SerializeField] private float moveSpeed;
 
     // 상태이상 변수들
     [SerializeField] private bool isFreeze = false;
@@ -43,7 +43,7 @@ public class Monster : MonoBehaviour, IDamagable
     public void GetMonsterStats(MonsterStats stats)
     {
         if (stats == null) return;
-        
+
         id = stats.id;
         name = stats.name;
         level = stats.level;
@@ -56,33 +56,43 @@ public class Monster : MonoBehaviour, IDamagable
 
         originalSpeed = stats.moveSpeed;
     }
-    
+
     // 매니저에게 반납하기 위한 이벤트
     public event Action<Monster> OnDeath;
-    
+
     // 디버그 확인용
-    [Header("Hp 확인용 디버그 전용")]
-    [SerializeField] private int debugCurrentHpView;
+    [Header("Hp 확인용 디버그 전용")] [SerializeField]
+    private int debugCurrentHpView;
 
     private void Awake()
     {
         agent = GetComponent<MonsterAgent>();
     }
-    
+
     // MonsterManager가 소환 직후 호출
     public void Initialize(MonsterDatas statData, MonsterResourcesDatas resData, Transform baseTransform)
     {
+        if (resData == null)
+        {
+            Debug.LogError($"{statData.id}번 몬스터의 Resource 데이터가 Null입니다.");
+        }
+        else
+        {
+            Debug.Log($"[Monster] {statData.id}번의 리소스 로드 성공, 골드: {resData.gold}, 아이템ID: {resData.DropItemId}");
+        }
+        
+        
         this.stat = statData;
         this.resource = resData;
-        
+
         // 스탯 적용
         this.currentHp.Value = statData.maxHP;
         this.debugCurrentHpView = statData.maxHP; // 인스펙터 확인용
         this.isDead = false;
-        
+
         // 디버깅용 이름 변경
         gameObject.name = $"{statData.name} _{statData.id}";
-        
+
         // Agent 이동 시작
         if (agent != null)
         {
@@ -96,16 +106,16 @@ public class Monster : MonoBehaviour, IDamagable
         if (isDead) return;
 
         float myDef = stat.defenceValue;
-        
+
         // 데미지 계산
         int finalDamage = DamageCalculator.CalculatingDamage((int)attackValue, ratio, (int)myDef);
-        
+
         if (finalDamage < 1) finalDamage = 1;
 
         currentHp.Value -= finalDamage;
         debugCurrentHpView = currentHp.Value; // 인스펙터 갱신
         Debug.Log($"{finalDamage}피해 입음. 남은 생명력 : {currentHp.Value}"); //<< 주석 빼도 됩니다
-        
+
         if (currentHp.Value <= 0)
         {
             currentHp.Value = 0;
@@ -113,14 +123,13 @@ public class Monster : MonoBehaviour, IDamagable
             DestroyMonster();
             Debug.Log(22);
         }
-            // Die();
-
+        // Die();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
-        
+
         if (other.CompareTag("Base"))
         {
             IDamagable baseTarget = other.gameObject.GetComponent<IDamagable>();
@@ -134,14 +143,14 @@ public class Monster : MonoBehaviour, IDamagable
                     Debug.Log("보스 기지 충돌! 게임 오버");
                     finalDamage = 99999999999f;
                 }
-                
+
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
                 baseTarget.TakeDamage(finalDamage, 1.0f);
             }
-           //  Debug.Log(1);
+
+            //  Debug.Log(1);
             DestroyMonster();
             // Debug.Log(8);
-
         }
     }
 
@@ -154,7 +163,7 @@ public class Monster : MonoBehaviour, IDamagable
         // Debug.Log(3);
         // 현재 몬스터에 붙은 정보를 못 불러옵니다
         StageManager.Instance.GetGold(10 * (Type + 1));
-       //  Debug.Log(4);
+        //  Debug.Log(4);
         // 현재 몬스터에 붙은 정보를 못 불러옵니다
         // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
 
@@ -166,9 +175,6 @@ public class Monster : MonoBehaviour, IDamagable
         Destroy(gameObject);
         // Debug.Log(7);
     }
-
-
-
 
 
     // 피격 시 속성 별 상태 효과 구현 함수들
@@ -186,7 +192,6 @@ public class Monster : MonoBehaviour, IDamagable
     // 불 -> 화상
     public void Burn()
     {
-
     }
 
     // 물 -> 빙결
@@ -213,8 +218,6 @@ public class Monster : MonoBehaviour, IDamagable
     }
 
 
-
-
     IEnumerator EffectTimeFreeze(float time)
     {
         Debug.Log("빙결");
@@ -237,12 +240,9 @@ public class Monster : MonoBehaviour, IDamagable
     }
 
 
-
     IEnumerator EffectTimeKinematic(float time)
     {
-        
         yield return new WaitForSeconds(time);
         GetComponent<Rigidbody>().isKinematic = true;
-        
     }
 }

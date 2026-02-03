@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class MonsterManager : MonoBehaviour
 {
     public static MonsterManager Instance;
 
     [Header("Setting")]
-    public GameObject monsterPrefab;
+    public List<GameObject> monsterPrefab;
     public Transform baseTransform;
     
     // 스폰 스케줄 리스트
@@ -18,8 +17,6 @@ public class MonsterManager : MonoBehaviour
 
     private float _gameTime = 0f;
     private bool _isRunning = false;
-    
-    private IObjectPool<Monster> monsterPool;
 
     private void Awake()
     {
@@ -39,39 +36,6 @@ public class MonsterManager : MonoBehaviour
             GameObject baseObj = GameObject.FindWithTag("Base");
             if (baseObj != null) baseTransform = baseObj.transform;
         }
-
-        monsterPool = new ObjectPool<Monster>(
-            CreateMonster,    // 없을 때 새로 만드는 함수
-            OnGetMonster,     // 꺼낼 때 실행할 함수
-            OnReleaseMonster, // 반납할 때 실행할 함수
-            OnDestroyMonster, // 풀이 꽉 찼거나 에러날 때 삭제 함수
-            maxSize: 100      // 최대 보관 개수(늘려도 됨)
-        );
-
-    }
-
-    private Monster CreateMonster()
-    {
-        // 프리팹 생성 후 Monster 컴포넌트 리턴
-        GameObject obj = Instantiate(monsterPrefab);
-        Monster monster = obj.GetComponent<Monster>();
-
-        return monster;
-    }
-    
-    private void OnGetMonster(Monster monster)
-    {
-        monster.gameObject.SetActive(true); // 켜기
-    }
-
-    private void OnReleaseMonster(Monster monster)
-    {
-        monster.gameObject.SetActive(false); // 끄기 (대기 상태)
-    }
-
-    private void OnDestroyMonster(Monster monster)
-    {
-        Destroy(monster.gameObject);
     }
 
     private void Start()
@@ -140,25 +104,37 @@ public class MonsterManager : MonoBehaviour
         MonsterDatas stats = JsonManager.instanceJsonManger.GetMonsterData(monsterId, 1);
         MonsterResourcesDatas rewards = JsonManager.instanceJsonManger.GetMonsterResourcesData(monsterId);
 
-        if (stats == null) return;
+        if (stats == null) Debug.LogError($"[MonsterManager] ID: {monsterId}의 스탯 데이터가 Null입니다.");
 
-        // 풀에서 꺼내기
-        Monster newMonster = monsterPool.Get();
+        if (rewards == null)
+        {
+            Debug.LogError($"[MonsterManager] ID: {monsterId}의 리소스(Reward) 데이터가 Null입니다.");
+        }
+        else
+        {
+            Debug.Log($"[MonsterManager] 데이터 로드 성공, ID: {monsterId}, 골드: {rewards.gold}");
+        }
+        
+
+        if (stats.Type >= monsterPrefab.Count)
+        {
+            Debug.LogError($"몬스터 타입 {stats.Type}번에 대항하는 프리팹이 리스트에 없습니다.");
+            return;
+        }
+
+        GameObject prefabToSpawn = monsterPrefab[stats.Type];
         
         // 위치 및 초기화
         Vector3 spawnPos = GridSystem.Instance.CellToWorld(spawnCell);
-        // 땅에 파묻히면 Y 값 조정
         spawnPos.y += 1.0f;
         
-        newMonster.transform.position = spawnPos;
-        newMonster.Initialize(stats, rewards, baseTransform);
-    }
-    
-    // 몬스터가 죽거나 도착했을 때 부르는 함수
-    public void ReturnMonster(Monster monster)
-    {
-        monsterPool.Release(monster);
+        GameObject newObj = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
         
-        monster.gameObject.SetActive(false);
+        Monster newMonster = newObj.GetComponent<Monster>();
+        if (newMonster != null)
+        {
+            newMonster.Initialize(stats, rewards, baseTransform);
+        }
     }
+
 }
