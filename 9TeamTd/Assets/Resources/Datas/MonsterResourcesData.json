@@ -3,20 +3,20 @@
   {
     "id": 2100,
     "gold": 1,
-    "dropItemId": "1",
-    "dropProb": 1
+    "DropItemId": "1",
+    "DropProp": 1
   },
   {
     "id": 2101,
     "gold": 2,
-    "dropItemId": null,
-    "dropProb": 0
+    "DropItemId": null,
+    "DropProp": 0
   },
   {
     "id": 2102,
     "gold": 3,
-    "dropItemId": null,
-    "dropProb": 0
+    "DropItemId": null,
+    "DropProp": 0
   }
 ]
 }
