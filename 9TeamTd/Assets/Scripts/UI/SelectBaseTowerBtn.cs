@@ -17,18 +17,12 @@ public class SelectBaseTowerBtn : MonoBehaviour
     Image image;
 
     [SerializeField] TextMeshProUGUI descText;
-    string desc;
-
-
-    private void Awake()
-    {
-        image = GetComponent<Image>();
-    }
 
     private void Start()
     {
-        GameManager.Instance.SelectedBaseID.Value = targetID;
+        image = GetComponent<Image>();
         GameManager.Instance.SelectedBaseID.OnValueChanged += OnSelectedBaseIDChanged;
+        GameManager.Instance.SelectedBaseID.Value = targetID;
     }
 
     private void OnDisable()
@@ -44,7 +38,7 @@ public class SelectBaseTowerBtn : MonoBehaviour
         {
             // 강조 표시
             image.color = selectedColor;
-            
+            ShowInfo(targetID, targetLevel);
         }
         else
         {
@@ -55,7 +49,7 @@ public class SelectBaseTowerBtn : MonoBehaviour
     public void OnClick()
     {
         GameManager.Instance.SelectedBaseID.Value = targetID;
-        ShowInfo(targetID, targetLevel);
+        
     }
 
     public void ShowInfo(int targetID, int targetLevel)
