@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6397357908491731333}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2720900239992436745}
   - component: {fileID: 4451614682662890405}
   - component: {fileID: 7843533436040802296}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_0031_Flame_Short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,11 @@ MonoBehaviour:
   projectileSpacialAbility: 2
   damageTargetTeamType: 4
   projectileDamageCategory: 2
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &7843533436040802296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +138,11 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!1001 &1142378707693606239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,9 +191,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3103538553729459094, guid: 4041576335185bb42bdfa7b121aa9916, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5559013761625709443, guid: 4041576335185bb42bdfa7b121aa9916, type: 3}
       propertyPath: m_Name
       value: VE_Flame_Short
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559013761625709443, guid: 4041576335185bb42bdfa7b121aa9916, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

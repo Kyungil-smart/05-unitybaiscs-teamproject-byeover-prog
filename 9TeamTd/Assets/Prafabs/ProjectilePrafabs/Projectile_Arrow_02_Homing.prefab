@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4535006051466670623}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8620373975696876763}
   - component: {fileID: 8512073995596603928}
   - component: {fileID: 4861731805130451481}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_Arrow_02_Homing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,11 @@ MonoBehaviour:
   projectileSpacialAbility: 1
   damageTargetTeamType: 4
   projectileDamageCategory: 1
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &4861731805130451481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +140,11 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!1001 &4504090557135740101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 2865880938984369139, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
       propertyPath: m_Name
       value: Body_Arrow_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865880938984369139, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6880869093490263431, guid: c42c4b254ffd89149914e9497c8b6ed9, type: 3}
       propertyPath: m_LocalPosition.x

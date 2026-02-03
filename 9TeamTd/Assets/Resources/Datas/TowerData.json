@@ -734,7 +734,7 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 150
+    "towerCost": 300
   },
   {
     "id": 1107,
@@ -750,7 +750,7 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 225
+    "towerCost": 450
   },
   {
     "id": 1107,
@@ -766,7 +766,7 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 338
+    "towerCost": 675
   },
   {
     "id": 1107,
@@ -782,7 +782,7 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 507
+    "towerCost": 1013
   },
   {
     "id": 1107,
@@ -798,7 +798,7 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 761
+    "towerCost": 1520
   },
   {
     "id": 1108,

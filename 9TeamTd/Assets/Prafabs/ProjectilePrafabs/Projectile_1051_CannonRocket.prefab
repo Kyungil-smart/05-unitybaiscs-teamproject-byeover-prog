@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7787805914425374764}
   - component: {fileID: 9127578416529872460}
   - component: {fileID: 4644893451384000129}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_1051_CannonRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +79,11 @@ MonoBehaviour:
   projectileSpacialAbility: 2
   damageTargetTeamType: 4
   projectileDamageCategory: 1
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &4644893451384000129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +108,11 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!1 &8588553140684015885
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3165990076972642609}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 4290142658013809854, guid: ef7081f701d4467419d647fc5a40592b, type: 3}
       propertyPath: m_Name
       value: Body_Rocket_Improved
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290142658013809854, guid: ef7081f701d4467419d647fc5a40592b, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

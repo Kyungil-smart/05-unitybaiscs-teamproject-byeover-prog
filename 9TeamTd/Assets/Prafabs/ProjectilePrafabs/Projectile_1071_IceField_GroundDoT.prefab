@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6239006214059041968}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4456148818411176264}
   - component: {fileID: 8898940868695259427}
   - component: {fileID: 5567989987671955205}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_1071_IceField_GroundDoT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,11 @@ MonoBehaviour:
   projectileSpacialAbility: 5
   damageTargetTeamType: 4
   projectileDamageCategory: 3
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!114 &5567989987671955205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +138,11 @@ MonoBehaviour:
   projectileSpacialAbility: 0
   damageTargetTeamType: 0
   projectileDamageCategory: 0
+  effectRate: 0
+  effectValue: 0
+  effectInterval: 0
+  duration: 0
+  overlapCount: 0
 --- !u!1001 &4012866212876953873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1480619598020344120, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1480619598020344120, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -181,9 +191,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1859315135538731388, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375062993464161322, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541476247760290572, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064153058898684144, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447664321750051213, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5508788492117443945, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
       propertyPath: m_Name
       value: VE_IceField
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508788492117443945, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680020405940257288, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680020405940257288, guid: b34e0c64492c95446afd3d6e4947b2bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

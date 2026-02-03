@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7106496525176029090}
   - component: {fileID: 9127578416529872460}
   - component: {fileID: 4644893451384000129}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile_1011_CannonBall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3165990076972642609}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 6388207752794188096, guid: 9052c509bb713f94fb563f47d868ca8b, type: 3}
       propertyPath: m_Name
       value: Body_CanonBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388207752794188096, guid: 9052c509bb713f94fb563f47d868ca8b, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7886608480761780732, guid: 9052c509bb713f94fb563f47d868ca8b, type: 3}
       propertyPath: m_LocalScale.x
