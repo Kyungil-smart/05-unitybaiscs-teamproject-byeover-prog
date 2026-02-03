@@ -17,5 +17,5 @@ public class MonsterSpawnDatas
 [Serializable]
 public class MonsterSpawnDataList
 {
-    public List<MonsterSpawnDatas> monsterSpawn;
+    public List<MonsterSpawnDatas> spawnPattern;
 }

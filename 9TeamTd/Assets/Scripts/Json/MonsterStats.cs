@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,50 @@ using UnityEngine;
 
 public class MonsterStats : MonoBehaviour
 {
+    [Header("Key Status")] 
+    public int id;
+    public int level;
+    
     // MonsterDatas 스크립트 일치시키기
     [Header("Monster Status")]
-    public int id;
     public string name;
-    public int level;
-    public int maxHp;
-    public int attackValue;
+    public int maxHP;
+    public float attackValue;
     public float defenceValue;
-    public string moveType;
+    public int Type;
     public string enemyRank;
-    public string moveSpeed;
+    public float moveSpeed;
+
+
+    private void Start()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        // 버그 확인용
+        if (JsonManager.instanceJsonManger == null)
+        {
+            Debug.LogError("JsonManager 없음");
+            return;
+        }
+
+        MonsterDatas mData = JsonManager.instanceJsonManger.GetMonsterData(id, level);
+
+        if (mData != null)
+        {
+            SetupValue(mData);
+            
+            
+            Monster monsterScript = GetComponent<Monster>();
+
+            if (monsterScript != null)
+            {
+                monsterScript.GetMonsterStats(this);
+            }
+        }
+    }
     
     public void SetupValue(MonsterDatas data)
     {
@@ -25,10 +59,10 @@ public class MonsterStats : MonoBehaviour
         id = data.id;
         name = data.name;
         level = data.level;
-        maxHp = data.maxHp;
+        maxHP = data.maxHP;
         attackValue = data.attackValue;
         defenceValue = data.defenceValue;
-        moveType = data.moveType;
+        Type = data.Type;
         enemyRank = data.enemyRank;
         moveSpeed = data.moveSpeed;
     }

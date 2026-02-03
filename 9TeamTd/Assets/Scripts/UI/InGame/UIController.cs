@@ -12,16 +12,20 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public static OP<int> toBuyTwID = new();
+    Tower baseTower;
 
     // 패널
     [SerializeField] GameObject ESCpanel;
+    [SerializeField] GameObject victoryPanel;
+    [SerializeField] GameObject defeatPanel;
 
     // 텍스트
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI hpText;
 
     private void Awake()
     {
-        UpdateGoldText(Player.gold.Value);
+        UpdateGoldText(StageManager.gold.Value);
     }
     void UpdateGoldText(int value)
     {
@@ -30,46 +34,75 @@ public class UIController : MonoBehaviour
 
     void OnEnable()
     {
-        Player.gold.OnValueChanged += UpdateGoldText;
+        StageManager.gold.OnValueChanged += UpdateGoldText;
+        StageManager.Instance.StageClear += ShowVictoryPanel;
+        StageManager.Instance.StageDefeat += ShowDefeatPanel;
     }
     void OnDisable()
     {
-        Player.gold.OnValueChanged -= UpdateGoldText;
+        StageManager.gold.OnValueChanged -= UpdateGoldText;
+        StageManager.Instance.StageClear -= ShowVictoryPanel;
+        StageManager.Instance.StageDefeat -= ShowDefeatPanel;
+    }
+
+    void ShowVictoryPanel()
+    {
+        victoryPanel.SetActive(true);
+    }
+    void ShowDefeatPanel()
+    {
+        defeatPanel.SetActive(true);
+    }
+
+private void Start()
+{
+    // 씬에서 baseTower를 찾음
+    if (baseTower == null)
+    {
+        baseTower = FindFirstObjectByType<Tower>();
+    }
+}
+
+private void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
+    {
+        OpenEscPanel();
     }
 
 
-    private void Update()
+    // 디버그용 코드
+    if (Input.GetKeyDown(KeyCode.Tab))
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // esc 패널: 일시정지, 게임재시작, 게임종료
-        {
-            OpenEscPanel();
-        }
-
-        // 디버그용 코드
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Player.gold.Value += 100;
+        StageManager.gold.Value += 100;
 #if UNITY_EDITOR
-            Debug.Log("돈무한 치트 사용!!!");
+        Debug.Log("돈무한 치트 사용!!!");
 #endif
+    }
+
+        if (baseTower != null)
+        {
+            hpText.text = $"<sprite=0>{baseTower._currentHP}";
         }
+
+        //hpText.text = $"<sprite=0>{baseTower._currentHP}";
     }
 
-    public void OpenEscPanel()
-    {
-        ESCpanel.SetActive(!ESCpanel.activeSelf);
-        Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
-    }
+public void OpenEscPanel()
+{
+    ESCpanel.SetActive(!ESCpanel.activeSelf);
+    Time.timeScale = ESCpanel.activeSelf ? 0f : 1f;
+}
 
-    public void RestartGame()
-    {
-        Time.timeScale = 1f; // 시간 재개
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
-    }
+public void RestartGame()
+{
+    Time.timeScale = 1f; // 시간 재개
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬 재로드
+}
 
-    public void QuitGame()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
-    }
+public void QuitGame()
+{
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(0);
+}
 }

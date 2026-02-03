@@ -112,7 +112,8 @@ public partial class GridSystem : MonoBehaviour
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
-        RegisterObstacles(); // ��ֹ� ��� �߰���
+        RegisterObstacles();
+        RegisterBaseSize();
 
         SnapBaseTransformToCellCenter();
     }
@@ -187,6 +188,10 @@ public partial class GridSystem : MonoBehaviour
         if (!IsInside(cell)) return false;
         if (cell == baseCell) return false;
         if (GetCellState(cell) != CellState.Empty) return false;
+
+        // 강현우: 강물 위에 타워 설치 금지
+        if (GridNoTowerRegistry.IsNoTowerCell(cell))
+            return false;
 
         // 가장자리 (스폰구역) 건설 금지
         if (cell.X < noBuildBorderThickness || cell.X >= gridWidth - noBuildBorderThickness ||
@@ -712,6 +717,22 @@ public partial class GridSystem : MonoBehaviour
             foreach (Cell cell in bigObstacle.occupiedCells)
             {
                 SetCellState(cell, CellState.Blocked);
+            }
+        }
+    }
+
+    // 베이스 크기 등록
+    private void RegisterBaseSize()
+    {
+        GridBaseSize[] baseObstacles = FindObjectsOfType<GridBaseSize>();
+
+        foreach (GridBaseSize baseObstacle in baseObstacles)
+        {
+            baseObstacle.Initialize(this);
+
+            foreach (Cell cell in baseObstacle.occupiedCells)
+            {
+                SetCellState(cell, CellState.Base);
             }
         }
     }

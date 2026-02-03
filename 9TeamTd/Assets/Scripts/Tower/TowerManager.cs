@@ -1,8 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 // 작성자 : 문형근
+// 수정 : 한성우
 // 이친구는 어디다가 쓸까요 이렇게 분리하고 하던데 
 
 
@@ -16,11 +17,15 @@ public class TowerManager : MonoBehaviour
     //배치 된 타워 저장하는 리스트 (배열로 넣을 예정)
     private List<Tower> _placedTowers = new List<Tower>();
 
-    //타워 프리팹 
-    public GameObject _towerPrefab;
+    //타워 프리펩 관련
+    public List<GameObject> _towerPrefabs = new List<GameObject>();
+    public GameObject _currentTowerPrefab;
+    [SerializeField] int _currentTowerIndex = 0;
+
+    [SerializeField] int _towerLevel = 1;   // ## 스폰할 타워 레벨
 
     // 플레이어 골드
-    public int _gold = 100;
+    public int _currentGold = 1000;
 
     // 타워 가격
     public int _towerCost = 50;
@@ -33,6 +38,11 @@ public class TowerManager : MonoBehaviour
 
     void Update()
     {
+        // 배치할 타워 선택 과정
+        SetPlacingTower();
+
+
+
 
         // 마우스 클릭으로 타워 생성
         if (Input.GetMouseButtonDown(0))
@@ -67,13 +77,44 @@ public class TowerManager : MonoBehaviour
         }
     }
 
+    // 타워 선택 함수
+    public void SetPlacingTower()
+    {
+        // 마우스 휠로 생성한 타워 선택
+        float mouseScrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        // 마우스 휠로 인덱스 증감 (음수가 증가로))
+        if (mouseScrollInput > 0) _currentTowerIndex -= 1;
+        else if (mouseScrollInput < 0) _currentTowerIndex += 1;
+
+        // 예외 처리
+        if (_currentTowerIndex < 0) _currentTowerIndex = 0;
+        else if (_currentTowerIndex > _towerPrefabs.Count - 1) _currentTowerIndex = _towerPrefabs.Count - 1;
+
+        // 소환할 타워 프리펩 적용, 레벨과 가격도 적용됨
+        _currentTowerPrefab = _towerPrefabs[_currentTowerIndex];
+
+        // ## 추후에 레벨이 늘어나면 숫자 늘려도 됨, 현재는 1레벨 밖에 없는 타워도 있어서 에러 남
+        if (_towerLevel < 1) _towerLevel = 1;
+        else if (_towerLevel > 5) _towerLevel = 5;
+
+        _towerCost = _towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>()
+            .SetCost(_towerPrefabs[_currentTowerIndex].GetComponent<TowerStats>().id, _towerLevel);
+
+        // 마우스 휠 초기화
+        mouseScrollInput = 0;
+    }
+
+
     //타워 생성 함수
     public bool PlaceTower(Vector3 position)
     {
         Debug.Log("타워 배치 함수 시작");
 
+
+
         // 골드 조건 추가
-        if (_gold < _towerCost)
+        if (_currentGold < _towerCost)
         {
             Debug.Log("골드가 부족합니다.");
             return false;
@@ -85,16 +126,16 @@ public class TowerManager : MonoBehaviour
         }
 
         //타워 생성 (Instantiate 복제해서 새오브젝트에 넣기)
-        GameObject newTowerObj = Instantiate(_towerPrefab, position, Quaternion.identity);
+        GameObject newTowerObj = Instantiate(_currentTowerPrefab, position, Quaternion.identity);
         Tower newTower = newTowerObj.GetComponent<Tower>();
 
         //리스트에 추가 (새로운 타워를 리스트에 배열로 추가)
         _placedTowers.Add(newTower);
 
         // 골드 차감
-        _gold -= _towerCost;
+        _currentGold -= _towerCost;
 
-        Debug.Log("타워 배치 완료! 남은 골드 :" + _gold);
+        Debug.Log("타워 배치 완료! 남은 골드 :" + _currentGold);
         return true; // 배치 성공했으면 완료 
     }
 
@@ -157,7 +198,7 @@ public class TowerManager : MonoBehaviour
         {
             //50% 환불 (정수 버림)
             int refund = _towerCost / 2;
-            _gold += refund;
+            _currentGold += refund;
 
             // 리스트에서 제거
             _placedTowers.Remove(tower);
@@ -165,7 +206,7 @@ public class TowerManager : MonoBehaviour
             // 오브젝트 삭제
             Destroy(tower.gameObject);
 
-            Debug.Log("타워 삭제! 환불 :" + refund + "/남은 골드 :" + _gold);
+            Debug.Log("타워 삭제! 환불 :" + refund + "/남은 골드 :" + _currentGold);
         }
     }
     /// <summary>
@@ -185,19 +226,19 @@ public class TowerManager : MonoBehaviour
         }
 
         Debug.Log($"[TowerManager] 업그레이드 대상: {tower.name}");
-        Debug.Log($"[TowerManager] 현재 골드: {_gold}G / 필요 골드: {_towerCost}G");
+        Debug.Log($"[TowerManager] 현재 골드: {_currentGold}G / 필요 골드: {_towerCost}G");
 
         // 골드 체크
-        if (_gold < _towerCost)
+        if (_currentGold < _towerCost)
         {
             Debug.LogWarning("[TowerManager] 업그레이드 실패 - 골드가 부족합니다!");
-            Debug.LogWarning($"  필요: {_towerCost}G, 보유: {_gold}G, 부족: {_towerCost - _gold}G");
+            Debug.LogWarning($"  필요: {_towerCost}G, 보유: {_currentGold}G, 부족: {_towerCost - _currentGold}G");
             return;
         }
 
         // 골드 차감
-        _gold -= _towerCost;
-        Debug.Log($"[TowerManager] 골드 차감: -{_towerCost}G (남은 골드: {_gold}G)");
+        _currentGold -= _towerCost;
+        Debug.Log($"[TowerManager] 골드 차감: -{_towerCost}G (남은 골드: {_currentGold}G)");
 
         // 업그레이드 전 스탯 저장 (로그용)
         float oldDamage = tower._damage;
@@ -213,8 +254,7 @@ public class TowerManager : MonoBehaviour
         Debug.Log($"[업그레이드 완료] {tower.name}");
         Debug.Log($"  - 공격력: {oldDamage} → {tower._damage} (+{tower._damage - oldDamage})");
         Debug.Log($"  - 사거리: {oldRange} → {tower._range} (+{tower._range - oldRange})");
-        Debug.Log($"  - 남은 골드: {_gold}G");
+        Debug.Log($"  - 남은 골드: {_currentGold}G");
         Debug.Log("============================================");
     }
-
 }

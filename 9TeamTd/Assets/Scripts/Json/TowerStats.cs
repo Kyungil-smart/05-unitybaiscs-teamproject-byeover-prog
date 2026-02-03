@@ -19,6 +19,7 @@ public class TowerStats : MonoBehaviour
     // TowerData.cs 참고하여 모두 설정해줌
     [Header("Auto Status")]
     public string name;
+    public string desc;
     public TowerType towerType;
     public int maxHP;
     public attackType attackType;
@@ -48,17 +49,16 @@ public class TowerStats : MonoBehaviour
 
         TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level);
 
-        if (tData == null)
+        if (tData != null)
         {
             SetupValue(tData);
-            Tower_Re towerScript = GetComponent<Tower_Re>();
+            Tower towerScript = GetComponent<Tower>();
 
             if (towerScript != null)
             {
                 towerScript.GetStats(this);
             }
         }
-
     }
 
 
@@ -70,6 +70,7 @@ public class TowerStats : MonoBehaviour
         // json과 동일해야 함
         id = data.id;
         name = data.name;
+        desc = data.desc;
         level = data.level;
         towerType = (TowerType)Enum.Parse(typeof(TowerType), data.towerType);
         maxHP = data.maxHP;
@@ -108,16 +109,27 @@ public class TowerStats : MonoBehaviour
     }
 
 
+    public bool HasNextLevel()
+    {
+        if (JsonManager.instanceJsonManger == null) return false;
+
+        // 현재 레벨 + 1 한 데이터가 있는지 json 매니저 통해서 판단
+        return JsonManager.instanceJsonManger.HasTowerData(id, level + 1);
+    }
+
+
+
     // 레벨업할 타워 금액 알려주는 함수
     public int? LevelUpCost()
     {
-        TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level + 1);
-
-        if (tData == null)
+        // 다음 레벨이 없으면 null 
+        if (HasNextLevel() == false)
         {
-            return null;
-            Debug.Log($"{tData.level} 데이터 확인 불가");
+            Debug.Log($" {name} (ID:{id})는 이미 최대 레벨");
+            return null; 
         }
+
+        TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level + 1);
 
         Debug.Log($"{tData.towerCost} 필요");
 
@@ -127,21 +139,27 @@ public class TowerStats : MonoBehaviour
     // 타워 레벨 업 함수
     public void LevelUp()
     {
+        if (HasNextLevel() == false)
+        {
+            Debug.Log($" {name} (ID:{id})는 최대 레벨");
+            return;
+        }
+
+
         // 자신의 level 1만 올려 다시 json 요청
         TowerDatas tData = JsonManager.instanceJsonManger.GetTowerData(id, level + 1);
 
+        /*
         if (tData == null)
         {
             return;
             Debug.Log("데이터 확인 불가");
         }
-
-
-
+        */
 
         // 1레벨 올려 스텟 다시 세팅
         SetupValue(tData);
-        Tower_Re towerScript = GetComponent<Tower_Re>();
+        Tower towerScript = GetComponent<Tower>();
 
         if (towerScript != null)
         {
@@ -150,18 +168,16 @@ public class TowerStats : MonoBehaviour
         Debug.Log("레벨 업 함수 실행 완료");
     }
 
+    /*
     // 테스트용 레벨업 함수
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("K 입력");
+            Debug.Log("P 입력");
             LevelUpCost();
-            LevelUp();
-            
+            LevelUp();       
         }
-
-
     }
-    
+    */
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7352486458953905605}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3745977278104520269}
   - component: {fileID: 666941121705029564}
   - component: {fileID: 8460951881078005414}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7267208705189036331}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3202997416773521418}
   - component: {fileID: 269748070639759741}
   - component: {fileID: 6861396056868429681}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall_A_corner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 7302637718217769488}
   - component: {fileID: 4702289567324172948}
   - component: {fileID: 4570983223657831737}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body_Wall_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 6094915212823151766}
   - component: {fileID: 3377593985904349103}
   - component: {fileID: 4778838862675173896}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 4646040330183741915}
   - component: {fileID: 6511604586878746320}
   - component: {fileID: 4518417313244895711}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 5439504651881926770}
   - component: {fileID: 4167799226324243690}
   - component: {fileID: 6912862208798110274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sample_Tower_VolleyGun
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -577,10 +577,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  name: 
+  _towername: 
   level: 0
   towerType: 3
   _towerheals: 10
+  _currentheals: 0
   attackType: 3
   _damage: 20
   _range: 15
@@ -619,7 +620,7 @@ GameObject:
   - component: {fileID: 8230564107932273071}
   - component: {fileID: 8452119971483375218}
   - component: {fileID: 540323303175410463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7841371733654604947}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +737,7 @@ GameObject:
   - component: {fileID: 3981721820441306517}
   - component: {fileID: 3315742037205742792}
   - component: {fileID: 1032641784485612969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 473880909661063443}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +853,7 @@ GameObject:
   - component: {fileID: 2108230471413415725}
   - component: {fileID: 5319845266871933669}
   - component: {fileID: 982192717804641500}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +957,7 @@ GameObject:
   - component: {fileID: 6577357593654553564}
   - component: {fileID: 6574742247748967780}
   - component: {fileID: 6564191523858770960}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TB_CanonTower_Lvl1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1041,7 @@ GameObject:
   - component: {fileID: 6577166573490117776}
   - component: {fileID: 6571159377127515634}
   - component: {fileID: 6564867104254675520}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TB_CanonTower_Lvl1_Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1125,7 @@ GameObject:
   - component: {fileID: 6622669283699204852}
   - component: {fileID: 8833002260762331512}
   - component: {fileID: 6670708684337338576}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1229,7 @@ GameObject:
   - component: {fileID: 7402867248306931875}
   - component: {fileID: 7985589160446257254}
   - component: {fileID: 3064524910078710920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1312,7 @@ GameObject:
   - component: {fileID: 5500310550267577999}
   - component: {fileID: 713682177964556842}
   - component: {fileID: 4076278332215843880}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1395,7 @@ GameObject:
   - component: {fileID: 7468865460426167253}
   - component: {fileID: 7468865460425364469}
   - component: {fileID: 7468865460424397109}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall_A_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1488,7 @@ GameObject:
   - component: {fileID: 5121516502753254255}
   - component: {fileID: 5627258849237168509}
   - component: {fileID: 214634754717010431}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1568,7 +1569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7000629261207493678}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1604,7 @@ GameObject:
   - component: {fileID: 20727764654204931}
   - component: {fileID: 1038695456452344888}
   - component: {fileID: 7079040642354643457}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1688,8 +1689,24 @@ PrefabInstance:
       value: Body_BaseStructure_08
       objectReference: {fileID: 0}
     - target: {fileID: 2304589031471144167, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304589031471144167, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055387494399632755, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970634044047667379, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527829190485839987, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4779804507032961948, guid: 19dc72341927cb14a84f8b24e34089e1, type: 3}
       propertyPath: m_LocalPosition.x

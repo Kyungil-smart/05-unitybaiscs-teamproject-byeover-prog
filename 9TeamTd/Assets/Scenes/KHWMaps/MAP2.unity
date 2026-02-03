@@ -488,7 +488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e295e885541116f40ac866172003fd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSystem: {fileID: 2119423397}
   TowerPrefabs:
   - {fileID: 1339094510750771618, guid: 01b39151062ac27479bd367b9b154ec3, type: 3}
   - {fileID: 1962409237225484853, guid: f7a1ccfdcb5c41b48aaf0dbca18b87da, type: 3}
@@ -9593,7 +9592,7 @@ PrefabInstance:
     - target: {fileID: 23670923500410262, guid: 1a51fe95cc8cc3a4ca8f62728430ca9f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a632797d40cf0e946a174e81632f5d0a, type: 2}
+      objectReference: {fileID: 2100000, guid: b23c8ec1fc9502c479bf88af2987efda, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

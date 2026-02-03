@@ -1,24 +1,32 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+ï»¿using UnityEngine;
+using UnityEngine.EventSystems;
+using static TowerEnumData;
 
-// ÀÎ°ÔÀÓ Å¸¿ö¸¦ Å¬¸¯ÇßÀ»¶§ ¾÷±×·¹ÀÌµå/ÆÇ¸Å ÆĞ³ÎÀ» Ç¥½ÃÇÏ´Â UI
+// ì¸ê²Œì„ íƒ€ì›Œë¥¼ í´ë¦­í–ˆì„ë•Œ ì—…ê·¸ë ˆì´ë“œ/íŒë§¤ íŒ¨ë„ì„ í‘œì‹œí•˜ëŠ” UI
 public class TwClickUpSellUI : MonoBehaviour
 {
-    [Header("UI ¿¬°á")]
-    [SerializeField] TowerToUpSellUI towerToUpSellUI;
-    [SerializeField] Camera mainCamera;
+    TowerToUpSellUI towerToUpSellUI;
+    Camera mainCamera;
 
-    // ¹öÆ°
+    // ë²„íŠ¼
     [SerializeField] GameObject upgradeButton;
     [SerializeField] GameObject sellButton;
 
-    TowerStats selectedTower;
+    // ë ˆë²¨ í”„ë ˆì„
+    [SerializeField] GameObject Frame1;
+    [SerializeField] GameObject Frame2;
+    [SerializeField] GameObject Frame3;
+    [SerializeField] GameObject Frame4;
+    [SerializeField] GameObject Frame5;
+
+    static TowerStats selectedTower;
+    static Vector3 worldPoint;
+    static Cell worldCell;
 
     void Awake()
     {
-        if (mainCamera == null)
-            mainCamera = Camera.main;
+        mainCamera = Camera.main;
+        towerToUpSellUI = GetComponentInParent<TowerToUpSellUI>();
     }
 
     void Update()
@@ -31,6 +39,9 @@ public class TwClickUpSellUI : MonoBehaviour
 
     void TrySelectTower()
     {
+        // UIë¥¼ í´ë¦­í–ˆìœ¼ë©´ ë¬´ì‹œí•˜ëŠ” ìœ ë‹ˆí‹° ê¿€ê¸°ëŠ¥
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
@@ -38,55 +49,128 @@ public class TwClickUpSellUI : MonoBehaviour
             TowerStats tower = hit.collider.GetComponent<TowerStats>()
                        ?? hit.collider.GetComponentInParent<TowerStats>();
 
-            if (tower != null)
+            // ê°•í˜„ìš° : í„°ì§ ë°©ì§€ìš©
+            if (tower == null)   // â­ ì¶”ê°€
             {
+                HidePanel();     // â­ ì„ íƒ í•´ì œë§Œ
+                return;
+            }
+
+            if (tower.towerType == TowerType.Tower)
+            {
+                Plane ground = new Plane(Vector3.up, Vector3.zero);
+                ground.Raycast(ray, out float enter);
+
+                worldPoint = ray.GetPoint(enter);
+                worldCell = GridSystem.Instance.WorldToCell(worldPoint); // ê·¸ë¦¬ë“œ ì‹œìŠ¤í…œ ì—°ë™
+
                 selectedTower = tower;
-                ShowUpSellPanel(tower);
 
                 if (tower.level + 1 > 5 || tower.id == 1100 || tower.id == 1101)
                 {
                     upgradeButton.SetActive(false);
-#if UNITY_EDITOR
-                    Debug.Log("¾Æ¾Æ");
-#endif
-                    return;
+                    towerToUpSellUI.ShowInfo(tower.id, tower.level, tower.transform);
                 }
-
-                towerToUpSellUI.ShowInfo(tower.id, tower.level + 1,
-                    mainCamera.WorldToScreenPoint(tower.transform.position));
+                else
+                {
+                    upgradeButton.SetActive(true);
+                    towerToUpSellUI.ShowInfo(tower.id, tower.level + 1, tower.transform);
+                }
+                // ë ˆë²¨ í”„ë ˆì„ ë³€ê²½
+                switch (selectedTower.level)
+                {
+                    case 1:
+                        FalseAllFrames();
+                        Frame1.SetActive(true);
+                        break;
+                    case 2:
+                        FalseAllFrames();
+                        Frame2.SetActive(true);
+                        break;
+                    case 3:
+                        FalseAllFrames();
+                        Frame3.SetActive(true);
+                        break;
+                    case 4:
+                        FalseAllFrames();
+                        Frame4.SetActive(true);
+                        break;
+                    case 5:
+                        FalseAllFrames();
+                        Frame5.SetActive(true);
+                        break;
+                }
                 return;
             }
         }
 
-        // Å¸¿ö ¿Ü Å¬¸¯ ½Ã ÆĞ³Î ¼û±è
         HidePanel();
-    }
-
-    void ShowUpSellPanel(TowerStats tower)
-    {
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(tower.transform.position);
-        towerToUpSellUI.ShowInfo(tower.id, tower.level, screenPos);
     }
 
     void HidePanel()
     {
         selectedTower = null;
         towerToUpSellUI.HidePanel();
+        FalseAllFrames();
+    }
+    void FalseAllFrames()
+    {
+        Frame1.SetActive(false);
+        Frame2.SetActive(false);
+        Frame3.SetActive(false);
+        Frame4.SetActive(false);
+        Frame5.SetActive(false);
     }
 
-    // ¾÷±×·¹ÀÌµå ¹öÆ° Å¬¸¯ ½Ã (Button OnClick¿¡ ¿¬°á)
+    // ì—…ê·¸ë ˆì´ë“œ ë²„íŠ¼ í´ë¦­ ì‹œ
     public void OnUpgradeClick()
     {
         if (selectedTower == null) return;
-        // TODO: UpgradeTower(selectedTower);
-        HidePanel();
+        
+        if (StageManager.gold.Value < towerToUpSellUI.cost)
+        {
+#if UNITY_EDITOR
+            Debug.Log("ê³¨ë“œ ë¶€ì¡±ìœ¼ë¡œ ì—…ê·¸ë ˆì´ë“œ ë¶ˆê°€");
+#endif
+            return;
+        }
+        StageManager.gold.Value -= towerToUpSellUI.cost;
+
+        selectedTower.LevelUp();
+
+        // ë ˆë²¨ í”„ë ˆì„ ë³€ê²½
+        switch (selectedTower.level)
+        {
+            case 2:
+                Frame1.SetActive(false);
+                Frame2.SetActive(true);
+                break;
+            case 3:
+                Frame2.SetActive(false);
+                Frame3.SetActive(true);
+                break;
+            case 4:
+                Frame3.SetActive(false);
+                Frame4.SetActive(true);
+                break;
+            case 5:
+                Frame4.SetActive(false);
+                Frame5.SetActive(true);
+                upgradeButton.SetActive(false);
+                break;
+        }
+        towerToUpSellUI.ShowInfo(selectedTower.id, selectedTower.level, selectedTower.transform);
     }
 
-    // ÆÇ¸Å ¹öÆ° Å¬¸¯ ½Ã (Button OnClick¿¡ ¿¬°á)
+    // íŒë§¤ ë²„íŠ¼ í´ë¦­ ì‹œ
     public void OnSellClick()
     {
         if (selectedTower == null) return;
-        // TODO: RemoveTower(selectedTower);
+        selectedTower.gameObject.SetActive(false);
+        StageManager.gold.Value += selectedTower.towerCost / 2;
+
+        GridSystem.Instance.SetCellState(worldCell, GridSystem.CellState.Empty);
+
         HidePanel();
     }
 }

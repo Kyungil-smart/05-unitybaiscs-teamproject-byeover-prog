@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000575858596372932}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1194893304833631205}
   - component: {fileID: 4554481010935764184}
   - component: {fileID: 905162338522348044}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_67
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1034052974624556513}
   - component: {fileID: 3615122026579201181}
   - component: {fileID: 7762876649246390431}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 6273516860163575489}
   - component: {fileID: 4716665910519026760}
   - component: {fileID: 5455866824917195053}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 435616094753143802}
   - component: {fileID: 5923641502625846077}
   - component: {fileID: 8304123223224917135}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 4052740256071491737}
   - component: {fileID: 7651721196020645826}
   - component: {fileID: 1533368825558589409}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 98681386596042596}
   - component: {fileID: 4383146852684485038}
   - component: {fileID: 8711819962864707500}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 5837571509115742790}
   - component: {fileID: 3371962460108422619}
   - component: {fileID: 4891751563774793771}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 3704739220666935925}
   - component: {fileID: 1092867031913949670}
   - component: {fileID: 8555255268322451932}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_78
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 1278658504818805879}
   - component: {fileID: 7706993892541313042}
   - component: {fileID: 4226956327389189598}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_69
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1966283488840638207}
   - component: {fileID: 2591172956448337487}
   - component: {fileID: 8057507977448290585}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1655135328722428204}
   - component: {fileID: 9078588546797994131}
   - component: {fileID: 8892173510424986202}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_68
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 532476258096130405}
   - component: {fileID: 6418433892098180697}
   - component: {fileID: 4580623258193261033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_73
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 8565974572466544672}
   - component: {fileID: 6671341333577279786}
   - component: {fileID: 3687002461562937659}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 8947864128289655180}
   - component: {fileID: 72452348251701320}
   - component: {fileID: 635578047564473992}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1205,7 +1205,7 @@ GameObject:
   - component: {fileID: 6252661311899820679}
   - component: {fileID: 1248295081216235008}
   - component: {fileID: 4535468802232668849}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_80
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 766596166799100335}
   - component: {fileID: 5688042079768169412}
   - component: {fileID: 8978049258206220572}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 3660966272599968322}
   - component: {fileID: 5921748958183702701}
   - component: {fileID: 4624180664696986791}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 8522253095210050957}
   - component: {fileID: 8874064165683841620}
   - component: {fileID: 2836365143273322256}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 7225800503801411284}
   - component: {fileID: 4871941341704766218}
   - component: {fileID: 5658680586841690299}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1620,7 @@ GameObject:
   - component: {fileID: 5764199674021007957}
   - component: {fileID: 7941447222965747050}
   - component: {fileID: 3535910701838448107}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1703,7 +1703,7 @@ GameObject:
   - component: {fileID: 7947247492746576195}
   - component: {fileID: 780667806001689088}
   - component: {fileID: 117344570239688647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_79
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 5293722548177170036}
   - component: {fileID: 4595636808129709669}
   - component: {fileID: 411829447299275861}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1867,7 +1867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7923334960554803102}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1981,7 +1981,7 @@ GameObject:
   - component: {fileID: 5693791810749372933}
   - component: {fileID: 593897953412826276}
   - component: {fileID: 6052317307893341860}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 6241629615932141293}
   - component: {fileID: 2091101484537139053}
   - component: {fileID: 5298641331898444039}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2147,7 +2147,7 @@ GameObject:
   - component: {fileID: 380927419991548437}
   - component: {fileID: 2174018402061140136}
   - component: {fileID: 7837431118968750777}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2230,7 +2230,7 @@ GameObject:
   - component: {fileID: 9200958185921685538}
   - component: {fileID: 963243015191466226}
   - component: {fileID: 4087280926332204351}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2311,7 +2311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764994585398397895}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,7 +2363,7 @@ GameObject:
   - component: {fileID: 6287035374029710747}
   - component: {fileID: 5350935649692351032}
   - component: {fileID: 7238332775015729026}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2446,7 +2446,7 @@ GameObject:
   - component: {fileID: 8016715706659920862}
   - component: {fileID: 741209372118130211}
   - component: {fileID: 1360936945377008125}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 5209992539450730140}
   - component: {fileID: 6912584601037354111}
   - component: {fileID: 2412313242963423170}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 6308659156806459645}
   - component: {fileID: 6122601806865165378}
   - component: {fileID: 5430444320855563810}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2695,7 +2695,7 @@ GameObject:
   - component: {fileID: 4684778771434648660}
   - component: {fileID: 5499911732939955687}
   - component: {fileID: 5303882400914132006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2778,7 +2778,7 @@ GameObject:
   - component: {fileID: 4161108966672431808}
   - component: {fileID: 871168434191080791}
   - component: {fileID: 5123287450891250999}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2861,7 +2861,7 @@ GameObject:
   - component: {fileID: 2753241984159440688}
   - component: {fileID: 5256851125799687031}
   - component: {fileID: 5068037569893489182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2944,7 +2944,7 @@ GameObject:
   - component: {fileID: 1254963592796376567}
   - component: {fileID: 4187867755735331110}
   - component: {fileID: 1998522463087440262}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3027,7 +3027,7 @@ GameObject:
   - component: {fileID: 487916791857761190}
   - component: {fileID: 2874108380979846757}
   - component: {fileID: 1629967762605532399}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3110,7 +3110,7 @@ GameObject:
   - component: {fileID: 2008286346860870804}
   - component: {fileID: 2628194081730054280}
   - component: {fileID: 2471736300393854266}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3193,7 +3193,7 @@ GameObject:
   - component: {fileID: 1719936073061879738}
   - component: {fileID: 2848628638034298786}
   - component: {fileID: 5361793099934012520}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3276,7 +3276,7 @@ GameObject:
   - component: {fileID: 1370700175523872172}
   - component: {fileID: 4343519215253116545}
   - component: {fileID: 7380588766904524857}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3359,7 +3359,7 @@ GameObject:
   - component: {fileID: 5869643778628656349}
   - component: {fileID: 478519419665019343}
   - component: {fileID: 9141464618535787707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3442,7 +3442,7 @@ GameObject:
   - component: {fileID: 7798481565696758508}
   - component: {fileID: 2887900869670018980}
   - component: {fileID: 1464421308348279573}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3525,7 +3525,7 @@ GameObject:
   - component: {fileID: 1682887031162491758}
   - component: {fileID: 1429965790737846498}
   - component: {fileID: 8120778302925606824}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3608,7 +3608,7 @@ GameObject:
   - component: {fileID: 1188135484114561507}
   - component: {fileID: 8199025499490195087}
   - component: {fileID: 7238549765402025310}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3691,7 +3691,7 @@ GameObject:
   - component: {fileID: 8370425469056925474}
   - component: {fileID: 4473589075960506249}
   - component: {fileID: 4264961782320290469}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_74
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3774,7 +3774,7 @@ GameObject:
   - component: {fileID: 8259230361007175377}
   - component: {fileID: 5588607126645768786}
   - component: {fileID: 1605104167125658097}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3857,7 +3857,7 @@ GameObject:
   - component: {fileID: 1472171376866590341}
   - component: {fileID: 1639621754758537133}
   - component: {fileID: 1879340094299467680}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3940,7 +3940,7 @@ GameObject:
   - component: {fileID: 1008092922050701245}
   - component: {fileID: 4829280908384995093}
   - component: {fileID: 7688712420913051381}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4023,7 +4023,7 @@ GameObject:
   - component: {fileID: 6175256243661036008}
   - component: {fileID: 8440943222377536914}
   - component: {fileID: 4356766391821452774}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4106,7 +4106,7 @@ GameObject:
   - component: {fileID: 3810165399822603811}
   - component: {fileID: 9120044221883399472}
   - component: {fileID: 2293915106621809823}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4189,7 +4189,7 @@ GameObject:
   - component: {fileID: 8066435657498804446}
   - component: {fileID: 418179146042089171}
   - component: {fileID: 2557459632962774423}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4272,7 +4272,7 @@ GameObject:
   - component: {fileID: 8612457716110572671}
   - component: {fileID: 1236739730743109148}
   - component: {fileID: 3227000259700871403}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4355,7 +4355,7 @@ GameObject:
   - component: {fileID: 312584890863474304}
   - component: {fileID: 4638780306597688837}
   - component: {fileID: 4637741744209053628}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4438,7 +4438,7 @@ GameObject:
   - component: {fileID: 738853626454667476}
   - component: {fileID: 5333520675715792698}
   - component: {fileID: 3339107242823802876}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_77
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4521,7 +4521,7 @@ GameObject:
   - component: {fileID: 2971765468685434560}
   - component: {fileID: 3091270989646251610}
   - component: {fileID: 59992863881216383}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 407697118910534532}
   - component: {fileID: 2249254367879641324}
   - component: {fileID: 952307248315963998}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4685,7 +4685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4043234409251425686}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4719,7 +4719,7 @@ GameObject:
   - component: {fileID: 6459273171362855751}
   - component: {fileID: 7696637755787469862}
   - component: {fileID: 2143529783279712226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4802,7 +4802,7 @@ GameObject:
   - component: {fileID: 417328443957742483}
   - component: {fileID: 500412562178150699}
   - component: {fileID: 6679681781712343500}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 5192926620510472304}
   - component: {fileID: 3838851505430450805}
   - component: {fileID: 6087802412531529175}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4968,7 @@ GameObject:
   - component: {fileID: 3793871543611465406}
   - component: {fileID: 9146515851880792761}
   - component: {fileID: 503933975800646818}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_71
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5051,7 +5051,7 @@ GameObject:
   - component: {fileID: 4279696675244209642}
   - component: {fileID: 6377723023515256900}
   - component: {fileID: 9086040008070134617}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5134,7 +5134,7 @@ GameObject:
   - component: {fileID: 5176833100949867842}
   - component: {fileID: 4676620580535590627}
   - component: {fileID: 6452030885242825325}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5217,7 +5217,7 @@ GameObject:
   - component: {fileID: 7601209774551701609}
   - component: {fileID: 4017860124576128227}
   - component: {fileID: 1864188902999401094}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5298,7 +5298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6729414903496798007}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body_BaseStructure_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5332,7 +5332,7 @@ GameObject:
   - component: {fileID: 2571777886746204257}
   - component: {fileID: 5439292430546427846}
   - component: {fileID: 4736570240408484011}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5415,7 +5415,7 @@ GameObject:
   - component: {fileID: 6429902783500896849}
   - component: {fileID: 4572902525732065034}
   - component: {fileID: 1623639248025756259}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5498,7 +5498,7 @@ GameObject:
   - component: {fileID: 2805396538852403973}
   - component: {fileID: 4134239621692425964}
   - component: {fileID: 1052707434111052714}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_70
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5581,7 +5581,7 @@ GameObject:
   - component: {fileID: 3981101852123259076}
   - component: {fileID: 4360520603041894351}
   - component: {fileID: 1983209152353454505}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5664,7 +5664,7 @@ GameObject:
   - component: {fileID: 6794518896418749617}
   - component: {fileID: 3855392262449138670}
   - component: {fileID: 8456396939085528754}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5747,7 +5747,7 @@ GameObject:
   - component: {fileID: 5096330673107236120}
   - component: {fileID: 1798933490092858036}
   - component: {fileID: 1623551863171996103}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5830,7 +5830,7 @@ GameObject:
   - component: {fileID: 2081645037816729513}
   - component: {fileID: 7601779196104789207}
   - component: {fileID: 6816078840296425729}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5913,7 +5913,7 @@ GameObject:
   - component: {fileID: 7349590844556497358}
   - component: {fileID: 5562681352766364104}
   - component: {fileID: 2416921129165153602}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5996,7 +5996,7 @@ GameObject:
   - component: {fileID: 8036378111187482168}
   - component: {fileID: 1188925091922097091}
   - component: {fileID: 5551229033879359520}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6079,7 +6079,7 @@ GameObject:
   - component: {fileID: 145244136969887798}
   - component: {fileID: 7418505580861937530}
   - component: {fileID: 642424794600172515}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6162,7 +6162,7 @@ GameObject:
   - component: {fileID: 3207542682289063475}
   - component: {fileID: 7639631727179799597}
   - component: {fileID: 2011581132264341019}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6245,7 +6245,7 @@ GameObject:
   - component: {fileID: 2077080237608785724}
   - component: {fileID: 1408103372561270755}
   - component: {fileID: 7757473001524076044}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6328,7 +6328,7 @@ GameObject:
   - component: {fileID: 3721967101045371358}
   - component: {fileID: 3656318925909795871}
   - component: {fileID: 2535059549444430756}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6411,7 +6411,7 @@ GameObject:
   - component: {fileID: 4956656956034039267}
   - component: {fileID: 8964788889200473110}
   - component: {fileID: 4475624360736825291}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6494,7 +6494,7 @@ GameObject:
   - component: {fileID: 8100386354161741401}
   - component: {fileID: 6354404318909895}
   - component: {fileID: 6050035470679752799}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6577,7 +6577,7 @@ GameObject:
   - component: {fileID: 6807404247825997811}
   - component: {fileID: 2783007522961232099}
   - component: {fileID: 4104289737234180869}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6660,7 +6660,7 @@ GameObject:
   - component: {fileID: 2309130422385632005}
   - component: {fileID: 2226507792082277875}
   - component: {fileID: 6120667516918094359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6743,7 +6743,7 @@ GameObject:
   - component: {fileID: 2056098051597446010}
   - component: {fileID: 7879058170406813195}
   - component: {fileID: 3383248892664229130}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6826,7 +6826,7 @@ GameObject:
   - component: {fileID: 650511046649294617}
   - component: {fileID: 3414488030249316994}
   - component: {fileID: 1773341877336891533}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6909,7 +6909,7 @@ GameObject:
   - component: {fileID: 9175158858788911439}
   - component: {fileID: 5083356504916636232}
   - component: {fileID: 5862472854608116687}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6992,7 +6992,7 @@ GameObject:
   - component: {fileID: 5218002242870709404}
   - component: {fileID: 4690938444981212467}
   - component: {fileID: 2369285740220448923}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7075,7 +7075,7 @@ GameObject:
   - component: {fileID: 4726698023048219398}
   - component: {fileID: 1143658283841540597}
   - component: {fileID: 2330694544540714762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7158,7 +7158,7 @@ GameObject:
   - component: {fileID: 1656124536046299739}
   - component: {fileID: 1782813701226370624}
   - component: {fileID: 2612779064164398972}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7241,7 +7241,7 @@ GameObject:
   - component: {fileID: 8666749640988697449}
   - component: {fileID: 3714379719140189104}
   - component: {fileID: 9134397066202530956}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7324,7 +7324,7 @@ GameObject:
   - component: {fileID: 4214530374059707845}
   - component: {fileID: 8265110788020039699}
   - component: {fileID: 789485045207177315}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7407,7 +7407,7 @@ GameObject:
   - component: {fileID: 7541857853353840056}
   - component: {fileID: 3148654498128754539}
   - component: {fileID: 3807668199316022088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7490,7 +7490,7 @@ GameObject:
   - component: {fileID: 6332990144516798191}
   - component: {fileID: 5205686050608124447}
   - component: {fileID: 6571233552046540282}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7573,7 +7573,7 @@ GameObject:
   - component: {fileID: 3310502480947697566}
   - component: {fileID: 7164241027800287462}
   - component: {fileID: 1258971123262626796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7656,7 +7656,7 @@ GameObject:
   - component: {fileID: 7454804006413532463}
   - component: {fileID: 7524585650730086276}
   - component: {fileID: 8460464504895580233}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7737,7 +7737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4404028743791897444}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7774,7 +7774,7 @@ GameObject:
   - component: {fileID: -3514299564778796975}
   - component: {fileID: 2167887227984685403}
   - component: {fileID: 4250590018897031151}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tower_105_SiegeCannonTower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -7813,7 +7813,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -7858,10 +7858,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  name: 
+  _towername: 
   level: 0
   towerType: 3
   _towerheals: 10
+  _currentheals: 0
   attackType: 3
   _damage: 20
   _range: 20
@@ -7900,7 +7901,7 @@ GameObject:
   - component: {fileID: 1295813372180659824}
   - component: {fileID: 8970187725931985621}
   - component: {fileID: 6768862132093746150}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7983,7 +7984,7 @@ GameObject:
   - component: {fileID: 4041024159701833937}
   - component: {fileID: 6275411581519646774}
   - component: {fileID: 8056296485145266660}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8066,7 +8067,7 @@ GameObject:
   - component: {fileID: 6576786520313447866}
   - component: {fileID: 1201071601635745643}
   - component: {fileID: 1776009983829110394}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8149,7 +8150,7 @@ GameObject:
   - component: {fileID: 7316661800903256858}
   - component: {fileID: 5702482959286372531}
   - component: {fileID: 2594528816109568883}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8232,7 +8233,7 @@ GameObject:
   - component: {fileID: 1573310730163591604}
   - component: {fileID: 2044371416999031367}
   - component: {fileID: 2215373503895318408}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8315,7 +8316,7 @@ GameObject:
   - component: {fileID: 6904468851307070802}
   - component: {fileID: 8185803376054333829}
   - component: {fileID: 8104333290572273490}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8398,7 +8399,7 @@ GameObject:
   - component: {fileID: 3420034839117281673}
   - component: {fileID: 6358855925714263981}
   - component: {fileID: 8619199810354023150}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8481,7 +8482,7 @@ GameObject:
   - component: {fileID: 6099390754585540631}
   - component: {fileID: 7495501536292956620}
   - component: {fileID: 1092126342187984137}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8562,7 +8563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634855529277835986}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8595,7 +8596,7 @@ GameObject:
   - component: {fileID: 472846366879000738}
   - component: {fileID: 8876994020772656120}
   - component: {fileID: 1538810478911752737}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8678,7 +8679,7 @@ GameObject:
   - component: {fileID: 7570895567969764616}
   - component: {fileID: 7999413516493117393}
   - component: {fileID: 8926227470818878092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tripo_part_54
   m_TagString: Untagged
   m_Icon: {fileID: 0}

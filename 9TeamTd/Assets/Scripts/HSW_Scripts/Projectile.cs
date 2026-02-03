@@ -20,8 +20,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private Vector3 moveDirection;
 
+
     [SerializeField] private int attackValue; // 생성한 타워로부터 공격력 받아오기
-    [SerializeField] private float damageRatio; // 생성한 타워로부터 공격력 받아오기
+    [SerializeField] private float damageRatio = 1; // 비율은 일단 1로
     [SerializeField] private float moveSpeed;   // ProjectileStats 에서 받아오기
     [SerializeField] private float lifeTime;    // ProjectileStats 에서 받아오기
     [SerializeField] private float damageInterval;  // ProjectileStats 에서 받아오기
@@ -29,10 +30,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileSpacialAbility projectileSpacialAbility;    // ProjectileStats 에서 받아오기
     [SerializeField] private DamageTargetTeamType damageTargetTeamType;
     [SerializeField] private ProjectileDamageCategory projectileDamageCategory;
-    
-    
+
+
     // 데미지 계산 스크립트
-    DamageCalculator damageCalculator = new DamageCalculator();
+    // DamageCalculator damageCalculator = new DamageCalculator();
 
     // 콜라이더 범위 내 적 담아둘 리스트(주기에 따라 여러 번 데미지를 주는 경우 사용)
     private List<Collider> dmgTrgets = new List<Collider>();
@@ -52,7 +53,7 @@ public class Projectile : MonoBehaviour
         {
             // 안전을 위해 다시 projectileStats 을 부르고 다시 셋팅
             stats.Init();
-            InitStats(stats); 
+            InitStats(stats);
         }
 
 
@@ -217,10 +218,10 @@ public class Projectile : MonoBehaviour
     private void GiveDamageChance(Collider other)
     {
         // 데미지 계산
-        int finalDMG = damageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
+        int finalDMG = DamageCalculator.CalculatingDamage(attackValue, damageRatio, 0); // 현재는 방어력 0으로 놓지만, 추후 수정 필요
 
-        // 실제로 데미지 주는 처리 (추가 필요)
-        // other.GetComponent<Monster>().TakeDamage(damageCalculator.CalculatingDamage(공격력, 비율, 방어력));
+        // 실제로 데미지 주는 처리 (방어력 들어가도록 수정 필요)
+        other.GetComponent<Monster>().TakeDamage(attackValue, damageRatio);
         Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
 
         // 단일 피해면 오브젝트 비활성화
@@ -281,7 +282,7 @@ public class Projectile : MonoBehaviour
         // Reset();
         // this.gameObject.SetActive(false);
 
-        Destroy(this.gameObject );  // !!!!! 추후 오브젝트풀링 하면 삭제 예정
+        Destroy(this.gameObject);  // !!!!! 추후 오브젝트풀링 하면 삭제 예정
     }
 
 
@@ -292,10 +293,10 @@ public class Projectile : MonoBehaviour
 
 
     // 타워랑 연결하는 코드
-    public void SetTarget(Transform target, float damage)
+    public void SetTarget(Transform target, float attackPower)
     {
         _target = target;
-        attackValue = (int)damage;
+        attackValue = (int)attackPower;
 
 
         // 발사 순간 방향 저장

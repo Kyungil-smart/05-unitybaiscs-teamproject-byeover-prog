@@ -5,6 +5,7 @@ using System.IO;
 using Unity.Jobs.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using static StatusEffectDatas;
 using static TowerStats;
 using static UnityEngine.GraphicsBuffer;
 
@@ -22,7 +23,7 @@ public enum JsonType
     MonsterResourcesData,
     MonsterSpawnData,
     ProjectileData,
-    StatusEffectData,   // 현재 테이블 없음
+    StatusEffectData,
 }
 
 // https://3dperson1.tistory.com/117 스크립트 기반 -> 추후 수정 예정
@@ -45,6 +46,7 @@ public class JsonManager : MonoBehaviour
     private MonsterResourcesDataList _monsterResourcesData;
     private MonsterSpawnDataList _monsterSpawnData;
     private ProjectileDataList _projectileData;
+    private StatusEffectDataList _statusEffectData;
 
 
     private void Awake()
@@ -68,12 +70,12 @@ public class JsonManager : MonoBehaviour
     // @@ 테이블 추가될 때마다 업데이트 필요
     private void LoadJsonFiles()
     {
-        LoadTowerData("Datas/TowerDataExample");
+        LoadTowerData("Datas/TowerData");
         LoadMonsterData("Datas/MonsterData");
         LoadMonsterResourcesData("Datas/MonsterResourcesData");
         LoadMonsterSpawnData("Datas/MonsterSpawnData");
         LoadProjectileData("Datas/ProjectileData");
-
+        LoadProjectileData("Datas/StatusEffectData");
 
         /*
         TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴//TextAsset jsonDataFile = Resources.Load<TextAsset>("Datas/TowerData");    // TextAsset(텍스트 파일 형식) 으로 리소스 폴더 하위 경로에서 TowerData 파일을 불러옴
@@ -87,6 +89,23 @@ public class JsonManager : MonoBehaviour
         }
         */
     }
+
+
+    // 안정성을 위해 테스트하는 함수
+    public bool HasTowerData(int id, int level)
+    {
+        // 해당 자료 있으면 통과, 자료 없으면 false 뱉도록
+        if (_towerData == null) return false;
+
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id && t.level == level);
+
+        return foundData != null;
+    }
+
+
+
+
+
 
 
     // @@ 테이블 추가될 때마다 업데이트 필요
@@ -157,6 +176,21 @@ public class JsonManager : MonoBehaviour
         }
     }
 
+    private void LoadStatusEffectData(string dataFilePath)
+    {
+        TextAsset jsonDataFile = Resources.Load<TextAsset>(dataFilePath);
+        if (jsonDataFile != null)
+        {
+            _statusEffectData = JsonUtility.FromJson<StatusEffectDataList>(jsonDataFile.text);
+        }
+        else
+        {
+            Debug.LogError($"파일 없음: {dataFilePath}");
+        }
+    }
+
+
+
 
 
 
@@ -177,9 +211,14 @@ public class JsonManager : MonoBehaviour
         return foundData; // 찾은 데이터를 호출한 곳으로 돌려줌
     }
 
+    
     public MonsterDatas GetMonsterData(int id, int level)
     {
-        if (_monsterData == null) return null;
+        if (_monsterData == null || _monsterData.monsters == null)
+        {
+            Debug.LogError("[GetMonsterData] 몬스터 데이터가 로드되지 않았습니다.");
+            return null;
+        }
 
         MonsterDatas foundData = _monsterData.monsters.Find(t => t.id == id && t.level == level);
 
@@ -191,6 +230,21 @@ public class JsonManager : MonoBehaviour
         return foundData;
     }
 
+
+
+    // 스폰 데이터 전체 리스트를 반환하는 함수 (MonsterManager가 ID를 몰라도 됨)
+    public List<MonsterSpawnDatas> GetAllSpawnDatas()
+    {
+        if (_monsterSpawnData == null || _monsterSpawnData.spawnPattern == null)
+        {
+            Debug.LogWarning("MonsterSpawnData가 로드되지 않았거나 비어있습니다.");
+            return new List<MonsterSpawnDatas>();
+        }
+        return _monsterSpawnData.spawnPattern;
+    }
+
+
+
     public MonsterResourcesDatas GetMonsterResourcesData(int id)
     {
         if (_monsterResourcesData == null) return null;
@@ -199,7 +253,7 @@ public class JsonManager : MonoBehaviour
 
         if (foundData == null)
         {
-            Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
+            Debug.LogWarning($"ID: {id} 에 해당하는 몬스터 데이터 없음");
         }
 
         return foundData;
@@ -209,11 +263,11 @@ public class JsonManager : MonoBehaviour
     {
         if (_monsterSpawnData == null) return null;
 
-        MonsterSpawnDatas foundData = _monsterSpawnData.monsterSpawn.Find(t => t.id == id);
+        MonsterSpawnDatas foundData = _monsterSpawnData.spawnPattern.Find(t => t.id == id);
 
         if (foundData == null)
         {
-            Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
+            // Debug.LogError($"ID: {id} 에 해당하는 몬스터 데이터 없음");
         }
 
         return foundData;
@@ -232,6 +286,29 @@ public class JsonManager : MonoBehaviour
 
         return foundData;
     }
+
+
+    public StatusEffectDatas GetStatusEffectData(int id)
+    {
+        if (_statusEffectData == null) return null;
+
+        StatusEffectDatas foundData = _statusEffectData.statusEffects.Find(t => t.id == id);
+
+        if (foundData == null)
+        {
+            Debug.LogWarning($"ID {id}에 해당하는 데이터 없음");
+        }
+
+        return foundData;
+    }
+
+
+
+
+
+
+
+
 
 
     /*
