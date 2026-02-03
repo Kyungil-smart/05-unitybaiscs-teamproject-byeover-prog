@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class SceneLoader : MonoBehaviour
 {
-    public GameObject selectPanel;
-
     // UI 버튼에 연결할 함수
-    public void OnClickSlot()
+    public void OnClickStartStage(int sceneIndex)
     {
-        SceneManager.LoadScene(1); // 게임 씬
+        SceneManager.LoadScene(sceneIndex); // 게임 씬
     }
 
     public void OnClickExit()
@@ -20,10 +19,5 @@ public class SceneLoader : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }
-
-    public void OpenPanel()
-    {
-        selectPanel.SetActive(true);
     }
 }
