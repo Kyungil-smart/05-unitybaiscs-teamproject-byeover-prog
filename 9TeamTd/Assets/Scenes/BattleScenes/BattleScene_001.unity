@@ -11631,7 +11631,7 @@ PrefabInstance:
       objectReference: {fileID: 2524287949461117010}
     - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: stageEndTimeForReset
-      value: 901
+      value: 601
       objectReference: {fileID: 0}
     - target: {fileID: 2379324889202909995, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: m_Name
