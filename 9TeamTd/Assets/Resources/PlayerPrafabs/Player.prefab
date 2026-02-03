@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerPrefabs:
   - {fileID: 5990522181706065673, guid: 699cc5f4895dcb74485f3bcc6dbb730f, type: 3}
-  - {fileID: 1338077222858622873, guid: 826c501d2fa5b8e45bc4edb2d8582622, type: 3}
+  - {fileID: 4073764051987568138, guid: d56f29062a6e9bc488f05de8bd443530, type: 3}
   - {fileID: 1962409237225484853, guid: e1090e1696a36e54d8179debfcf5a353, type: 3}
   - {fileID: 1339094510750771618, guid: 01b39151062ac27479bd367b9b154ec3, type: 3}
   - {fileID: 2462854933458674123, guid: f9a45f5178d15884bb3c78fa0b884f6a, type: 3}
@@ -178,6 +178,12 @@ MonoBehaviour:
   move_speed: 6
   max_hp: 10
   current_hp: 10
+  attack_damage: 10
+  attack_speed: 1
+  attack_range: 6
+  projectile_prefab: {fileID: 0}
+  item_prefabs: []
+  drop_height_offset: 1.5
   grid_system: {fileID: 0}
   fallback_min_xz: {x: 0, y: 0}
   fallback_max_xz: {x: 45, y: 45}

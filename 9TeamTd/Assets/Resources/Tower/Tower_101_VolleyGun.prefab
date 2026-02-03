@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 3275296214486321965}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.999, z: -0}
+  m_LocalPosition: {x: 0, y: 0.627, z: -0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 4167799226324243690}
   - component: {fileID: 6912862208798110274}
   m_Layer: 11
-  m_Name: Sample_Tower_VolleyGun
+  m_Name: Tower_101_VolleyGun
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,9 +552,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3bac48ad82b154e81222ce4023ce52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1103
+  id: 1101
   level: 1
   name: 
+  desc: 
+  towerAddress: 
   towerType: 0
   maxHP: 0
   attackType: 0
@@ -578,10 +580,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   _towername: 
+  _towerdesc: 
+  _towerAddress: 
   level: 0
   towerType: 3
-  _towerheals: 10
-  _currentheals: 0
+  _towerMaxHP: 0
+  _currentHP: 0
   attackType: 3
   _damage: 20
   _range: 15
@@ -590,7 +594,7 @@ MonoBehaviour:
   defenceValue: 0
   towerCost: 0
   _currentTarget: {fileID: 0}
-  _bulletPrefab: {fileID: 597714055441402764, guid: 5d2aa44b505bce34f83ad55a040a0898, type: 3}
+  _bulletPrefab: {fileID: 597714055441402764, guid: 6ef50474dcce536449322927fced6a94, type: 3}
   _firePoint: {fileID: 7267208705189036331}
 --- !u!114 &6912862208798110274
 MonoBehaviour:
@@ -869,7 +873,7 @@ Transform:
   m_GameObject: {fileID: 6518557646750304533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: -0.3}
+  m_LocalPosition: {x: 0, y: 0.42100006, z: -0.3}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -974,7 +978,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.18, y: 0.36, z: 0.18}
+  m_LocalScale: {x: 0.18, y: 0.27, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6577166573490117776}
@@ -1141,7 +1145,7 @@ Transform:
   m_GameObject: {fileID: 6765101705584727822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0.32}
+  m_LocalPosition: {x: 0, y: 0.42100006, z: 0.32}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1411,7 +1415,7 @@ Transform:
   m_GameObject: {fileID: 7468865460426330101}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: -0.4}
+  m_LocalPosition: {x: 0, y: 0.421, z: -0.4}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:

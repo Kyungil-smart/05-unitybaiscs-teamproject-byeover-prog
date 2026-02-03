@@ -89,9 +89,9 @@ public class ProjectileStats : MonoBehaviour
         overlapCount = data.overlapCount;
 
 
-        Debug.Log($"SetupValue{effectRate}");
+        //Debug.Log($"SetupValue{effectRate}");
 
 
-        Debug.Log($"{name}의 능력치 설정 완료");
+        // Debug.Log($"{name}의 능력치 설정 완료");
     }
 }

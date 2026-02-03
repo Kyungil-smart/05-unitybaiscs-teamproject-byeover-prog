@@ -33,10 +33,26 @@
     "overlapCount": -1
   },
   {
+    "id": 11011,
+    "name": "Projectile_1011_CannonBall_01",
+    "moveSpeed": 30,
+    "lifeTime": 0.2,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerToTarget",
+    "projectileSpacialAbility": "Single",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Physical",
+    "effectRate": -1,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": -1,
+    "overlapCount": -1
+  },
+  {
     "id": 11021,
     "name": "Projectile_Arrow_01_Stright",
-    "moveSpeed": 27,
-    "lifeTime": 0.4,
+    "moveSpeed": 24,
+    "lifeTime": 0.6,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
     "projectileSpacialAbility": "Single",
@@ -121,12 +137,12 @@
     "projectileSpwanType": "AttackerPosition",
     "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Water",
-    "effectRate": 5000,
-    "effectValue": -0.6,
+    "projectileDamageCategory": "Physical",
+    "effectRate": 10000,
+    "effectValue": 2,
     "effectInterval": -1,
-    "duration": 10,
-    "overlapCount": 3
+    "duration": 0.5,
+    "overlapCount": -1
   },
   {
     "id": 11081,

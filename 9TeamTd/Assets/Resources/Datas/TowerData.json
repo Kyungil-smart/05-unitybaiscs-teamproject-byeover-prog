@@ -3,7 +3,7 @@
   {
     "id": 1000,
     "name": "기초 마탑",
-    "desc": "마법사 조수의 탑",
+    "desc": "마법 대학생의 공방(월세)",
     "level": 1,
     "towerAddress": "Tower/Base_00_First",
     "towerType": "Base",
@@ -19,7 +19,7 @@
   {
     "id": 1000,
     "name": "기초 마탑",
-    "desc": "마법사 조수의 탑",
+    "desc": "마법 대학생의 공방(월세)",
     "level": 2,
     "towerAddress": "Tower/Base_00_First",
     "towerType": "Base",
@@ -35,7 +35,7 @@
   {
     "id": 1001,
     "name": "수정탑",
-    "desc": "마법사의 탑",
+    "desc": "미스터 왈로위츠의 공방",
     "level": 1,
     "towerAddress": "Tower/Base_01_Enhanced",
     "towerType": "Base",
@@ -51,7 +51,7 @@
   {
     "id": 1001,
     "name": "수정탑",
-    "desc": "마법사의 탑",
+    "desc": "미스터 왈로위츠의 공방",
     "level": 2,
     "towerAddress": "Tower/Base_01_Enhanced",
     "towerType": "Base",
@@ -99,7 +99,7 @@
   {
     "id": 1003,
     "name": "마법 마천루",
-    "desc": "대마법사의 탑",
+    "desc": "불패의 큰 강 뷰 탑",
     "level": 1,
     "towerAddress": "Tower/Base_03_Skyscraper",
     "towerType": "Base",
@@ -115,7 +115,7 @@
   {
     "id": 1003,
     "name": "마법 마천루",
-    "desc": "대마법사의 탑",
+    "desc": "불패의 큰 강 뷰 탑",
     "level": 2,
     "towerAddress": "Tower/Base_03_Skyscraper",
     "towerType": "Base",
@@ -130,34 +130,34 @@
   },
   {
     "id": 1004,
-    "name": "자수정 마탑",
-    "desc": "마법 기술자의 탑",
+    "name": "보호의 자수정 마탑",
+    "desc": "강한 보호막으로 적의 침입을 거부하는 탑",
     "level": 1,
     "towerAddress": "Tower/Base_04_Amethyst",
     "towerType": "Base",
-    "maxHP": 25,
+    "maxHP": 1,
     "attackType": "None",
     "attackValue": -1,
     "attackRange": -1,
     "attackProjectileIDs": -1,
     "attackSpeed": -1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "towerCost": 700
   },
   {
     "id": 1004,
-    "name": "자수정 마탑",
-    "desc": "마법 기술자의 탑",
+    "name": "보호의 자수정 마탑",
+    "desc": "강한 보호막으로 적의 침입을 거부하는 탑",
     "level": 2,
     "towerAddress": "Tower/Base_04_Amethyst",
     "towerType": "Base",
-    "maxHP": 31,
+    "maxHP": 1,
     "attackType": "None",
     "attackValue": -1,
     "attackRange": -1,
     "attackProjectileIDs": -1,
     "attackSpeed": -1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "towerCost": 1050
   },
   {
@@ -242,19 +242,83 @@
   },
   {
     "id": 1101,
-    "name": "돌벽",
-    "desc": "돌로 만들어진 단단한 벽",
+    "name": "리볼데퀸",
+    "desc": "빠르게 총알을 발사하는 자동기계",
     "level": 1,
-    "towerAddress": "Tower/Tower_101_Wall_02",
+    "towerAddress": "Tower_101_VolleyGun",
     "towerType": "Tower",
-    "maxHP": 3,
-    "attackType": "None",
-    "attackValue": -1,
-    "attackRange": -1,
-    "attackProjectileIDs": -1,
-    "attackSpeed": -1,
-    "defenceValue": 2,
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 5,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11011,
+    "attackSpeed": 5,
+    "defenceValue": 0,
     "towerCost": 50
+  },
+  {
+    "id": 1101,
+    "name": "리볼데퀸",
+    "desc": "빠르게 총알을 발사하는 자동기계",
+    "level": 2,
+    "towerAddress": "Tower_101_VolleyGun",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 6,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11011,
+    "attackSpeed": 6.25,
+    "defenceValue": 0,
+    "towerCost": 75
+  },
+  {
+    "id": 1101,
+    "name": "리볼데퀸",
+    "desc": "빠르게 총알을 발사하는 자동기계",
+    "level": 3,
+    "towerAddress": "Tower_101_VolleyGun",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 7,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11011,
+    "attackSpeed": 7.81,
+    "defenceValue": 0,
+    "towerCost": 113
+  },
+  {
+    "id": 1101,
+    "name": "리볼데퀸",
+    "desc": "빠르게 총알을 발사하는 자동기계",
+    "level": 4,
+    "towerAddress": "Tower_101_VolleyGun",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 8,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11011,
+    "attackSpeed": 9.76,
+    "defenceValue": 0,
+    "towerCost": 170
+  },
+  {
+    "id": 1101,
+    "name": "리볼데퀸",
+    "desc": "빠르게 총알을 발사하는 자동기계",
+    "level": 5,
+    "towerAddress": "Tower_101_VolleyGun",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 9,
+    "attackRange": 4.5,
+    "attackProjectileIDs": 11011,
+    "attackSpeed": 12.2,
+    "defenceValue": 0,
+    "towerCost": 255
   },
   {
     "id": 1102,
@@ -266,7 +330,7 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 14,
-    "attackRange": 8,
+    "attackRange": 7,
     "attackProjectileIDs": 11021,
     "attackSpeed": 0.7,
     "defenceValue": 0,
@@ -282,9 +346,9 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 14,
-    "attackRange": 8,
+    "attackRange": 8.05,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 0.88,
+    "attackSpeed": 0.81,
     "defenceValue": 0,
     "towerCost": 60
   },
@@ -298,9 +362,9 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 14,
-    "attackRange": 8,
+    "attackRange": 9.26,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.1,
+    "attackSpeed": 0.93,
     "defenceValue": 0,
     "towerCost": 90
   },
@@ -314,9 +378,9 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 14,
-    "attackRange": 8,
+    "attackRange": 10.65,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.38,
+    "attackSpeed": 1.07,
     "defenceValue": 0,
     "towerCost": 135
   },
@@ -330,9 +394,9 @@
     "maxHP": 2,
     "attackType": "Target",
     "attackValue": 14,
-    "attackRange": 8,
+    "attackRange": 12.25,
     "attackProjectileIDs": 11021,
-    "attackSpeed": 1.73,
+    "attackSpeed": 1.23,
     "defenceValue": 0,
     "towerCost": 203
   },
@@ -658,25 +722,9 @@
   },
   {
     "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
+    "name": "빙파탑",
+    "desc": "주변의 모든 적을 빙결 파도로 공격하는 탑",
     "level": 1,
-    "towerAddress": "Tower/Tower_107_IceFieldTower",
-    "towerType": "Tower",
-    "maxHP": 2,
-    "attackType": "Target",
-    "attackValue": 7,
-    "attackRange": 6,
-    "attackProjectileIDs": 11071,
-    "attackSpeed": 0.2,
-    "defenceValue": 0,
-    "towerCost": 180
-  },
-  {
-    "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 2,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -686,13 +734,13 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 270
+    "towerCost": 150
   },
   {
     "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 3,
+    "name": "빙결파도탑",
+    "desc": "주변의 모든 적을 빙결 파도로 공격하는 탑",
+    "level": 2,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -702,13 +750,13 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 405
+    "towerCost": 225
   },
   {
     "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 4,
+    "name": "빙결파도탑",
+    "desc": "주변의 모든 적을 빙결 파도로 공격하는 탑",
+    "level": 3,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -718,13 +766,13 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 608
+    "towerCost": 338
   },
   {
     "id": 1107,
-    "name": "제빙탑",
-    "desc": "주변의 모든 적을 얼려 공격하는 탑",
-    "level": 5,
+    "name": "빙결파도탑",
+    "desc": "주변의 모든 적을 빙결 파도로 공격하는 탑",
+    "level": 4,
     "towerAddress": "Tower/Tower_107_IceFieldTower",
     "towerType": "Tower",
     "maxHP": 2,
@@ -734,7 +782,23 @@
     "attackProjectileIDs": 11071,
     "attackSpeed": 0.2,
     "defenceValue": 0,
-    "towerCost": 912
+    "towerCost": 507
+  },
+  {
+    "id": 1107,
+    "name": "빙결파도탑",
+    "desc": "주변의 모든 적을 빙결 파도로 공격하는 탑",
+    "level": 5,
+    "towerAddress": "Tower/Tower_107_IceFieldTower",
+    "towerType": "Tower",
+    "maxHP": 2,
+    "attackType": "Target",
+    "attackValue": 23,
+    "attackRange": 6,
+    "attackProjectileIDs": 11071,
+    "attackSpeed": 0.2,
+    "defenceValue": 0,
+    "towerCost": 761
   },
   {
     "id": 1108,
@@ -750,7 +814,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.15,
     "defenceValue": 0,
-    "towerCost": 200
+    "towerCost": 180
   },
   {
     "id": 1108,
@@ -766,7 +830,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.15,
     "defenceValue": 0,
-    "towerCost": 300
+    "towerCost": 270
   },
   {
     "id": 1108,
@@ -782,7 +846,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.15,
     "defenceValue": 0,
-    "towerCost": 450
+    "towerCost": 405
   },
   {
     "id": 1108,
@@ -798,7 +862,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.15,
     "defenceValue": 0,
-    "towerCost": 675
+    "towerCost": 608
   },
   {
     "id": 1108,
@@ -814,7 +878,7 @@
     "attackProjectileIDs": 11081,
     "attackSpeed": 0.15,
     "defenceValue": 0,
-    "towerCost": 1013
+    "towerCost": 912
   }
 ]
 }
