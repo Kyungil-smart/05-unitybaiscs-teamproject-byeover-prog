@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System;
-using UnityEngine.SceneManagement;
 
 // ========== 게임 상태 ==========
 public enum GameState
@@ -36,8 +33,8 @@ public class StageManager : MonoBehaviour
     public float currentSeconds = 0;
     public float stageEndTime = 0;  // 추후 private 로 수정 필요
 
-
-
+    public GameObject victoryPanel;
+    public GameObject defeatPanel;
 
     [Header("아이템 드랍 설정")] 
     [SerializeField] private List<GameObject> itemPrefabs;
@@ -70,8 +67,6 @@ public class StageManager : MonoBehaviour
     public int TotalWaves => _totalWaves;
 
     */
-    public Action StageClear;
-    public Action StageDefeat;
 
     public static OP<int> gold = new();
 
@@ -276,7 +271,7 @@ public class StageManager : MonoBehaviour
         // TODO: 승리 UI 표시
         // TODO: 게임 일시정지 (Time.timeScale = 0)
 
-        StageClear?.Invoke();
+        victoryPanel.SetActive(true);
         PauseFunction();
         SoundManager.Instance.PlayWinBgm();
         SaveManager.instance.SaveData(1, ClearOutGameGem);
@@ -293,7 +288,7 @@ public class StageManager : MonoBehaviour
 
         // Debug.Log($"[GameManager] 생명이 0이 되었습니다!");
 
-        StageDefeat?.Invoke();
+        defeatPanel.SetActive(true);
         PauseFunction();
 
         SoundManager.Instance.PlayLoseBgm();

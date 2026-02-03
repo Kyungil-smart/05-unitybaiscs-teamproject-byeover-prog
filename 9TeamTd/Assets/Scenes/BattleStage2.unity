@@ -3007,8 +3007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ESCpanel: {fileID: 341701348}
-  victoryPanel: {fileID: 491916731}
-  defeatPanel: {fileID: 1651054623}
   goldText: {fileID: 402192006}
   hpText: {fileID: 908266757}
 --- !u!114 &403210275
@@ -13101,9 +13099,17 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
+      propertyPath: defeatPanel
+      value: 
+      objectReference: {fileID: 1651054623}
+    - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: basePosition
       value: 
       objectReference: {fileID: 198121807}
+    - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
+      propertyPath: victoryPanel
+      value: 
+      objectReference: {fileID: 491916731}
     - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: ClearOutGameGem
       value: 150

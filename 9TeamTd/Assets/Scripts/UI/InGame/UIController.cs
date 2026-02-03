@@ -16,8 +16,8 @@ public class UIController : MonoBehaviour
 
     // 패널
     [SerializeField] GameObject ESCpanel;
-    [SerializeField] GameObject victoryPanel;
-    [SerializeField] GameObject defeatPanel;
+    //[SerializeField] GameObject victoryPanel;
+    //[SerializeField] GameObject defeatPanel;
 
     // 텍스트
     [SerializeField] TextMeshProUGUI goldText;
@@ -35,24 +35,20 @@ public class UIController : MonoBehaviour
     void OnEnable()
     {
         StageManager.gold.OnValueChanged += UpdateGoldText;
-        StageManager.Instance.StageClear += ShowVictoryPanel;
-        StageManager.Instance.StageDefeat += ShowDefeatPanel;
     }
     void OnDisable()
     {
         StageManager.gold.OnValueChanged -= UpdateGoldText;
-        StageManager.Instance.StageClear -= ShowVictoryPanel;
-        StageManager.Instance.StageDefeat -= ShowDefeatPanel;
     }
 
-    void ShowVictoryPanel()
-    {
-        victoryPanel.SetActive(true);
-    }
-    void ShowDefeatPanel()
-    {
-        defeatPanel.SetActive(true);
-    }
+    //void ShowVictoryPanel()
+    //{
+    //    victoryPanel.SetActive(true);
+    //}
+    //void ShowDefeatPanel()
+    //{
+    //    defeatPanel.SetActive(true);
+    //}
 
     private void Start()
     {
@@ -86,9 +82,6 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             StageManager.gold.Value += 1000;
-#if UNITY_EDITOR
-            Debug.Log("돈무한 치트 사용!!!");
-#endif
         }
         //if (Input.GetKeyDown(KeyCode.E))
         //{
