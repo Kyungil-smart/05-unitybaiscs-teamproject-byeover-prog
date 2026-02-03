@@ -170,8 +170,10 @@ public class StageManager : MonoBehaviour
     // 타워 생성 함수
     private void SpawnBase()
     {
-        // 게임 오브젝트 스폰 및 데이터 가져오기 (타워의 경우)
+        // 게임 오브젝트 정보 및 주소 가져오기 (베이스의 경우)
         spawnBaseID = GameManager.Instance.SelectedBaseID.Value;
+        baseAddress = JsonManager.instanceJsonManger.ReturnTowerAddress(spawnBaseID);
+
 
         // 위치를 받고 오브젝트 생성
         Vector3 curBasePos = basePosition.position;

@@ -102,6 +102,21 @@ public class JsonManager : MonoBehaviour
         return foundData != null;
     }
 
+    public string ReturnTowerAddress(int id)
+    {
+        // 해당 자료 있으면 통과, 자료 없으면 false 뱉도록
+        if (_towerData == null)
+        {
+            Debug.LogWarning("타워 데이터 없음");
+            return "데이터 없음";
+        }
+
+        TowerDatas foundData = _towerData.towers.Find(t => t.id == id);
+
+        return foundData.towerAddress;
+    }
+
+
     // 현재 사용 안함
     public bool HasProjectileData(int id)
     {
