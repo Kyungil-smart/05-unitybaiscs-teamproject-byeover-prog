@@ -82,6 +82,10 @@ public class SaveManager : MonoBehaviour
 
     public SaveData LoadData()
     {
+        if (!File.Exists(GetPath(nowSlot)))
+        {
+            return null;
+        }
         string json = File.ReadAllText(GetPath(nowSlot));
         JsonUtility.FromJsonOverwrite(json, nowSave);
 
