@@ -157,15 +157,15 @@ public class Monster : MonoBehaviour, IDamagable
 
     public void DestroyMonster()
     {
-        // Debug.Log(2);
+        if (isDead) return;
         isDead = true;
+        
+        StageManager.Instance.GetGold(resource.gold * 10);
 
-        // Debug.Log(3);
-        // 현재 몬스터에 붙은 정보를 못 불러옵니다
-        StageManager.Instance.GetGold(10 * (Type + 1));
-        //  Debug.Log(4);
-        // 현재 몬스터에 붙은 정보를 못 불러옵니다
-        // StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+        if (resource.DropItemId != null)
+        {
+            StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
+        }
 
         // Debug.Log(5);
         OnDeath?.Invoke(this);
@@ -173,7 +173,6 @@ public class Monster : MonoBehaviour, IDamagable
         GameObject deathEffectPrefab = Resources.Load<GameObject>("VisualEffectPrafabs/VE_DestroyExplosion_03");
         Destroy(Instantiate(deathEffectPrefab, transform.position, Quaternion.identity), 0.3f);
         Destroy(gameObject);
-        // Debug.Log(7);
     }
 
 
