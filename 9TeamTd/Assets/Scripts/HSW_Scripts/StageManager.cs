@@ -64,7 +64,7 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-
+        /*
         // 싱글톤 설정
         if (Instance == null)
         {
@@ -77,7 +77,7 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        */
 
     }
 
