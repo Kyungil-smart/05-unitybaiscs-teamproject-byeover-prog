@@ -51,14 +51,18 @@ MonoBehaviour:
   main_bgm_clips:
   - {fileID: 8300000, guid: 6889dc84c9678471d86b1f1b48481073, type: 3}
   - {fileID: 8300000, guid: e8c93fb10e04f4a58a24406a8580657c, type: 3}
-  - {fileID: 8300000, guid: 7f862949cea8d4483aa8f811bcfd2292, type: 3}
+  - {fileID: 8300000, guid: 7f10fcd59271943528eba0596be6e943, type: 3}
   battle_bgm_clips:
   - {fileID: 8300000, guid: 0e8e7826a822f4134b9b50ccd2ff837e, type: 3}
   - {fileID: 8300000, guid: a61f924f6d531409a8f93937e9e91f7b, type: 3}
   - {fileID: 8300000, guid: 9eb445ac6be2044198c543c9a31e9f3d, type: 3}
   - {fileID: 8300000, guid: db53bc220d5cf499cb93fd94268ececd, type: 3}
+  - {fileID: 8300000, guid: cf3920769994049f9975de6938a8efc8, type: 3}
   win_bgm_clips:
   - {fileID: 8300000, guid: de8c41d6bcbbe4ac1b7b47fe98b5c538, type: 3}
+  - {fileID: 8300000, guid: d53e8b49cec094f72a65f2b6d12c0f74, type: 3}
+  - {fileID: 8300000, guid: 4a765dc35e68046f9b598edf7651cba7, type: 3}
   lose_bgm_clips:
   - {fileID: 8300000, guid: acf8ae35d53774be9a56f878f9321854, type: 3}
+  - {fileID: 8300000, guid: a7e89a34dd7964e078f9c0a5048d15aa, type: 3}
   verbose_logs: 0

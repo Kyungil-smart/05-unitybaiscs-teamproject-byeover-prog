@@ -68,7 +68,7 @@ public class MonsterManager : MonoBehaviour
     {
         if (!_isRunning) return;
 
-        _gameTime += Time.deltaTime;
+        _gameTime += Time.deltaTime * 1.5f;
         
         foreach (var pattern in _currentLevelSchedule)
         {
