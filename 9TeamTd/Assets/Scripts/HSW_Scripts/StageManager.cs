@@ -76,11 +76,12 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
         /*
         // 싱글톤 설정
         if (Instance == null)
         {
-            Instance = this;
+            
             Debug.Log("[GameManager] 싱글톤 생성 완료");
         }
         else
