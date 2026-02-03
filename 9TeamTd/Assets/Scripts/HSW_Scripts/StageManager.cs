@@ -36,6 +36,9 @@ public class StageManager : MonoBehaviour
     public float currentSeconds = 0;
     public float stageEndTime = 0;  // 추후 private 로 수정 필요
 
+
+
+
     [Header("아이템 드랍 설정")] 
     [SerializeField] private List<GameObject> itemPrefabs;
 
@@ -45,7 +48,7 @@ public class StageManager : MonoBehaviour
     // ========== 싱글톤 ==========
     // 다른 스크립트에서 GameManager.Instance로 접근 가능
     public static StageManager Instance { get; private set; }
-
+   
 
     // 현재 게임 상태
     private GameState _currentState = GameState.Playing;
@@ -103,6 +106,7 @@ public class StageManager : MonoBehaviour
         SpawnBase();
         StartInGame();
         gold.Value = startGold;
+        GameManager.Instance.ChangeBGM();
     }
 
 
@@ -281,7 +285,7 @@ public class StageManager : MonoBehaviour
 
         StageClear?.Invoke();
         PauseFunction();
-
+        SoundManager.Instance.PlayWinBgm();
         SaveManager.instance.SaveData(1, ClearOutGameGem);
         GameManager.Instance.Init();
 
@@ -306,7 +310,7 @@ public class StageManager : MonoBehaviour
         StageDefeat?.Invoke();
         PauseFunction();
 
-
+        SoundManager.Instance.PlayLoseBgm();
         SaveManager.instance.SaveData(DefeatOutGameGem);
         GameManager.Instance.Init();
 
