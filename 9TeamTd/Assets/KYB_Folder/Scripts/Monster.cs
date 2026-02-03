@@ -159,9 +159,12 @@ public class Monster : MonoBehaviour, IDamagable
     {
         if (isDead) return;
         isDead = true;
-        
-        StageManager.Instance.GetGold(resource.gold * 10);
 
+        if (resource != null)
+        {
+            StageManager.Instance.GetGold(resource.gold * 10);
+        }
+        
         if (resource != null && !string.IsNullOrEmpty(resource.DropItemId))
         {
             StageManager.Instance.TryDropItem(resource.DropItemId, resource.DropProp, transform.position);
