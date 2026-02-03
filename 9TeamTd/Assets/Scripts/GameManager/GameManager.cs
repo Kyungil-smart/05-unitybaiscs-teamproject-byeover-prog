@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     // ========== 싱글톤 ==========
     // 다른 스크립트에서 GameManager.Instance로 접근 가능
     public static GameManager Instance; /*{ get; private set; }*/
+    public static SoundManager InstanceSound { get; private set; }
 
     // 아웃 게임 로직
 
@@ -69,9 +70,8 @@ public class GameManager : MonoBehaviour
         // 매니저 생성 보장
         EnsureManagersExist();
 
-
-
     }
+
 
 
     private void Start()
@@ -81,7 +81,8 @@ public class GameManager : MonoBehaviour
 
         Init();
 
-
+        // 현재 씬 판단해서 배경음 바꿔주는 함수
+        ChangeBGM();
 
         // 게임 시작 시 초기화
         // StartInGame();
@@ -102,6 +103,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+    public void ChangeBGM()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (sceneIndex != 0) SoundManager.Instance.PlayBattleBgm();
+        else SoundManager.Instance.PlayMainBgm();
+    }
+
+    
 
 
 

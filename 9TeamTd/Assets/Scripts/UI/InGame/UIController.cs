@@ -115,5 +115,6 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        GameManager.Instance.ChangeBGM();
     }
 }
