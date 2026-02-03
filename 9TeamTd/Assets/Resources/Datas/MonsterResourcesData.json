@@ -9,13 +9,13 @@
   {
     "id": 2101,
     "gold": 2,
-    "DropItemId": null,
+    "DropItemId": "",
     "DropProp": 0
   },
   {
     "id": 2102,
     "gold": 3,
-    "DropItemId": null,
+    "DropItemId": "",
     "DropProp": 0
   }
 ]
