@@ -59,7 +59,7 @@ public class TwClickUpSellUI : MonoBehaviour
 
                 selectedTower = tower;
 
-                if (tower.level + 1 > 5 || tower.id == 1100 || tower.id == 1101)
+                if (tower.level + 1 > 5 || tower.id == 1100)
                 {
                     upgradeButton.SetActive(false);
                     towerToUpSellUI.ShowInfo(tower.id, tower.level, tower.transform);
