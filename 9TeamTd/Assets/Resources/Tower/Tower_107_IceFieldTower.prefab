@@ -162,9 +162,9 @@ MonoBehaviour:
   monsterLayerMask:
     serializedVersion: 2
     m_Bits: 1048576
-  dotDamagePerSecond: 0
+  dotDamagePerSecond: 1
   tickInterval: 1
-  slowMultiplier: 0.5
+  slowMultiplier: 0.05
   slowHoldSeconds: 6
 --- !u!1 &2967865237135293935
 GameObject:

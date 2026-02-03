@@ -2,169 +2,223 @@
   "resource" : [
   {
     "id": 2100,
-    "gold": 1,
+    "gold": 3,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2101,
-    "gold": 1,
+    "gold": 3,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2102,
-    "gold": 1,
+    "gold": 4,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2103,
-    "gold": 1,
+    "gold": 4,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2104,
-    "gold": 1,
+    "gold": 5,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2105,
-    "gold": 1,
+    "gold": 5,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2106,
-    "gold": 1,
+    "gold": 6,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2107,
-    "gold": 1,
+    "gold": 6,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2108,
-    "gold": 1,
+    "gold": 7,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2109,
-    "gold": 1,
+    "gold": 7,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2110,
-    "gold": 1,
+    "gold": 8,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2111,
-    "gold": 1,
+    "gold": 8,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2112,
+    "gold": 9,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2113,
+    "gold": 9,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2114,
+    "gold": 10,
+    "DropItemId": "1",
+    "DropProp": 1
+  },
+  {
+    "id": 2115,
+    "gold": 10,
     "DropItemId": "1",
     "DropProp": 1
   },
   {
     "id": 2120,
-    "gold": 2,
+    "gold": 6,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2121,
-    "gold": 2,
+    "gold": 7,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2122,
-    "gold": 2,
+    "gold": 8,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2123,
-    "gold": 2,
+    "gold": 9,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2124,
-    "gold": 2,
+    "gold": 10,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2125,
-    "gold": 2,
+    "gold": 11,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2126,
-    "gold": 2,
+    "gold": 12,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2127,
-    "gold": 2,
+    "gold": 13,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2128,
-    "gold": 2,
+    "gold": 14,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2129,
-    "gold": 2,
+    "gold": 15,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2130,
-    "gold": 3,
+    "gold": 200,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2131,
-    "gold": 3,
+    "gold": 220,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2132,
-    "gold": 3,
+    "gold": 250,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2133,
-    "gold": 3,
+    "gold": 300,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2134,
-    "gold": 3,
+    "gold": 350,
     "DropItemId": "\"\"",
     "DropProp": 0
   },
   {
     "id": 2135,
-    "gold": 3,
+    "gold": 400,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2136,
+    "gold": 450,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2137,
+    "gold": 500,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2138,
+    "gold": 550,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2139,
+    "gold": 600,
+    "DropItemId": "\"\"",
+    "DropProp": 0
+  },
+  {
+    "id": 2140,
+    "gold": 650,
     "DropItemId": "\"\"",
     "DropProp": 0
   }

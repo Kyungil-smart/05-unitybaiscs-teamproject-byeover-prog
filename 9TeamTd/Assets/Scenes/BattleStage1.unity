@@ -5647,10 +5647,6 @@ MonoBehaviour:
   toggleContinuousSpawnKey: 99
   isContinuousSpawn: 0
   continuousSpawnInterval: 1
-  useFixedPosition: 0
-  fixedSpawnPosition: {x: 0, y: 0, z: 0}
-  totalSpawnedCount: 0
-  currentMonsterInfo: 
 --- !u!4 &779885146
 Transform:
   m_ObjectHideFlags: 0
@@ -13244,6 +13240,10 @@ PrefabInstance:
     - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: stageID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
+      propertyPath: startGold
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 112171749196013245, guid: ebefe3950d63ec24c955106cef86d8ac, type: 3}
       propertyPath: basePosition

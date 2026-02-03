@@ -137,13 +137,13 @@ public class Monster : MonoBehaviour, IDamagable
             if (baseTarget != null)
             {
                 float finalDamage = stat.attackValue;
-
+                /*
                 if (stat.Type == 2)
                 {
                     Debug.Log("보스 기지 충돌! 게임 오버");
                     finalDamage = 99999999999f;
                 }
-
+                */
                 // 몬스터 공격력만큼 기지에 데미지 주기 (비율은 1.0)
                 baseTarget.TakeDamage(finalDamage, 1.0f);
             }
@@ -162,7 +162,7 @@ public class Monster : MonoBehaviour, IDamagable
 
         if (resource != null)
         {
-            StageManager.Instance.GetGold(resource.gold * 3);
+            StageManager.Instance.GetGold(resource.gold * 1);
         }
         
         if (resource != null && !string.IsNullOrEmpty(resource.DropItemId))
