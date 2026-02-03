@@ -312,7 +312,7 @@ public class StageManager : MonoBehaviour
 
         SoundManager.Instance.PlayLoseBgm();
         SaveManager.instance.SaveData(DefeatOutGameGem);
-        GameManager.Instance.Init();
+        //GameManager.Instance.Init();
 
 
         // TODO: 패배 UI 표시

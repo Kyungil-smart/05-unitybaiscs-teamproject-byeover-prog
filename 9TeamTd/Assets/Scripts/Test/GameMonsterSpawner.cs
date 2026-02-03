@@ -18,21 +18,14 @@ public class GameMonsterSpawner : MonoBehaviour
     int strongMonsterStartId = 2130;
     int strongMonsterEndId = 2135;
 
-    [Header("=== 스폰 설정 ===")]
+    [Header("== 스폰 설정 ==")]
     [Tooltip("스폰 지속 시간 (초)")]
     [SerializeField] private float spawnDuration = 600f; // 10분
 
     [Tooltip("스폰 간격 (초)")]
     [SerializeField] private float spawnInterval = 1f;
 
-    [Header("=== 난이도 곡선 ===")]
-    [Tooltip("강한 몬스터가 나오기 시작하는 시간 (초)")]
-    [SerializeField] private float strongMonsterStartTime = 300f; // 5분부터
-
-    [Tooltip("강한 몬스터 최대 확률 (0~1)")]
-    [SerializeField] private float maxStrongMonsterChance = 0.3f;
-
-    [Header("=== 디버그 정보 ===")]
+    [Header("== 디버그 정보 ==")]
     [SerializeField] private bool isSpawning = false;
     [SerializeField] private float elapsedTime = 0f;
 
@@ -127,7 +120,7 @@ public class GameMonsterSpawner : MonoBehaviour
         // 1단계 (0~10%)
         if (progressRatio < 0.1f)
         {
-            if (Random.value > 0.2f) return -1; // 스폰 확률: 20%
+            if (Random.value > 0.14f) return -1; // 스폰 확률: 14%
             return Random.Range(weakMonsterStartId, weakMonsterEndId + 1); // 약한 몬스터: 100%
         }
         // 2단계 (10~25%)
@@ -155,7 +148,7 @@ public class GameMonsterSpawner : MonoBehaviour
         {
             if (Random.value > 0.75f) return -1; // 스폰 확률: 75%
             
-            if (elapsedTime >= strongMonsterStartTime && randomValue < 0.02f) // 강한 몬스터: 2%
+            if (randomValue < 0.02f) // 강한 몬스터: 2%
                 return Random.Range(strongMonsterStartId, strongMonsterEndId + 1);
             else if (randomValue < 0.40f) // 중간 몬스터: 38%
                 return Random.Range(midMonsterStartId, midMonsterEndId + 1);
