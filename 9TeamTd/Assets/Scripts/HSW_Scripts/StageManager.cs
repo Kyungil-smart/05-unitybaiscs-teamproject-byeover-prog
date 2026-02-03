@@ -22,6 +22,10 @@ public class StageManager : MonoBehaviour
     public int startGold = 0;
     public int ClearOutGameGem = 0;
     public int DefeatOutGameGem = 0;
+
+    // 베이스 스폰 위치 관련
+    [SerializeField] int spawnBaseID = 0;
+    [SerializeField] int spawnBaseLevel = 1;
     [SerializeField] private Transform basePosition;
 
     [Header("For GamePlay")]
@@ -29,6 +33,9 @@ public class StageManager : MonoBehaviour
     public int currentMinutes = 0;
     public float currentSeconds = 0;
     public float stageEndTime = 0;  // 추후 private 로 수정 필요
+
+    
+
 
 
 
@@ -41,6 +48,7 @@ public class StageManager : MonoBehaviour
     private GameState _currentState = GameState.Playing;
     public GameState CurrentState => _currentState;
 
+    /*
     // ========== 플레이어 생명 ==========
     [Header("플레이어 설정")]
     [SerializeField] private int _maxLife = 10;      // 최대 생명
@@ -55,7 +63,7 @@ public class StageManager : MonoBehaviour
     public int CurrentWave => _currentWave;
     public int TotalWaves => _totalWaves;
 
-
+    */
     public Action StageClear;
     public Action StageDefeat;
 
@@ -87,6 +95,7 @@ public class StageManager : MonoBehaviour
 
         // 게임 시작 시 초기화
         stageEndTime = stageEndTimeForReset;
+        SpawnBase();
         StartInGame();
         gold.Value = startGold;
     }
@@ -153,18 +162,43 @@ public class StageManager : MonoBehaviour
     }
 
 
+    // 타워 생성 함수
+    private void SpawnBase()
+    {
+        // 게임 오브젝트 스폰 및 데이터 가져오기 (타워의 경우)
+        spawnBaseID = GameManager.Instance.SelectedBaseID.Value;
+        TowerDatas data = JsonManager.instanceJsonManger.GetTowerData(spawnBaseID, spawnBaseLevel);
+
+        GameObject spawnBase = Resources.Load<GameObject>("Tower/Base_00_First");
+
+        Vector3 currentPos = transform.position;
+        Instantiate(spawnBase, currentPos, Quaternion.identity);
+        TowerStats towerStats = spawnBase.GetComponent<TowerStats>();
+
+        // spawnBaseID 기반 오브젝트 선택하기
+        if (data != null)
+        {
+            // 가져온 데이터 주입
+            towerStats.SetupValue(data);
+        }
+
+    }
+
+
+
 
     // ========== 게임 시작 ==========
     public void StartInGame()
     {
+        /*
         _currentLife = _maxLife;
         _currentWave = 0;
         _currentState = GameState.Playing;
-
+        */
         Debug.Log("============================================");
         Debug.Log("[GameManager] 게임 시작!");
-        Debug.Log($"  - 생명: {_currentLife}/{_maxLife}");
-        Debug.Log($"  - 총 웨이브: {_totalWaves}");
+        //Debug.Log($"  - 생명: {_currentLife}/{_maxLife}");
+        //Debug.Log($"  - 총 웨이브: {_totalWaves}");
         Debug.Log("============================================");
     }
 
@@ -194,6 +228,7 @@ public class StageManager : MonoBehaviour
 
 
     // ========== 웨이브 클리어 (웨이브 끝나면 호출) ==========
+    /*
     public void WaveCleared()
     {
         // 이미 게임 끝났으면 무시
@@ -212,6 +247,7 @@ public class StageManager : MonoBehaviour
             OnVictory();
         }
     }
+    */ 
 
     // ========== 승리 처리 ==========
     private void OnVictory()
