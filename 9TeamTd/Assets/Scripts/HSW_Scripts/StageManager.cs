@@ -172,7 +172,7 @@ public class StageManager : MonoBehaviour
 
         // 위치를 받고 오브젝트 생성
         Vector3 curBasePos = basePosition.position;
-        GameObject spawnBase = Instantiate(Resources.Load<GameObject>("Tower/Base_00_First"), curBasePos, Quaternion.identity);
+        GameObject spawnBase = Instantiate(Resources.Load<GameObject>(baseAddress), curBasePos, Quaternion.identity);
         spawnBase.GetComponent<TowerStats>().id = spawnBaseID;
         spawnBase.GetComponent<TowerStats>().level = spawnBaseLevel;
         spawnBase.GetComponent<TowerStats>().Init();

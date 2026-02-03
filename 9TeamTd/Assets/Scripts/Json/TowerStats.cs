@@ -19,6 +19,7 @@ public class TowerStats : MonoBehaviour
     [Header("Auto Status")]
     public string name;
     public string desc;
+    public string towerAddress;
     public TowerType towerType;
     public int maxHP;
     public attackType attackType;
@@ -70,6 +71,7 @@ public class TowerStats : MonoBehaviour
         id = data.id;
         name = data.name;
         desc = data.desc;
+        towerAddress = data.towerAddress;
         level = data.level;
         towerType = (TowerType)Enum.Parse(typeof(TowerType), data.towerType);
         maxHP = data.maxHP;

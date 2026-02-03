@@ -18,6 +18,7 @@ public class Tower : MonoBehaviour, IDamagable
     [SerializeField] private int id;
     [SerializeField] private string _towername;
     [SerializeField] private string _towerdesc;
+    [SerializeField] private string _towerAddress;
     [SerializeField] private int level;
     [SerializeField] private TowerType towerType;
     public float _towerMaxHP; // 타워 최대 체력
@@ -52,6 +53,7 @@ public class Tower : MonoBehaviour, IDamagable
             id = stats.id;
             _towername = stats.name;
             _towerdesc = stats.desc;
+            _towerAddress= stats.towerAddress;
             level = stats.level;
             towerType = stats.towerType;
             _towerMaxHP = stats.maxHP;
