@@ -28,7 +28,7 @@
     "level": 1,
     "maxHP": 55,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -39,7 +39,7 @@
     "level": 1,
     "maxHP": 61,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -50,7 +50,7 @@
     "level": 1,
     "maxHP": 67,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 2,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -61,7 +61,7 @@
     "level": 1,
     "maxHP": 74,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 2,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -72,7 +72,7 @@
     "level": 1,
     "maxHP": 81,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 3,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -83,7 +83,7 @@
     "level": 1,
     "maxHP": 89,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 3,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -94,7 +94,7 @@
     "level": 1,
     "maxHP": 98,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 4,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -105,7 +105,7 @@
     "level": 1,
     "maxHP": 108,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 4,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -116,7 +116,7 @@
     "level": 1,
     "maxHP": 119,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 5,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -127,7 +127,7 @@
     "level": 1,
     "maxHP": 131,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 5,
     "Type": 0,
     "enemyRank": "Normal",
     "moveSpeed": 2
@@ -138,7 +138,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 3
@@ -149,7 +149,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 1,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 3.45
@@ -160,7 +160,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 2,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 3.97
@@ -171,7 +171,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 2,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 4.57
@@ -182,7 +182,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 3,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 5.26
@@ -193,7 +193,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 3,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 6.05
@@ -204,7 +204,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 4,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 6.96
@@ -215,7 +215,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 4,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 8
@@ -226,7 +226,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 5,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 9.2
@@ -237,7 +237,7 @@
     "level": 1,
     "maxHP": 30,
     "attackValue": 1,
-    "defenceValue": 0,
+    "defenceValue": 5,
     "Type": 1,
     "enemyRank": "Normal",
     "moveSpeed": 10.58
@@ -248,7 +248,7 @@
     "level": 1,
     "maxHP": 300,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 3,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.5
@@ -259,7 +259,7 @@
     "level": 1,
     "maxHP": 321,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 5,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.61
@@ -270,7 +270,7 @@
     "level": 1,
     "maxHP": 343,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 7,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.72
@@ -281,7 +281,7 @@
     "level": 1,
     "maxHP": 367,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 9,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.84
@@ -292,7 +292,7 @@
     "level": 1,
     "maxHP": 393,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 11,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 1.97
@@ -303,7 +303,7 @@
     "level": 1,
     "maxHP": 421,
     "attackValue": 99999,
-    "defenceValue": 1,
+    "defenceValue": 13,
     "Type": 2,
     "enemyRank": "Normal",
     "moveSpeed": 2.11
