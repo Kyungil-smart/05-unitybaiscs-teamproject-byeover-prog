@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [DisallowMultipleComponent]
 public sealed class SoundManager : MonoBehaviour
@@ -45,6 +46,8 @@ public sealed class SoundManager : MonoBehaviour
     [Header("디버그")]
     [SerializeField] private bool verbose_logs = false;
 
+    public float soundBGMVolume = 0.3f; // BGM 볼륨
+
     // 현재 실행 중인 랜덤루프 코루틴 핸들
     private Coroutine _main_loop_co;
     private Coroutine _battle_loop_co;
@@ -87,6 +90,8 @@ public sealed class SoundManager : MonoBehaviour
         StopBattleBgm(); // 메인으로 전환 시 전투 루프 중단
         StopOneShotResultBgm(); // 승/패 재생 중이면 중단(원하면 이 줄 빼도 됨)
 
+        main_bgm_source.volume = soundBGMVolume;
+
         if (_main_loop_co != null) StopCoroutine(_main_loop_co);
         _main_loop_co = StartCoroutine(RandomLoop(main_bgm_source, main_bgm_clips, "Main"));
     }
@@ -101,6 +106,8 @@ public sealed class SoundManager : MonoBehaviour
         StopMainBgm();
         StopOneShotResultBgm();
 
+        battle_bgm_source.volume = soundBGMVolume;
+
         if (_battle_loop_co != null) StopCoroutine(_battle_loop_co);
         _battle_loop_co = StartCoroutine(RandomLoop(battle_bgm_source, battle_bgm_clips, "Battle"));
     }
@@ -114,6 +121,9 @@ public sealed class SoundManager : MonoBehaviour
     {
         StopMainBgm();
         StopBattleBgm();
+
+        win_bgm_source.volume = soundBGMVolume;
+
         PlayOneShotRandom(win_bgm_source, win_bgm_clips, "Win");
     }
 
@@ -126,6 +136,9 @@ public sealed class SoundManager : MonoBehaviour
     {
         StopMainBgm();
         StopBattleBgm();
+
+        lose_bgm_source.volume = soundBGMVolume;
+
         PlayOneShotRandom(lose_bgm_source, lose_bgm_clips, "Lose");
     }
 

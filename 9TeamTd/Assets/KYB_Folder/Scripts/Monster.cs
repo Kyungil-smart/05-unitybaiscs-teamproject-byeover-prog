@@ -162,7 +162,7 @@ public class Monster : MonoBehaviour, IDamagable
 
         if (resource != null)
         {
-            StageManager.Instance.GetGold(resource.gold * 10);
+            StageManager.Instance.GetGold(resource.gold * 3);
         }
         
         if (resource != null && !string.IsNullOrEmpty(resource.DropItemId))

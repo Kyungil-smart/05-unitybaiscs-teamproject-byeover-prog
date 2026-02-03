@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public int outGameGem = 0;  // 현재 아웃 게임 재화
 
+   
 
     public List<OpenBases> GetBases;    // 획득한 기지
     public OP<int> SelectedBaseID = new();  // 현재 선택된 기지
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     // ========== 싱글톤 ==========
     // 다른 스크립트에서 GameManager.Instance로 접근 가능
     public static GameManager Instance; /*{ get; private set; }*/
-    public static SoundManager InstanceSound { get; private set; }
+    
 
     // 아웃 게임 로직
 
