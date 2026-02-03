@@ -36,7 +36,8 @@ public class StageManager : MonoBehaviour
     public float currentSeconds = 0;
     public float stageEndTime = 0;  // 추후 private 로 수정 필요
 
-    
+    [Header("아이템 드랍 설정")] 
+    [SerializeField] private List<GameObject> itemPrefabs;
 
 
 
@@ -74,6 +75,7 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         /*
         // 싱글톤 설정
         if (Instance == null)
@@ -347,26 +349,43 @@ public class StageManager : MonoBehaviour
     }
 
 
-
-
-    // 아이템 드랍 및 획득 기능 추가 및 테스트 필요
-    [Header("아이템 드랍 설정")]
-    [SerializeField] private List<GameObject> dropItemPrefabs;
-
-
     public void TryDropItem(string itemId, float prob, Vector3 spawnPos)
     {
-        if (string.IsNullOrEmpty(itemId)) return;
+        if (string.IsNullOrEmpty(itemId) || prob <= 0) return;
 
         // 확률 체크
-        if (UnityEngine.Random.value < prob)
+        if (UnityEngine.Random.value <= prob)
         {
             SpawnItem(itemId, spawnPos);
         }
     }
 
-    private void SpawnItem(string itemId, Vector3 pos)
+    private void SpawnItem(string itemId, Vector3 dropPos)
     {
-
+        // string ID -> int 변환
+        if (int.TryParse(itemId, out int index))
+        {
+            // 리스트 범위 체크
+            if (index >= 0 && index < itemPrefabs.Count)
+            {
+                GameObject prefab = itemPrefabs[index];
+                if (prefab != null)
+                {
+                    // 아이템 생성 (위치 살짝 위로 보정)
+                    Vector3 finalPos = dropPos + new Vector3(0, 1.5f, 0);
+                    Instantiate(prefab, finalPos, Quaternion.identity);
+                    
+                    Debug.Log($"아이템 드랍 성공 (ID: {index})");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"아이템 프리팹이 리스트에 없습니다. ID: {index}");
+            }
+        }
+        else
+        {
+            Debug.LogError($"아이템 ID 변환 실패: {itemId}");
+        }
     }
 }
