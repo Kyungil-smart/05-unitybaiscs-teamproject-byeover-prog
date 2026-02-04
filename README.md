@@ -11,3 +11,6 @@ Releases에서 다운로드 후
 
 INgame Screen Shot
 <img width="560" height="313" alt="image" src="https://github.com/user-attachments/assets/a6c86c62-997d-4e79-8d11-dae67705efb6" />
+
+## 플레이
+- 몰려오는 적들의 경로를 막고 목표시간을 버티기
