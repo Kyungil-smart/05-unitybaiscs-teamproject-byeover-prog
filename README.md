@@ -1,7 +1,7 @@
 # 9TeamTD 실행 안내
 
 ## 실행
-릴리즈에서 다운로드
+Releases에서 다운로드 후
 - `9TeamTd.exe` 실행
 
 ## 조작
