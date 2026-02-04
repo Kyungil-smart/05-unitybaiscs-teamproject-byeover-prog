@@ -83,14 +83,14 @@ public class UIController : MonoBehaviour
         {
             StageManager.gold.Value += 1000;
         }
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    StageManager.Instance.OnDefeat();
-        //}
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    StageManager.Instance.stageEndTimeForReset = 0;
-        //}
+        if (Input.GetKeyDown(KeyCode.Insert))
+        {
+            StageManager.Instance.OnDefeat();
+        }
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            StageManager.Instance.stageEndTimeForReset = 0;
+        }
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    baseTower._currentHP += 100;
