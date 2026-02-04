@@ -7,6 +7,7 @@ Releases에서 다운로드 후
 ## 조작
 - 이동: `W A S D`
 - 타워 설치 : 아래 설치 메뉴 클릭 후 'Space Bar'
+- 타워 클릭 : 업그레이드 , 판매 가능
 - 메뉴/닫기: `ESC`
 
 INgame Screen Shot
