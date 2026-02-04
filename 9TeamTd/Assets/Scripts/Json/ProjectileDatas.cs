@@ -18,6 +18,12 @@ public class ProjectileDatas // .json 파일과 이름과 겹치면 안 됨
     public string projectileSpacialAbility;
     public string damageTargetTeamType;
     public string projectileDamageCategory;
+
+    public int effectRate;   // 이 아래는 상태 효과를 위해 추가
+    public float effectValue;
+    public float effectInterval;
+    public float duration;
+    public int overlapCount;
 }
 
 // ProjectileDatas 형식의 리스트로 만들어 관리 

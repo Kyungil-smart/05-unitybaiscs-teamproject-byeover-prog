@@ -112,7 +112,8 @@ public partial class GridSystem : MonoBehaviour
         ResetGridState();
         RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
 
-        RegisterObstacles(); // ��ֹ� ��� �߰���
+        RegisterObstacles();
+        RegisterBaseSize();
 
         SnapBaseTransformToCellCenter();
     }
@@ -244,16 +245,12 @@ public partial class GridSystem : MonoBehaviour
             // Rollback
             SetCellState(cell, CellState.Empty);
             RebuildDistanceField(distanceToBase, assumedBlockedCell: null);
-#if UNITY_EDITOR
-            Debug.Log($"[GridSystem] TryPlaceTower failed (WouldBlockAllSpawns) cell={cell}");
-#endif
+
             return false;
         }
 
         //SpawnTowerVisual(cell); // 테스트 큐브 생성 코드라 주석처리 하였습니다
-#if UNITY_EDITOR
-        Debug.Log($"[GridSystem] TryPlaceTower success cell={cell}");
-#endif
+
         return true;
     }
 
@@ -712,6 +709,22 @@ public partial class GridSystem : MonoBehaviour
             foreach (Cell cell in bigObstacle.occupiedCells)
             {
                 SetCellState(cell, CellState.Blocked);
+            }
+        }
+    }
+
+    // 베이스 크기 등록
+    private void RegisterBaseSize()
+    {
+        GridBaseSize[] baseObstacles = FindObjectsOfType<GridBaseSize>();
+
+        foreach (GridBaseSize baseObstacle in baseObstacles)
+        {
+            baseObstacle.Initialize(this);
+
+            foreach (Cell cell in baseObstacle.occupiedCells)
+            {
+                SetCellState(cell, CellState.Base);
             }
         }
     }

@@ -31,6 +31,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] private DamageTargetTeamType damageTargetTeamType;
     [SerializeField] private ProjectileDamageCategory projectileDamageCategory;
 
+    [SerializeField] private int effectRate;   // 이 아래는 상태 효과를 위해 추가
+    [SerializeField] private float effectValue;
+    [SerializeField] private float effectInterval;
+    [SerializeField] private float duration;
+    [SerializeField] private int overlapCount;
+
+
 
     // 데미지 계산 스크립트
     // DamageCalculator damageCalculator = new DamageCalculator();
@@ -94,6 +101,17 @@ public class Projectile : MonoBehaviour
             damageTargetTeamType = stats.damageTargetTeamType;
             projectileDamageCategory = stats.projectileDamageCategory;
 
+            
+            effectRate = stats.effectRate;
+            effectValue = stats.effectValue;
+            effectInterval = stats.effectInterval;
+            duration = stats.duration;
+            overlapCount = stats.overlapCount;
+
+            // Debug.Log($"InitStats {effectRate}");
+
+
+
         }
     }
 
@@ -142,7 +160,7 @@ public class Projectile : MonoBehaviour
         if (projectileSpwanType == ProjectileSpwanType.AttackerPosition ||
             projectileSpwanType == ProjectileSpwanType.TargetPosition)
         {
-            moveDirection = Vector3.forward;
+            moveDirection = (_target.position - transform.position).normalized;
         }
 
         // 방향 필요없는 공격 방식을 제외하면 오브젝트의 방향을 적 방향으로 초기화
@@ -222,11 +240,76 @@ public class Projectile : MonoBehaviour
 
         // 실제로 데미지 주는 처리 (방어력 들어가도록 수정 필요)
         other.GetComponent<Monster>().TakeDamage(attackValue, damageRatio);
-        //Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
+        Debug.Log($"{gameObject.name} -> {other.gameObject.name}, {finalDMG} 데미지를 주었습니다.");
+
+
+
+        // 랜덤 확률로 속성 별 상태 효과 주는 처리
+        float temp = Time.time * 100f;
+        Random.InitState((int)temp);
+
+        int randomInt = UnityEngine.Random.Range(0, 10000);
+        // Debug.Log(randomInt);
+        // Debug.Log(effectRate);
+
+        // 발동 확률이 현재 선택된 랜덤 값 보다 클 경우 발동
+        if (effectRate >= randomInt)
+        {
+            GiveStatusEffectChance(other);
+            // Debug.Log("상태 효과 발동");
+        }
+        
 
         // 단일 피해면 오브젝트 비활성화
         if (projectileSpacialAbility == ProjectileSpacialAbility.Single) SetEnableObject();
     }
+
+    private void GiveStatusEffectChance(Collider other)
+    {
+        switch(projectileDamageCategory)
+        {
+            case ProjectileDamageCategory.Default:
+                Debug.LogWarning("투사체 공격 속성이 디폴트 값입니다");
+                break;
+            case ProjectileDamageCategory.Physical:
+                // Debug.Log("물리 확인");
+                other.GetComponent<Monster>().KnockBack(moveDirection, effectValue, duration);
+                break;
+
+            case ProjectileDamageCategory.Fire:
+                other.GetComponent<Monster>().Burn();
+                break;
+
+            case ProjectileDamageCategory.Water:
+                other.GetComponent<Monster>().Freeze(effectValue, duration, overlapCount);
+                break;
+
+            case ProjectileDamageCategory.Wind:
+                Debug.LogWarning("기능 추가 필요");
+                break;
+
+            case ProjectileDamageCategory.Earth:
+                Debug.LogWarning("기능 추가 필요");
+                break;
+
+            case ProjectileDamageCategory.Lightning:
+                other.GetComponent<Monster>().Stun(duration);
+                break;
+
+            case ProjectileDamageCategory.Light:
+                Debug.LogWarning("기능 추가 필요");
+                break;
+
+            case ProjectileDamageCategory.Darkness:
+                Debug.LogWarning("기능 추가 필요");
+                break;
+        }
+            
+    }
+
+
+
+
 
     // 주기에 따라 여러 번 데미지 주는 경우 데미지 처리 함수
     private IEnumerator DoTIntervalCoroutine()
@@ -310,6 +393,14 @@ public class Projectile : MonoBehaviour
     {
         this.transform.position = target.position;
     }
+
+
+
+
+
+
+
+
 
 
 

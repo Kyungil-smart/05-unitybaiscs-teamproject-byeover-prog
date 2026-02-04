@@ -15,5 +15,5 @@ public class MonsterResourcesDatas
 [Serializable]
 public class MonsterResourcesDataList
 {
-    public List<MonsterResourcesDatas> monsterResource;
+    public List<MonsterResourcesDatas> resource;
 }

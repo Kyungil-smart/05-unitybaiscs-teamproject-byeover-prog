@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.GraphicsBuffer;
+using static TowerEnumData;
 
 // 인게임 타워를 클릭했을때 업그레이드/판매 패널을 표시하는 UI
 public class TwClickUpSellUI : MonoBehaviour
 {
-    [Header("UI 연결")]
-    [SerializeField] TowerToUpSellUI towerToUpSellUI;
+    TowerToUpSellUI towerToUpSellUI;
     Camera mainCamera;
 
     // 버튼
@@ -27,6 +26,7 @@ public class TwClickUpSellUI : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
+        towerToUpSellUI = GetComponentInParent<TowerToUpSellUI>();
     }
 
     void Update()
@@ -49,7 +49,12 @@ public class TwClickUpSellUI : MonoBehaviour
             TowerStats tower = hit.collider.GetComponent<TowerStats>()
                        ?? hit.collider.GetComponentInParent<TowerStats>();
 
-            if (tower != null)
+            if (tower == null)
+            {
+                return;
+            }
+
+            if (tower.towerType == TowerType.Tower)
             {
                 Plane ground = new Plane(Vector3.up, Vector3.zero);
                 ground.Raycast(ray, out float enter);
@@ -59,7 +64,7 @@ public class TwClickUpSellUI : MonoBehaviour
 
                 selectedTower = tower;
 
-                if (tower.level + 1 > 5 || tower.id == 1100 || tower.id == 1101)
+                if (tower.level + 1 > 5 || tower.id == 1100)
                 {
                     upgradeButton.SetActive(false);
                     towerToUpSellUI.ShowInfo(tower.id, tower.level, tower.transform);
@@ -119,15 +124,15 @@ public class TwClickUpSellUI : MonoBehaviour
     public void OnUpgradeClick()
     {
         if (selectedTower == null) return;
-        
-        if (Player.gold.Value < towerToUpSellUI.cost)
+
+        if (StageManager.gold.Value < towerToUpSellUI.cost)
         {
 #if UNITY_EDITOR
             Debug.Log("골드 부족으로 업그레이드 불가");
 #endif
             return;
         }
-        Player.gold.Value -= towerToUpSellUI.cost;
+        StageManager.gold.Value -= towerToUpSellUI.cost;
 
         selectedTower.LevelUp();
 
@@ -152,7 +157,7 @@ public class TwClickUpSellUI : MonoBehaviour
                 upgradeButton.SetActive(false);
                 break;
         }
-        towerToUpSellUI.ShowInfo(selectedTower.id, selectedTower.level, selectedTower.transform);
+        towerToUpSellUI.ShowInfo(selectedTower.id, selectedTower.level + 1, selectedTower.transform);
     }
 
     // 판매 버튼 클릭 시
@@ -160,7 +165,7 @@ public class TwClickUpSellUI : MonoBehaviour
     {
         if (selectedTower == null) return;
         selectedTower.gameObject.SetActive(false);
-        Player.gold.Value += selectedTower.towerCost / 2;
+        StageManager.gold.Value += selectedTower.towerCost / 2;
 
         GridSystem.Instance.SetCellState(worldCell, GridSystem.CellState.Empty);
 

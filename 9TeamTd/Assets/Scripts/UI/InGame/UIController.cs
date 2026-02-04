@@ -12,16 +12,20 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public static OP<int> toBuyTwID = new();
+    Tower baseTower;
 
     // 패널
     [SerializeField] GameObject ESCpanel;
+    //[SerializeField] GameObject victoryPanel;
+    //[SerializeField] GameObject defeatPanel;
 
     // 텍스트
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI hpText;
 
     private void Awake()
     {
-        UpdateGoldText(Player.gold.Value);
+        UpdateGoldText(StageManager.gold.Value);
     }
     void UpdateGoldText(int value)
     {
@@ -30,13 +34,41 @@ public class UIController : MonoBehaviour
 
     void OnEnable()
     {
-        Player.gold.OnValueChanged += UpdateGoldText;
+        StageManager.gold.OnValueChanged += UpdateGoldText;
     }
     void OnDisable()
     {
-        Player.gold.OnValueChanged -= UpdateGoldText;
+        StageManager.gold.OnValueChanged -= UpdateGoldText;
     }
 
+    //void ShowVictoryPanel()
+    //{
+    //    victoryPanel.SetActive(true);
+    //}
+    //void ShowDefeatPanel()
+    //{
+    //    defeatPanel.SetActive(true);
+    //}
+
+    private void Start()
+    {
+
+        StartCoroutine(FindBaseTower());
+
+    }
+
+    IEnumerator FindBaseTower()
+    {
+        while (baseTower == null)
+        {
+            baseTower = FindFirstObjectByType<Tower>();
+
+            yield return null;
+        }
+#if UNITY_EDITOR
+        Debug.Log("타워 발견" + baseTower);
+#endif
+    }
 
     private void Update()
     {
@@ -44,17 +76,26 @@ public class UIController : MonoBehaviour
         {
             OpenEscPanel();
         }
+        hpText.text = $"<sprite=0>{baseTower._currentHP}";
 
         // 디버그용 코드
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
-            Player.gold.Value += 100;
-#if UNITY_EDITOR
-            Debug.Log("돈무한 치트 사용!!!");
-#endif
+            StageManager.gold.Value += 1000;
         }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    StageManager.Instance.OnDefeat();
+        //}
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    StageManager.Instance.stageEndTimeForReset = 0;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    baseTower._currentHP += 100;
+        //}
     }
-
     public void OpenEscPanel()
     {
         ESCpanel.SetActive(!ESCpanel.activeSelf);
@@ -71,5 +112,6 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        GameManager.Instance.ChangeBGM();
     }
 }

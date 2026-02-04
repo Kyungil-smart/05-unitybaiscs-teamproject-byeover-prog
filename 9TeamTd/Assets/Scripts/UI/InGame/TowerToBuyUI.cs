@@ -10,15 +10,15 @@ public class TowerToBuyUI : MonoBehaviour
     [SerializeField] float offsetYRatio = 0.32f;  // Canvas 높이 대비 비율 
 
     [SerializeField] TextMeshProUGUI nameText;
-    //[SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI descText;
     [SerializeField] TextMeshProUGUI attackValueText;
     [SerializeField] TextMeshProUGUI attackRangeText;
     [SerializeField] TextMeshProUGUI attackSpeedText;
     [SerializeField] TextMeshProUGUI costText;
 
-    [Header("대상의 정보")]
+    [Header("Info")]
     [SerializeField] string towerName;
-    //[SerializeField] int maxHP;
+    [SerializeField] string desc;
     [SerializeField] int attackValue;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
@@ -35,18 +35,18 @@ public class TowerToBuyUI : MonoBehaviour
         SetupValue(data);
 
         nameText.text = towerName;
-        //hpText.text = maxHP.ToString();
+        descText.text = desc;
         if (attackValue < 0)
         {
             attackValueText.text = "파워: 없음";
             attackSpeedText.text = "속도: 없음";
-            attackRangeText.text = "범위: 없음";
+            attackRangeText.text = "사거리: 없음";
         }
         else
         {
             attackValueText.text = $"파워: {attackValue}";
             attackSpeedText.text = $"속도: {attackSpeed}";
-            attackRangeText.text = $"범위: {attackRange}";
+            attackRangeText.text = $"사거리: {attackRange}";
         }
         costText.text = $"<sprite=0>{cost}";
 
@@ -57,7 +57,7 @@ public class TowerToBuyUI : MonoBehaviour
     public void SetupValue(TowerDatas data)
     {
         towerName = data.name;
-        //maxHP = data.maxHP;
+        desc = data.desc;
         attackValue = data.attackValue;
         attackRange = data.attackRange;
         attackSpeed = data.attackSpeed;

@@ -9,10 +9,7 @@ public class Player : MonoBehaviour
     public int atkRange;
     public float atkSpeed;
 
-    public static OP<int> gold = new();
+    
 
-    private void Start()
-    {
-        gold.Value = 110;
-    }
+
 }

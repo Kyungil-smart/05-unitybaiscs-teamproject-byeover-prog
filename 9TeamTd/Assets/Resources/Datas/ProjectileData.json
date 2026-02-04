@@ -9,7 +9,12 @@
     "projectileSpwanType": "AttackerPositionTargetDirection",
     "projectileSpacialAbility": "Piercing",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Fire"
+    "projectileDamageCategory": "Fire",
+    "effectRate": 3000,
+    "effectValue": 0.1,
+    "effectInterval": 1,
+    "duration": 6,
+    "overlapCount": 1
   },
   {
     "id": 10061,
@@ -20,18 +25,44 @@
     "projectileSpwanType": "TargetPosition",
     "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Lightning"
+    "projectileDamageCategory": "Lightning",
+    "effectRate": 5000,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": -1
+  },
+  {
+    "id": 11011,
+    "name": "Projectile_1011_CannonBall_01",
+    "moveSpeed": 30,
+    "lifeTime": 0.2,
+    "damageInterval": -1,
+    "projectileSpwanType": "AttackerToTarget",
+    "projectileSpacialAbility": "Single",
+    "damageTargetTeamType": "Enemy",
+    "projectileDamageCategory": "Physical",
+    "effectRate": -1,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": -1,
+    "overlapCount": -1
   },
   {
     "id": 11021,
     "name": "Projectile_Arrow_01_Stright",
     "moveSpeed": 24,
-    "lifeTime": 0.5,
+    "lifeTime": 0.6,
     "damageInterval": -1,
     "projectileSpwanType": "AttackerToTarget",
     "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Physical"
+    "projectileDamageCategory": "Physical",
+    "effectRate": -1,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": -1,
+    "overlapCount": -1
   },
   {
     "id": 11031,
@@ -42,7 +73,12 @@
     "projectileSpwanType": "AttackerToTarget",
     "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Physical"
+    "projectileDamageCategory": "Physical",
+    "effectRate": -1,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": -1,
+    "overlapCount": -1
   },
   {
     "id": 11041,
@@ -53,7 +89,12 @@
     "projectileSpwanType": "AttackerToTargetHoming",
     "projectileSpacialAbility": "Single",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Lightning"
+    "projectileDamageCategory": "Lightning",
+    "effectRate": 1500,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": -1
   },
   {
     "id": 11051,
@@ -64,7 +105,12 @@
     "projectileSpwanType": "AttackerToTarget",
     "projectileSpacialAbility": "Piercing",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Physical"
+    "projectileDamageCategory": "Physical",
+    "effectRate": 10000,
+    "effectValue": 4,
+    "effectInterval": -1,
+    "duration": 0.5,
+    "overlapCount": -1
   },
   {
     "id": 11061,
@@ -75,29 +121,44 @@
     "projectileSpwanType": "TargetPosition",
     "projectileSpacialAbility": "Piercing",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Lightning"
+    "projectileDamageCategory": "Lightning",
+    "effectRate": 3000,
+    "effectValue": -1,
+    "effectInterval": -1,
+    "duration": 3,
+    "overlapCount": -1
   },
   {
     "id": 11071,
     "name": "Projectile_IceField_GroundDoT",
     "moveSpeed": -1,
-    "lifeTime": 12,
-    "damageInterval": 2,
+    "lifeTime": 4,
+    "damageInterval": 0.8,
     "projectileSpwanType": "AttackerPosition",
     "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Water"
+    "projectileDamageCategory": "Physical",
+    "effectRate": 10000,
+    "effectValue": 1,
+    "effectInterval": -1,
+    "duration": 0.5,
+    "overlapCount": -1
   },
   {
     "id": 11081,
     "name": "Projectile_Flame_GroundDoT",
     "moveSpeed": -1,
-    "lifeTime": 3,
-    "damageInterval": 1,
+    "lifeTime": 2.4,
+    "damageInterval": 0.6,
     "projectileSpwanType": "AttackerPositionTargetDirection",
     "projectileSpacialAbility": "GroundDoT",
     "damageTargetTeamType": "Enemy",
-    "projectileDamageCategory": "Fire"
+    "projectileDamageCategory": "Fire",
+    "effectRate": 10000,
+    "effectValue": 0.15,
+    "effectInterval": 1,
+    "duration": 6,
+    "overlapCount": 1
   }
 ]
 }
